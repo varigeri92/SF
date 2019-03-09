@@ -113,7 +113,7 @@ MonoBehaviour:
   lifetime: 1000
   dmg: 1
   health: 1
-  FX: {fileID: 1594457190462876, guid: a9263ed3d165647debc8a206a2a03641, type: 3}
+  FX: {fileID: 502243484622872339, guid: 66e8a3e2154af5a4cbc96cf37bac2050, type: 3}
 --- !u!50 &50422627618924898
 Rigidbody2D:
   serializedVersion: 4
