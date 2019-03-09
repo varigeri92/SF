@@ -47,7 +47,7 @@ public class FX_Shield : MonoBehaviour {
         {
             _currentShieldDuration -= _smoothness;
         }
-        if(_currentShieldDuration <= 0 || _currentShieldPower == 0)
+        if(_currentShieldDuration <= 0 || _currentShieldPower <= 0)
         {
             DestroyShield();
         }
