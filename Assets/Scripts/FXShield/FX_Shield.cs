@@ -38,6 +38,7 @@ public class FX_Shield : MonoBehaviour {
         {
             OnShieldActivated();
         }
+        UpdateSpriteColor();
     }
 
     private void FixedUpdate()
@@ -61,16 +62,21 @@ public class FX_Shield : MonoBehaviour {
         GameObject particles = Instantiate(_destroyParticles, transform.position, Quaternion.identity, null);
         Destroy(this.gameObject);
     }
-
+    
     private void ShieldHit()
     {
         StopAllCoroutines();
         _currentShieldPower--;
         _currentShieldPowerPercentage = (float)_currentShieldPower / (float)_shieldPower;
         _shieldMaterial.SetFloat("_Damage", (1 - _currentShieldPowerPercentage));
+        UpdateSpriteColor();
+        StartCoroutine(MaterialImpactEffect());
+    }
+
+    private void UpdateSpriteColor()
+    {
         Color newColor = Color.Lerp(_shieldMaterial.GetColor("_ForceFieldColor"), _shieldMaterial.GetColor("_ForceFieldDamagedColor"), (1 - _currentShieldPower));
         _childSprite.color = newColor;
-        StartCoroutine(MaterialImpactEffect());
     }
 
     private IEnumerator MaterialImpactEffect()
