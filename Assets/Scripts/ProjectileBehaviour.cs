@@ -7,6 +7,8 @@ public class ProjectileBehaviour : MonoBehaviour {
 	public float lifetime;
 	public int dmg;
 	public float speed;
+    public bool isBomb;
+    public GameObject explosionFX;
 
 
 	private void OnEnable()
@@ -19,9 +21,9 @@ public class ProjectileBehaviour : MonoBehaviour {
 		if(collision.collider.tag == "Player" || collision.collider.tag == "Enemy"){
 			OnColliding(collision.collider.gameObject);
 		}else{
-			Destroy(gameObject);
+            if(!isBomb)
+			    Destroy(gameObject);
 		}
-
 	}
 	public void FixedUpdate()
 	{
@@ -33,8 +35,10 @@ public class ProjectileBehaviour : MonoBehaviour {
 			go.GetComponent<Player>().TakeDmg(dmg);
 
 		}else if(go.tag == "Enemy"){
-			go.GetComponent<BasicEnemy>().TakeDmg(dmg);
-
+            if (go.GetComponent<BasicEnemy>() != null)
+            {
+			    go.GetComponent<BasicEnemy>().TakeDmg(dmg);
+            }
 		}
 	}
 
@@ -45,15 +49,45 @@ public class ProjectileBehaviour : MonoBehaviour {
 
 	public void OnColliding(GameObject go){
 		DealDmg(dmg,go);
-		Destroy(gameObject);
+        if (isBomb)
+        {
+            StartCoroutine(Explode());
+        }
+        else
+        {
+    		Destroy(gameObject);
+        }
 	}
 
 	public void OnCounterOver(){
-		Destroy(gameObject);
-	}
+        if (isBomb)
+        {
+            StartCoroutine(Explode());
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
 	IEnumerator Countdown(){
 		yield return new WaitForSeconds(lifetime);
 		OnCounterOver();
 	}
+
+    IEnumerator Explode()
+    {
+        speed = 0;
+        CircleCollider2D collider = GetComponent<CircleCollider2D>();
+        Instantiate(explosionFX,transform.position,Quaternion.identity);
+        while (true)
+        {
+            collider.radius +=  100 * Time.deltaTime;
+            yield return null;
+            if (collider.radius > 25)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 }

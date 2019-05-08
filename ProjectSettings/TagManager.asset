@@ -8,6 +8,7 @@ TagManager:
   - E_Object
   - Enemy
   - LOGIC
+  - XpFillImage
   layers:
   - Default
   - TransparentFX

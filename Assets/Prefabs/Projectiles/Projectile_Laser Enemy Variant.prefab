@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 7829392924579074363, guid: 2912dcbb84fbb4b4183890aacc765e61,
         type: 3}
       propertyPath: m_Name
-      value: Projectile_Laser Enemy
+      value: Projectile_Laser Enemy Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7832757890475269299, guid: 2912dcbb84fbb4b4183890aacc765e61,
         type: 3}
@@ -67,6 +67,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7869673819643540859, guid: 2912dcbb84fbb4b4183890aacc765e61,
+        type: 3}
+      propertyPath: lifetime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7829301035570964839, guid: 2912dcbb84fbb4b4183890aacc765e61,
         type: 3}
       propertyPath: m_Name
@@ -77,5 +82,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 603cf18b161387147a27954d4ac9bb67, type: 2}
+    - target: {fileID: 1136929635943935531, guid: 2912dcbb84fbb4b4183890aacc765e61,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2912dcbb84fbb4b4183890aacc765e61, type: 3}

@@ -10,8 +10,12 @@ public class MainMenuLogic : MonoBehaviour {
 
 	public bool controllerInput;
 	public float fadeTime;
-	
-	AudioSource _source;
+    public Slider masterSlider;
+    public Slider fxSlider;
+    public Slider musicSlider;
+
+    AudioSource _source;
+
 	CanvasGroup currentOpenedPanel;
 	public AudioMixer _mixer;
 	void Start () {
@@ -39,17 +43,27 @@ public class MainMenuLogic : MonoBehaviour {
 		StartCoroutine(FadePanelsOut(currentOpenedPanel));
 		StartCoroutine(FadePanelsIn(cg));
 	}
+    public void OpenControlls(CanvasGroup cg)
+    {
+        StartCoroutine(FadePanelsOut(currentOpenedPanel));
+        StartCoroutine(FadePanelsIn(cg));
+    }
+    public void CloseControlls(CanvasGroup cg)
+    {
+        StartCoroutine(FadePanelsOut(currentOpenedPanel));
+        StartCoroutine(FadePanelsIn(cg));
+    }
 
-	public void SetmasterVolume(float vol){
-		_mixer.SetFloat("masterVol", vol);
+    public void SetmasterVolume(float vol){
+		_mixer.SetFloat("masterVol", masterSlider.value);
 	}
 
 	public void SetMusicVolume(float vol){
-		_mixer.SetFloat("musicVol", vol);
+		_mixer.SetFloat("musicVol", musicSlider.value);
 	}
 
 	public void SetFXVolume(float vol){
-		_mixer.SetFloat("sfxVol", vol);
+		_mixer.SetFloat("sfxVol", fxSlider.value);
 	}
 
 	public void saveOptions(){

@@ -14,13 +14,41 @@ public class Player : MonoBehaviour
 	public delegate void PlayerDead();
 	public static event PlayerDead OnPlayerDeath;
 
-	public List<SelectorBehaviour> selectorBahaviours = new List<SelectorBehaviour>();
+    public GameSystemManager gameSystemManager;
 
-	public TMPro.TMP_Text enemyCounterText;
+	public List<SelectorBehaviour> selectorBahaviours = new List<SelectorBehaviour>();
+    public Dictionary<string, InventoryGun> gunsPickedUp = new Dictionary<string, InventoryGun>();
+    //-----------------------------//
+    public PiUIManager piUIManager;
+    public PiUI piUI;
+
+    [SerializeField]
+    Image xpFillImage;
+
+    [SerializeField]
+    int xpToNextLevel = 30;
+    [SerializeField]
+    int currentXp = 0;
+
+    [SerializeField]
+    int playerLevel = 1;
+
+    string[] slices = {"One","Two","Three","Four","Five"};
+
+    //-----------------------------//
+
+    InventoryGun ActiveInventoryGun;
+
+    public TMPro.TMP_Text enemyCounterText;
 	public TMPro.TMP_Text AmmoText;
 	int enemyCounter = 0;
 
+    int activeGunAmmo;
+
+    public GameObject gameOverPanel;
+    public GameObject playerExplosion;
 	public GameObject basicGun;
+    public GameObject playerForceShield;
 	public float turbo;
 	public Image turboBar;
 	public TMPro.TMP_Text shieldText;
@@ -44,21 +72,25 @@ public class Player : MonoBehaviour
 
 	public InventorySelector inventorySelector;
 	public GameObject radialInventory;
+
+    bool hasShield = false;
+
 	void Awake(){
 		inventorySelector = GameObject.FindGameObjectWithTag("LOGIC").GetComponentInChildren<InventorySelector>();
-		Debug.Log(inventorySelector.name);
 	}
 	void Start()
 	{
 		SetBasicGun();
 		BasicEnemy.onEnemyDead += countEnemyes;
-		
+        shieldText.text = health.ToString();
 
-	}
+    }
 	void countEnemyes(BasicEnemy enemy)
 	{
 		enemyCounter++;
-		enemyCounterText.text = enemyCounter.ToString();
+		
+
+        LevelingProgress(enemy.enemyObject.xp);
 
 	}
 	void onDestroy(){
@@ -70,10 +102,20 @@ public class Player : MonoBehaviour
 		if (OnPlayerDeath != null) {
 			OnPlayerDeath();
 		}
+
+        Instantiate(playerExplosion,transform.position,Quaternion.identity);
+        gameOverPanel.SetActive(true);
+        TimeManager timeManager = GameObject.FindGameObjectWithTag("LOGIC").GetComponentInChildren<TimeManager>();
+        timeManager.SlowTime(0.05f);
+        timeManager.StartAutoSet();
 		Destroy(gameObject);
 	}
 	void Update()
 	{
+        if (gameSystemManager.isPaused)
+        {
+            return;
+        }
 		
 		if (useController)
 		{
@@ -149,7 +191,7 @@ public class Player : MonoBehaviour
 					}
 					else
 					{
-						AmmoText.text = "∞";
+						AmmoText.text = "Infinite";
 					}
 				} else {
 					OnGunChanged();
@@ -163,7 +205,6 @@ public class Player : MonoBehaviour
 		activeGuns = new List<Gun>();
 		foreach (Transform t in attachPoints) {
 			if (t.GetComponentInChildren<Gun>() != null) {
-				Debug.Log(GetComponentInChildren<Gun>().name);
 				activeGuns.Add(t.GetComponentInChildren<Gun>());
 			}
 		}
@@ -206,43 +247,55 @@ public class Player : MonoBehaviour
 		health += shield;
 		shieldText.text = health.ToString();
 	}
-	/* 
-	public void PickupGun(GameObject gun, GameObject icon)
-	{
-		bool alreadyGot = false;
-		Debug.Log("PickupCalled");
 
-		if (!alreadyGot) {
-			foreach (SelectorBehaviour selector in selectorBahaviours) {
-				if (!selector.haschild) {
-					
-					selector.gun = gun;
-					selector.haschild = true;
-					Instantiate(icon, selector.gameObject.transform);
-					break;
-				} else if (selector.gun.name == gun.name) {
-					Debug.Log("ADD AMMO??");
-					selector.gun.GetComponent<Gun>().ammo += 100;
-					break;
-				}
-			}
-		}
-	}
-	*/
+    public void PickupForceShield()
+    {
+        if (transform.GetComponentInChildren<FX_Shield>() != null)
+        {
+            Destroy(transform.GetComponentInChildren<FX_Shield>().gameObject);
+        }
+        Instantiate(playerForceShield,transform);
+    }
 
 	public void PickupGun(GameObject gun, GameObject icon)
 	{
 		bool alreadyGot = false;
 		if (!alreadyGot) {
 			if(inventorySelector.items.Contains(gun)){
-				Debug.Log("ADD AMMO!");
-				return;
-			}
-			inventorySelector.items.Add(gun);
-			inventorySelector.icons.Add(icon);
-			
-			Instantiate(icon, radialInventory.transform.GetChild(inventorySelector.items.Count -1 ).GetChild(0));				
-		
+               
+                Gun activeGun = attachPoints[0].GetChild(0).GetComponent<Gun>();
+                string activeGunName = activeGun.gameObject.name.Replace("(Clone)", "");
+                if (gun.name == activeGunName)
+                {
+                    Debug.Log("Add ammo for active Gun: " + activeGunName);
+                    activeGun.ammo += gun.GetComponent<Gun>().ammo;
+                    AmmoText.text = activeGun.ammo.ToString();
+                }
+                else
+                {
+                    Debug.Log("Ammo picked up for: " + gun.name);
+                    gunsPickedUp[gun.name].AddAmmo(gun.GetComponent<Gun>().ammo);
+                }
+            }
+            else
+            {
+			    inventorySelector.items.Add(gun);
+			    inventorySelector.icons.Add(icon);
+                GameObject inventoryIcon = Instantiate(icon, radialInventory.transform.Find(slices[inventorySelector.items.Count - 1]).GetChild(0));
+                if (inventoryIcon.GetComponent<InventoryGun>() != null)
+                {
+                    InventoryGun invGun = inventoryIcon.GetComponent<InventoryGun>();
+                    invGun.SetAmmo(gun.GetComponent<Gun>().ammo);
+                    gunsPickedUp.Add(gun.name,invGun);
+
+                    Debug.Log("Gun Picked Up: " + gun.name);
+
+                }
+                else
+                {
+                    Debug.LogWarning("No 'InventoryGun' component found on: " + inventoryIcon.name);
+                }
+            }
 		}
 	}
 	void SetBasicGun()
@@ -259,9 +312,55 @@ public class Player : MonoBehaviour
 
 	public void ChangeGun(GameObject go)
 	{
-		
-		Destroy(attachPoints[0].GetChild(0).gameObject);
-		Instantiate(go, attachPoints[0]);
-		OnGunChanged();
+
+        Gun activeGun = attachPoints[0].GetChild(0).GetComponent<Gun>();
+        string activeGunName = activeGun.gameObject.name.Replace("(Clone)", "");
+        if (go.name+"(Clone)" == activeGun.gameObject.name)
+        {
+            Debug.Log("Already on this Gun");
+        }
+        else
+        {
+            if (gunsPickedUp.ContainsKey(activeGunName))
+            {
+                Debug.Log("Set Remaining ammo for old Gun: " + activeGunName);
+                gunsPickedUp[activeGunName].SetAmmo(activeGun.ammo);
+            }
+            Destroy(activeGun.gameObject);
+
+            Gun newGun = Instantiate(go, attachPoints[0]).GetComponent<Gun>();
+           if(newGun.ammo != -999)
+            {
+                newGun.ammo = gunsPickedUp[go.name].GetAmmo();
+                // Debug.Log("New Gun Ammo: " + newGun.ammo);
+                AmmoText.text = newGun.ammo.ToString();
+            }
+
+		    OnGunChanged();
+        }
 	}
+
+    void LevelingProgress(int xp)
+    {
+        currentXp += xp;
+        if(currentXp >= xpToNextLevel)
+        {
+            playerLevel++;
+            enemyCounterText.text = playerLevel.ToString();
+            xpFillImage.fillAmount = 0f;
+            xpToNextLevel = Mathf.RoundToInt(xpToNextLevel * 1.5f);
+            currentXp = 0;
+        }
+        else
+        {
+            float progress = (float)currentXp / (float)xpToNextLevel;
+
+            if (xpFillImage == null)
+                xpFillImage = GameObject.FindGameObjectWithTag("XpFillImage").GetComponent<Image>();
+
+            xpFillImage.fillAmount = progress;
+            Debug.Log(progress);
+        }
+    }
+
 }

@@ -15,22 +15,50 @@ public class TimeManager : MonoBehaviour
 	{
 		_fixedDeltaTime = Time.fixedDeltaTime;
 		player = GameObject.FindGameObjectWithTag("Player").transform;
+        NormalizeTime();
 	}
 
 
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.LeftShift))
 		{
-			Time.timeScale = slowAmount;
-			Time.fixedDeltaTime = Time.timeScale * 0.02f;
-			playerPos  = (Vector2)Camera.main.WorldToScreenPoint(player.position);
-			inventoryUI.OpenMenu(playerPos);
+            SlowTime(0.02f);
+            playerPos = (Vector2)Camera.main.WorldToScreenPoint(player.position);
+            inventoryUI.OpenMenu(playerPos);
 		}
 		else if (Input.GetKeyUp(KeyCode.LeftShift))
 		{
-			Time.timeScale = 1;
-			Time.fixedDeltaTime = _fixedDeltaTime;
-			inventoryUI.CloseMenu();
-		}
+            NormalizeTime();
+            inventoryUI.CloseMenu();
+        }
 	}
+
+    public void SlowTime(float timeScale)
+    {
+        Time.timeScale = slowAmount;
+        Time.fixedDeltaTime = Time.timeScale * timeScale;
+    }
+
+    public void NormalizeTime()
+    {
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = _fixedDeltaTime;
+        
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        Time.fixedDeltaTime = 0;
+    }
+    public void StartAutoSet()
+    {
+        StartCoroutine(AutoSetTime());
+    }
+
+    IEnumerator AutoSetTime()
+    {
+        yield return new WaitForSecondsRealtime(5f);
+        NormalizeTime();
+    }
 }

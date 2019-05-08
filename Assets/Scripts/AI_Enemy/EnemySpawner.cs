@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+
 
 public class EnemySpawner : MonoBehaviour {
 
-
+    public bool dontSpawn;
+    public int spawnOnly;
 
 	public List<GameObject> enemyes = new List<GameObject>();
 	public List<Transform> points = new List<Transform>();
@@ -19,38 +22,57 @@ public class EnemySpawner : MonoBehaviour {
 
 	int lastrandomindex;
 
-	// Use this for initialization
+
 	void Start()
 	{
-
 		for (int i = 0; i < transform.childCount; i++) {
 			Transform t = transform.GetChild(i);
 			points.Add(t);
 		}
 		BasicEnemy.onEnemyDead += RemoveEnemyFromList;
-		Player.OnPlayerDeath += delegate {
-
-			playerAlive = false;
-		};
+        Player.OnPlayerDeath += PlayerDied;
 	}
+    
+    void PlayerDied()
+    {
+        playerAlive = false;
+    }
 
-	void RemoveEnemyFromList(BasicEnemy enemy){
+    private void OnDestroy()
+    {
+        Player.OnPlayerDeath -= PlayerDied;
+    }
+
+    void RemoveEnemyFromList(BasicEnemy enemy){
 		spawnedEnemyes.Remove(enemy);
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
 		time += Time.deltaTime * rate;
 		if(time >= 1){
 			for (int i = 0; i < count; i++) {
 				if (playerAlive)
-					Spawn();
+                {
+                    if(!dontSpawn)
+    					Spawn();
+                }
 			}
 			time = 0;
 		}
 	}
 
 	void Spawn(){
+        int enemyToSpawn;
+        if (spawnOnly < 0 || spawnOnly >= enemyes.Count)
+        {
+            enemyToSpawn = (int)Random.Range(0, enemyes.Count);
+        }
+        else
+        {
+            enemyToSpawn = spawnOnly;
+        }
+
 		int rand = Random.Range(0,points.Count);
 		if(rand == lastrandomindex){
 			if(rand == 0){
@@ -62,7 +84,7 @@ public class EnemySpawner : MonoBehaviour {
 			}
 		}
 		lastrandomindex = rand;
-		GameObject go = Instantiate(enemyes[(int)Random.Range(0,enemyes.Count)], points[rand].position, Quaternion.identity);
+		GameObject go = Instantiate(enemyes[enemyToSpawn], points[rand].position, Quaternion.identity);
 		spawnedEnemyes.Add(go.GetComponent<BasicEnemy>());
 	}
 }

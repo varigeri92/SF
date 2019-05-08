@@ -208,6 +208,7 @@ public class PiUI : MonoBehaviour
             //currentPi.gameObject.SetActive(true);
             currentImage.rectTransform.localPosition = Vector2.zero;
             currentPi.SetData(piData[i], innerRadius, outerRadius, this);
+            currentPi.gameObject.name = piData[i].sliceLabel;
             piList.Add(currentPi);
         }
         openedMenu = false;

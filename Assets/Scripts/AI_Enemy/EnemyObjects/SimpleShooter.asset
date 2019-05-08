@@ -4,16 +4,18 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74d07c84f576f41168eb5f235ff527a8, type: 3}
   m_Name: SimpleShooter
   m_EditorClassIdentifier: 
-  exposionFX: {fileID: 1371780899007676, guid: 4955035f9d4e24142863ae1b11aaa704, type: 2}
-  helath: 1
+  exposionFX: {fileID: 1371780899007676, guid: 4955035f9d4e24142863ae1b11aaa704, type: 3}
+  health: 1
   mooveSpeed: 3
   rotationSpeed: 500
   type: 0
   fireRate: 0
+  xp: 2

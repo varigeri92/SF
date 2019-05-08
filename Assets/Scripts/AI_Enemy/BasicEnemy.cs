@@ -10,15 +10,18 @@ public class BasicEnemy : MonoBehaviour {
 
 	public EnemyObject enemyObject;
 
+    int health;
 	Gun gun;
 	Transform target;
 	Rigidbody2D rb;
 	bool playerAlive = true;
 
+    bool left = true;
 
 
 	void OnEnable()
 	{
+        health = enemyObject.health;
 		if(GetComponentInChildren<Gun>() != null)
 		{
 			gun = GetComponentInChildren<Gun>();
@@ -27,6 +30,11 @@ public class BasicEnemy : MonoBehaviour {
 		{
 			gun = null;
 		}
+        int rndm = Random.Range(0, 2);
+        if (rndm == 0)
+        {
+            left = false;
+        }
 
 		target = GameObject.FindGameObjectWithTag("Player").transform;
 		rb = GetComponent<Rigidbody2D>();
@@ -54,8 +62,11 @@ public class BasicEnemy : MonoBehaviour {
 
 					if (distance < 5) {
 						_speed = 0;
-						rb.velocity = transform.right * enemyObject.mooveSpeed;
-					} else {
+                        if(left)
+						    rb.velocity = -transform.right * enemyObject.mooveSpeed;
+                        else
+                            rb.velocity = transform.right * enemyObject.mooveSpeed;
+                    } else {
 						_speed = enemyObject.mooveSpeed;
 						rb.velocity = transform.up * _speed;
 					}
@@ -110,17 +121,18 @@ public class BasicEnemy : MonoBehaviour {
 
 	private void Die()
 	{
-		if (onEnemyDead != null) {
-			onEnemyDead(this);
-		}
+        if (onEnemyDead != null)
+        {
+            onEnemyDead(this);
+        }
 		Instantiate(enemyObject.exposionFX, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}
 
 	public void TakeDmg(int dmg)
 	{
-		enemyObject.helath -= dmg;
-		if (enemyObject.helath <= 0) {
+		health -= dmg;
+		if (health <= 0) {
 			Die();
 		}
 	}

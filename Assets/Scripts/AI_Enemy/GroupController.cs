@@ -21,7 +21,6 @@ public class GroupController : MonoBehaviour {
 		switch(group.shape){
 			case  Group_Shape.Circle :
 				foreach(GameObject go in group.toSpawn){
-					Debug.Log("BOI!");
 					Vector2 point = GetUnitOnCircle(deg * index,radius);
 					GameObject spawnedObject =  Instantiate(go, new Vector3(point.x,point.y,radius), Quaternion.identity);
 					spawnedObject.transform.SetParent(transform);

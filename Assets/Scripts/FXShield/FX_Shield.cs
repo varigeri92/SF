@@ -6,6 +6,12 @@ public class FX_Shield : MonoBehaviour {
 
     //SHIELD FUNCIONALITY HAS TO BE MOVED TO SHIELD.CS LATER ON
     //ONLY FOR DEVELOPMENT IN THIS BEHAVIOUR
+
+    // LASS ES BITTE HIER!
+    //(EINFACHER! :D )
+
+    // Player.cs  ==>  "PickupForceShield()"
+    
     public delegate void ShieldEvent();
     public static event ShieldEvent OnShieldActivated;
     public static event ShieldEvent OnShieldHit;
@@ -104,7 +110,6 @@ public class FX_Shield : MonoBehaviour {
         if(_collisionTags.Contains(otherGo.tag))
         {
             ShieldHit();
-            Debug.Log("HIT BY + " + otherGo.name);
             Destroy(otherGo);
         }
     }

@@ -25,7 +25,6 @@ public class CollectableGun : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		Debug.Log(other.name);
 		if (other.tag == "Player"){
 			other.GetComponent<Player>().PickupGun(prefab,icon);
 			Destroy(gameObject);

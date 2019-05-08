@@ -29,7 +29,7 @@ public class DoubleGatling : Gun{
 	void Shoot(bool isPlayer)
 	{
 		for (int i = 0; i < SpawnPoints.Length; i++){
-			GameObject go = Instantiate(projectile, SpawnPoints[i].position, transform.rotation);
+			GameObject go = Instantiate(projectile, SpawnPoints[i].position, SpawnPoints[i].transform.rotation);
 			if (isPlayer) {
 				go.layer = 12;
 			} else {

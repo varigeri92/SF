@@ -6,14 +6,15 @@ public enum EnemyType
 {
 	Shooter,
 	Kamikaze,
-	Boss
+	Boss,
+    Swarm
 }
 [CreateAssetMenu(fileName = "New Enemy",  menuName = "Enemy")]
 public class EnemyObject : ScriptableObject{
 
 	public GameObject exposionFX;
 
-	public int helath;
+	public int health;
 
 	public float mooveSpeed;
 
@@ -24,7 +25,7 @@ public class EnemyObject : ScriptableObject{
 	[Range(5,10)]
 	public float fireRate;
 
-
+    public int xp;
 
 
 }
