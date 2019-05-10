@@ -10,13 +10,46 @@ public class LaserGun : Gun
     public float fireRate;
     public GameObject projectile;
     public float projectileForce;
+    LineRenderer line;
+
+    GameObject hitObject;
+
+    Vector2 hitpoint = new Vector2();
+    [SerializeField]
+    LayerMask mask;
 
     float timer = 0;
+    private void OnEnable()
+    {
+        timer = 1;
+        line = GetComponent<LineRenderer>();
+            // Instantiate(projectile, spawnPoint).GetComponent<LineRenderer>();
+    }
+    private void Update()
+    {
+       
+    }
 
     public override void Shooting(bool isPlayer)
     {
+        RaycastHit2D hit = Physics2D.Raycast(spawnPoint.position, spawnPoint.transform.up, 200f, mask);
+
+        if (hit)
+        {
+            hitpoint = hit.point;
+            Debug.DrawLine(spawnPoint.position, hit.point);
+            line.SetPosition(0, spawnPoint.transform.position);
+            line.SetPosition(1, hitpoint);
+            hitObject = hit.collider.gameObject;
+            if (hitObject.CompareTag("Projectile"))
+            {
+                Destroy(hitObject);
+            }
+        }
+
         if (ammo > 0 || ammo == -999)
         {
+            line.enabled = true;
             timer += fireRate * Time.deltaTime;
             if (timer >= 1)
             {
@@ -28,19 +61,34 @@ public class LaserGun : Gun
                 timer = 0;
             }
         }
+        else if (ammo != -999 && ammo <= 0)
+        {
+            StopShooting();
+        }
+        base.Shooting(isPlayer);
     }
+    public override void StopShooting()
+    {
+        line.enabled = false;
+    }
+
     private void Shoot(bool isPlayer)
     {
-        GameObject go = Instantiate(projectile, spawnPoint);
-        if (isPlayer)
+        Debug.Log(hitObject.name);
+        if (hitObject != null)
         {
-            go.layer = 12;
-        }
-        else
-        {
-            go.layer = 11;
-        }
-        base.Playsound();
+            if (hitObject.CompareTag("Enemy"))
+            {
+                if (hitObject.GetComponent<BasicEnemy>() != null)
+                {
+                    hitObject.GetComponent<BasicEnemy>().TakeDmg(1);
+                }else if(hitObject.GetComponent<SwarmObject>() != null)
+                {
+                    hitObject.GetComponent<SwarmObject>().TakeDmg(1);
+                }
+            }
+        }    
+       base.Playsound();
     }
 
 }

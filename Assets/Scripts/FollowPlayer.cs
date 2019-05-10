@@ -40,11 +40,14 @@ public class FollowPlayer : MonoBehaviour {
 		if (Input.GetKey(KeyCode.LeftAlt)) {
 			ShakeCamera();
 		}
-	}
+
+        CameraMovement();
+
+    }
 
 	private void ShakeCamera()
 	{
-		StartCoroutine(ShakeCam());
+		// StartCoroutine(ShakeCam());
 	}
 
 	IEnumerator ShakeCam(){
@@ -63,45 +66,52 @@ public class FollowPlayer : MonoBehaviour {
 	}
 	private void LateUpdate()
 	{
-		if (!playerAlive)
-			return;
 
+        // CameraMovement();
 
-		Vector3 targetPos = Vector2.zero;
-
-
-		// stransform.position = targetPos;
-
-
-		Vector3 playerPos = Camera.main.WorldToScreenPoint(playerTransform.position);
-
-		if (playerPos.y >= (Screen.height - Screen.height * 0.2f))
-		{
-			// MooveCamera(Vector3.up);
-			targetPos += Vector3.up;
-		}
-		else if (playerPos.y <= (Screen.height * 0.2f))
-		{
-			// MooveCamera(Vector3.down);
-			targetPos += Vector3.down;
-
-		}
-		if(playerPos.x <= (Screen.width * 0.2f))
-		{
-			// MooveCamera(Vector3.left);
-			targetPos += Vector3.left;
-
-		}
-		else if (playerPos.x >= (Screen.width - Screen.width * 0.2f))
-		{
-			// MooveCamera(Vector3.right);
-			targetPos += Vector3.right;
-		}
-
-		MooveCamera(targetPos);
-	}
+    }
 
 	private void MooveCamera(Vector3 dir){
 		transform.position = Vector3.Lerp(transform.position, transform.position + dir * speed, Time.deltaTime);
 	}
+
+    void CameraMovement()
+    {
+        if (!playerAlive)
+            return;
+
+
+        Vector3 targetPos = Vector2.zero;
+
+
+        // stransform.position = targetPos;
+
+
+        Vector3 playerPos = Camera.main.WorldToScreenPoint(playerTransform.position);
+
+        if (playerPos.y >= (Screen.height - Screen.height * 0.2f))
+        {
+            // MooveCamera(Vector3.up);
+            targetPos += Vector3.up;
+        }
+        else if (playerPos.y <= (Screen.height * 0.2f))
+        {
+            // MooveCamera(Vector3.down);
+            targetPos += Vector3.down;
+
+        }
+        if (playerPos.x <= (Screen.width * 0.2f))
+        {
+            // MooveCamera(Vector3.left);
+            targetPos += Vector3.left;
+
+        }
+        else if (playerPos.x >= (Screen.width - Screen.width * 0.2f))
+        {
+            // MooveCamera(Vector3.right);
+            targetPos += Vector3.right;
+        }
+
+        MooveCamera(targetPos);
+    }
 }

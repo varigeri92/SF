@@ -80,7 +80,7 @@ public class SwarmController : MonoBehaviour
         livingSwarms = swarmSize;
         for (int i = 0; i < swarmSize; i++)
         {
-            GameObject _swarmEnemy = Instantiate(swarmEnemy, transform.position, Quaternion.identity);
+            GameObject _swarmEnemy = Instantiate(swarmEnemy, transform.position, transform.rotation);
             swarm.Add(_swarmEnemy);
             _swarmEnemy.GetComponentInChildren<SwarmObject>().myController = this;
             Rigidbody2D rb = _swarmEnemy.GetComponent<Rigidbody2D>();

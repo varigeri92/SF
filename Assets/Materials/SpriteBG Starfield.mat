@@ -74,18 +74,18 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Horizontal: 0.659
+    - _Horizontal: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Scale: 42.04
+    - _Scale: 18.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: -0.092
+    - _Speed: 0.25
     - _SrcBlend: 1
     - _Surface: 0
     - _UVSec: 0
-    - _Vertical: 0.104
+    - _Vertical: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:

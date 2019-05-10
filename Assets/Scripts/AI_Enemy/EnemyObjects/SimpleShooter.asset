@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exposionFX: {fileID: 1371780899007676, guid: 4955035f9d4e24142863ae1b11aaa704, type: 3}
   health: 1
-  mooveSpeed: 3
+  mooveSpeed: 5
   rotationSpeed: 500
   type: 0
   fireRate: 0

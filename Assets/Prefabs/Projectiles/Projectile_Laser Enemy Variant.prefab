@@ -72,6 +72,11 @@ PrefabInstance:
       propertyPath: lifetime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7869673819643540859, guid: 2912dcbb84fbb4b4183890aacc765e61,
+        type: 3}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7829301035570964839, guid: 2912dcbb84fbb4b4183890aacc765e61,
         type: 3}
       propertyPath: m_Name

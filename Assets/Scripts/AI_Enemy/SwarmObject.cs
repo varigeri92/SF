@@ -31,7 +31,7 @@ public class SwarmObject : MonoBehaviour
             go.GetComponent<Player>().TakeDmg(dmg);
         }
     }
-    public void TakeDmg(int dmg)
+    public  void TakeDmg(int dmg)
     {
         enemyObject.health -= dmg;
         if (enemyObject.health <= 0)

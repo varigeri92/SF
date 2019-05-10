@@ -14,6 +14,7 @@ public class BasicGun : Gun {
 
 	public override void Shooting(bool isPlayer)
 	{
+        Debug.Log("HAHA");
 		if (ammo > 0 || ammo == -999) {
 			timer += fireRate * Time.deltaTime;
 			if (timer >= 1) {

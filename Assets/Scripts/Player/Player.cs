@@ -11,8 +11,15 @@ public enum PowerUpType
 
 public class Player : MonoBehaviour
 {
+    public bool immortal;
+
 	public delegate void PlayerDead();
 	public static event PlayerDead OnPlayerDeath;
+
+
+    public delegate void LevelUp(int level);
+    public static event LevelUp OnLevelUp;
+
 
     public GameSystemManager gameSystemManager;
 
@@ -32,6 +39,8 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     int playerLevel = 1;
+
+
 
     string[] slices = {"One","Two","Three","Four","Five"};
 
@@ -75,7 +84,7 @@ public class Player : MonoBehaviour
 
     bool hasShield = false;
 
-	void Awake(){
+    void Awake(){
 		inventorySelector = GameObject.FindGameObjectWithTag("LOGIC").GetComponentInChildren<InventorySelector>();
 	}
 	void Start()
@@ -98,6 +107,11 @@ public class Player : MonoBehaviour
 	}
 	void Die()
 	{
+#if UNITY_EDITOR
+        if (immortal)
+            return;
+#endif
+
 		dieText.SetActive(true);
 		if (OnPlayerDeath != null) {
 			OnPlayerDeath();
@@ -191,13 +205,28 @@ public class Player : MonoBehaviour
 					}
 					else
 					{
-						AmmoText.text = "Infinite";
+						AmmoText.text = "INFINITE";
 					}
 				} else {
 					OnGunChanged();
 				}
 			}
-		}
+        }
+        else
+        {
+            foreach (Gun gun in activeGuns)
+            {
+                if (gun != null)
+                {
+
+                    gun.StopShooting();
+                }
+                else
+                {
+                    OnGunChanged();
+                }
+            }
+        }
 	}
 
 	public void OnGunChanged()
@@ -335,6 +364,9 @@ public class Player : MonoBehaviour
                 // Debug.Log("New Gun Ammo: " + newGun.ammo);
                 AmmoText.text = newGun.ammo.ToString();
             }
+            else {
+                AmmoText.text = "INFINITE";
+            }
 
 		    OnGunChanged();
         }
@@ -346,6 +378,10 @@ public class Player : MonoBehaviour
         if(currentXp >= xpToNextLevel)
         {
             playerLevel++;
+            if (OnLevelUp != null)
+            {
+                OnLevelUp(playerLevel);
+            }
             enemyCounterText.text = playerLevel.ToString();
             xpFillImage.fillAmount = 0f;
             xpToNextLevel = Mathf.RoundToInt(xpToNextLevel * 1.5f);
@@ -359,7 +395,6 @@ public class Player : MonoBehaviour
                 xpFillImage = GameObject.FindGameObjectWithTag("XpFillImage").GetComponent<Image>();
 
             xpFillImage.fillAmount = progress;
-            Debug.Log(progress);
         }
     }
 

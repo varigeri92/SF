@@ -56,6 +56,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile_Laser Player
       objectReference: {fileID: 0}
+    - target: {fileID: 58687507720968982, guid: 2e37935f251e541ae9945817450cf746,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4733219236675736, guid: 2e37935f251e541ae9945817450cf746, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.648
@@ -104,6 +109,11 @@ PrefabInstance:
         type: 3}
       propertyPath: lifetime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114254374336653648, guid: 2e37935f251e541ae9945817450cf746,
+        type: 3}
+      propertyPath: speed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4278478299339284, guid: 2e37935f251e541ae9945817450cf746, type: 3}
       propertyPath: m_LocalScale.x

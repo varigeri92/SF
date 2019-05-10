@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour {
 	public List<Transform> points = new List<Transform>();
 	public List<BasicEnemy> spawnedEnemyes = new List<BasicEnemy>();
 
+    public int playerLevel;
 
 	public int count;
 	public float rate;
@@ -31,6 +32,7 @@ public class EnemySpawner : MonoBehaviour {
 		}
 		BasicEnemy.onEnemyDead += RemoveEnemyFromList;
         Player.OnPlayerDeath += PlayerDied;
+        Player.OnLevelUp += LevelUp;
 	}
     
     void PlayerDied()
@@ -41,6 +43,7 @@ public class EnemySpawner : MonoBehaviour {
     private void OnDestroy()
     {
         Player.OnPlayerDeath -= PlayerDied;
+        Player.OnLevelUp -= LevelUp;
     }
 
     void RemoveEnemyFromList(BasicEnemy enemy){
@@ -84,7 +87,12 @@ public class EnemySpawner : MonoBehaviour {
 			}
 		}
 		lastrandomindex = rand;
-		GameObject go = Instantiate(enemyes[enemyToSpawn], points[rand].position, Quaternion.identity);
+		GameObject go = Instantiate(enemyes[enemyToSpawn], points[rand].position, points[rand].transform.rotation);
 		spawnedEnemyes.Add(go.GetComponent<BasicEnemy>());
 	}
+
+    void LevelUp(int level)
+    {
+        playerLevel = level;
+    }
 }

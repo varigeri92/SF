@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 58151945047862836}
   - component: {fileID: 114524273537744988}
   - component: {fileID: 50422627618924898}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Harm_DoubleStar_Gardient
-  m_TagString: E_Object
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

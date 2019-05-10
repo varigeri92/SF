@@ -243,6 +243,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyObject: {fileID: 11400000, guid: 2718eee38806a4b54a808b0b4d3ed402, type: 2}
+  gun: {fileID: 6165648431270784549}
+  health: 0
+  target: {fileID: 0}
+  rb: {fileID: 0}
+  left: 1
+  distance: 0
 --- !u!1 &5661656004392798400
 GameObject:
   m_ObjectHideFlags: 0

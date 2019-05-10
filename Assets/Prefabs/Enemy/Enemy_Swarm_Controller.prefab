@@ -48,4 +48,4 @@ MonoBehaviour:
   swarmSize: 10
   spawnRate: 0.2
   speed: 5
-  rotateSpeed: 1000
+  rotateSpeed: 300

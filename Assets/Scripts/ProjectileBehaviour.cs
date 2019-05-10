@@ -16,15 +16,19 @@ public class ProjectileBehaviour : MonoBehaviour {
 		StartCountdown();
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		if(collision.collider.tag == "Player" || collision.collider.tag == "Enemy"){
-			OnColliding(collision.collider.gameObject);
-		}else{
-            if(!isBomb)
-			    Destroy(gameObject);
-		}
-	}
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Player" || collision.collider.tag == "Enemy")
+        {
+            OnColliding(collision.collider.gameObject);
+        }
+        else
+        {
+            if (!isBomb)
+                Destroy(gameObject);
+        }
+    }
+   
 	public void FixedUpdate()
 	{
 		transform.Translate(Vector3.up*speed*Time.fixedDeltaTime);
@@ -44,7 +48,14 @@ public class ProjectileBehaviour : MonoBehaviour {
 
 	public void StartCountdown()
 	{
-		StartCoroutine(Countdown());
+        if (lifetime == 0)
+        {
+            return;
+        }
+        else
+        {
+            StartCoroutine(Countdown());
+        }
 	}
 
 	public void OnColliding(GameObject go){
@@ -71,8 +82,11 @@ public class ProjectileBehaviour : MonoBehaviour {
     }
 
 	IEnumerator Countdown(){
+
 		yield return new WaitForSeconds(lifetime);
 		OnCounterOver();
+
+
 	}
 
     IEnumerator Explode()

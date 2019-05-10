@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74d07c84f576f41168eb5f235ff527a8, type: 3}
-  m_Name: DoubleShooter
+  m_Name: FourSideShooter
   m_EditorClassIdentifier: 
   exposionFX: {fileID: 1371780899007676, guid: 4955035f9d4e24142863ae1b11aaa704, type: 3}
-  health: 1
-  mooveSpeed: 4.5
-  rotationSpeed: 500
+  health: 50
+  mooveSpeed: 5
+  rotationSpeed: 100
   type: 0
-  fireRate: 7.84
-  xp: 2
+  fireRate: 0
+  xp: 10
