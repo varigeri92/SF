@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     public PiUI piUI;
 
     [SerializeField]
-    Image xpFillImage;
+    public Image xpFillImage;
 
     [SerializeField]
     int xpToNextLevel = 30;
@@ -89,6 +89,7 @@ public class Player : MonoBehaviour
 	}
 	void Start()
 	{
+		GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().OnPlayerLoaded(this);
 		SetBasicGun();
 		BasicEnemy.onEnemyDead += countEnemyes;
         shieldText.text = health.ToString();

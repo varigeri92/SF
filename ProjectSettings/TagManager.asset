@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - LOGIC
   - XpFillImage
+  - Undefined
+  - LevelManager
   layers:
   - Default
   - TransparentFX

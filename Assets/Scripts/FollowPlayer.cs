@@ -15,6 +15,10 @@ public class FollowPlayer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+	}
+
+	public void InitCam(){
 		player = playerTransform.GetComponent<Player>();
 		speed = player.speed;
 		camera = GetComponent<Camera>();
