@@ -27,7 +27,7 @@ public class Gun : MonoBehaviour
 
 	public virtual void Playsound (){
 
-		// source.Play();
+		source.Play();
 
 	}
 

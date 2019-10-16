@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 9101835574419472612}
   - component: {fileID: 9101835574419472613}
   m_Layer: 10
-  m_Name: PLayer
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318a03997fd3d4bc090e0d8d67a840fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  immortal: 1
+  immortal: 0
   gameSystemManager: {fileID: 0}
   selectorBahaviours:
   - {fileID: 0}

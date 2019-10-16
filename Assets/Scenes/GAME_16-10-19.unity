@@ -1583,6 +1583,22 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114420572248517528, guid: 69bf91b0da6e448b0a235922353e63cf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ec77b6d5bfd72dd439493c8314f3d817,
+        type: 3}
+    - target: {fileID: 114420572248517528, guid: 69bf91b0da6e448b0a235922353e63cf,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114365124046713318, guid: 69bf91b0da6e448b0a235922353e63cf,
+        type: 3}
+      propertyPath: m_EffectDistance.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69bf91b0da6e448b0a235922353e63cf, type: 3}
 --- !u!1 &433773721
@@ -2916,11 +2932,11 @@ MonoBehaviour:
   innerRadius: 133.8
   outerRadius: 834
   syncColors: 1
-  syncNormal: {r: 0.57299995, g: 0.8861333, b: 1, a: 0.4117647}
-  syncSelected: {r: 0.40521538, g: 0.5471698, b: 0.500965, a: 0.56078434}
+  syncNormal: {r: 0.020247417, g: 0.6354717, b: 0.8584906, a: 1}
+  syncSelected: {r: 0.15886435, g: 0.74827456, b: 0.9622642, a: 1}
   syncDisabled: {r: 0.19215688, g: 0.18823531, b: 0.18823531, a: 1}
   outline: 1
-  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineColor: {r: 0, g: 1, b: 0.97713065, a: 1}
   fade: 0
   transitionSpeed: 10
   openTransition: 4
@@ -2941,8 +2957,8 @@ MonoBehaviour:
   - angle: 45
     sliceLabel: One
     icon: {fileID: 21300000, guid: 94ebb198346de4037a3ce34c8c5ab39b, type: 3}
-    nonHighlightedColor: {r: 0, g: 0.73424315, b: 1, a: 0.4117647}
-    highlightedColor: {r: 0, g: 1, b: 0.6755347, a: 1}
+    nonHighlightedColor: {r: 0.020247417, g: 0.6354717, b: 0.8584906, a: 0.4117647}
+    highlightedColor: {r: 0.019607844, g: 0.63529414, b: 0.85882354, a: 0.8392157}
     disabledColor: {r: 0.19215688, g: 0.18823531, b: 0.18823531, a: 1}
     onSlicePressed:
       m_PersistentCalls:
@@ -2977,8 +2993,8 @@ MonoBehaviour:
   - angle: 39.375
     sliceLabel: Two
     icon: {fileID: 21300000, guid: 94ebb198346de4037a3ce34c8c5ab39b, type: 3}
-    nonHighlightedColor: {r: 0, g: 0.73424315, b: 1, a: 0.4117647}
-    highlightedColor: {r: 0, g: 1, b: 0.6755347, a: 1}
+    nonHighlightedColor: {r: 0.020247417, g: 0.6354717, b: 0.8584906, a: 0.4117647}
+    highlightedColor: {r: 0.019607844, g: 0.63529414, b: 0.85882354, a: 0.8392157}
     disabledColor: {r: 0.19215688, g: 0.18823531, b: 0.18823531, a: 1}
     onSlicePressed:
       m_PersistentCalls:
@@ -3013,8 +3029,8 @@ MonoBehaviour:
   - angle: 39.375
     sliceLabel: Three
     icon: {fileID: 21300000, guid: 94ebb198346de4037a3ce34c8c5ab39b, type: 3}
-    nonHighlightedColor: {r: 0, g: 0.73424315, b: 1, a: 0.4117647}
-    highlightedColor: {r: 0, g: 1, b: 0.6755347, a: 1}
+    nonHighlightedColor: {r: 0.020247417, g: 0.6354717, b: 0.8584906, a: 0.4117647}
+    highlightedColor: {r: 0.019607844, g: 0.63529414, b: 0.85882354, a: 0.8392157}
     disabledColor: {r: 0.19215688, g: 0.18823531, b: 0.18823531, a: 1}
     onSlicePressed:
       m_PersistentCalls:
@@ -3049,8 +3065,8 @@ MonoBehaviour:
   - angle: 39.375
     sliceLabel: Four
     icon: {fileID: 21300000, guid: 94ebb198346de4037a3ce34c8c5ab39b, type: 3}
-    nonHighlightedColor: {r: 0, g: 0.73424315, b: 1, a: 0.4117647}
-    highlightedColor: {r: 0, g: 1, b: 0.6755347, a: 1}
+    nonHighlightedColor: {r: 0.020247417, g: 0.6354717, b: 0.8584906, a: 0.4117647}
+    highlightedColor: {r: 0.019607844, g: 0.63529414, b: 0.85882354, a: 0.8392157}
     disabledColor: {r: 0.19215688, g: 0.18823531, b: 0.18823531, a: 1}
     onSlicePressed:
       m_PersistentCalls:
@@ -3082,11 +3098,11 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     order: 3
-  - angle: 157.5
+  - angle: 39.375
     sliceLabel: Five
     icon: {fileID: 21300000, guid: 94ebb198346de4037a3ce34c8c5ab39b, type: 3}
-    nonHighlightedColor: {r: 0, g: 0.73424315, b: 1, a: 0.4117647}
-    highlightedColor: {r: 0, g: 1, b: 0.6755347, a: 1}
+    nonHighlightedColor: {r: 0.020247417, g: 0.6354717, b: 0.8584906, a: 0.4117647}
+    highlightedColor: {r: 0.019607844, g: 0.63529414, b: 0.85882354, a: 0.8392157}
     disabledColor: {r: 0.19215688, g: 0.18823531, b: 0.18823531, a: 1}
     onSlicePressed:
       m_PersistentCalls:

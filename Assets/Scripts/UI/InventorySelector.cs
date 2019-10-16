@@ -11,12 +11,14 @@ public class InventorySelector : MonoBehaviour {
 	Player player;
 	// Use this for initialization
 	void Start () {
-		player =  GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+		//player =  GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(player == null){
+			player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+		}
 	}
 
 	public void SelectWeapon(int index){

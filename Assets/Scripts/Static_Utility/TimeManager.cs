@@ -14,12 +14,15 @@ public class TimeManager : MonoBehaviour
 	private void Start()
 	{
 		_fixedDeltaTime = Time.fixedDeltaTime;
-		player = GameObject.FindGameObjectWithTag("Player").transform;
+		// player = GameObject.FindGameObjectWithTag("Player").transform;
         NormalizeTime();
 	}
 
 
 	void Update () {
+		if(player == null){
+			player = GameObject.FindGameObjectWithTag("Player").transform;
+		}
 		if(Input.GetKeyDown(KeyCode.LeftShift))
 		{
             SlowTime(0.02f);
