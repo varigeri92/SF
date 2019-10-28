@@ -183,8 +183,9 @@ public class Player : MonoBehaviour
 
 	public void TakeDmg(int dmg)
 	{
+		Debug.Log("Player Takes: " + dmg + " damage");
 		health -= dmg;
-		if (health < 0) {
+		if (health <= 0) {
 			Die();
 		}
 		if (health >= 0) {

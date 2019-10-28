@@ -5,6 +5,9 @@ using UnityEngine;
 public class PresistentOptionsManager : MonoBehaviour {
 
 	private PresistentOptionsManager instance;
+	public Texture2D cursorImg;
+	public CursorMode cursorMode = CursorMode.Auto;
+	public Vector2 hotSpot = Vector2.zero;
 
 	void Awake(){
 		Debug.Log("KORREKT!");
@@ -18,6 +21,7 @@ public class PresistentOptionsManager : MonoBehaviour {
 	void Start () {
 		
 		DontDestroyOnLoad(this.gameObject);
+		Cursor.SetCursor(cursorImg, hotSpot, cursorMode);
 	}
 	
 	// Update is called once per frame

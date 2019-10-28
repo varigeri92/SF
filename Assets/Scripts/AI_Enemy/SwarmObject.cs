@@ -6,6 +6,7 @@ public class SwarmObject : MonoBehaviour
 {
     public EnemyObject enemyObject;
     public SwarmController myController;
+	public int health;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -19,6 +20,10 @@ public class SwarmObject : MonoBehaviour
         }
 
     }
+	void OnEnable()
+	{
+		health = enemyObject.health;
+	}
     public void OnColliding(GameObject go)
     {
         DealDmg(enemyObject.health, go);
@@ -33,8 +38,8 @@ public class SwarmObject : MonoBehaviour
     }
     public  void TakeDmg(int dmg)
     {
-        enemyObject.health -= dmg;
-        if (enemyObject.health <= 0)
+        health -= dmg;
+        if (health <= 0)
         {
             Die();
         }
