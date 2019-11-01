@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-
+	public GunObject gunObject;
 	public int ammo;
 	public GameObject icon;
     OutAmmoText outOfAmmoText;
@@ -15,6 +15,15 @@ public class Gun : MonoBehaviour
 		source = GetComponent<AudioSource>();
         outOfAmmoText = GameObject.FindGameObjectWithTag("OutOfAmmoText").GetComponent<OutAmmoText>();
 
+	}
+
+	public void AddAmmo(int _ammo){
+		int precalculatedAmmo = _ammo + ammo;
+		if(precalculatedAmmo >= gunObject.maxAmmo){
+			ammo = gunObject.maxAmmo;
+		}else{
+			ammo = precalculatedAmmo;
+		}
 	}
 
 	public virtual void Shooting(bool isPlayer)

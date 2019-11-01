@@ -10,7 +10,6 @@ public class PresistentOptionsManager : MonoBehaviour {
 	public Vector2 hotSpot = Vector2.zero;
 
 	void Awake(){
-		Debug.Log("KORREKT!");
 		if(instance == null){
 			instance = this;
 		}else{

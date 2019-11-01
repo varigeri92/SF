@@ -23,13 +23,21 @@ public class EnemySpawner : MonoBehaviour {
 
 	int lastrandomindex;
 
+	int spawnedEnemies = 0;
+	int enemiesToSpawn;
+
 
 	void Start()
 	{
+		enemiesToSpawn = SelectedLevel.Instance.GetLevel().enemiesToShoot;
+
 		for (int i = 0; i < transform.childCount; i++) {
 			Transform t = transform.GetChild(i);
 			points.Add(t);
 		}
+
+		enemyes = new List<GameObject>(SelectedLevel.Instance.GetEnemyList());
+
 		BasicEnemy.onEnemyDead += RemoveEnemyFromList;
         Player.OnPlayerDeath += PlayerDied;
         Player.OnLevelUp += LevelUp;
@@ -66,6 +74,11 @@ public class EnemySpawner : MonoBehaviour {
 	}
 
 	void Spawn(){
+
+		if(spawnedEnemies == enemiesToSpawn){
+			return;
+		}
+
         int enemyToSpawn;
         if (spawnOnly < 0 || spawnOnly >= enemyes.Count)
         {
@@ -87,6 +100,7 @@ public class EnemySpawner : MonoBehaviour {
 			}
 		}
 		lastrandomindex = rand;
+		spawnedEnemies++;
 		GameObject go = Instantiate(enemyes[enemyToSpawn], points[rand].position, points[rand].transform.rotation);
 		spawnedEnemyes.Add(go.GetComponent<BasicEnemy>());
 	}

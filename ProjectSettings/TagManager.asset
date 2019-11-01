@@ -11,6 +11,11 @@ TagManager:
   - XpFillImage
   - Undefined
   - LevelManager
+  - OutOfAmmoText
+  - GameOverPanel
+  - HoverText
+  - WorkshopUI
+  - PIUI
   layers:
   - Default
   - TransparentFX

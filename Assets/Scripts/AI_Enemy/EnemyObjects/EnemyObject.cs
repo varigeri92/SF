@@ -13,6 +13,7 @@ public enum EnemyType
 public class EnemyObject : ScriptableObject{
 
 	public GameObject exposionFX;
+	public GameObject powerCore;
 
 	public int health;
 
@@ -26,6 +27,9 @@ public class EnemyObject : ScriptableObject{
 	public float fireRate;
 
     public int xp;
+
+	public float chancetoSpawn;
+	public int coresToSpawn;
 
 
 }

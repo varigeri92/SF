@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GAME_16-10-19.unity
     guid: 70347a60a96a44150a7c07f0e93021d2
+  - enabled: 1
+    path: Assets/Scenes/LEVEL_SELECT.unity
+    guid: e1543220d9e5e42339a4de969c33fe66
+  - enabled: 1
+    path: Assets/Scenes/WORKSHOP_SCENE.unity
+    guid: 3d15e70548aee4a36ab44def95ff7e6b
   m_configObjects: {}

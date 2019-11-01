@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: SimpleShooter
   m_EditorClassIdentifier: 
   exposionFX: {fileID: 1371780899007676, guid: 4955035f9d4e24142863ae1b11aaa704, type: 3}
+  powerCore: {fileID: 2983163898293021038, guid: e3f4dd13c44b24ba3994702b7f23b34c,
+    type: 3}
   health: 1
   mooveSpeed: 5
   rotationSpeed: 500
   type: 0
   fireRate: 0
   xp: 2
+  chancetoSpawn: 100
+  coresToSpawn: 1

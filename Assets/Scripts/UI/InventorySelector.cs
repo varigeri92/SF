@@ -10,14 +10,17 @@ public class InventorySelector : MonoBehaviour {
 	
 	Player player;
 	// Use this for initialization
-	void Start () {
+	void Start()
+	{
 		//player =  GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+		Player.OnPlayerLoaded += OnPlayerLoaded;
 	}
+	
 	
 	// Update is called once per frame
 	void Update () {
 		if(player == null){
-			player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+			//player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 		}
 	}
 
@@ -27,5 +30,14 @@ public class InventorySelector : MonoBehaviour {
 		}else{
 			Debug.Log("INDEX: " + index.ToString());
 		}
+	}
+
+	private void OnDestroy()
+	{
+		Player.OnPlayerLoaded -= OnPlayerLoaded;
+	}
+
+	void OnPlayerLoaded(){
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 	}
 }

@@ -5,18 +5,17 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
 
+	public delegate void PlayerDead();
+	public static event PlayerDead OnLevelCompleted;
+
 	public GameObject playerPrefab;
 
+	[Header("Player References")]
+
 	public GameSystemManager gameSystemManager;
-
 	//-----------------------------//
-
 	[SerializeField]
 	UnityEngine.UI.Image xpFillImage;
-
-	//-----------------------------//
-
-
 	public TMPro.TMP_Text enemyCounterText;
 	public TMPro.TMP_Text AmmoText;
 	public GameObject gameOverPanel;
@@ -27,8 +26,25 @@ public class LevelManager : MonoBehaviour
 	public InventorySelector inventorySelector;
 	public GameObject radialInventory;
 
-    // Start is called before the first frame update
-    void Start()
+
+	[Header("Level References")]
+	public SpriteRenderer background;
+
+	[Header("Level Objectives")]
+	public int enemiesLeft;
+	public bool endlessLevel = false;
+
+	private void Awake()
+	{
+		background.sprite = SelectedLevel.Instance.GetLevel().backgroundImage;
+		enemiesLeft = SelectedLevel.Instance.GetLevel().enemiesToShoot;
+		if(enemiesLeft == 1){
+			endlessLevel = true;
+		}
+	}
+
+	// Start is called before the first frame update
+	void Start()
     {
 		Instantiate(playerPrefab,new Vector3(0, -4.35f, 0), Quaternion.identity);
     }
@@ -38,6 +54,8 @@ public class LevelManager : MonoBehaviour
     {
         
     }
+
+
 
 	public void OnPlayerLoaded(Player player){
 		Camera.main.GetComponent<FollowPlayer>().playerTransform = player.transform;
@@ -54,6 +72,26 @@ public class LevelManager : MonoBehaviour
 		player.inventorySelector = inventorySelector;
 		player.radialInventory = radialInventory;
 
-		Destroy(this);
+		// Destroy(this);
 	}
+
+	public void EnemyDestroyed(){
+		enemiesLeft--;
+		if(enemiesLeft <= 0){
+			enemiesLeft = 0;
+			LevelCompleted();
+		}
+	}
+
+	public void LevelCompleted(){
+		Debug.Log("Level Completed GGWP");
+		if(OnLevelCompleted != null && !endlessLevel)
+			OnLevelCompleted();
+	}
+
+	public void StartBossPhase(){
+		
+	}
+
+
 }

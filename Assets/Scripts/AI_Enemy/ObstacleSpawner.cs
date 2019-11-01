@@ -24,7 +24,8 @@ public class ObstacleSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		obstacles = new List<GameObject>(SelectedLevel.Instance.GetObstacleList());
+		powerUps = new List<GameObject>(SelectedLevel.Instance.GetPowerupList());
 	}
 	
 	// Update is called once per frame
@@ -46,12 +47,16 @@ public class ObstacleSpawner : MonoBehaviour {
 	}
 
 	private void SpawnObs(){
-		int rnd = Random.Range(0,spawnPoints.Count); 
-		GameObject go = Instantiate(obstacles[0],spawnPoints[rnd].position,Quaternion.Euler(Vector3.down));
-		Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
-		int rnd2 = Random.Range(0, targets.Count);
-		float frnd = Random.Range(forceMin, forceMax);
-		rb.AddForce((targets[rnd2].position - spawnPoints[rnd].position) * frnd, ForceMode2D.Impulse);
+		if(obstacles.Count > 0)
+		{
+			int rnd = Random.Range(0,spawnPoints.Count);
+			int rndObstacle = Random.Range(0, obstacles.Count);
+			GameObject go = Instantiate(obstacles[rndObstacle],spawnPoints[rnd].position,Quaternion.Euler(Vector3.down));
+			Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
+			int rnd2 = Random.Range(0, targets.Count);
+			float frnd = Random.Range(forceMin, forceMax);
+			rb.AddForce((targets[rnd2].position - spawnPoints[rnd].position) * frnd, ForceMode2D.Impulse);
+		}
 	}
 
 	private void SpawnPowerups()

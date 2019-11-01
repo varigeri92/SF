@@ -190,12 +190,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b191ef20eb540d4a07e546c9631fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunObject: {fileID: 0}
   ammo: -999
   icon: {fileID: 0}
   spawnPoint: {fileID: 2113269734907285873}
-  fireRate: 9.17
-  projectile: {fileID: 5808782807526687376, guid: 5634d61e4a39b6443b43d114e463ce09,
-    type: 3}
+  fireRate: 2.5
+  projectile: {fileID: 2046802325, guid: 8abd4a1243156f7489bec42ec4166446, type: 3}
   projectileForce: 28.45
 --- !u!82 &2113269734907285884
 AudioSource:
@@ -387,12 +387,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b191ef20eb540d4a07e546c9631fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunObject: {fileID: 0}
   ammo: -999
   icon: {fileID: 0}
   spawnPoint: {fileID: 2113269735014804142}
-  fireRate: 9.17
-  projectile: {fileID: 5808782807526687376, guid: 5634d61e4a39b6443b43d114e463ce09,
-    type: 3}
+  fireRate: 2.5
+  projectile: {fileID: 2046802325, guid: 8abd4a1243156f7489bec42ec4166446, type: 3}
   projectileForce: 28.45
 --- !u!82 &2113269735014804141
 AudioSource:
@@ -822,12 +822,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b191ef20eb540d4a07e546c9631fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunObject: {fileID: 0}
   ammo: -999
   icon: {fileID: 0}
   spawnPoint: {fileID: 2113269735584813884}
-  fireRate: 9.17
-  projectile: {fileID: 5808782807526687376, guid: 5634d61e4a39b6443b43d114e463ce09,
-    type: 3}
+  fireRate: 2.5
+  projectile: {fileID: 2046802325, guid: 8abd4a1243156f7489bec42ec4166446, type: 3}
   projectileForce: 28.45
 --- !u!82 &2113269735584813883
 AudioSource:
@@ -1102,12 +1102,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b191ef20eb540d4a07e546c9631fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunObject: {fileID: 0}
   ammo: -999
   icon: {fileID: 0}
   spawnPoint: {fileID: 2113269736358096961}
-  fireRate: 9.17
-  projectile: {fileID: 5808782807526687376, guid: 5634d61e4a39b6443b43d114e463ce09,
-    type: 3}
+  fireRate: 2.5
+  projectile: {fileID: 2046802325, guid: 8abd4a1243156f7489bec42ec4166446, type: 3}
   projectileForce: 28.45
 --- !u!82 &2113269736358096972
 AudioSource:

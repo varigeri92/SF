@@ -76,7 +76,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318a03997fd3d4bc090e0d8d67a840fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  immortal: 0
+  immortal: 1
+  playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
   gameSystemManager: {fileID: 0}
   selectorBahaviours:
   - {fileID: 0}
@@ -372,6 +373,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114866513247596306, guid: e22ab43c3218a4d418dcd882e0a18b67,
+        type: 3}
+      propertyPath: gunObject
+      value: 
+      objectReference: {fileID: 11400000, guid: cb5fb1469e18841fb9766965f7802b4e,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e22ab43c3218a4d418dcd882e0a18b67, type: 3}
 --- !u!4 &9105875469678565752 stripped

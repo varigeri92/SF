@@ -246,7 +246,7 @@ MonoBehaviour:
   gun: {fileID: 6165648431270784549}
   health: 0
   target: {fileID: 0}
-  rb: {fileID: 0}
+  rb: {fileID: 4477524351664797419}
   left: 1
   distance: 0
 --- !u!1 &5661656004392798400
@@ -472,15 +472,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6c9c3f9b6c94008b6d79755a60c4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunObject: {fileID: 0}
   ammo: -999
   icon: {fileID: 0}
   SpawnPoints:
   - {fileID: 3712515675301878572}
   - {fileID: 1717011722604310518}
   - {fileID: 3930914631049571102}
-  projectile: {fileID: 5808782807526687376, guid: 5634d61e4a39b6443b43d114e463ce09,
-    type: 3}
-  fireRate: 5
+  projectile: {fileID: 2046802325, guid: 8abd4a1243156f7489bec42ec4166446, type: 3}
+  fireRate: 1
 --- !u!1 &8836768519863389505
 GameObject:
   m_ObjectHideFlags: 0

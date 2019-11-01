@@ -16,11 +16,15 @@ public class Player : MonoBehaviour
 	public delegate void PlayerDead();
 	public static event PlayerDead OnPlayerDeath;
 
+	public delegate void PlayerLoaded();
+	public static event PlayerLoaded OnPlayerLoaded;
+
 
     public delegate void LevelUp(int level);
     public static event LevelUp OnLevelUp;
 
 
+	public PlayerObject playerObject;
     public GameSystemManager gameSystemManager;
 
 	public List<SelectorBehaviour> selectorBahaviours = new List<SelectorBehaviour>();
@@ -85,6 +89,7 @@ public class Player : MonoBehaviour
     bool hasShield = false;
 
     void Awake(){
+		health = playerObject.maxHealth;
 		inventorySelector = GameObject.FindGameObjectWithTag("LOGIC").GetComponentInChildren<InventorySelector>();
 	}
 	void Start()
@@ -94,18 +99,21 @@ public class Player : MonoBehaviour
 		BasicEnemy.onEnemyDead += countEnemyes;
         shieldText.text = health.ToString();
 
+		if(OnPlayerLoaded != null)
+			OnPlayerLoaded();
+
     }
+
 	void countEnemyes(BasicEnemy enemy)
 	{
 		enemyCounter++;
-		
-
         LevelingProgress(enemy.enemyObject.xp);
-
 	}
+
 	void onDestroy(){
 		BasicEnemy.onEnemyDead -= countEnemyes;
 	}
+
 	void Die()
 	{
 #if UNITY_EDITOR
@@ -125,6 +133,7 @@ public class Player : MonoBehaviour
         timeManager.StartAutoSet();
 		Destroy(gameObject);
 	}
+
 	void Update()
 	{
         if (gameSystemManager.isPaused)
@@ -146,7 +155,7 @@ public class Player : MonoBehaviour
 
 		if (Input.GetButton("Jump") && allowTurbo) {
 			_moveSpeed = speed * 2;
-			CountTurbo(-0.5f);
+			CountTurbo(-playerObject.boostDecSpeed);
 			jetMode = true;
 		} else if (Input.GetButtonUp("Jump")) {
 			_moveSpeed = speed;
@@ -154,7 +163,7 @@ public class Player : MonoBehaviour
 		} else {
 			jetMode = false;
 			_moveSpeed = speed;
-			CountTurbo(0.2f);
+			CountTurbo(playerObject.boostFillSpeed);
 		}
 
 		Vector3 direction = new Vector3(horizontal, vertical, 0);
@@ -162,6 +171,7 @@ public class Player : MonoBehaviour
 
 		Shoot();
 	}
+
 	void CountTurbo(float mult)
 	{
 		if (turbo < 1 | turbo > 0f) {
@@ -299,7 +309,8 @@ public class Player : MonoBehaviour
                 if (gun.name == activeGunName)
                 {
                     Debug.Log("Add ammo for active Gun: " + activeGunName);
-                    activeGun.ammo += gun.GetComponent<Gun>().ammo;
+                    // activeGun.ammo += gun.GetComponent<Gun>().ammo;
+					activeGun.AddAmmo(gun.GetComponent<Gun>().ammo);
                     AmmoText.text = activeGun.ammo.ToString();
                 }
                 else

@@ -16,13 +16,16 @@ public class TimeManager : MonoBehaviour
 		_fixedDeltaTime = Time.fixedDeltaTime;
 		// player = GameObject.FindGameObjectWithTag("Player").transform;
         NormalizeTime();
+		Player.OnPlayerLoaded += Player_OnPlayerLoaded;
+
 	}
 
 
 	void Update () {
 		if(player == null){
-			player = GameObject.FindGameObjectWithTag("Player").transform;
+			//player = GameObject.FindGameObjectWithTag("Player").transform;
 		}
+
 		if(Input.GetKeyDown(KeyCode.LeftShift))
 		{
             SlowTime(0.02f);
@@ -41,6 +44,12 @@ public class TimeManager : MonoBehaviour
         Time.timeScale = slowAmount;
         Time.fixedDeltaTime = Time.timeScale * timeScale;
     }
+
+	public void SlowTime()
+	{
+		Time.timeScale = slowAmount;
+		Time.fixedDeltaTime = Time.timeScale * 0.1f;
+	}
 
     public void NormalizeTime()
     {
@@ -64,4 +73,16 @@ public class TimeManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(5f);
         NormalizeTime();
     }
+
+	void Player_OnPlayerLoaded()
+	{
+		player = GameObject.FindGameObjectWithTag("Player").transform;
+		LevelManager.OnLevelCompleted += SlowTime;
+	}
+
+	private void OnDestroy()
+	{
+		Player.OnPlayerLoaded -= Player_OnPlayerLoaded;
+		LevelManager.OnLevelCompleted -= SlowTime;
+	}
 }

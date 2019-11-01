@@ -117,7 +117,7 @@ public class PiUI : MonoBehaviour
     public PiData[] piData;
 
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool openedMenu;
 
     /// <summary>
@@ -172,6 +172,7 @@ public class PiUI : MonoBehaviour
         angleList = new float[sliceCount];
         for (int i = 0; i < sliceCount; i++)
         {
+			//piData[i].isInteractable = false;
             PiPiece currentPi = Instantiate(piCut);
             Image currentImage = currentPi.GetComponent<Image>( );
             if (outline)
@@ -292,6 +293,7 @@ public class PiUI : MonoBehaviour
     /// <param name="screenPos">Place in screen position to open the menu</param>
     public void OpenMenu(Vector2 screenPos)
     {
+		GetComponent<CanvasGroup>().alpha = 1f;
         menuPosition = screenPos;
         openedMenu = true;
         foreach (PiPiece pi in piList)
@@ -616,7 +618,7 @@ public class PiUI : MonoBehaviour
         public Color disabledColor;
         public UnityEvent onSlicePressed;
         public int iconSize;
-        public bool isInteractable = true;
+		public bool isInteractable = true;
         public bool hoverFunctions;
         public UnityEvent onHoverEnter;
         public UnityEvent onHoverExit;

@@ -407,6 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6c9c3f9b6c94008b6d79755a60c4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunObject: {fileID: 0}
   ammo: -999
   icon: {fileID: 1795802747685846, guid: 2d3e449ace80b4aab9bee4c54f706796, type: 3}
   SpawnPoints:
@@ -414,7 +415,7 @@ MonoBehaviour:
   - {fileID: 4142338844405040}
   projectile: {fileID: 5808782807526687376, guid: 5634d61e4a39b6443b43d114e463ce09,
     type: 3}
-  fireRate: 10
+  fireRate: 5
 --- !u!82 &82808848298228174
 AudioSource:
   m_ObjectHideFlags: 0

@@ -11,6 +11,12 @@ public class DoubleGatling : Gun{
 	float timer = 0;
 	public float fireRate;
 
+	private void OnEnable()
+	{
+		if (gunObject != null) {
+			fireRate = gunObject.fireRate;
+		}
+	}
 
 	public override void Shooting(bool isPlayer)
 	{
@@ -32,6 +38,9 @@ public class DoubleGatling : Gun{
 			GameObject go = Instantiate(projectile, SpawnPoints[i].position, SpawnPoints[i].transform.rotation);
 			if (isPlayer) {
 				go.layer = 12;
+				if (gunObject != null) {
+					go.GetComponent<ProjectileBehaviour>().dmg = gunObject.damage;
+				}
 			} else {
 				go.layer = 11;
 			}

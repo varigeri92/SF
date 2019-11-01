@@ -14,6 +14,8 @@ public class MainMenuLogic : MonoBehaviour {
     public Slider fxSlider;
     public Slider musicSlider;
 
+
+
     AudioSource _source;
 
 	CanvasGroup currentOpenedPanel;
@@ -33,6 +35,10 @@ public class MainMenuLogic : MonoBehaviour {
 
 	public void StartGame(){
 		SceneManager.LoadScene(1);
+	}
+
+	public void ToLevels(){
+		SceneManager.LoadScene(2);
 	}
 
 	public void ExitGame(){

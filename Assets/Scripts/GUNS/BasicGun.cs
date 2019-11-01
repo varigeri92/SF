@@ -12,9 +12,15 @@ public class BasicGun : Gun {
 
 	float timer = 0;
 
+	private void OnEnable()
+	{
+		if (gunObject != null) {
+			fireRate = gunObject.fireRate;
+		}
+	}
+
 	public override void Shooting(bool isPlayer)
 	{
-        Debug.Log("HAHA");
 		if (ammo > 0 || ammo == -999) {
 			timer += fireRate * Time.deltaTime;
 			if (timer >= 1) {
@@ -26,6 +32,7 @@ public class BasicGun : Gun {
 			}
 		}
 	}
+
 	private void Shoot( bool isPlayer){
 		GameObject go = Instantiate(projectile, spawnPoint.position, transform.rotation);
 		if(isPlayer){
@@ -34,7 +41,10 @@ public class BasicGun : Gun {
 			go.layer = 11;
 		}
 		base.Playsound();
-		// go.GetComponent<ProjectileBehaviour>().StartCountdown();
+
+		if(gunObject != null && isPlayer){
+			go.GetComponent<ProjectileBehaviour>().dmg = gunObject.damage;	
+		}
 	}
 
 }

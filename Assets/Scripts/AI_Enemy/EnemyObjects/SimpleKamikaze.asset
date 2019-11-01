@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: SimpleKamikaze
   m_EditorClassIdentifier: 
   exposionFX: {fileID: 1371780899007676, guid: 4955035f9d4e24142863ae1b11aaa704, type: 3}
-  health: 3
-  mooveSpeed: 3
-  rotationSpeed: 100
+  powerCore: {fileID: 0}
+  health: 2
+  mooveSpeed: 4
+  rotationSpeed: 200
   type: 1
   fireRate: 0
-  xp: 3
+  xp: 1
+  chancetoSpawn: 0
+  coresToSpawn: 0

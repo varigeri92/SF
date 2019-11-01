@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1065315592}
   - component: {fileID: 1065315593}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065315591}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -92,9 +92,11 @@ GameObject:
   - component: {fileID: 2046802328}
   - component: {fileID: 2046802327}
   - component: {fileID: 2046802326}
-  m_Layer: 10
+  - component: {fileID: 5704905390157280337}
+  - component: {fileID: 8204095701110843995}
+  m_Layer: 0
   m_Name: Projectile_Type2
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 2046802325}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: -3.6, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1.1045}
   m_Children:
   - {fileID: 1065315592}
   m_Father: {fileID: 0}
@@ -166,7 +168,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046802325}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b249504f0d629744a85e3aa12de14aad, type: 3}
   m_Name: 
@@ -191,6 +193,45 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.7
+  m_Radius: 0.505932
+--- !u!114 &5704905390157280337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046802325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b346b7be33ba49c2986a1261005b9fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 5
+  dmg: 2
+  speed: 20
+  isBomb: 0
+  explosionFX: {fileID: 1729874010109300, guid: ec644fd3843316249a580dd186e5a6b2,
+    type: 3}
+--- !u!50 &8204095701110843995
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046802325}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

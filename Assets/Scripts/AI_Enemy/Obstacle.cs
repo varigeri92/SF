@@ -38,7 +38,6 @@ public class Obstacle : MonoBehaviour {
 	public void TakeDmg(int dmg){
 		health = health - dmg;
 		if(health <= 0){
-			
 			Die();
 		}
 	}

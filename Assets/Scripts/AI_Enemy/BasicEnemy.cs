@@ -137,15 +137,16 @@ public class BasicEnemy : MonoBehaviour {
         {
             onEnemyDead(this);
         }
+		SpawnPowerCore();
 		Instantiate(enemyObject.exposionFX, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}
 
 	public virtual void TakeDmg(int dmg)
 	{
-        Debug.Log("Take DMG " + gameObject.name);
 		health -= dmg;
 		if (health <= 0) {
+			GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().EnemyDestroyed();
 			Die();
 		}
 	}
@@ -155,10 +156,17 @@ public class BasicEnemy : MonoBehaviour {
 		gun.Shooting(false);
 
 	}
+
     public virtual void Shoot(Gun _gun)
     {
-        Debug.Log("BOI!");
         _gun.Shooting(false);
 
     }
+
+	void SpawnPowerCore(){
+		int rand = Random.Range(1,101);
+		if(rand <= enemyObject.chancetoSpawn){
+			Instantiate(enemyObject.powerCore, transform.position, Quaternion.identity);
+			}
+	}
 }
