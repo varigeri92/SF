@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13168e90a9344137827190128c19fec, type: 3}
+  m_Name: TEST_LEVEL
+  m_EditorClassIdentifier: 
+  completionStars: 0
+  available: 1
+  completed: 0
+  backgroundImage: {fileID: 21300000, guid: 35313af049b4a2f42a0325330c51d74a, type: 3}
+  enemyes:
+  - {fileID: 2113269734623498212, guid: 51cea07ccaa9b0649849ccb28b753808, type: 3}
+  bosses:
+  - {fileID: 1524734211276918, guid: ef41055bb00e646a382bc989ea22b319, type: 3}
+  obstacles:
+  - {fileID: 1225506040109798, guid: 59a5d45e70f9745cca0fd7cca100dcfa, type: 3}
+  powerups:
+  - {fileID: 1273449132551612, guid: cc0631f6323ed4e94b366a9a686a3b78, type: 3}
+  - {fileID: 2851196285481681145, guid: 846a11e517b5b314fb9774f99786aaa1, type: 3}
+  timeToBoss: 0
+  starsToSpawn: 3
+  timeBetweenStars: 15
+  enemiesToShoot: 1
+  timeBetweenSpawns: 1.5
+  enemyCount: 1
+  completedInSeconds: 0
+  starsShot: 0
+  powerupsCollected: 0
+  powerCoresCollected: 0
+  powerUpsSpawned: 0
+  powerCoresSpawned: 0

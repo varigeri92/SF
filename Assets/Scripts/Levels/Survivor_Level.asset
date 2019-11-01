@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13168e90a9344137827190128c19fec, type: 3}
+  m_Name: Survivor_Level
+  m_EditorClassIdentifier: 
+  completionStars: 0
+  available: 1
+  completed: 0
+  backgroundImage: {fileID: 21300000, guid: d9b31ebd60af68c469212c1a9f513e74, type: 3}
+  enemyes:
+  - {fileID: 1420262902442594, guid: 2a0f6c2b2f59b449593f257ae600dbfa, type: 3}
+  - {fileID: 1524734211276918, guid: ef41055bb00e646a382bc989ea22b319, type: 3}
+  - {fileID: 1420262902442594, guid: 71e947cbf8a204705884b12cd5acb0de, type: 3}
+  - {fileID: 6749913131147917409, guid: 9e1ffdc30861b1c4dad86deaf37e62e2, type: 3}
+  - {fileID: 1327135073921468950, guid: 724c723400ca54ca88be3e7103f73b69, type: 3}
+  - {fileID: 2142732196246330784, guid: 650e396273c124a3582d5a72360470bb, type: 3}
+  - {fileID: 4195819304967412151, guid: a3ae29e47d2014d62919934b3726c311, type: 3}
+  - {fileID: 3034283092750124089, guid: 9a3eb939192324c6490d5800c382a841, type: 3}
+  - {fileID: 4842544676993241881, guid: c076d4e3eb65e4c628fef0854b8a340a, type: 3}
+  - {fileID: 4663195851121695249, guid: 600747b7e5d6a2346a929d5cce4703a0, type: 3}
+  bosses: []
+  obstacles: []
+  powerups:
+  - {fileID: 1615196254142962, guid: 786e4e89b7be7470294772dd4e74de66, type: 3}
+  - {fileID: 1685238137071351133, guid: f0c1e7369a92ee749b850e5599a3cdbc, type: 3}
+  - {fileID: 2851196285481681145, guid: 846a11e517b5b314fb9774f99786aaa1, type: 3}
+  - {fileID: 1273449132551612, guid: cc0631f6323ed4e94b366a9a686a3b78, type: 3}
+  timeToBoss: 0
+  starsToSpawn: 0
+  timeBetweenStars: 15
+  enemiesToShoot: 999999
+  timeBetweenSpawns: 2
+  enemyCount: 2
+  completedInSeconds: 0
+  starsShot: 0
+  powerupsCollected: 0
+  powerCoresCollected: 0
+  powerUpsSpawned: 0
+  powerCoresSpawned: 0
