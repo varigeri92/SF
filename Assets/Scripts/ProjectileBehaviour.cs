@@ -20,7 +20,7 @@ public class ProjectileBehaviour : MonoBehaviour {
     {
         if (collision.collider.tag == "Player" || collision.collider.tag == "Enemy")
         {
-			Debug.Log("Hello!");
+
             OnColliding(collision.collider.gameObject);
         }
         else

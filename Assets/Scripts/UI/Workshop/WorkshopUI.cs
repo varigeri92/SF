@@ -45,4 +45,10 @@ public class WorkshopUI : MonoBehaviour
 		}
 		SetText();
 	}
+
+	public void UpgradeDone(int sceneIndex){
+		UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
+	}
+
+
 }

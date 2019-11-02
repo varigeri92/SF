@@ -11,7 +11,7 @@ public enum PowerUpType
 
 public class Player : MonoBehaviour
 {
-    public bool immortal;
+	public bool immortal;
 
 	public delegate void PlayerDead();
 	public static event PlayerDead OnPlayerDeath;
@@ -20,48 +20,48 @@ public class Player : MonoBehaviour
 	public static event PlayerLoaded OnPlayerLoaded;
 
 
-    public delegate void LevelUp(int level);
-    public static event LevelUp OnLevelUp;
+	public delegate void LevelUp(int level);
+	public static event LevelUp OnLevelUp;
 
 
 	public PlayerObject playerObject;
-    public GameSystemManager gameSystemManager;
+	public GameSystemManager gameSystemManager;
 
 	public List<SelectorBehaviour> selectorBahaviours = new List<SelectorBehaviour>();
-    public Dictionary<string, InventoryGun> gunsPickedUp = new Dictionary<string, InventoryGun>();
-    //-----------------------------//
-    public PiUIManager piUIManager;
-    public PiUI piUI;
+	public Dictionary<string, InventoryGun> gunsPickedUp = new Dictionary<string, InventoryGun>();
+	//-----------------------------//
+	public PiUIManager piUIManager;
+	public PiUI piUI;
 
-    [SerializeField]
-    public Image xpFillImage;
+	[SerializeField]
+	public Image xpFillImage;
 
-    [SerializeField]
-    int xpToNextLevel = 30;
-    [SerializeField]
-    int currentXp = 0;
+	[SerializeField]
+	int xpToNextLevel = 30;
+	[SerializeField]
+	int currentXp = 0;
 
-    [SerializeField]
-    int playerLevel = 1;
+	[SerializeField]
+	int playerLevel = 1;
 
 
 
-    string[] slices = {"One","Two","Three","Four","Five"};
+	string[] slices = { "One", "Two", "Three", "Four", "Five" };
 
-    //-----------------------------//
+	//-----------------------------//
 
-    InventoryGun ActiveInventoryGun;
+	InventoryGun ActiveInventoryGun;
 
-    public TMPro.TMP_Text enemyCounterText;
+	public TMPro.TMP_Text enemyCounterText;
 	public TMPro.TMP_Text AmmoText;
 	int enemyCounter = 0;
 
-    int activeGunAmmo;
+	int activeGunAmmo;
 
-    public GameObject gameOverPanel;
-    public GameObject playerExplosion;
+	public GameObject gameOverPanel;
+	public GameObject playerExplosion;
 	public GameObject basicGun;
-    public GameObject playerForceShield;
+	public GameObject playerForceShield;
 	public float turbo;
 	public Image turboBar;
 	public TMPro.TMP_Text shieldText;
@@ -86,9 +86,10 @@ public class Player : MonoBehaviour
 	public InventorySelector inventorySelector;
 	public GameObject radialInventory;
 
-    bool hasShield = false;
+	bool hasShield = false;
 
-    void Awake(){
+	void Awake()
+	{
 		health = playerObject.maxHealth;
 		inventorySelector = GameObject.FindGameObjectWithTag("LOGIC").GetComponentInChildren<InventorySelector>();
 	}
@@ -97,28 +98,29 @@ public class Player : MonoBehaviour
 		GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().OnPlayerLoaded(this);
 		SetBasicGun();
 		BasicEnemy.onEnemyDead += countEnemyes;
-        shieldText.text = health.ToString();
+		shieldText.text = health.ToString();
 
-		if(OnPlayerLoaded != null)
+		if (OnPlayerLoaded != null)
 			OnPlayerLoaded();
 
-    }
+	}
 
 	void countEnemyes(BasicEnemy enemy)
 	{
 		enemyCounter++;
-        LevelingProgress(enemy.enemyObject.xp);
+		LevelingProgress(enemy.enemyObject.xp);
 	}
 
-	void onDestroy(){
+	void onDestroy()
+	{
 		BasicEnemy.onEnemyDead -= countEnemyes;
 	}
 
 	void Die()
 	{
 #if UNITY_EDITOR
-        if (immortal)
-            return;
+		if (immortal)
+			return;
 #endif
 
 		dieText.SetActive(true);
@@ -126,27 +128,23 @@ public class Player : MonoBehaviour
 			OnPlayerDeath();
 		}
 
-        Instantiate(playerExplosion,transform.position,Quaternion.identity);
-        gameOverPanel.SetActive(true);
-        TimeManager timeManager = GameObject.FindGameObjectWithTag("LOGIC").GetComponentInChildren<TimeManager>();
-        timeManager.SlowTime(0.05f);
-        timeManager.StartAutoSet();
+		Instantiate(playerExplosion, transform.position, Quaternion.identity);
+		gameOverPanel.SetActive(true);
+		TimeManager timeManager = GameObject.FindGameObjectWithTag("LOGIC").GetComponentInChildren<TimeManager>();
+		timeManager.SlowTime(0.05f);
+		timeManager.StartAutoSet();
 		Destroy(gameObject);
 	}
 
 	void Update()
 	{
-        if (gameSystemManager.isPaused)
-        {
-            return;
-        }
-		
-		if (useController)
-		{
-			LookRightStick();
+		if (gameSystemManager.isPaused) {
+			return;
 		}
-		else
-		{
+
+		if (useController) {
+			LookRightStick();
+		} else {
 			LookAtMouse();
 		}
 
@@ -210,35 +208,27 @@ public class Player : MonoBehaviour
 		if (Input.GetAxis("Fire1") > 0.1) {
 			foreach (Gun gun in activeGuns) {
 				if (gun != null) {
-					
+
 					gun.Shooting(true);
-					if (gun.ammo != -999){
+					if (gun.ammo != -999) {
 						AmmoText.text = gun.ammo.ToString();
-					}
-					else
-					{
+					} else {
 						AmmoText.text = "INFINITE";
 					}
 				} else {
 					OnGunChanged();
 				}
 			}
-        }
-        else
-        {
-            foreach (Gun gun in activeGuns)
-            {
-                if (gun != null)
-                {
+		} else {
+			foreach (Gun gun in activeGuns) {
+				if (gun != null) {
 
-                    gun.StopShooting();
-                }
-                else
-                {
-                    OnGunChanged();
-                }
-            }
-        }
+					gun.StopShooting();
+				} else {
+					OnGunChanged();
+				}
+			}
+		}
 	}
 
 	public void OnGunChanged()
@@ -275,11 +265,11 @@ public class Player : MonoBehaviour
 	void LookRightStick()
 	{
 		// float direction = inputManager.GetDirection().x * inputManager.GetDirection().y;
-		if(inputManager.GetDirection().x != 0f && inputManager.GetDirection().y != 0f){
-			
-		float angle = Mathf.Atan2(inputManager.GetDirection().x, inputManager.GetDirection().y) * Mathf.Rad2Deg;
+		if (inputManager.GetDirection().x != 0f && inputManager.GetDirection().y != 0f) {
 
-		transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+			float angle = Mathf.Atan2(inputManager.GetDirection().x, inputManager.GetDirection().y) * Mathf.Rad2Deg;
+
+			transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 		}
 	}
 
@@ -289,57 +279,59 @@ public class Player : MonoBehaviour
 		shieldText.text = health.ToString();
 	}
 
-    public void PickupForceShield()
-    {
-        if (transform.GetComponentInChildren<FX_Shield>() != null)
-        {
-            Destroy(transform.GetComponentInChildren<FX_Shield>().gameObject);
-        }
-        Instantiate(playerForceShield,transform);
-    }
+	public void PickupForceShield()
+	{
+		if (transform.GetComponentInChildren<FX_Shield>() != null) {
+			Destroy(transform.GetComponentInChildren<FX_Shield>().gameObject);
+		}
+		Instantiate(playerForceShield, transform);
+	}
 
 	public void PickupGun(GameObject gun, GameObject icon)
 	{
 		bool alreadyGot = false;
 		if (!alreadyGot) {
-			if(inventorySelector.items.Contains(gun)){
-               
-                Gun activeGun = attachPoints[0].GetChild(0).GetComponent<Gun>();
-                string activeGunName = activeGun.gameObject.name.Replace("(Clone)", "");
-                if (gun.name == activeGunName)
-                {
-                    Debug.Log("Add ammo for active Gun: " + activeGunName);
-                    // activeGun.ammo += gun.GetComponent<Gun>().ammo;
+			if (inventorySelector.items.Contains(gun)) {
+
+				Gun activeGun = attachPoints[0].GetChild(0).GetComponent<Gun>();
+				string activeGunName = activeGun.gameObject.name.Replace("(Clone)", "");
+				if (gun.name == activeGunName) {
+					Debug.Log("Add ammo for active Gun: " + activeGunName);
+					// activeGun.ammo += gun.GetComponent<Gun>().ammo;
 					activeGun.AddAmmo(gun.GetComponent<Gun>().ammo);
-                    AmmoText.text = activeGun.ammo.ToString();
-                }
-                else
-                {
-                    Debug.Log("Ammo picked up for: " + gun.name);
-                    gunsPickedUp[gun.name].AddAmmo(gun.GetComponent<Gun>().ammo);
-                }
-            }
-            else
-            {
-			    inventorySelector.items.Add(gun);
-			    inventorySelector.icons.Add(icon);
-                GameObject inventoryIcon = Instantiate(icon, radialInventory.transform.Find(slices[inventorySelector.items.Count - 1]).GetChild(0));
-                if (inventoryIcon.GetComponent<InventoryGun>() != null)
-                {
-                    InventoryGun invGun = inventoryIcon.GetComponent<InventoryGun>();
-                    invGun.SetAmmo(gun.GetComponent<Gun>().ammo);
-                    gunsPickedUp.Add(gun.name,invGun);
+					AmmoText.text = activeGun.ammo.ToString();
+				} else {
+					Debug.Log("Ammo picked up for: " + gun.name);
+					gunsPickedUp[gun.name].AddAmmo(gun.GetComponent<Gun>().ammo);
+				}
+			} else {
+				inventorySelector.items.Add(gun);
+				inventorySelector.icons.Add(icon);
+				GameObject inventoryIcon = 
+					Instantiate(icon, radialInventory.transform.Find(slices[inventorySelector.items.Count - 1]).GetChild(0));
+				if (inventoryIcon.GetComponent<InventoryGun>() != null) {
+					InventoryGun invGun = inventoryIcon.GetComponent<InventoryGun>();
+					invGun.SetAmmo(gun.GetComponent<Gun>().ammo);
+					gunsPickedUp.Add(gun.name, invGun);
 
-                    Debug.Log("Gun Picked Up: " + gun.name);
+					Debug.Log("Gun Picked Up: " + gun.name);
 
-                }
-                else
-                {
-                    Debug.LogWarning("No 'InventoryGun' component found on: " + inventoryIcon.name);
-                }
-            }
+				} else {
+					Debug.LogWarning("No 'InventoryGun' component found on: " + inventoryIcon.name);
+				}
+			}
 		}
 	}
+
+	public void LoadSavedInventory(){
+		int length = inventorySelector.items.Count;
+		for (int i = 1; i < length; i++) {
+			Instantiate(inventorySelector.icons[i], radialInventory.transform.GetChild(i).GetChild(0));
+			gunsPickedUp.Add(inventorySelector.items[i].name, inventorySelector.icons[i].GetComponent<InventoryGun>());
+			Debug.Log(inventorySelector.items[i].name);
+		}
+	}
+
 	void SetBasicGun()
 	{
 		activeGuns = new List<Gun>();
@@ -357,7 +349,7 @@ public class Player : MonoBehaviour
 
         Gun activeGun = attachPoints[0].GetChild(0).GetComponent<Gun>();
         string activeGunName = activeGun.gameObject.name.Replace("(Clone)", "");
-        if (go.name+"(Clone)" == activeGun.gameObject.name)
+        if (go.name == activeGun.gameObject.name)
         {
             Debug.Log("Already on this Gun");
         }
@@ -373,7 +365,8 @@ public class Player : MonoBehaviour
             Gun newGun = Instantiate(go, attachPoints[0]).GetComponent<Gun>();
            if(newGun.ammo != -999)
             {
-                newGun.ammo = gunsPickedUp[go.name].GetAmmo();
+
+				newGun.ammo = gunsPickedUp[go.name].GetAmmo();
                 // Debug.Log("New Gun Ammo: " + newGun.ammo);
                 AmmoText.text = newGun.ammo.ToString();
             }

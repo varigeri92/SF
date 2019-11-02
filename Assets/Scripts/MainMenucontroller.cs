@@ -51,6 +51,8 @@ public class MainMenucontroller : MonoBehaviour
         }
     }
 
-    
+	public void OpenScene(int sceneIndex){
+		UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
+	}
 
 }

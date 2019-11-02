@@ -39,5 +39,9 @@ public class InventorySelector : MonoBehaviour {
 
 	void OnPlayerLoaded(){
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+		items = new List<GameObject>(player.playerObject.inventoryGuns);
+		icons = new List<GameObject>(player.playerObject.inventoryIcons);
+
+		player.LoadSavedInventory();
 	}
 }

@@ -12,4 +12,7 @@ public class PlayerObject : ScriptableObject{
 	public int powerCores;
 	public int level;
 
+	public List<GameObject> inventoryGuns;
+	public List<GameObject> inventoryIcons;
+
 }
