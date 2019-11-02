@@ -35,8 +35,11 @@ public class Gun : MonoBehaviour
 	}
 
 	public virtual void Playsound (){
-
-		source.Play();
+		if(source != null){
+			source.Play();
+		}else{
+			Debug.LogWarning("No Audio source on the game object: " + gameObject.name);
+		}
 
 	}
 

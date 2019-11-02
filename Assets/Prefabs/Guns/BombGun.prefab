@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3821602256460556278}
-  - component: {fileID: 3821602256460556273}
+  - component: {fileID: 3542661409054553855}
   - component: {fileID: 3821602256460556272}
   m_Layer: 10
   m_Name: BombGun
@@ -65,7 +65,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3821602256460556273
+--- !u!114 &3542661409054553855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,13 +74,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3821602256460556279}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85b191ef20eb540d4a07e546c9631fe4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b48898cc2d404fc38a1369bc3645d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammo: 5
+  gunObject: {fileID: 11400000, guid: 6d41e4c8718ae4063832824311979810, type: 2}
+  ammo: -999
   icon: {fileID: 1795802747685846, guid: 2d3e449ace80b4aab9bee4c54f706796, type: 3}
   spawnPoint: {fileID: 3821602256388459971}
-  fireRate: 7.98
+  fireRate: 2
   projectile: {fileID: 8322738134441561788, guid: 88757d4400061a041a329c63057a686b,
     type: 3}
   projectileForce: 2
@@ -93,8 +94,9 @@ AudioSource:
   m_GameObject: {fileID: 3821602256460556279}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7d1db80367819f44ebe863ac67c40926, type: 3}
+  OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 2118b5e5eb34176439a93b8f7238193a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

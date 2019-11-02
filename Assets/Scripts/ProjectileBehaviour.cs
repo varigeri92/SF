@@ -9,7 +9,7 @@ public class ProjectileBehaviour : MonoBehaviour {
 	public float speed;
     public bool isBomb;
     public GameObject explosionFX;
-
+	bool exploding = false;
 
 	private void OnEnable()
 	{
@@ -63,7 +63,10 @@ public class ProjectileBehaviour : MonoBehaviour {
 		DealDmg(dmg,go);
         if (isBomb)
         {
-            StartCoroutine(Explode());
+			if(!exploding){
+				Debug.Log("Exposion cased by collision!");
+				StartCoroutine(Explode());
+			}
         }
         else
         {
@@ -74,7 +77,10 @@ public class ProjectileBehaviour : MonoBehaviour {
 	public void OnCounterOver(){
         if (isBomb)
         {
-            StartCoroutine(Explode());
+			if (!exploding) {
+				Debug.Log("Exposion cased by Timer");
+				StartCoroutine(Explode());
+			}
         }
         else
         {
@@ -92,14 +98,15 @@ public class ProjectileBehaviour : MonoBehaviour {
 
     IEnumerator Explode()
     {
+		exploding = true;
         speed = 0;
         CircleCollider2D collider = GetComponent<CircleCollider2D>();
         Instantiate(explosionFX,transform.position,Quaternion.identity);
         while (true)
         {
-            collider.radius +=  100 * Time.deltaTime;
+            collider.radius +=  1000 * Time.deltaTime;
             yield return null;
-            if (collider.radius > 5)
+            if (collider.radius > 4)
             {
                 Destroy(gameObject);
             }
