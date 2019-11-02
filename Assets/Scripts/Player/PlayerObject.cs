@@ -15,4 +15,6 @@ public class PlayerObject : ScriptableObject{
 	public List<GameObject> inventoryGuns;
 	public List<GameObject> inventoryIcons;
 
+	public List<GameObject> availableGuns;
+
 }

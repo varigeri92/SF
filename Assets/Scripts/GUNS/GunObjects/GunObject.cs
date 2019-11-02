@@ -10,4 +10,5 @@ public class GunObject : ScriptableObject
 	public float fireRate;
 	public int damage;
 
+
 }

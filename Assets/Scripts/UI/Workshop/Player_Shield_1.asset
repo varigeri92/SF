@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   required: {fileID: 0}
   requireLevel: 1
-  upgraded: 1
+  upgraded: 0
   icon: {fileID: 21300000, guid: 2f3cbd59a2fd04a44831f9369779725d, type: 3}
   cost: 1
   lvl: 1
@@ -25,3 +25,4 @@ MonoBehaviour:
   playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
   upgradeProperty: 2
   upgradeValue: 5
+  ItemToUnlock: {fileID: 0}

@@ -24,6 +24,8 @@ public class EquipmentUIManager : MonoBehaviour
 
 	public GameObject piUIGo;
 
+	public Transform grid;
+
 	[SerializeField]
 	private GameObject _basicGun;
 
@@ -41,6 +43,7 @@ public class EquipmentUIManager : MonoBehaviour
 		SetGun(_basicGun,_basicGunIcon,"One");
 		initialize = false;
 		LoadPlayerInventory();
+		LoadUnlockedItems();
     }
 
     // Update is called once per frame
@@ -48,6 +51,13 @@ public class EquipmentUIManager : MonoBehaviour
     {
         
     }
+
+	private void LoadUnlockedItems()
+	{
+		foreach (var element in playerObject.availableGuns) {
+			Instantiate(element,grid);
+		}
+	}
 
 	public void BeginDrag(GameObject gun, GameObject icon){
 		Debug.Log("Hello!");

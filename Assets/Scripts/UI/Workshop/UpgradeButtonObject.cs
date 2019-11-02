@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum UpgradeType { PlayerUpgrade, GunUpgrade, Ultimate}
+public enum UpgradeType { PlayerUpgrade, GunUpgrade, Ultimate, ItemUnlock}
 public enum UpgradeProperty{ Damage, FireRate, Health, Other}
 
 [CreateAssetMenu(fileName = "New Upgrade Button", menuName = "Ubgrade Button")]
@@ -24,4 +24,6 @@ public class UpgradeButtonObject : ScriptableObject
 
 	public UpgradeProperty upgradeProperty;
 	public float upgradeValue;
+
+	public GameObject ItemToUnlock;
 }

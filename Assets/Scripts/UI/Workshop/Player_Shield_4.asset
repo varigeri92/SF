@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc2f0d79ac013496999b9e162d091fc1, type: 3}
-  m_Name: Upgrade_DoubleGun_1
+  m_Name: Player_Shield_4
   m_EditorClassIdentifier: 
-  required: {fileID: 11400000, guid: 8a30184bfe70f4566927d9580fb002bd, type: 2}
-  requireLevel: 2
+  required: {fileID: 11400000, guid: 1413a73c8a34f4890b53d53bdf32f0ea, type: 2}
+  requireLevel: 1
   upgraded: 0
-  icon: {fileID: 21300000, guid: 30925f05ae244d9479af7be805333b61, type: 3}
-  cost: 2
-  lvl: 0
-  tittleText: Double Gun
-  descriptionText: Geting the Double Laser Shooter!
+  icon: {fileID: 21300000, guid: 2f3cbd59a2fd04a44831f9369779725d, type: 3}
+  cost: 7
+  lvl: 4
+  tittleText: Shield Upgrade
+  descriptionText: +15 max shield power permanently
   upgradeType: 0
-  gunToUpgrade: {fileID: 11400000, guid: cd596ad9e1f3d408cbcf9e85d2c1d348, type: 2}
+  gunToUpgrade: {fileID: 0}
   playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
   upgradeProperty: 2
-  upgradeValue: 5
+  upgradeValue: 20
   ItemToUnlock: {fileID: 0}

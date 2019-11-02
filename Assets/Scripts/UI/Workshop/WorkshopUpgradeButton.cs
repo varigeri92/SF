@@ -82,11 +82,17 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 		if(buttonObject.upgraded){
 			baseButton.color = availableColor;
 		}
-
 		string lvlString = "";
-		for (int i = 0; i < buttonObject.lvl; i++) {
-			lvlString += "+";
+
+		if(buttonObject.lvl >= 4){
+			lvlString = buttonObject.lvl + "+";
+		}else{
+			
+			for (int i = 0; i < buttonObject.lvl; i++) {
+				lvlString += "+";
+			}
 		}
+
 
 		level.text = lvlString;
 		cost.text = buttonObject.cost.ToString();
@@ -94,6 +100,14 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 		icon.sprite = buttonObject.icon;
 	}
 
+
+	void OnUpgrade(){
+		upgradedHighlight.SetActive(true);
+		buttonObject.upgraded = true;
+		buttonObject.playerObject.powerCores -= buttonObject.cost;
+		buttonObject.playerObject.level++;
+		workshopUI.Upgraded();
+	}
 
 
 
@@ -104,19 +118,27 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 				case UpgradeType.PlayerUpgrade :
 					if(buttonObject.upgradeProperty == UpgradeProperty.Health){
 						buttonObject.playerObject.maxHealth += (int)buttonObject.upgradeValue;
-						upgradedHighlight.SetActive(true);
-						buttonObject.upgraded = true;
-						buttonObject.playerObject.powerCores -= buttonObject.cost;
-						buttonObject.playerObject.level++;
-						workshopUI.Upgraded();
-						Debug.Log(buttonObject.playerObject.maxHealth);
+						OnUpgrade();
 					}
 					break;
 				case UpgradeType.GunUpgrade:
-					
+
+					if (buttonObject.upgradeProperty == UpgradeProperty.Damage) {
+						buttonObject.gunToUpgrade.damage += (int)buttonObject.upgradeValue;
+						OnUpgrade();
+					}else if(buttonObject.upgradeProperty == UpgradeProperty.FireRate){
+						buttonObject.gunToUpgrade.fireRate += buttonObject.upgradeValue;
+						OnUpgrade();
+					}
+
 					break;
 				case UpgradeType.Ultimate:
 					
+					break;
+
+				case UpgradeType.ItemUnlock:
+					buttonObject.playerObject.availableGuns.Add(buttonObject.ItemToUnlock);
+					OnUpgrade();
 					break;
 					
 			}
@@ -143,7 +165,6 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		Debug.Log("Hello");
 		Upgrade();
 	}
 }

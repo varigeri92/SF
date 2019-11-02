@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc2f0d79ac013496999b9e162d091fc1, type: 3}
-  m_Name: Upgrade_DoubleGun_1
+  m_Name: Upgrade_DoubleGun_0
   m_EditorClassIdentifier: 
-  required: {fileID: 11400000, guid: 8a30184bfe70f4566927d9580fb002bd, type: 2}
-  requireLevel: 2
-  upgraded: 0
+  required: {fileID: 11400000, guid: 78a46944ffd5747e7a6d2b76b9f940c3, type: 2}
+  requireLevel: 5
+  upgraded: 1
   icon: {fileID: 21300000, guid: 30925f05ae244d9479af7be805333b61, type: 3}
   cost: 2
   lvl: 0
   tittleText: Double Gun
-  descriptionText: Geting the Double Laser Shooter!
-  upgradeType: 0
+  descriptionText: Unlocks the Double Gun
+  upgradeType: 3
   gunToUpgrade: {fileID: 11400000, guid: cd596ad9e1f3d408cbcf9e85d2c1d348, type: 2}
   playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
-  upgradeProperty: 2
-  upgradeValue: 5
-  ItemToUnlock: {fileID: 0}
+  upgradeProperty: 3
+  upgradeValue: 0
+  ItemToUnlock: {fileID: 3490590457121529502, guid: a871043da041d4bed8f6bdd5c3f79fbf,
+    type: 3}
