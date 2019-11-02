@@ -78,13 +78,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunObject: {fileID: 11400000, guid: 6d41e4c8718ae4063832824311979810, type: 2}
-  ammo: -999
+  ammo: 5
   icon: {fileID: 1795802747685846, guid: 2d3e449ace80b4aab9bee4c54f706796, type: 3}
   spawnPoint: {fileID: 3821602256388459971}
   fireRate: 2
   projectile: {fileID: 8322738134441561788, guid: 88757d4400061a041a329c63057a686b,
     type: 3}
   projectileForce: 2
+  timer: 1
+  canShoot: 0
 --- !u!82 &3821602256460556272
 AudioSource:
   m_ObjectHideFlags: 0
