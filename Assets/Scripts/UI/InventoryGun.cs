@@ -8,7 +8,12 @@ public class InventoryGun : MonoBehaviour
     private int _ammo;
 	public GunObject gunObject;
 
-    public void AddAmmo(int ammo)
+	private void Start()
+	{
+		//_ammo = gunObject.startingAmmo;
+	}
+
+	public void AddAmmo(int ammo)
     {
 		int precalcAmmo = _ammo + ammo;
 		if(precalcAmmo >= gunObject.maxAmmo){
@@ -22,6 +27,7 @@ public class InventoryGun : MonoBehaviour
 
     public void SetAmmo(int newAmmo)
     {
+		Debug.Log("Ammo set from " + _ammo + " to: " + newAmmo);
         _ammo = newAmmo;
         Debug.Log(_ammo);
     }

@@ -314,8 +314,6 @@ public class Player : MonoBehaviour
 					invGun.SetAmmo(gun.GetComponent<Gun>().ammo);
 					gunsPickedUp.Add(gun.name, invGun);
 
-					Debug.Log("Gun Picked Up: " + gun.name);
-
 				} else {
 					Debug.LogWarning("No 'InventoryGun' component found on: " + inventoryIcon.name);
 				}
@@ -328,7 +326,6 @@ public class Player : MonoBehaviour
 		for (int i = 1; i < length; i++) {
 			Instantiate(inventorySelector.icons[i], radialInventory.transform.GetChild(i).GetChild(0));
 			gunsPickedUp.Add(inventorySelector.items[i].name, inventorySelector.icons[i].GetComponent<InventoryGun>());
-			Debug.Log(inventorySelector.items[i].name);
 		}
 	}
 
@@ -357,7 +354,7 @@ public class Player : MonoBehaviour
         {
             if (gunsPickedUp.ContainsKey(activeGunName))
             {
-                Debug.Log("Set Remaining ammo for old Gun: " + activeGunName);
+				Debug.Log("Set Remaining ammo for old Gun: " + activeGunName + "Ammo: " + activeGun.ammo);
                 gunsPickedUp[activeGunName].SetAmmo(activeGun.ammo);
             }
             Destroy(activeGun.gameObject);

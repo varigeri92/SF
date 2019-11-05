@@ -42,6 +42,10 @@ public class InventorySelector : MonoBehaviour {
 		items = new List<GameObject>(player.playerObject.inventoryGuns);
 		icons = new List<GameObject>(player.playerObject.inventoryIcons);
 
+		foreach(GameObject icon in icons){
+			icon.GetComponent<InventoryGun>().SetAmmo(icon.GetComponent<InventoryGun>().gunObject.startingAmmo);
+		}
+
 		player.LoadSavedInventory();
 	}
 }

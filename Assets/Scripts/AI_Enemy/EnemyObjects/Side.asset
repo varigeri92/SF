@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Side
   m_EditorClassIdentifier: 
   exposionFX: {fileID: 1371780899007676, guid: 4955035f9d4e24142863ae1b11aaa704, type: 3}
-  health: 10
+  powerCore: {fileID: 0}
+  health: 15
   mooveSpeed: 4.5
   rotationSpeed: 500
   type: 0
   fireRate: 0
   xp: 0
+  chancetoSpawn: 0
+  coresToSpawn: 0
