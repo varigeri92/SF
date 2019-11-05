@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7680699552946025155}
-  - component: {fileID: 7680699552946025152}
   - component: {fileID: 7680699552946025153}
+  - component: {fileID: 7680699552946025152}
   m_Layer: 0
   m_Name: '[Presistent_Music]'
   m_TagString: Untagged
@@ -32,6 +32,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7680699552946025153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7680699552946025154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ce5d4c04b504a7180071db3a2b4aca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &7680699552946025152
 AudioSource:
   m_ObjectHideFlags: 0
@@ -129,15 +141,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7680699552946025153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7680699552946025154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0ce5d4c04b504a7180071db3a2b4aca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

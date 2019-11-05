@@ -37,6 +37,11 @@ public class MainMenuLogic : MonoBehaviour {
 		SceneManager.LoadScene(1);
 	}
 
+	public void StartSurvivorMode(){
+		SelectedLevel.Instance.SetSurvivorlevel();
+		StartGame();
+	}
+
 	public void ToLevels(){
 		SceneManager.LoadScene(2);
 	}

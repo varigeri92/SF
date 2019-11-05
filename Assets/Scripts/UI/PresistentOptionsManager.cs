@@ -4,16 +4,27 @@ using UnityEngine;
 
 public class PresistentOptionsManager : MonoBehaviour {
 
-	private PresistentOptionsManager instance;
 	public Texture2D cursorImg;
 	public CursorMode cursorMode = CursorMode.Auto;
 	public Vector2 hotSpot = Vector2.zero;
 
+	private static PresistentOptionsManager instance;
+
+	public static PresistentOptionsManager Instance {
+		get {
+			return instance;
+		}
+
+		set {
+			instance = value;
+		}
+	}
+
 	void Awake(){
-		if(instance == null){
-			instance = this;
-		}else{
-			Destroy(this);
+		if(Instance == null){
+			Instance = this;
+		}else if(Instance != this){
+			Destroy(this.gameObject);
 		}
 	}
 	// Use this for initialization

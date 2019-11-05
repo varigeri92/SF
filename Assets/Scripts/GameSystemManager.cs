@@ -55,6 +55,12 @@ public class GameSystemManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+	public void LoadLevelSelection()
+	{
+		timeManager.NormalizeTime();
+		SceneManager.LoadScene(2);
+	}
+
     public void Close()
     {
         Application.Quit();

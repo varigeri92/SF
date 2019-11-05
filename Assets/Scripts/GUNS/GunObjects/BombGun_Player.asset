@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258f09697eb0a4ec3b9b95e09dceb834, type: 3}
   m_Name: BombGun_Player
   m_EditorClassIdentifier: 
-  startingAmmo: 0
+  startingAmmo: 5
   maxAmmo: 15
   fireRate: 1
   damage: 7

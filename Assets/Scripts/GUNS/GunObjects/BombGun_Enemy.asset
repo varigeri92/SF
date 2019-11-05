@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258f09697eb0a4ec3b9b95e09dceb834, type: 3}
   m_Name: BombGun_Enemy
   m_EditorClassIdentifier: 
+  startingAmmo: -999
   maxAmmo: -999
   fireRate: 2
   damage: 2

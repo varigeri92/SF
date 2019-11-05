@@ -19,11 +19,16 @@ public class PresistentMusicSingleton : MonoBehaviour
 	private void Awake()
 	{
 		DontDestroyOnLoad(gameObject);
-		if(instance == null){
-			instance = this;
-		}else if (instance != this){
+		if(Instance == null){
+			Instance = this;
+		}else if (Instance != this){
 			Destroy(gameObject);
 		}
+
+		AudioSource audioSource = GetComponent<AudioSource>();
+		audioSource.Stop();
+		audioSource.Play();
+
 
 	}
 	// Start is called before the first frame update

@@ -29,7 +29,7 @@ public class SelectedLevel : MonoBehaviour
 
 	public void SetSurvivorlevel()
 	{
-
+		level = survivorLevel;
 	}
 
 	public void SetLevel(LevelObject _level){
