@@ -15,6 +15,7 @@ MonoBehaviour:
   exposionFX: {fileID: 6660784515511450034, guid: 9d61e70ba8a294920811f1b5c3727e8a,
     type: 3}
   powerCore: {fileID: 0}
+  shootingDistance: 25
   health: 3
   mooveSpeed: 7
   rotationSpeed: 300

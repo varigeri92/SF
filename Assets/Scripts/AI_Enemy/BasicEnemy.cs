@@ -65,12 +65,12 @@ public class BasicEnemy : MonoBehaviour {
             {
                 case EnemyType.Shooter:
 
-                    if (distance < 15)
+					if (distance < enemyObject.shootingDistance)
                     {
                         Shoot();
                     }
 
-                    if (distance < 8)
+                    if (distance < 15)
                     {
                         _speed = 0;
                         if (left)
@@ -84,7 +84,7 @@ public class BasicEnemy : MonoBehaviour {
                         rb.velocity = transform.up * _speed;
                     }
 
-                    if (distance < 5)
+                    if (distance < 10)
                     {
                         _speed = -enemyObject.mooveSpeed;
                         rb.velocity = transform.up * _speed;

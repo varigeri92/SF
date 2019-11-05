@@ -21,8 +21,11 @@ MonoBehaviour:
   inventoryGuns:
   - {fileID: 1927927025121406, guid: e22ab43c3218a4d418dcd882e0a18b67, type: 3}
   - {fileID: 1897131634571996, guid: de7c98b5b00e347aa99245b0a301a164, type: 3}
+  - {fileID: 1458455220, guid: 4629d1b0812f4a6449b40d59b8550638, type: 3}
   inventoryIcons:
   - {fileID: 1795802747685846, guid: 2d3e449ace80b4aab9bee4c54f706796, type: 3}
   - {fileID: 1974288720584050, guid: 31021c9bfc6e7488c883360341a2e95c, type: 3}
+  - {fileID: 226233719831200884, guid: d8301fd8d162cb346bc0d01cf631d0c1, type: 3}
   availableGuns:
   - {fileID: 3490590457121529502, guid: a871043da041d4bed8f6bdd5c3f79fbf, type: 3}
+  - {fileID: 6299240627127540184, guid: a34ae7d6be54146e19fb679962dc5922, type: 3}

@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exposionFX: {fileID: 502243484622872339, guid: 66e8a3e2154af5a4cbc96cf37bac2050,
     type: 3}
+  powerCore: {fileID: 0}
+  shootingDistance: 25
   health: 1
   mooveSpeed: 0
   rotationSpeed: 0
   type: 3
   fireRate: 0
   xp: 0
+  chancetoSpawn: 0
+  coresToSpawn: 0

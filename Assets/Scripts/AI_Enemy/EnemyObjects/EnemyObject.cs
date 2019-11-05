@@ -15,6 +15,8 @@ public class EnemyObject : ScriptableObject{
 	public GameObject exposionFX;
 	public GameObject powerCore;
 
+	public float shootingDistance;
+
 	public int health;
 
 	public float mooveSpeed;

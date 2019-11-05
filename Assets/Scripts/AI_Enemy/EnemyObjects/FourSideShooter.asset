@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: FourSideShooter
   m_EditorClassIdentifier: 
   exposionFX: {fileID: 1371780899007676, guid: 4955035f9d4e24142863ae1b11aaa704, type: 3}
+  powerCore: {fileID: 0}
+  shootingDistance: 25
   health: 50
   mooveSpeed: 5
   rotationSpeed: 100
   type: 0
   fireRate: 0
   xp: 10
+  chancetoSpawn: 0
+  coresToSpawn: 0
