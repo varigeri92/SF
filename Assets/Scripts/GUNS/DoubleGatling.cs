@@ -30,6 +30,7 @@ public class DoubleGatling : Gun{
 				timer = 0;
 			}
 		}
+		base.Shooting(isPlayer);
 	}
 
 	void Shoot(bool isPlayer)

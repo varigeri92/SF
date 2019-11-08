@@ -22,7 +22,8 @@ MonoBehaviour:
   - {fileID: 1420262902442594, guid: 71e947cbf8a204705884b12cd5acb0de, type: 3}
   bosses:
   - {fileID: 1524734211276918, guid: ef41055bb00e646a382bc989ea22b319, type: 3}
-  obstacles: []
+  obstacles:
+  - {fileID: 1225506040109798, guid: 59a5d45e70f9745cca0fd7cca100dcfa, type: 3}
   powerups:
   - {fileID: 1273449132551612, guid: cc0631f6323ed4e94b366a9a686a3b78, type: 3}
   - {fileID: 2851196285481681145, guid: 846a11e517b5b314fb9774f99786aaa1, type: 3}

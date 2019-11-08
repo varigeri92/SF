@@ -79,9 +79,9 @@ public class LaserGun : Gun
         {
             if (hitObject.CompareTag("Enemy"))
             {
-                if (hitObject.GetComponent<BasicEnemy>() != null)
+                if (hitObject.GetComponent<Enemy>() != null)
                 {
-                    hitObject.GetComponent<BasicEnemy>().TakeDmg(1);
+                    hitObject.GetComponent<Enemy>().TakeDmg(1);
                 }else if(hitObject.GetComponent<SwarmObject>() != null)
                 {
                     hitObject.GetComponent<SwarmObject>().TakeDmg(1);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicEnemy : MonoBehaviour {
+public class BasicEnemy : Enemy {
 
 
 	public delegate void OnEnemyDead(BasicEnemy enemy);
@@ -11,15 +11,6 @@ public class BasicEnemy : MonoBehaviour {
 	public EnemyObject enemyObject;
 
 	public Gun gun;
-
-    public int health;
-	public Transform target;
-	public Rigidbody2D rb;
-	bool playerAlive = true;
-
-    public bool left = true;
-
-    public float distance;
 
 
     void OnEnable()
@@ -131,7 +122,7 @@ public class BasicEnemy : MonoBehaviour {
 		}
 	}
 
-	public virtual void Die()
+	public override void Die()
 	{
         if (onEnemyDead != null)
         {
@@ -142,7 +133,7 @@ public class BasicEnemy : MonoBehaviour {
 		Destroy(gameObject);
 	}
 
-	public virtual void TakeDmg(int dmg)
+	public override void TakeDmg(int dmg)
 	{
 		health -= dmg;
 		if (health <= 0) {

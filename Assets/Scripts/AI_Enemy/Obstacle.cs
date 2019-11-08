@@ -2,17 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour {
+public class Obstacle : Enemy {
 
 	public float lifetime;
 	public int dmg;
-	public int health = 1;
 
+	public ObstacleObject obstacleObject;
 	public GameObject FX;
 
 	private void OnEnable()
 	{
+		dmg = obstacleObject.dmg;
+		health = obstacleObject.health;
+
 		StartCountdown();
+	}
+
+	private void FixedUpdate()
+	{
+		transform.position += transform.up * obstacleObject.moveSpeed * Time.deltaTime;
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)
@@ -35,8 +43,9 @@ public class Obstacle : MonoBehaviour {
 		TakeDmg(health);
 	}
 
-	public void TakeDmg(int dmg){
+	public override void TakeDmg(int dmg){
 		health = health - dmg;
+		Debug.Log("HEY BOI!!");
 		if(health <= 0){
 			Die();
 		}
@@ -47,7 +56,7 @@ public class Obstacle : MonoBehaviour {
 		StartCoroutine(Countdown());
 	}
 
-	void Die(){
+	public override void Die(){
 		Instantiate(FX, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}
