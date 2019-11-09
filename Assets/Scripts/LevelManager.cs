@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
 	public delegate void PlayerDead();
 	public static event PlayerDead OnLevelCompleted;
 
+
+	public EnemySpawner enemySpawner;
 	public GameObject playerPrefab;
 
 	[Header("Player References")]
@@ -33,31 +35,37 @@ public class LevelManager : MonoBehaviour
 	[Header("Level Objectives")]
 	public int enemiesLeft;
 	public bool endlessLevel = false;
+	public bool bossLevel = false;
+	public GameObject bossInThisLevel;
 
+	bool bossSpawned = false;
 	private void Awake()
 	{
 		background.sprite = SelectedLevel.Instance.GetLevel().backgroundImage;
 		enemiesLeft = SelectedLevel.Instance.GetLevel().enemiesToShoot;
-		if(enemiesLeft == 1){
+		bossLevel = SelectedLevel.Instance.IsBossLevel();
+		if (enemiesLeft == 1) {
 			endlessLevel = true;
 		}
 	}
 
 	// Start is called before the first frame update
 	void Start()
-    {
-		Instantiate(playerPrefab,new Vector3(0, -4.35f, 0), Quaternion.identity);
-    }
+	{
+		Instantiate(playerPrefab, new Vector3(0, -4.35f, 0), Quaternion.identity);
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	// Update is called once per frame
+	void Update()
+	{
+
+	}
 
 
 
-	public void OnPlayerLoaded(Player player){
+	public void OnPlayerLoaded(Player player)
+	{
+		bossSpawned = false;
 		Camera.main.GetComponent<FollowPlayer>().playerTransform = player.transform;
 		Camera.main.GetComponent<FollowPlayer>().InitCam();
 		player.gameSystemManager = gameSystemManager;
@@ -72,26 +80,53 @@ public class LevelManager : MonoBehaviour
 		player.inventorySelector = inventorySelector;
 		player.radialInventory = radialInventory;
 
+		enemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>();
+
 		// Destroy(this);
 	}
 
-	public void EnemyDestroyed(){
+	public void EnemyDestroyed()
+	{
 		enemiesLeft--;
-		if(enemiesLeft <= 0){
+		if (enemiesLeft <= 0) {
 			enemiesLeft = 0;
-			LevelCompleted();
+			if (!bossLevel) {
+				LevelCompleted();
+			} else {
+				if (!bossSpawned)
+					SpawnBoss();
+				else
+					Debug.Log("Boss Already Spawned!!");
+			}
 		}
 	}
 
-	public void LevelCompleted(){
+	public void SpawnBoss()
+	{
+		bossSpawned = true;
+		if (enemySpawner == null) {
+			enemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>();
+		}
+		enemySpawner.SpawnBoss(SelectedLevel.Instance.GetBossList()[0]);
+	}
+
+	public void LevelCompleted()
+	{
 		Debug.Log("Level Completed GGWP");
-		if(OnLevelCompleted != null && !endlessLevel)
+		if (OnLevelCompleted != null && !endlessLevel)
 			OnLevelCompleted();
+		SelectedLevel.Instance.CompletteLevel();
 	}
 
-	public void StartBossPhase(){
-		
+	public void StartBossPhase()
+	{
+
 	}
 
+	public void BossDestroyed()
+	{
+		LevelCompleted();
+	}
 
 }
+

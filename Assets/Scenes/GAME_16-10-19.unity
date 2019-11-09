@@ -8376,7 +8376,7 @@ GameObject:
   - component: {fileID: 1505912015}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: EnemySpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11322,6 +11322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2d4ddc6b0b949379bfc2337871f29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawner: {fileID: 0}
   playerPrefab: {fileID: 9101835574419472614, guid: 90e823065003ea3459a657fcdabe6717,
     type: 3}
   gameSystemManager: {fileID: 1994296826}
@@ -11338,6 +11339,8 @@ MonoBehaviour:
   background: {fileID: 646974699}
   enemiesLeft: 0
   endlessLevel: 0
+  bossLevel: 0
+  bossInThisLevel: {fileID: 0}
 --- !u!1 &1986012567
 GameObject:
   m_ObjectHideFlags: 0

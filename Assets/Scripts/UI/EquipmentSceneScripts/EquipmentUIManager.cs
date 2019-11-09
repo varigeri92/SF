@@ -8,6 +8,7 @@ public class EquipmentUIManager : MonoBehaviour
 
 	public List<GameObject> guns = new List<GameObject>();
 	public List<GameObject> icons = new List<GameObject>();
+	public List<GameObject> ammos = new List<GameObject>();
 
 	Dictionary<string, GameObject> inventoryGuns = new Dictionary<string,GameObject>();
 	Dictionary<string, GameObject> inventoryIcons = new Dictionary<string, GameObject>();
@@ -21,6 +22,7 @@ public class EquipmentUIManager : MonoBehaviour
 
 	public GameObject selectedGun;
 	public GameObject gunIcon;
+	public GameObject ammoToSpawn;
 
 	public GameObject piUIGo;
 
@@ -34,13 +36,15 @@ public class EquipmentUIManager : MonoBehaviour
 
 	private bool initialize = true;
 
+	bool isGun = true;
+
 	// Start is called before the first frame update
 	void Start()
     {
 		selectedSlot = "none";
 		lastSelectedSlot = "none";
 
-		SetGun(_basicGun,_basicGunIcon,"One");
+		SetGun(_basicGun,_basicGunIcon,"One", null);
 		initialize = false;
 		LoadPlayerInventory();
 		LoadUnlockedItems();
@@ -59,10 +63,12 @@ public class EquipmentUIManager : MonoBehaviour
 		}
 	}
 
-	public void BeginDrag(GameObject gun, GameObject icon){
+	public void BeginDrag(GameObject gun, GameObject icon, GameObject _ammoToSpawn, bool _isGun){
 		Debug.Log("Hello!");
 		selectedGun = gun;
 		gunIcon = icon;
+		ammoToSpawn = _ammoToSpawn;
+		isGun = _isGun;
 	}
 
 	public void CancelDrag(){
@@ -71,7 +77,7 @@ public class EquipmentUIManager : MonoBehaviour
 	}
 
 	public void SelectSlot(string slotName){
-		SetGun(selectedGun, gunIcon, slotName);
+		SetGun(selectedGun, gunIcon, slotName, ammoToSpawn);
 
 	}
 
@@ -82,14 +88,17 @@ public class EquipmentUIManager : MonoBehaviour
 	public void LoadPlayerInventory()
 	{
 		for (int i = 1; i < playerObject.inventoryGuns.Count; i++){
-			SetGun(playerObject.inventoryGuns[i],playerObject.inventoryIcons[i],slots[i]);
+			SetGun(playerObject.inventoryGuns[i],playerObject.inventoryIcons[i],slots[i], playerObject.AmmoToSpawn[i]);
 		}
 
 	}
 
 
-	public void SetGun(GameObject gun, GameObject icon, string slotName)
+	public void SetGun(GameObject gun, GameObject icon, string slotName, GameObject _ammoToSpawn)
 	{
+		if(!isGun){
+			return;
+		}
 		if(slotName == "One" && !initialize){
 			Debug.Log("Cannot modify this slot!");
 			return;
@@ -100,6 +109,7 @@ public class EquipmentUIManager : MonoBehaviour
 
 			guns.Remove(gun);
 			icons.Remove(icon);
+			ammos.Remove(_ammoToSpawn);
 
 			string slot = "";
 
@@ -114,6 +124,7 @@ public class EquipmentUIManager : MonoBehaviour
 						int index = guns.IndexOf(inventoryGuns[slotName]);
 						guns.RemoveAt(index);
 						icons.RemoveAt(index);
+						ammos.RemoveAt(index);
 						Destroy(piUIGo.transform.Find(slotName).GetChild(0).GetChild(0).gameObject);
 						inventoryGuns.Remove(slotName);
 					}
@@ -121,17 +132,20 @@ public class EquipmentUIManager : MonoBehaviour
 
 					guns.Add(gun);
 					icons.Add(icon);
+					ammos.Add(_ammoToSpawn);
 					break;
 				}
 			}
 		}else{
 			guns.Add(gun);
 			icons.Add(icon);
+			ammos.Add(_ammoToSpawn);
 			if(inventoryGuns.ContainsKey(slotName)){
 				Debug.Log("Slot: " + slotName + " already in use!");
 				int index = guns.IndexOf(inventoryGuns[slotName]);
 				guns.RemoveAt(index);
 				icons.RemoveAt(index);
+				ammos.RemoveAt(index);
 				Destroy(piUIGo.transform.Find(slotName).GetChild(0).GetChild(0).gameObject);
 				inventoryGuns.Remove(slotName);
 				inventoryGuns.Add(slotName, gun);
@@ -146,6 +160,7 @@ public class EquipmentUIManager : MonoBehaviour
 	{
 		playerObject.inventoryGuns = new List<GameObject>(guns);
 		playerObject.inventoryIcons = new List<GameObject>(icons);
+		playerObject.AmmoToSpawn = new List<GameObject>(ammos);
 
 
 		UnityEngine.SceneManagement.SceneManager.LoadScene(2);

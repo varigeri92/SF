@@ -8,7 +8,12 @@ public class FourSideEnemy : BasicEnemy
     public List<Side> Sides = new List<Side>();
 
     public GameObject center;
-    public float centralRotationSpeed;
+
+	public Rigidbody2D mainRigidbody;
+	public CircleCollider2D circleCollider2D;
+
+	public float centralRotationSpeed;
+
 
     public override void Shoot()
     {
@@ -28,6 +33,9 @@ public class FourSideEnemy : BasicEnemy
 
     public override void Follow()
     {
+		if(rb == null){
+			return;
+		}
         RotateCenter();
 
         Vector2 direction = (Vector2)target.position - rb.position;
@@ -65,13 +73,17 @@ public class FourSideEnemy : BasicEnemy
         {
             if (side != null)
             {
-                side.rb  = side.gameObject.AddComponent<Rigidbody2D>();
+				side.rb = side.gameObject.AddComponent<Rigidbody2D>();
                 side.rb.gravityScale = 0;
                 side.baseDead = true;
                 side.transform.parent = null;
                 side.transform.Translate(side.transform.up * 6 * Time.deltaTime);
             }
         }
-        base.Die();
+		Destroy(circleCollider2D);
+		Destroy(mainRigidbody);
+		center.SetActive(false);
+		Instantiate(enemyObject.exposionFX, transform.position, Quaternion.identity);
+        // base.Die();
     }
 }

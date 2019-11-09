@@ -128,8 +128,17 @@ public class BasicEnemy : Enemy {
         {
             onEnemyDead(this);
         }
+		GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().EnemyDestroyed();
 		SpawnPowerCore();
 		Instantiate(enemyObject.exposionFX, transform.position, Quaternion.identity);
+		Destroy(gameObject);
+	}
+	public virtual void Die(bool destroyOnly)
+	{
+		GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().EnemyDestroyed();
+		if (onEnemyDead != null) {
+			onEnemyDead(this);
+		}
 		Destroy(gameObject);
 	}
 
@@ -137,7 +146,6 @@ public class BasicEnemy : Enemy {
 	{
 		health -= dmg;
 		if (health <= 0) {
-			GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().EnemyDestroyed();
 			Die();
 		}
 	}

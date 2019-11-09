@@ -6,10 +6,13 @@ public class LevelCard : MonoBehaviour
 {
 
 	public LevelObject level;
+	public int index;
 
 	public void SelectLevel()
 	{
-		SelectedLevel.Instance.SetLevel(level);
-		UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+		if(level.available){
+			SelectedLevel.Instance.SetLevel(level);
+			UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+		}
 	}
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwarmController : MonoBehaviour
+public class SwarmController : BasicEnemy
 {
     [SerializeField]
     GameObject swarmEnemy;
@@ -107,7 +107,9 @@ public class SwarmController : MonoBehaviour
             {
                 Destroy(swarm[i]);
             }
-            Destroy(gameObject);
+            //Destroy(gameObject);
+			base.Die(true);
+			Debug.Log("SWARM Cleared...!");
         }
     }
 }

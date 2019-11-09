@@ -17,4 +17,6 @@ public class PlayerObject : ScriptableObject{
 
 	public List<GameObject> availableGuns;
 
+	public List<GameObject> AmmoToSpawn;
+
 }

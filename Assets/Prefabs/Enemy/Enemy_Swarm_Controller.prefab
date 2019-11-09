@@ -43,6 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b64dee008c1293d4281aa0fe8fdd2c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  target: {fileID: 0}
+  rb: {fileID: 0}
+  playerAlive: 1
+  left: 1
+  distance: 0
+  enemyObject: {fileID: 11400000, guid: 5bb21ace44a8643068b83a2b918f2029, type: 2}
+  gun: {fileID: 0}
   swarmEnemy: {fileID: 814902901598441491, guid: 805d1a3047cc1ce4c8ff88f90f8fa68c,
     type: 3}
   swarmSize: 10

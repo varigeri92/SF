@@ -14,23 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   completionStars: 0
   available: 1
-  completed: 0
+  completed: 1
   backgroundImage: {fileID: 21300000, guid: d9b31ebd60af68c469212c1a9f513e74, type: 3}
   enemyes:
   - {fileID: 1420262902442594, guid: 2a0f6c2b2f59b449593f257ae600dbfa, type: 3}
   - {fileID: 1420262902442594, guid: 2a0f6c2b2f59b449593f257ae600dbfa, type: 3}
   - {fileID: 1420262902442594, guid: 71e947cbf8a204705884b12cd5acb0de, type: 3}
   bosses:
-  - {fileID: 1524734211276918, guid: ef41055bb00e646a382bc989ea22b319, type: 3}
+  - {fileID: 2113269734623498212, guid: 51cea07ccaa9b0649849ccb28b753808, type: 3}
   obstacles:
   - {fileID: 1225506040109798, guid: 59a5d45e70f9745cca0fd7cca100dcfa, type: 3}
+  - {fileID: 1477566266523767529, guid: 5de1b46cc31fe4bd08bcbfaa01efce94, type: 3}
   powerups:
   - {fileID: 1273449132551612, guid: cc0631f6323ed4e94b366a9a686a3b78, type: 3}
   - {fileID: 2851196285481681145, guid: 846a11e517b5b314fb9774f99786aaa1, type: 3}
+  bossLevel: 0
   timeToBoss: 0
   starsToSpawn: 3
   timeBetweenStars: 15
-  enemiesToShoot: 5
+  enemiesToShoot: 25
   timeBetweenSpawns: 1.5
   enemyCount: 1
   completedInSeconds: 0

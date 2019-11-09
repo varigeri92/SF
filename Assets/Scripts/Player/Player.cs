@@ -72,6 +72,9 @@ public class Player : MonoBehaviour
 	public List<Transform> attachPoints = new List<Transform>();
 	public List<Gun> activeGuns = new List<Gun>();
 
+	public Transform abilityAtachPoint;
+	public Ability ability;
+
 	public int health = 10;
 	float horizontal = 0f;
 	float vertical = 0f;
@@ -116,6 +119,14 @@ public class Player : MonoBehaviour
 		BasicEnemy.onEnemyDead -= countEnemyes;
 	}
 
+	void UseAbility(){
+		if(ability == null){
+			ability = abilityAtachPoint.GetComponentInChildren<Ability>();
+		}
+		ability.FireAbility();
+	}
+
+
 	void Die()
 	{
 #if UNITY_EDITOR
@@ -150,6 +161,10 @@ public class Player : MonoBehaviour
 
 		horizontal = Input.GetAxis("Horizontal");
 		vertical = Input.GetAxis("Vertical");
+
+		if(Input.GetKeyDown(KeyCode.R)){
+			UseAbility();
+		}
 
 		if (Input.GetButton("Jump") && allowTurbo) {
 			_moveSpeed = speed * 2;

@@ -16,6 +16,7 @@ TagManager:
   - HoverText
   - WorkshopUI
   - PIUI
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX

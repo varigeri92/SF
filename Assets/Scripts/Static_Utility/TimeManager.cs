@@ -23,7 +23,7 @@ public class TimeManager : MonoBehaviour
 
 	void Update () {
 		if(player == null){
-			//player = GameObject.FindGameObjectWithTag("Player").transform;
+			player = GameObject.FindGameObjectWithTag("Player").transform;
 		}
 
 		if(Input.GetKeyDown(KeyCode.LeftShift))

@@ -46,19 +46,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16c8378ba3aac243aad9390973ee552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyObject: {fileID: 11400000, guid: 72932ad4824bf524884d9aa23ef131fe, type: 2}
-  gun: {fileID: 0}
   health: 0
   target: {fileID: 0}
   rb: {fileID: 0}
+  playerAlive: 1
   left: 1
   distance: 0
+  enemyObject: {fileID: 11400000, guid: 72932ad4824bf524884d9aa23ef131fe, type: 2}
+  gun: {fileID: 0}
   Sides:
   - {fileID: 2113269735572883385}
   - {fileID: 2113269736375681611}
   - {fileID: 2113269735050175474}
   - {fileID: 2113269736633050240}
   center: {fileID: 2113269735981591194}
+  mainRigidbody: {fileID: 2113269734623498211}
+  circleCollider2D: {fileID: 2113269734623498208}
   centralRotationSpeed: 35
 --- !u!50 &2113269734623498211
 Rigidbody2D:
@@ -585,13 +588,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2db9afe9a0cde64b83eaa0440ef22aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyObject: {fileID: 11400000, guid: f4bbeeb62368d534ca55457fe69644c0, type: 2}
-  gun: {fileID: 0}
   health: 0
   target: {fileID: 0}
   rb: {fileID: 0}
+  playerAlive: 1
   left: 1
   distance: 0
+  enemyObject: {fileID: 11400000, guid: f4bbeeb62368d534ca55457fe69644c0, type: 2}
+  gun: {fileID: 0}
   baseDead: 0
   following: 0
 --- !u!58 &2113269735050175476
@@ -720,13 +724,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2db9afe9a0cde64b83eaa0440ef22aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyObject: {fileID: 11400000, guid: f4bbeeb62368d534ca55457fe69644c0, type: 2}
-  gun: {fileID: 0}
   health: 0
   target: {fileID: 0}
   rb: {fileID: 0}
+  playerAlive: 1
   left: 1
   distance: 0
+  enemyObject: {fileID: 11400000, guid: f4bbeeb62368d534ca55457fe69644c0, type: 2}
+  gun: {fileID: 0}
   baseDead: 0
   following: 0
 --- !u!1 &2113269735584813887
@@ -1300,13 +1305,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2db9afe9a0cde64b83eaa0440ef22aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyObject: {fileID: 11400000, guid: f4bbeeb62368d534ca55457fe69644c0, type: 2}
-  gun: {fileID: 0}
   health: 0
   target: {fileID: 0}
   rb: {fileID: 0}
+  playerAlive: 1
   left: 1
   distance: 0
+  enemyObject: {fileID: 11400000, guid: f4bbeeb62368d534ca55457fe69644c0, type: 2}
+  gun: {fileID: 0}
   baseDead: 0
   following: 0
 --- !u!58 &2113269736375681613
@@ -1419,13 +1425,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2db9afe9a0cde64b83eaa0440ef22aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyObject: {fileID: 11400000, guid: f4bbeeb62368d534ca55457fe69644c0, type: 2}
-  gun: {fileID: 0}
   health: 0
   target: {fileID: 0}
   rb: {fileID: 0}
+  playerAlive: 1
   left: 1
   distance: 0
+  enemyObject: {fileID: 11400000, guid: f4bbeeb62368d534ca55457fe69644c0, type: 2}
+  gun: {fileID: 0}
   baseDead: 0
   following: 0
 --- !u!58 &2113269736633050242

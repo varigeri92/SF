@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc2f0d79ac013496999b9e162d091fc1, type: 3}
+  m_Name: Upgrade_Default_Gun_6
+  m_EditorClassIdentifier: 
+  required: {fileID: 11400000, guid: 6a07f5193760142439e7791274d04c7d, type: 2}
+  requireLevel: 10
+  upgraded: 0
+  icon: {fileID: 21300000, guid: 2d7271979801e408bb7653591ca655b6, type: 3}
+  cost: 8
+  lvl: 6
+  tittleText: Rapid Fire
+  descriptionText: incresing the fire rate of your basic gun 0.5
+  upgradeType: 1
+  gunToUpgrade: {fileID: 11400000, guid: cb5fb1469e18841fb9766965f7802b4e, type: 2}
+  playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
+  upgradeProperty: 0
+  upgradeValue: 1
+  ItemToUnlock: {fileID: 0}
