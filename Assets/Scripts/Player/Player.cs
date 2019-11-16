@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
 
 	public TMPro.TMP_Text enemyCounterText;
 	public TMPro.TMP_Text AmmoText;
+	public TMPro.TMP_Text ultimateChargesValue_Text;
 	int enemyCounter = 0;
 
 	int activeGunAmmo;
@@ -102,6 +103,12 @@ public class Player : MonoBehaviour
 		SetBasicGun();
 		BasicEnemy.onEnemyDead += countEnemyes;
 		shieldText.text = health.ToString();
+
+		if(playerObject.normalPlayer){
+			GameObject.FindGameObjectWithTag("XPandLVL").SetActive(false);
+		}
+
+		SetPlayerUltimate();
 
 		if (OnPlayerLoaded != null)
 			OnPlayerLoaded();
@@ -392,6 +399,10 @@ public class Player : MonoBehaviour
 
     void LevelingProgress(int xp)
     {
+		if(playerObject.normalPlayer){
+			return;
+		}
+
         currentXp += xp;
         if(currentXp >= xpToNextLevel)
         {
@@ -415,5 +426,24 @@ public class Player : MonoBehaviour
             xpFillImage.fillAmount = progress;
         }
     }
+
+	void SetPlayerUltimate(){
+		Transform t = GameObject.FindGameObjectWithTag("UltimatePanel").transform;
+		Transform ultimateContainer = t.GetChild(0);
+
+		if(playerObject.ultimate == null)
+		{
+			t.gameObject.SetActive(false);
+		}
+		else
+		{
+			if(abilityAtachPoint.childCount > 0 ){
+				Destroy(abilityAtachPoint.GetChild(0).gameObject);
+			}
+			GameObject go = Instantiate(playerObject.ultimate, abilityAtachPoint);
+			ability = go.GetComponent<Ability>();
+			Instantiate(playerObject.ultimateIcon, ultimateContainer);
+		}
+	}
 
 }

@@ -10,6 +10,11 @@ public class PlayerProgress : MonoBehaviour
 
 	public int powerCoresThisLevel;
 
+	public PlayerObject playerObject;
+
+	public delegate void CorePickedUp();
+	public static event CorePickedUp OnCorePickedUp;
+
 	private static PlayerProgress instance;
 	public static PlayerProgress Instance {
 		get { return instance; }
@@ -28,9 +33,12 @@ public class PlayerProgress : MonoBehaviour
 
 	public void PickUpPowerCore(){
 		powerCoresThisLevel++;
+		if (OnCorePickedUp != null)
+			OnCorePickedUp();
 	}
 
 	public void levelCompleted(){
 		powerCoresCollected += powerCoresThisLevel;
+		playerObject.powerCores += powerCoresThisLevel;
 	}
 }

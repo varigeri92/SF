@@ -116,28 +116,70 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 		if(available && !buttonObject.upgraded){
 			switch(buttonObject.upgradeType){
 				case UpgradeType.PlayerUpgrade :
-					if(buttonObject.upgradeProperty == UpgradeProperty.Health){
-						buttonObject.playerObject.maxHealth += (int)buttonObject.upgradeValue;
-						OnUpgrade();
+
+					switch (buttonObject.upgradeProperty) {
+						case UpgradeProperty.Health:
+							buttonObject.playerObject.maxHealth += (int)buttonObject.upgradeValue;
+							break;
+						case UpgradeProperty.Speed:
+							buttonObject.playerObject.speed += buttonObject.upgradeValue;
+							break;
+						case UpgradeProperty.BoostDuration:
+							buttonObject.playerObject.boostDecSpeed -= buttonObject.upgradeValue;
+							break;
+						case UpgradeProperty.BoostRefill:
+							buttonObject.playerObject.boostFillSpeed += buttonObject.upgradeValue;
+							break;
+						default:
+							break;
 					}
+					OnUpgrade();
 					break;
 				case UpgradeType.GunUpgrade:
 
 					if (buttonObject.upgradeProperty == UpgradeProperty.Damage) {
 						buttonObject.gunToUpgrade.damage += (int)buttonObject.upgradeValue;
-						OnUpgrade();
 					}else if(buttonObject.upgradeProperty == UpgradeProperty.FireRate){
 						buttonObject.gunToUpgrade.fireRate += buttonObject.upgradeValue;
-						OnUpgrade();
+					}else if(buttonObject.upgradeProperty == UpgradeProperty.Ammo){
+						buttonObject.gunToUpgrade.maxAmmo += (int)buttonObject.upgradeValue;
+						buttonObject.gunToUpgrade.startingAmmo += (int)buttonObject.upgradeValue;
 					}
+					OnUpgrade();
 
 					break;
 				case UpgradeType.Ultimate:
-					
+
+					switch (buttonObject.ultimateUpgrade) {
+						case UltimateUpgrade.Damage:
+							buttonObject.ultimateToUpgrade.damage += (int)buttonObject.upgradeValue;
+							break;
+						case UltimateUpgrade.Charges:
+							buttonObject.ultimateToUpgrade.charges += (int)buttonObject.upgradeValue;
+							break;
+						case UltimateUpgrade.Duration:
+							buttonObject.ultimateToUpgrade.duration += buttonObject.upgradeValue;
+							break;
+						default:
+							Debug.Log("This UltimateProperty-Type is not implemented in this switch state!");
+							return;
+					}
+					OnUpgrade();
 					break;
 
 				case UpgradeType.ItemUnlock:
-					buttonObject.playerObject.availableGuns.Add(buttonObject.ItemToUnlock);
+					switch (buttonObject.unlockableType) {
+						case UnlockableType.Gun:
+							buttonObject.playerObject.availableGuns.Add(buttonObject.ItemToUnlock);
+							break;
+						case UnlockableType. Ultimate:
+							buttonObject.playerObject.ultimates.Add(buttonObject.ItemToUnlock);
+							break;
+						default:
+							Debug.Log("This Unlockable Type is not implemented in this switch state!");
+							return;
+
+					}
 					OnUpgrade();
 					break;
 					

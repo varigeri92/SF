@@ -17,6 +17,8 @@ TagManager:
   - WorkshopUI
   - PIUI
   - EnemySpawner
+  - UltimatePanel
+  - XPandLVL
   layers:
   - Default
   - TransparentFX

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingAmmo: -999
   maxAmmo: 1
-  fireRate: 8
+  fireRate: 6
   damage: 1

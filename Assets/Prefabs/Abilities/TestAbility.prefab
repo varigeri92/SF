@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8208284371772337586}
   - component: {fileID: 5104538932216428405}
+  - component: {fileID: 6673496471432658238}
   m_Layer: 0
   m_Name: TestAbility
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,3 +46,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 668f07dac85c54532b021a618789f131, type: 2}
   charges: 0
+  collider: {fileID: 6673496471432658238}
+  radius: 100
+  raiseRate: 100
+  Sucess: IZI GG
+--- !u!58 &6673496471432658238
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3223577173500042657}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.0001

@@ -38,6 +38,18 @@ public class LevelManager : MonoBehaviour
 	public bool bossLevel = false;
 	public GameObject bossInThisLevel;
 
+
+	[Header("Level Statistics:")]
+	public int enemyCount;
+	public TMPro.TMP_Text completedEnemyCount;
+
+	public int cores;
+	public TMPro.TMP_Text coresCollected;
+
+	public TMPro.TMP_Text levelTime;
+
+	float timestamp;
+
 	bool bossSpawned = false;
 	private void Awake()
 	{
@@ -52,7 +64,10 @@ public class LevelManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		enemyCount = 0;
 		Instantiate(playerPrefab, new Vector3(0, -4.35f, 0), Quaternion.identity);
+		timestamp = Time.time;
+		Debug.Log(timestamp);
 	}
 
 	// Update is called once per frame
@@ -87,6 +102,7 @@ public class LevelManager : MonoBehaviour
 
 	public void EnemyDestroyed()
 	{
+		enemyCount++;
 		enemiesLeft--;
 		if (enemiesLeft <= 0) {
 			enemiesLeft = 0;
@@ -116,6 +132,14 @@ public class LevelManager : MonoBehaviour
 		if (OnLevelCompleted != null && !endlessLevel)
 			OnLevelCompleted();
 		SelectedLevel.Instance.CompletteLevel();
+		PlayerProgress.Instance.levelCompleted();
+		float time = Time.time - timestamp;
+		Debug.Log(time);
+		int minutes = Mathf.FloorToInt(time/60);
+		int secounds = Mathf.FloorToInt(time - minutes * 60);
+		levelTime.text = minutes.ToString("00") + " : " + secounds.ToString("00");
+		completedEnemyCount.text = enemyCount.ToString();
+		coresCollected.text = PlayerProgress.Instance.powerCoresThisLevel.ToString();
 	}
 
 	public void StartBossPhase()

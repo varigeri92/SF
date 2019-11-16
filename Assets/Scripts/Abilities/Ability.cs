@@ -10,9 +10,13 @@ public class Ability : MonoBehaviour
 	[HideInInspector]
 	public int charges;
 
+	public TMPro.TMP_Text chargesText;
+
 	private void Start()
 	{
 		charges = ability.charges;
+		chargesText = GameObject.FindGameObjectWithTag("UltimatePanel").transform.Find("Charges_Value").GetComponent<TMPro.TMP_Text>();
+		chargesText.text = charges.ToString();
 	}
 
 	public virtual void FireAbility(){

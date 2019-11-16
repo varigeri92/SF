@@ -18,12 +18,15 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e8c10e00776b245b6acebde609cf2a9c, type: 3}
   cost: 9
   lvl: 2
-  tittleText: Laser Beam Gun
-  descriptionText: Unlocks the Laser Beam Gun
-  upgradeType: 1
+  tittleText: Big BANG!
+  descriptionText: "Increases the damage of your \nShockwave ability by 10"
+  upgradeType: 2
   gunToUpgrade: {fileID: 11400000, guid: 0bb9c0b947d374a4b936d1e756ccec1a, type: 2}
   playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
+  ultimateToUpgrade: {fileID: 0}
+  ultimateUpgrade: 2
+  unlockableType: 0
   upgradeProperty: 0
-  upgradeValue: 1
+  upgradeValue: 10
   ItemToUnlock: {fileID: 6299240627127540184, guid: a34ae7d6be54146e19fb679962dc5922,
     type: 3}

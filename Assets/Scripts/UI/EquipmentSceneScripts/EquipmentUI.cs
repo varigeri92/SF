@@ -27,6 +27,8 @@ public class EquipmentUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	[Header("Asing by 'Ultimates' only:")]
 	public GameObject ultimatePrefab;
 
+	//public GameObject ultimateIcon;
+
 
 	// Start is called before the first frame update
 	void Start()

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788c135ccfdc343d8a6cfc00e4f71d7e, type: 3}
   m_Name: TestAbility
   m_EditorClassIdentifier: 
-  damage: 1
-  charges: 3
+  damage: 10
+  charges: 100
   effect: {fileID: 6902086893590359385, guid: 6d38b1bc820013245b8ab68c9f281e3c, type: 3}
+  icon: {fileID: 4924151775312362546, guid: 0616fc3f907be46f38b60a8fdb164447, type: 3}

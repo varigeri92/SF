@@ -18,12 +18,17 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 474dc8848efe14becb2438efeaab6279, type: 3}
   cost: 9
   lvl: 0
-  tittleText: Laser Beam Gun
-  descriptionText: Unlocks the Laser Beam Gun
+  tittleText: biger bumm
+  descriptionText: 'Increses damage of your Bomb Gun by
+
+    2'
   upgradeType: 1
-  gunToUpgrade: {fileID: 11400000, guid: 0bb9c0b947d374a4b936d1e756ccec1a, type: 2}
+  gunToUpgrade: {fileID: 11400000, guid: 6d41e4c8718ae4063832824311979810, type: 2}
   playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
+  ultimateToUpgrade: {fileID: 0}
+  ultimateUpgrade: 2
+  unlockableType: 0
   upgradeProperty: 0
-  upgradeValue: 1
+  upgradeValue: 2
   ItemToUnlock: {fileID: 6299240627127540184, guid: a34ae7d6be54146e19fb679962dc5922,
     type: 3}

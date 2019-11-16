@@ -8,12 +8,21 @@ public class UltimateSelector : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
 	GameObject icon;
 	GameObject abilityPrefab;
-
+	public PlayerObject playerObject;
 
 	GameObject selectedAbility;
 
 	[SerializeField]
 	bool isPointerOver;
+
+
+	private void Start()
+	{
+		if (playerObject.ultimateIcon != null) {
+			Instantiate(playerObject.ultimateIcon, transform);
+			selectedAbility = playerObject.ultimate;
+		}
+	}
 
 	private void Update()
 	{
@@ -48,6 +57,9 @@ public class UltimateSelector : MonoBehaviour, IPointerEnterHandler, IPointerExi
 		if (icon != null){
 			Instantiate(icon, transform);
 			selectedAbility = abilityPrefab;
+			playerObject.ultimate = selectedAbility;
+			playerObject.ultimateIcon = selectedAbility.GetComponent<Ability>().ability.icon;
+
 		}
 	}
 
