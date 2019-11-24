@@ -15,4 +15,4 @@ MonoBehaviour:
   startingAmmo: -999
   maxAmmo: -999
   fireRate: 2
-  damage: 2
+  damage: 3

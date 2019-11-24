@@ -19,10 +19,13 @@ MonoBehaviour:
   cost: 2
   lvl: 0
   tittleText: Double Gun
-  descriptionText: Geting the Double Laser Shooter!
-  upgradeType: 0
+  descriptionText: +2 bonus damage for the double gun
+  upgradeType: 1
   gunToUpgrade: {fileID: 11400000, guid: cd596ad9e1f3d408cbcf9e85d2c1d348, type: 2}
   playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
-  upgradeProperty: 2
-  upgradeValue: 5
+  ultimateToUpgrade: {fileID: 0}
+  ultimateUpgrade: 0
+  unlockableType: 0
+  upgradeProperty: 0
+  upgradeValue: 2
   ItemToUnlock: {fileID: 0}

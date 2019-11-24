@@ -19,10 +19,13 @@ MonoBehaviour:
   cost: 9
   lvl: 2
   tittleText: Speed Upgrade
-  descriptionText: +2 Boost speed!
+  descriptionText: Your boost least Longer!
   upgradeType: 0
   gunToUpgrade: {fileID: 0}
   playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
-  upgradeProperty: 2
-  upgradeValue: 2
+  ultimateToUpgrade: {fileID: 0}
+  ultimateUpgrade: 0
+  unlockableType: 0
+  upgradeProperty: 5
+  upgradeValue: 0.2
   ItemToUnlock: {fileID: 0}

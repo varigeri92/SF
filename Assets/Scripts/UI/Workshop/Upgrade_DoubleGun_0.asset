@@ -18,11 +18,14 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 30925f05ae244d9479af7be805333b61, type: 3}
   cost: 2
   lvl: 0
-  tittleText: Double Gun
+  tittleText: Double the Action
   descriptionText: Unlocks the Double Gun
   upgradeType: 3
   gunToUpgrade: {fileID: 11400000, guid: cd596ad9e1f3d408cbcf9e85d2c1d348, type: 2}
   playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
+  ultimateToUpgrade: {fileID: 0}
+  ultimateUpgrade: 0
+  unlockableType: 0
   upgradeProperty: 3
   upgradeValue: 0
   ItemToUnlock: {fileID: 3490590457121529502, guid: a871043da041d4bed8f6bdd5c3f79fbf,
