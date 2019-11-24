@@ -16,7 +16,7 @@ MonoBehaviour:
   speed: 3
   boostFillSpeed: 0.2
   boostDecSpeed: 0.5
-  powerCores: 4
+  powerCores: 2
   level: 1
   normalPlayer: 1
   inventoryGuns:
@@ -34,5 +34,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 1685238137071351133, guid: f0c1e7369a92ee749b850e5599a3cdbc, type: 3}
   - {fileID: 1615196254142962, guid: 786e4e89b7be7470294772dd4e74de66, type: 3}
-  ultimate: {fileID: 0}
-  ultimateIcon: {fileID: 0}
+  ultimates: []
+  ultimate: {fileID: 3223577173500042657, guid: 8f1ff8ab4dfb14e3d8c87fe02e369c46,
+    type: 3}
+  ultimateIcon: {fileID: 4924151775312362546, guid: 0616fc3f907be46f38b60a8fdb164447,
+    type: 3}
