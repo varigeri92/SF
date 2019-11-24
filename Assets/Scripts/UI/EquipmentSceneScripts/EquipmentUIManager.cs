@@ -36,6 +36,8 @@ public class EquipmentUIManager : MonoBehaviour
 
 	private bool initialize = true;
 
+	public bool isMouseoverSlot = false;
+
 	bool isGun = true;
 
 	// Start is called before the first frame update
@@ -55,6 +57,13 @@ public class EquipmentUIManager : MonoBehaviour
     {
         
     }
+	public void HoverEnter(){
+		isMouseoverSlot = true;
+	}
+
+	public void HoverExit(){
+		isMouseoverSlot = false;
+	}
 
 	private void LoadUnlockedItems()
 	{
@@ -77,6 +86,7 @@ public class EquipmentUIManager : MonoBehaviour
 	}
 
 	public void SelectSlot(string slotName){
+		isMouseoverSlot = true;
 		SetGun(selectedGun, gunIcon, slotName, ammoToSpawn);
 
 	}
@@ -96,6 +106,9 @@ public class EquipmentUIManager : MonoBehaviour
 
 	public void SetGun(GameObject gun, GameObject icon, string slotName, GameObject _ammoToSpawn)
 	{
+		if(gun == null){
+			return;
+		}
 		if(!isGun){
 			return;
 		}

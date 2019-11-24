@@ -23,6 +23,9 @@ MonoBehaviour:
   upgradeType: 1
   gunToUpgrade: {fileID: 11400000, guid: cb5fb1469e18841fb9766965f7802b4e, type: 2}
   playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
+  ultimateToUpgrade: {fileID: 0}
+  ultimateUpgrade: 0
+  unlockableType: 0
   upgradeProperty: 0
   upgradeValue: 1
   ItemToUnlock: {fileID: 0}

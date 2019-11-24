@@ -27,6 +27,10 @@ public class EquipmentUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	[Header("Asing by 'Ultimates' only:")]
 	public GameObject ultimatePrefab;
 
+	Vector2 positionOnDragbegin;
+	Vector2 psitionOnDragEnd;
+	CanvasGroup canvasGroup;
+
 	//public GameObject ultimateIcon;
 
 
@@ -40,6 +44,8 @@ public class EquipmentUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 		equipmentUIManager = canvas.GetComponent<EquipmentUIManager>();
 
 		ultimateSelector = canvas.GetComponentInChildren<UltimateSelector>();
+
+		canvasGroup = mouseDragIcon.GetComponent<CanvasGroup>();
     }
 
     // Update is called once per frame
@@ -52,15 +58,40 @@ public class EquipmentUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	public void OnPointerDown(PointerEventData eventData)
 	{
 		mouseDragIcon.SetData(transform.Find("Icon").GetComponent<UnityEngine.UI.Image>().sprite);
-		mouseDragIcon.GetComponent<CanvasGroup>().alpha = 1;
-		equipmentUIManager.BeginDrag(gun, icon, ammoToSpawn, isGun);
-		ultimateSelector.SetSelectionOnDragBegin(icon, ultimatePrefab, isGun);
+		canvasGroup.alpha = 1;
+		positionOnDragbegin = Input.mousePosition;
+		if(isGun){
+			equipmentUIManager.BeginDrag(gun, icon, ammoToSpawn, isGun);
+		}else{
+			ultimateSelector.SetSelectionOnDragBegin(transform.Find("Icon").gameObject, ultimatePrefab, isGun);
+		}
 	}
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
-		mouseDragIcon.GetComponent<CanvasGroup>().alpha = 0;
+		if(equipmentUIManager.isMouseoverSlot){
+			mouseDragIcon.GetComponent<CanvasGroup>().alpha = 0;
+		}else{
+			psitionOnDragEnd = mouseDragIcon.transform.position;
+			Debug.Log("Hello");
+			StartCoroutine(DragCanceled());
+		}
+
 	}
 
+	IEnumerator DragCanceled(){
+		float alpha = 1;
+		float speed = 1f;
+		while(alpha > 0.3){
+			alpha -= 5f * Time.deltaTime;
+			speed -= Time.deltaTime;
+			canvasGroup.alpha = alpha;
+			mouseDragIcon.transform.position = Vector2.Lerp(positionOnDragbegin, psitionOnDragEnd, alpha * 0.7f * speed);
+			yield return null;
+		}
+		equipmentUIManager.CancelDrag();
+		alpha = 0;
+		canvasGroup.alpha = alpha;
+	}
 
 }

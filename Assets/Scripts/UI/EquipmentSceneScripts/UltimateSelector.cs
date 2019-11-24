@@ -50,16 +50,16 @@ public class UltimateSelector : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
 	public void SetUltimate()
 	{
-		if(transform.childCount > 0){
-			Destroy(transform.GetChild(0).gameObject);
-		}
+
 
 		if (icon != null){
+			if (transform.childCount > 0) {
+				Destroy(transform.GetChild(0).gameObject);
+			}
 			Instantiate(icon, transform);
 			selectedAbility = abilityPrefab;
 			playerObject.ultimate = selectedAbility;
 			playerObject.ultimateIcon = selectedAbility.GetComponent<Ability>().ability.icon;
-
 		}
 	}
 
