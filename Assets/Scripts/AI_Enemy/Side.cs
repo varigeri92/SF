@@ -9,7 +9,7 @@ public class Side : BasicEnemy
     public bool baseDead = false;
     public bool following;
 
-    float movetime = 1.5f;
+    float movetime = 0.5f;
 
     FourSideEnemy center;
     
@@ -38,6 +38,8 @@ public class Side : BasicEnemy
             if (center.Sides.Count == 0)
             {
                 center.Die();
+				Debug.Log("Boss Destroyed!!");
+				GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().BossDestroyed();
             }
         }
 

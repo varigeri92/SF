@@ -22,11 +22,17 @@ public class LevelSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		bool isNextAvailable = true;
 		foreach (LevelObject level in levels){
 			levelPrefab.transform.Find("BG_Image").GetComponent<UnityEngine.UI.Image>().sprite = level.backgroundImage;
 			levelPrefab.GetComponent<LevelCard>().level = level;
 			Image levelImage = levelPrefab.GetComponent<Image>();
 			levelImage.color = lockedColor;
+
+			if(isNextAvailable){
+				level.available = true;
+				isNextAvailable = false;
+			}
 
 			if(level.available){
 				levelImage.color = availableColor;
@@ -34,6 +40,7 @@ public class LevelSelect : MonoBehaviour
 
 			if(level.completed){
 				levelImage.color = completteColor;
+				isNextAvailable = true;
 			}
 
 			Instantiate(levelPrefab, Content.transform);

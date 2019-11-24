@@ -71,5 +71,12 @@ public class SelectedLevel : MonoBehaviour
 		
 	}
 
+	public bool IsBossLevel(){
+		return level.bossLevel;
+	}
+
+	public void CompletteLevel(){
+		level.completed = true;
+	}
 
 }

@@ -76,6 +76,7 @@ public class EnemySpawner : MonoBehaviour {
 	void Spawn(){
 
 		if(spawnedEnemies == enemiesToSpawn){
+			Debug.Log("All the enemyes are spawned!!");
 			return;
 		}
 
@@ -102,6 +103,21 @@ public class EnemySpawner : MonoBehaviour {
 		lastrandomindex = rand;
 		spawnedEnemies++;
 		GameObject go = Instantiate(enemyes[enemyToSpawn], points[rand].position, points[rand].transform.rotation);
+		spawnedEnemyes.Add(go.GetComponent<BasicEnemy>());
+	}
+
+	public void SpawnBoss(GameObject boss){
+		int rand = Random.Range(0, points.Count);
+		if (rand == lastrandomindex) {
+			if (rand == 0) {
+				rand++;
+			} else if (rand == points.Count - 1) {
+				rand--;
+			} else {
+				rand++;
+			}
+		}
+		GameObject go = Instantiate(boss, points[rand].position, points[rand].transform.rotation);
 		spawnedEnemyes.Add(go.GetComponent<BasicEnemy>());
 	}
 

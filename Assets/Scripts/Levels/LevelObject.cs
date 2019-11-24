@@ -18,6 +18,7 @@ public class LevelObject : ScriptableObject
 	public List<GameObject> obstacles;
 	public List<GameObject> powerups;
 
+	public bool bossLevel;
 	public float timeToBoss;
 
 	public int starsToSpawn;

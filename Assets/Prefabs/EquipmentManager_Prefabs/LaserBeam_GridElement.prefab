@@ -65,7 +65,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 2fbd103904dce48148c82e347d7f61c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aade5e4d9f81c4f22a90cf3bdb10a1bc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -243,3 +243,5 @@ MonoBehaviour:
   equipmentUIManager: {fileID: 0}
   icon: {fileID: 226233719831200884, guid: d8301fd8d162cb346bc0d01cf631d0c1, type: 3}
   gun: {fileID: 1458455220, guid: 4629d1b0812f4a6449b40d59b8550638, type: 3}
+  ammoToSpawn: {fileID: 1685238137071351133, guid: f0c1e7369a92ee749b850e5599a3cdbc,
+    type: 3}

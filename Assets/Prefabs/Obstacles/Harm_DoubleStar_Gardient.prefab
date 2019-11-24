@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 50422627618924898}
   m_Layer: 14
   m_Name: Harm_DoubleStar_Gardient
-  m_TagString: Projectile
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,9 +110,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d970e295acbc04b7ab7bf1fa65022bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
+  target: {fileID: 0}
+  rb: {fileID: 0}
+  playerAlive: 1
+  left: 1
+  distance: 0
   lifetime: 30
   dmg: 1
-  health: 1
+  obstacleObject: {fileID: 11400000, guid: a53f0acf1587e4b6fb9db983aedd9b82, type: 2}
   FX: {fileID: 502243484622872339, guid: 66e8a3e2154af5a4cbc96cf37bac2050, type: 3}
 --- !u!50 &50422627618924898
 Rigidbody2D:

@@ -12,9 +12,19 @@ public class PlayerObject : ScriptableObject{
 	public int powerCores;
 	public int level;
 
+	public bool normalPlayer = true;
+
 	public List<GameObject> inventoryGuns;
 	public List<GameObject> inventoryIcons;
 
 	public List<GameObject> availableGuns;
+
+	public List<GameObject> AmmoToSpawn;
+
+	public List<GameObject> ultimates;
+
+	public GameObject ultimate;
+	public GameObject ultimateIcon;
+
 
 }

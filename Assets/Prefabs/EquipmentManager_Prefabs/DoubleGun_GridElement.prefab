@@ -243,3 +243,5 @@ MonoBehaviour:
   equipmentUIManager: {fileID: 0}
   icon: {fileID: 1974288720584050, guid: 31021c9bfc6e7488c883360341a2e95c, type: 3}
   gun: {fileID: 1897131634571996, guid: de7c98b5b00e347aa99245b0a301a164, type: 3}
+  ammoToSpawn: {fileID: 1615196254142962, guid: 786e4e89b7be7470294772dd4e74de66,
+    type: 3}

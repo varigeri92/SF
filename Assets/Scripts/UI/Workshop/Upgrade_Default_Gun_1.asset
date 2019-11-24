@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   required: {fileID: 0}
   requireLevel: 3
-  upgraded: 1
-  icon: {fileID: 21300000, guid: c0c22478a9823492193b7feaa9a9bbfc, type: 3}
+  upgraded: 0
+  icon: {fileID: 21300000, guid: 2d7271979801e408bb7653591ca655b6, type: 3}
   cost: 1
   lvl: 1
   tittleText: Rapid Fire

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc2f0d79ac013496999b9e162d091fc1, type: 3}
+  m_Name: Upgrade_Ability_Shockwave_0
+  m_EditorClassIdentifier: 
+  required: {fileID: 0}
+  requireLevel: 14
+  upgraded: 0
+  icon: {fileID: 21300000, guid: e8c10e00776b245b6acebde609cf2a9c, type: 3}
+  cost: 9
+  lvl: 0
+  tittleText: Shockwave
+  descriptionText: "Unlocks the Shockwave \nUltimate ability"
+  upgradeType: 3
+  gunToUpgrade: {fileID: 0}
+  playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
+  ultimateToUpgrade: {fileID: 0}
+  ultimateUpgrade: 0
+  unlockableType: 0
+  upgradeProperty: 0
+  upgradeValue: 1
+  ItemToUnlock: {fileID: 3223577173500042657, guid: c029ad4ee000a4f07acffd974f1e64ea,
+    type: 3}

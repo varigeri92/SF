@@ -7,5 +7,7 @@ public class Abilit_Object : ScriptableObject
 {
 	public int damage;
 	public int charges;
+	public float duration;
 	public GameObject effect;
+	public GameObject icon;
 }

@@ -42,6 +42,9 @@ public class ObstacleSpawner : MonoBehaviour {
 				}
 			}
 
+			SpawnObs();
+
+
 			timer = 0;
 		}
 	}
@@ -51,11 +54,16 @@ public class ObstacleSpawner : MonoBehaviour {
 		{
 			int rnd = Random.Range(0,spawnPoints.Count);
 			int rndObstacle = Random.Range(0, obstacles.Count);
-			GameObject go = Instantiate(obstacles[rndObstacle],spawnPoints[rnd].position,Quaternion.Euler(Vector3.down));
-			Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
+			GameObject go = Instantiate(obstacles[rndObstacle],spawnPoints[rnd].position,Quaternion.identity);
+			// Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
 			int rnd2 = Random.Range(0, targets.Count);
-			float frnd = Random.Range(forceMin, forceMax);
-			rb.AddForce((targets[rnd2].position - spawnPoints[rnd].position) * frnd, ForceMode2D.Impulse);
+
+			Vector3 dir =  targets[rnd2].position - go.transform.position;
+			float angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
+			go.transform.rotation = Quaternion.AngleAxis(angle, Vector3.back);
+
+			// float frnd = Random.Range(forceMin, forceMax);
+			// rb.AddForce((targets[rnd2].position - spawnPoints[rnd].position) * frnd, ForceMode2D.Impulse);
 		}
 	}
 

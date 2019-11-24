@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Double_Gun
   m_EditorClassIdentifier: 
   startingAmmo: 200
-  maxAmmo: 500
+  maxAmmo: 350
   fireRate: 6
-  damage: 1
+  damage: 2

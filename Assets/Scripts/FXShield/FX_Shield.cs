@@ -111,7 +111,7 @@ public class FX_Shield : MonoBehaviour {
         {
             ShieldHit();
 			if(otherGo.CompareTag("Enemy")){
-				otherGo.GetComponent<BasicEnemy>().Die();
+				otherGo.GetComponent<Enemy>().Die();
 			}else{
 				Destroy(otherGo);
 			}
