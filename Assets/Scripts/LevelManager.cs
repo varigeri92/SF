@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
 	public UnityEngine.UI.Image turboBar;
 	public TMPro.TMP_Text shieldText;
 	public GameObject dieText;
-	public InputManager inputManager;
+	// public InputManager inputManager;
 	public InventorySelector inventorySelector;
 	public GameObject radialInventory;
 
@@ -91,7 +91,7 @@ public class LevelManager : MonoBehaviour
 		player.turboBar = turboBar;
 		player.shieldText = shieldText;
 		player.dieText = dieText;
-		player.inputManager = inputManager;
+		// player.inputManager = inputManager;
 		player.inventorySelector = inventorySelector;
 		player.radialInventory = radialInventory;
 

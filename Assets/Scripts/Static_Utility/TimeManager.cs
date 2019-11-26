@@ -17,26 +17,30 @@ public class TimeManager : MonoBehaviour
 		// player = GameObject.FindGameObjectWithTag("Player").transform;
         NormalizeTime();
 		Player.OnPlayerLoaded += Player_OnPlayerLoaded;
+        InputManager.OnInventoryButtonPressed += OpenInventory;
+        InputManager.OnInventoryButtonReleased += CloseInventory;
+    }
 
-	}
+    void OpenInventory()
+    {
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+        SlowTime(0.02f);
+        playerPos = (Vector2)Camera.main.WorldToScreenPoint(player.position);
+        inventoryUI.OpenMenu(playerPos);
+    }
+
+    void CloseInventory()
+    {
+        NormalizeTime();
+        inventoryUI.CloseMenu();
+    }
 
 
 	void Update () {
-		if(player == null){
-			player = GameObject.FindGameObjectWithTag("Player").transform;
-		}
 
-		if(Input.GetKeyDown(KeyCode.LeftShift))
-		{
-            SlowTime(0.02f);
-            playerPos = (Vector2)Camera.main.WorldToScreenPoint(player.position);
-            inventoryUI.OpenMenu(playerPos);
-		}
-		else if (Input.GetKeyUp(KeyCode.LeftShift))
-		{
-            NormalizeTime();
-            inventoryUI.CloseMenu();
-        }
 	}
 
     public void SlowTime(float timeScale)
@@ -84,5 +88,7 @@ public class TimeManager : MonoBehaviour
 	{
 		Player.OnPlayerLoaded -= Player_OnPlayerLoaded;
 		LevelManager.OnLevelCompleted -= SlowTime;
-	}
+        InputManager.OnInventoryButtonPressed -= OpenInventory;
+        InputManager.OnInventoryButtonReleased -= CloseInventory;
+    }
 }

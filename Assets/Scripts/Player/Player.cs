@@ -82,10 +82,9 @@ public class Player : MonoBehaviour
 
 	public bool jetMode;
 
-	public InputManager inputManager;
 	public float lookSpeed;
 
-	public bool useController;
+	// public bool useController;
 
 	public InventorySelector inventorySelector;
 	public GameObject radialInventory;
@@ -96,8 +95,27 @@ public class Player : MonoBehaviour
 	{
 		health = playerObject.maxHealth;
 		inventorySelector = GameObject.FindGameObjectWithTag("LOGIC").GetComponentInChildren<InventorySelector>();
-	}
-	void Start()
+        InputManager.OnStart();
+
+        InputManager.OnShootButtonPresed += ShootEvent;
+        InputManager.OnShootButtonreleased += StopShoot; 
+        InputManager.OnUltimateButtonPressed += UseAbility;
+        InputManager.OnBoostButtonPressed += StartTurbo;
+        InputManager.OnBoostButtonReleased += StopTurbo;
+
+    }
+
+    void onDestroy()
+    {
+        BasicEnemy.onEnemyDead -= countEnemyes;
+        InputManager.OnShootButtonPresed -= ShootEvent;
+        InputManager.OnShootButtonreleased -= StopShoot;
+        InputManager.OnUltimateButtonPressed -= UseAbility;
+        InputManager.OnBoostButtonPressed -= StartTurbo;
+        InputManager.OnBoostButtonReleased -= StopTurbo;
+    }
+
+    void Start()
 	{
 		GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().OnPlayerLoaded(this);
 		SetBasicGun();
@@ -110,20 +128,17 @@ public class Player : MonoBehaviour
 
 		SetPlayerUltimate();
 
+        speed = playerObject.speed;
+        _moveSpeed = playerObject.speed;
+
 		if (OnPlayerLoaded != null)
 			OnPlayerLoaded();
-
 	}
 
 	void countEnemyes(BasicEnemy enemy)
 	{
 		enemyCounter++;
 		LevelingProgress(enemy.enemyObject.xp);
-	}
-
-	void onDestroy()
-	{
-		BasicEnemy.onEnemyDead -= countEnemyes;
 	}
 
 	void UseAbility(){
@@ -156,41 +171,48 @@ public class Player : MonoBehaviour
 
 	void Update()
 	{
+
 		if (gameSystemManager.isPaused) {
 			return;
 		}
 
-		if (useController) {
+        InputManager.OnUpdate();
+
+		if (InputManager.usingController) {
 			LookRightStick();
 		} else {
 			LookAtMouse();
 		}
 
-		horizontal = Input.GetAxis("Horizontal");
-		vertical = Input.GetAxis("Vertical");
+		Moove(InputManager.GetMovement());
 
-		if(Input.GetKeyDown(KeyCode.R)){
-			UseAbility();
-		}
+        if (!jetMode)
+        {
+            CountTurbo(playerObject.boostFillSpeed);
+        }
+        else 
+        {
+            CountTurbo(-playerObject.boostDecSpeed);
+        }
 
-		if (Input.GetButton("Jump") && allowTurbo) {
-			_moveSpeed = speed * 2;
-			CountTurbo(-playerObject.boostDecSpeed);
-			jetMode = true;
-		} else if (Input.GetButtonUp("Jump")) {
-			_moveSpeed = speed;
-			jetMode = false;
-		} else {
-			jetMode = false;
-			_moveSpeed = speed;
-			CountTurbo(playerObject.boostFillSpeed);
-		}
-
-		Vector3 direction = new Vector3(horizontal, vertical, 0);
-		Moove(direction);
-
-		Shoot();
 	}
+
+    void StartTurbo()
+    {
+        Debug.Log("START TURBO!!");
+        if (allowTurbo)
+        {
+           _moveSpeed = speed * 2;
+            jetMode = true;
+        }
+    }
+
+    void StopTurbo()
+    {
+        Debug.Log("STOP TURBO!!");
+        _moveSpeed = speed;
+        jetMode = false;
+    }
 
 	void CountTurbo(float mult)
 	{
@@ -253,6 +275,48 @@ public class Player : MonoBehaviour
 		}
 	}
 
+    void StopShoot()
+    {
+        Debug.Log("Stop_ShootingEvent");
+        foreach (Gun gun in activeGuns)
+        {
+            if (gun != null)
+            {
+
+                gun.StopShooting();
+            }
+            else
+            {
+                OnGunChanged();
+            }
+        }
+    }
+
+    void ShootEvent()
+    {
+        Debug.Log("ShootingEvent");
+        foreach (Gun gun in activeGuns)
+        {
+            if (gun != null)
+            {
+
+                gun.Shooting(true);
+                if (gun.ammo != -999)
+                {
+                    AmmoText.text = gun.ammo.ToString();
+                }
+                else
+                {
+                    AmmoText.text = "INFINITE";
+                }
+            }
+            else
+            {
+                OnGunChanged();
+            }
+        }
+    }
+
 	public void OnGunChanged()
 	{
 		activeGuns = new List<Gun>();
@@ -279,7 +343,7 @@ public class Player : MonoBehaviour
 
 	void LookAtMouse()
 	{
-		Vector3 dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+		Vector3 dir = (Vector3)InputManager.GetMousePosition() - Camera.main.WorldToScreenPoint(transform.position);
 		float angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.back);
 	}
@@ -287,9 +351,9 @@ public class Player : MonoBehaviour
 	void LookRightStick()
 	{
 		// float direction = inputManager.GetDirection().x * inputManager.GetDirection().y;
-		if (inputManager.GetDirection().x != 0f && inputManager.GetDirection().y != 0f) {
+		if (InputManager.GetDirection().x != 0f && InputManager.GetDirection().y != 0f) {
 
-			float angle = Mathf.Atan2(inputManager.GetDirection().x, inputManager.GetDirection().y) * Mathf.Rad2Deg;
+			float angle = Mathf.Atan2(InputManager.GetDirection().x, InputManager.GetDirection().y) * Mathf.Rad2Deg;
 
 			transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 		}

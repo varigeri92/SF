@@ -368,7 +368,7 @@ MonoBehaviour:
   projectileForce: 0
   mask:
     serializedVersion: 2
-    m_Bits: 26624
+    m_Bits: 59392
 --- !u!1 &1948889177
 GameObject:
   m_ObjectHideFlags: 0

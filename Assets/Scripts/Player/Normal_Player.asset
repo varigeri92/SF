@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Normal_Player
   m_EditorClassIdentifier: 
   maxHealth: 20
-  speed: 3
+  speed: 5
   boostFillSpeed: 0.2
   boostDecSpeed: 0.5
-  powerCores: 2
+  powerCores: 29
   level: 1
   normalPlayer: 1
   inventoryGuns:

@@ -74,7 +74,6 @@ public class LaserGun : Gun
 
     private void Shoot(bool isPlayer)
     {
-        Debug.Log(hitObject.name);
         if (hitObject != null)
         {
             if (hitObject.CompareTag("Enemy"))
