@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &2024509585
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615196254142962}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 142f615203d614c6b96c19c034b15a28, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1686200222007211183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15,12 +34,12 @@ PrefabInstance:
     - target: {fileID: 1690664383253245251, guid: f0c1e7369a92ee749b850e5599a3cdbc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.05
+      value: -8.254452
       objectReference: {fileID: 0}
     - target: {fileID: 1690664383253245251, guid: f0c1e7369a92ee749b850e5599a3cdbc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.026189
+      value: -0.32309294
       objectReference: {fileID: 0}
     - target: {fileID: 1690664383253245251, guid: f0c1e7369a92ee749b850e5599a3cdbc,
         type: 3}
@@ -89,11 +108,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.6188769
       objectReference: {fileID: 0}
-    - target: {fileID: 1690803731667757563, guid: f0c1e7369a92ee749b850e5599a3cdbc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1555205051422936149, guid: f0c1e7369a92ee749b850e5599a3cdbc,
         type: 3}
       propertyPath: m_Sprite
@@ -102,3 +116,9 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0c1e7369a92ee749b850e5599a3cdbc, type: 3}
+--- !u!1 &1615196254142962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1685238137071351133, guid: f0c1e7369a92ee749b850e5599a3cdbc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1686200222007211183}
+  m_PrefabAsset: {fileID: 0}

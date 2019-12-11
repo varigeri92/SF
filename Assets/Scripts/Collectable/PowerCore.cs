@@ -8,7 +8,7 @@ public class PowerCore : PowerUp
 
 	private void OnEnable()
 	{
-		StartCoroutine(StartCountDown());
+		// StartCoroutine(StartCountDown());
 	}
 
 	IEnumerator StartCountDown(){

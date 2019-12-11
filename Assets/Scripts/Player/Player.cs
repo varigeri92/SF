@@ -171,6 +171,9 @@ public class Player : MonoBehaviour
 
 	void Update()
 	{
+		if(Input.GetKeyDown(KeyCode.Q)){
+			UseAbility();
+		}
 
 		if (gameSystemManager.isPaused) {
 			return;

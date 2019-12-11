@@ -11,9 +11,14 @@ public class ProjectileBehaviour : MonoBehaviour {
     public GameObject explosionFX;
 	bool exploding = false;
 
+	public float spread = 1.5f;
+	//public bool isSpreading = false;
+
 	private void OnEnable()
 	{
 		StartCountdown();
+		Vector3 rot = transform.rotation.eulerAngles + new Vector3 (0,0,Random.Range(-spread, spread));
+		transform.rotation = Quaternion.Euler(rot);
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)
