@@ -838,6 +838,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
+  startingTime: 0
+  dampSpeed: 0.2
+  dampingDistance: 20
 --- !u!114 &57124516
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -44,24 +44,28 @@ public class Paralax : MonoBehaviour
 
 
 
-		if(cam.transform.position.x > horizontalBonds + camPosX){
-			camPosX += horizontalBonds;
+		if(cam.transform.position.x * Speed > horizontalBonds + camPosX){
+			// camPosX += horizontalBonds;
+			camPosX = cam.transform.position.x* Speed;
 			transform.localPosition = new Vector3(0, transform.localPosition.y, transform.localPosition.z);
 		}
 
-		if (cam.transform.position.x < camPosX - horizontalBonds) {
-			camPosX -= horizontalBonds;
+		if (cam.transform.position.x * Speed < camPosX - horizontalBonds) {
+			// camPosX -= horizontalBonds;
+			camPosX = cam.transform.position.x* Speed;
 			transform.localPosition = new Vector3(0, transform.localPosition.y, transform.localPosition.z);
 		}
 
 
-		if (cam.transform.position.y > verticalBounds + camPosY) {
-			camPosY += verticalBounds;
+		if (cam.transform.position.y * Speed > verticalBounds + camPosY) {
+			// camPosY += verticalBounds;
+			camPosY = cam.transform.position.y* Speed;
 			transform.localPosition = new Vector3(transform.localPosition.x, 0, transform.localPosition.z);
 		}
 
-		if (cam.transform.position.y < camPosY - verticalBounds) {
-			camPosY -= verticalBounds;
+		if (cam.transform.position.y * Speed < camPosY - verticalBounds) {
+			// camPosY -= verticalBounds;
+			camPosY = cam.transform.position.y* Speed;
 			transform.localPosition = new Vector3(transform.localPosition.x, 0, transform.localPosition.z);
 		}
 

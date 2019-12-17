@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2564e73f8fafa42f390d1c86e8d3195a, type: 3}
   m_Name: BasePlayer_REF
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 30
   speed: 3
   boostFillSpeed: 0.2
   boostDecSpeed: 0.5
   powerCores: 0
   level: 1
+  normalPlayer: 1
+  inventoryGuns: []
+  inventoryIcons: []
+  availableGuns: []
+  AmmoToSpawn: []
+  ultimates: []
+  ultimate: {fileID: 0}
+  ultimateIcon: {fileID: 0}
