@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
 	public delegate void LevelUp(int level);
 	public static event LevelUp OnLevelUp;
 
-
+	// public SaveObject saveObject;
+	// public PlayerStateObject playerStateObject;
 	public PlayerObject playerObject;
 	public GameSystemManager gameSystemManager;
 
@@ -32,6 +33,8 @@ public class Player : MonoBehaviour
 	//-----------------------------//
 	public PiUIManager piUIManager;
 	public PiUI piUI;
+
+
 
 	[SerializeField]
 	public Image xpFillImage;
@@ -93,6 +96,7 @@ public class Player : MonoBehaviour
 
 	void Awake()
 	{
+
 		health = playerObject.maxHealth;
 		inventorySelector = GameObject.FindGameObjectWithTag("LOGIC").GetComponentInChildren<InventorySelector>();
         InputManager.OnStart();
@@ -102,6 +106,15 @@ public class Player : MonoBehaviour
         InputManager.OnUltimateButtonPressed += UseAbility;
         InputManager.OnBoostButtonPressed += StartTurbo;
         InputManager.OnBoostButtonReleased += StopTurbo;
+
+		if(InputManager.usingController){
+			// piUI.useController = true;
+			Cursor.visible = false;
+		}
+
+
+		// SaveManager.SetSaveObject(saveObject, playerObject);
+		// SaveManager.SaveGamePlayerState();
 
     }
 

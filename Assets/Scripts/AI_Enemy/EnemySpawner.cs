@@ -13,6 +13,9 @@ public class EnemySpawner : MonoBehaviour {
 	public List<Transform> points = new List<Transform>();
 	public List<BasicEnemy> spawnedEnemyes = new List<BasicEnemy>();
 
+	[SerializeField]
+	private int maxEnemies = 10;
+
     public int playerLevel;
 
 	public int count;
@@ -74,6 +77,11 @@ public class EnemySpawner : MonoBehaviour {
 	}
 
 	void Spawn(){
+
+		if(spawnedEnemyes.Count >= maxEnemies){
+			Debug.Log("MAX ENEMY COUNT REACHED!");
+			return;
+		}
 
 		if(spawnedEnemies == enemiesToSpawn){
 			Debug.Log("All the enemyes are spawned!!");

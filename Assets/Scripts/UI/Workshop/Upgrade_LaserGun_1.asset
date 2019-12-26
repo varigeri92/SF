@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc2f0d79ac013496999b9e162d091fc1, type: 3}
   m_Name: Upgrade_LaserGun_1
   m_EditorClassIdentifier: 
-  required: {fileID: 11400000}
+  required: {fileID: 11400000, guid: c6c6f28f995ea41a09cd4e3802b0b644, type: 2}
   requireLevel: 14
   upgraded: 0
   icon: {fileID: 21300000, guid: aade5e4d9f81c4f22a90cf3bdb10a1bc, type: 3}

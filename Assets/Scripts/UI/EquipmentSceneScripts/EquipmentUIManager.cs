@@ -175,6 +175,7 @@ public class EquipmentUIManager : MonoBehaviour
 		playerObject.inventoryIcons = new List<GameObject>(icons);
 		playerObject.AmmoToSpawn = new List<GameObject>(ammos);
 
+		SaveManager.Instance.SetEquipedGunsToSave(guns);
 
 		UnityEngine.SceneManagement.SceneManager.LoadScene(2);
 	}

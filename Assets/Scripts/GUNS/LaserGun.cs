@@ -27,7 +27,7 @@ public class LaserGun : Gun
     }
     private void Update()
     {
-       
+		line.SetPosition(0, spawnPoint.transform.position);
     }
 
     public override void Shooting(bool isPlayer)
@@ -38,7 +38,7 @@ public class LaserGun : Gun
         {
             hitpoint = hit.point;
             Debug.DrawLine(spawnPoint.position, hit.point);
-            line.SetPosition(0, spawnPoint.transform.position);
+            //line.SetPosition(0, spawnPoint.transform.position);
             line.SetPosition(1, hitpoint);
             hitObject = hit.collider.gameObject;
             if (hitObject.CompareTag("Projectile"))
@@ -69,6 +69,7 @@ public class LaserGun : Gun
     }
     public override void StopShooting()
     {
+		Debug.Log("Disable LINE!");
         line.enabled = false;
     }
 

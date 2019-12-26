@@ -221,6 +221,7 @@ public class PiUI : MonoBehaviour
         //Open the menu with the selected opening transition, or if !openmenu close menu with selected closing transition
         if (openedMenu)
         {
+			joystickInput = new Vector2(-Input.GetAxis("Right_Stick_X"), Input.GetAxis("Right_Stick_Y"));
             switch (openTransition)
             {
                 case TransitionType.Scale:

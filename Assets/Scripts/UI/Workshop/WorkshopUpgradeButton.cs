@@ -171,9 +171,11 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 					switch (buttonObject.unlockableType) {
 						case UnlockableType.Gun:
 							buttonObject.playerObject.availableGuns.Add(buttonObject.ItemToUnlock);
+							SaveManager.Instance.AddAvailableGun(buttonObject.gunToUpgrade.index);
 							break;
 						case UnlockableType. Ultimate:
 							buttonObject.playerObject.ultimates.Add(buttonObject.ItemToUnlock);
+							SaveManager.Instance.AddAvailableUlt(buttonObject.ultimateToUpgrade.index);
 							break;
 						default:
 							Debug.Log("This Unlockable Type is not implemented in this switch state!");

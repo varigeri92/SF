@@ -98,7 +98,7 @@ MonoBehaviour:
   icon: {fileID: 74094730301634570}
   gun: {fileID: 0}
   ammoToSpawn: {fileID: 0}
-  ultimatePrefab: {fileID: 3223577173500042657, guid: 8f1ff8ab4dfb14e3d8c87fe02e369c46,
+  ultimatePrefab: {fileID: 3223577173500042657, guid: c029ad4ee000a4f07acffd974f1e64ea,
     type: 3}
 --- !u!1 &74094731180374952
 GameObject:

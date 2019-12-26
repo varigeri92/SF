@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MainMenucontroller : MonoBehaviour
 {
@@ -10,11 +11,13 @@ public class MainMenucontroller : MonoBehaviour
     GameObject ControllsPanel;
     [SerializeField]
     GameObject ExitPanel;
+	[SerializeField]
+	GameObject FirstButton;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+		EventSystem.current.firstSelectedGameObject = FirstButton;
     }
 
     // Update is called once per frame

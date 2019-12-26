@@ -10,4 +10,5 @@ public class Abilit_Object : ScriptableObject
 	public float duration;
 	public GameObject effect;
 	public GameObject icon;
+	public int index;
 }

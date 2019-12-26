@@ -17,7 +17,7 @@ public class WorkshopDevController : MonoBehaviour
 		playerObject.boostDecSpeed = referenceObject.boostDecSpeed;
 
 		foreach (var perk in perks) {
-			perk.upgraded = false;
+			// perk.upgraded = false;
 		}
 	}
 

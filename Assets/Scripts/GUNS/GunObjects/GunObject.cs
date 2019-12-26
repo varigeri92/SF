@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[System.Serializable]
 [CreateAssetMenu(fileName = "New Gun", menuName = "Gun")]
 public class GunObject : ScriptableObject
 {
@@ -10,6 +10,7 @@ public class GunObject : ScriptableObject
 	public int maxAmmo; 
 	public float fireRate;
 	public int damage;
+	public int index;
 
 
 }

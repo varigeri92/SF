@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class InputManager {
+public static class InputManager{
 
 
     #region Events:
@@ -41,6 +41,7 @@ public static class InputManager {
 
     public static void OnStart () {
         usingController = DetectController();
+
 	}
 
 
@@ -49,7 +50,58 @@ public static class InputManager {
         if (usingController)
         {
 		    direction = new Vector2(Input.GetAxis("Right_Stick_X"), Input.GetAxis("Right_Stick_Y"));
-		    movement = new Vector2(Input.GetAxis("Left_Stick_X"),Input.GetAxis("Left_Stick_Y"));
+			movement = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+
+			//FIRE:
+			if(Input.GetButton("Fire1")){
+				Debug.Log("FIRE PRESSED!!! BOI!!");
+				if (OnShootButtonPresed != null) {
+					OnShootButtonPresed();
+				}
+			}
+			if(Input.GetButtonUp("Fire1")){
+				Debug.Log("FIRE RELEASED!!! BOI!!");
+				if (OnShootButtonreleased != null) {
+					OnShootButtonreleased();
+				}
+			}
+
+			// BOOST:
+			if (Input.GetButtonDown("Jump")) {
+				Debug.Log("HELLO");
+				if (OnBoostButtonPressed != null) {
+					OnBoostButtonPressed();
+				}
+			}
+
+			if (Input.GetButtonUp("Jump")) {
+				Debug.Log("JUMP RELEASE!");
+				if (OnBoostButtonReleased != null) {
+					OnBoostButtonReleased();
+				}
+			}
+
+			// INVENTORY:
+			if (Input.GetButtonDown("Inventory")) {
+				
+				if (OnInventoryButtonPressed != null) {
+					OnInventoryButtonPressed();
+				}
+			}
+			if (Input.GetButtonUp("Inventory")) {
+				Debug.Log("INVENTORY RELEASED!!! BOI!!");
+				if (OnInventoryButtonReleased != null) {
+					OnInventoryButtonReleased();
+				}
+			}
+
+			//ULTIMATE:
+
+			if (Input.GetButtonDown("Fire2")) {
+				if (OnUltimateButtonPressed != null) {
+					OnUltimateButtonPressed();
+				}
+			}
         }
         else
         {

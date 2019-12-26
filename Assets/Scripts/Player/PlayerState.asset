@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3174a5d98be38420581f70675ff2a9bf, type: 3}
+  m_Name: PlayerState
+  m_EditorClassIdentifier: 
+  allPlayerGuns:
+  - gunPrefab: {fileID: 1927927025121406, guid: e22ab43c3218a4d418dcd882e0a18b67,
+      type: 3}
+    gunIcon: {fileID: 1795802747685846, guid: 2d3e449ace80b4aab9bee4c54f706796, type: 3}
+    gunGridElement: {fileID: 0}
+    gunCollectablePrefab: {fileID: 0}
+    gunObject: {fileID: 11400000, guid: cb5fb1469e18841fb9766965f7802b4e, type: 2}
+    serializableGun:
+      startingAmmo: 0
+      maxAmmo: 0
+      fireRate: 0
+      damage: 0
+      index: 0
+  - gunPrefab: {fileID: 1897131634571996, guid: de7c98b5b00e347aa99245b0a301a164,
+      type: 3}
+    gunIcon: {fileID: 1974288720584050, guid: 31021c9bfc6e7488c883360341a2e95c, type: 3}
+    gunGridElement: {fileID: 3490590457121529502, guid: a871043da041d4bed8f6bdd5c3f79fbf,
+      type: 3}
+    gunCollectablePrefab: {fileID: 1615196254142962, guid: 786e4e89b7be7470294772dd4e74de66,
+      type: 3}
+    gunObject: {fileID: 11400000, guid: cd596ad9e1f3d408cbcf9e85d2c1d348, type: 2}
+    serializableGun:
+      startingAmmo: 0
+      maxAmmo: 0
+      fireRate: 0
+      damage: 0
+      index: 0
+  - gunPrefab: {fileID: 1458455220, guid: 4629d1b0812f4a6449b40d59b8550638, type: 3}
+    gunIcon: {fileID: 226233719831200884, guid: d8301fd8d162cb346bc0d01cf631d0c1,
+      type: 3}
+    gunGridElement: {fileID: 6299240627127540184, guid: a34ae7d6be54146e19fb679962dc5922,
+      type: 3}
+    gunCollectablePrefab: {fileID: 1685238137071351133, guid: f0c1e7369a92ee749b850e5599a3cdbc,
+      type: 3}
+    gunObject: {fileID: 11400000, guid: 0bb9c0b947d374a4b936d1e756ccec1a, type: 2}
+    serializableGun:
+      startingAmmo: 0
+      maxAmmo: 0
+      fireRate: 0
+      damage: 0
+      index: 0
+  - gunPrefab: {fileID: 3821602256460556279, guid: d8e449eac41d25f41b7d27a530b9d841,
+      type: 3}
+    gunIcon: {fileID: 9155244844814188057, guid: e6ed806f10012cd4ebad09a23774068c,
+      type: 3}
+    gunGridElement: {fileID: 6299240627127540184, guid: 1986736c4f6e84eee8a1ed4b877a7d80,
+      type: 3}
+    gunCollectablePrefab: {fileID: 5855574713655412981, guid: 5f9978cde65da8843af30cf61699fdd2,
+      type: 3}
+    gunObject: {fileID: 11400000, guid: 6d41e4c8718ae4063832824311979810, type: 2}
+    serializableGun:
+      startingAmmo: 0
+      maxAmmo: 0
+      fireRate: 0
+      damage: 0
+      index: 0
+  availablePlayerGuns: 
+  equipedPlayerGuns: 
+  allPlayerUltimates:
+  - ultPrefab: {fileID: 3223577173500042657, guid: c029ad4ee000a4f07acffd974f1e64ea,
+      type: 3}
+    ultIcon: {fileID: 4924151775312362546, guid: 0616fc3f907be46f38b60a8fdb164447,
+      type: 3}
+    ultGridElement: {fileID: 74094730301634570, guid: c9a5a86f2bd48478ba9e49a58e640d3d,
+      type: 3}
+    ultCollectablePrefab: {fileID: 0}
+    ultObject: {fileID: 11400000, guid: c9ad40419816541999642dd47ac0e56b, type: 2}
+  availablePlayerUltimates: 
+  equipedPlayerUltimate: 0
+  perks: []
+  levelProgress: []

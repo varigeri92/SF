@@ -10,22 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2564e73f8fafa42f390d1c86e8d3195a, type: 3}
-  m_Name: Normal_Player
+  m_Name: BACKUP PLAYER DATA_In Case I mes up something
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  maxHealth: 57
   speed: 6
-  boostFillSpeed: 0.4
-  boostDecSpeed: 0.10000001
-  powerCores: 200
-  level: 1
+  boostFillSpeed: 0.3
+  boostDecSpeed: 0.3
+  powerCores: 5
+  level: 26
   normalPlayer: 1
   inventoryGuns:
   - {fileID: 1927927025121406, guid: e22ab43c3218a4d418dcd882e0a18b67, type: 3}
   inventoryIcons:
   - {fileID: 1795802747685846, guid: 2d3e449ace80b4aab9bee4c54f706796, type: 3}
-  availableGuns: []
+  availableGuns:
+  - {fileID: 3490590457121529502, guid: a871043da041d4bed8f6bdd5c3f79fbf, type: 3}
+  - {fileID: 6299240627127540184, guid: a34ae7d6be54146e19fb679962dc5922, type: 3}
+  - {fileID: 3490590457121529502, guid: a871043da041d4bed8f6bdd5c3f79fbf, type: 3}
   AmmoToSpawn:
   - {fileID: 0}
+  - {fileID: 1615196254142962, guid: 786e4e89b7be7470294772dd4e74de66, type: 3}
+  - {fileID: 1685238137071351133, guid: f0c1e7369a92ee749b850e5599a3cdbc, type: 3}
   ultimates: []
   ultimate: {fileID: 3223577173500042657, guid: 8f1ff8ab4dfb14e3d8c87fe02e369c46,
     type: 3}

@@ -15,7 +15,7 @@ public class CollectableGun : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(counter.Countdow(lifetime,this.gameObject));
+		//StartCoroutine(counter.Countdow(lifetime,this.gameObject));
 	}
 	
 	// Update is called once per frame

@@ -12,7 +12,7 @@ public class UpgradeButtonObject : ScriptableObject
 {
 	public UpgradeButtonObject required;
 	public int requireLevel;
-	public bool upgraded = false;
+	public bool upgraded;
 	public Sprite icon;
 	public int cost;
 	public int lvl;

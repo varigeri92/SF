@@ -47,3 +47,5 @@ MonoBehaviour:
   currency: 0
   powerCoresThisLevel: 0
   playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
+  saveObject: {fileID: 11400000, guid: ab15a5dedfda646c995f99937ed95386, type: 2}
+  playerStateObject: {fileID: 11400000, guid: cb44f0084201d49a68c9e4856c0b3040, type: 2}

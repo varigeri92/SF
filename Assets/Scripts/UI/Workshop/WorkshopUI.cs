@@ -8,6 +8,7 @@ public class WorkshopUI : MonoBehaviour
 	public static event Upgrade OnUpgrade;
 
 	public PlayerObject playerObject;
+	public List<UpgradeButtonObject> buttonObjects;
 
 	public TMPro.TMP_Text cores;
 	public TMPro.TMP_Text cores_2;
@@ -15,10 +16,14 @@ public class WorkshopUI : MonoBehaviour
 	public TMPro.TMP_Text level;
 	public TMPro.TMP_Text level_2;
 
+	public UnityEngine.UI.Text text;
+
     // Start is called before the first frame update
     void Start()
     {
 		SetText();
+		//PlayerProgress.Instance.SetPerks(ref buttonObjects);
+		text.text = "FILEPATH: " + SaveManager.Instance.GetFilePath();
     }
 
 	void SetText(){
@@ -44,6 +49,7 @@ public class WorkshopUI : MonoBehaviour
 			OnUpgrade();
 		}
 		SetText();
+		SaveManager.Instance.SavePerks(buttonObjects);
 	}
 
 	public void UpgradeDone(int sceneIndex){
