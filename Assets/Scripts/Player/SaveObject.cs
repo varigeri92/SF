@@ -19,7 +19,7 @@ public class SaveObject : ScriptableObject
 	public int ppowerCores;
 	public int plevel;
 
-	public GunObject[] allGunObject;
+	public SerializableGunObject[] allGunObject;
 	public PerkUpgradeSave[] perks;
 
 }

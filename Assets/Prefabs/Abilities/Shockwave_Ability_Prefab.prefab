@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8208284371772337586}
   - component: {fileID: 5104538932216428405}
   - component: {fileID: 6673496471432658238}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shockwave_Ability_Prefab
   m_TagString: Projectile
   m_Icon: {fileID: 0}

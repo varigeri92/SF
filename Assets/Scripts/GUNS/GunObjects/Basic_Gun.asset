@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Basic_Gun
   m_EditorClassIdentifier: 
   startingAmmo: -999
-  maxAmmo: 1
+  maxAmmo: -999
   fireRate: 6
   damage: 1
+  index: 0

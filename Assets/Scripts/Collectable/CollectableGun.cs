@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectableGun : MonoBehaviour {
+public class CollectableGun : PowerUp {
 
 	[SerializeField]
 	GameObject prefab;

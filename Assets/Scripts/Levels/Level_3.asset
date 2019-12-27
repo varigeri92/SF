@@ -12,11 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13168e90a9344137827190128c19fec, type: 3}
   m_Name: Level_3
   m_EditorClassIdentifier: 
-  backgroundImage: {fileID: 21300000, guid: 35313af049b4a2f42a0325330c51d74a, type: 3}
-  stars: 0
+  completionStars: 0
   available: 0
   completed: 0
-  boss: {fileID: 0}
+  backgroundImage: {fileID: 21300000, guid: 35313af049b4a2f42a0325330c51d74a, type: 3}
   enemyes: []
-  obstacle: []
+  bosses: []
+  obstacles: []
   powerups: []
+  bossLevel: 0
+  timeToBoss: 0
+  starsToSpawn: 0
+  timeBetweenStars: 15
+  enemiesToShoot: 0
+  timeBetweenSpawns: 0
+  enemyCount: 0
+  completedInSeconds: 0
+  starsShot: 0
+  powerupsCollected: 0
+  powerCoresCollected: 0
+  powerUpsSpawned: 0
+  powerCoresSpawned: 0

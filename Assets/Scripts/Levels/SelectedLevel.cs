@@ -26,6 +26,8 @@ public class SelectedLevel : MonoBehaviour
 	[SerializeField]
 	private LevelObject survivorLevel;
 
+	public LevelObject[] levels;
+
 
 	public void SetSurvivorlevel()
 	{

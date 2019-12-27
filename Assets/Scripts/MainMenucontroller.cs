@@ -11,20 +11,7 @@ public class MainMenucontroller : MonoBehaviour
     GameObject ControllsPanel;
     [SerializeField]
     GameObject ExitPanel;
-	[SerializeField]
-	GameObject FirstButton;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-		EventSystem.current.firstSelectedGameObject = FirstButton;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void OpenCloseControlls(bool open)
     {

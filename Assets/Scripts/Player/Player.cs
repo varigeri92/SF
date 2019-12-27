@@ -94,6 +94,7 @@ public class Player : MonoBehaviour
 
 	bool hasShield = false;
 
+
 	void Awake()
 	{
 

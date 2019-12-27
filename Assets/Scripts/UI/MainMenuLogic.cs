@@ -15,15 +15,22 @@ public class MainMenuLogic : MonoBehaviour {
     public Slider musicSlider;
 
 
+	[SerializeField]
+	GameObject FirstButton;
+
+	[SerializeField]
+	GameObject ExitNo;
+
+	[SerializeField]
+	GameObject settings_1;
+
 
     AudioSource _source;
 
 	CanvasGroup currentOpenedPanel;
 	public AudioMixer _mixer;
 	void Start () {
-		if(controllerInput){
-			EventSystem.current.SetSelectedGameObject(transform.GetChild(0).GetChild(0).gameObject);
-		}
+		EventSystem.current.firstSelectedGameObject = FirstButton;
 		_source = GetComponentInChildren<AudioSource>();
 		currentOpenedPanel = transform.GetChild(0).GetComponent<CanvasGroup>();
 	}
@@ -51,16 +58,26 @@ public class MainMenuLogic : MonoBehaviour {
 	}
 
 	public void OpenExitPanel(CanvasGroup cg){
+		EventSystem.current.SetSelectedGameObject(ExitNo);
+		StartCoroutine(FadePanelsOut(currentOpenedPanel));
+		StartCoroutine(FadePanelsIn(cg));
+	}
+
+	public void CloseExitPanel(CanvasGroup cg)
+	{
+		EventSystem.current.SetSelectedGameObject(FirstButton);
 		StartCoroutine(FadePanelsOut(currentOpenedPanel));
 		StartCoroutine(FadePanelsIn(cg));
 	}
     public void OpenControlls(CanvasGroup cg)
     {
+		EventSystem.current.SetSelectedGameObject(settings_1);
         StartCoroutine(FadePanelsOut(currentOpenedPanel));
         StartCoroutine(FadePanelsIn(cg));
     }
     public void CloseControlls(CanvasGroup cg)
     {
+		EventSystem.current.SetSelectedGameObject(FirstButton);
         StartCoroutine(FadePanelsOut(currentOpenedPanel));
         StartCoroutine(FadePanelsIn(cg));
     }
@@ -94,7 +111,7 @@ public class MainMenuLogic : MonoBehaviour {
 			cg.alpha += fadeTime;
 			yield return null;
 		}
-		if(cg.alpha > 1){
+		if(cg.alpha >= 1){
 			cg.alpha = 1;
 		}
 		yield break;

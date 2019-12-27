@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Level_2
   m_EditorClassIdentifier: 
   completionStars: 0
-  available: 1
-  completed: 1
+  available: 0
+  completed: 0
   backgroundImage: {fileID: 21300000, guid: 35313af049b4a2f42a0325330c51d74a, type: 3}
   enemyes:
   - {fileID: 1420262902442594, guid: 2a0f6c2b2f59b449593f257ae600dbfa, type: 3}

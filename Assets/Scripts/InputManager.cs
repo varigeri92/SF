@@ -52,6 +52,7 @@ public static class InputManager{
 		    direction = new Vector2(Input.GetAxis("Right_Stick_X"), Input.GetAxis("Right_Stick_Y"));
 			movement = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
 
+
 			//FIRE:
 			if(Input.GetButton("Fire1")){
 				Debug.Log("FIRE PRESSED!!! BOI!!");

@@ -20,6 +20,7 @@ public class SaveManager : MonoBehaviour
 
 	public List<UpgradeButtonObject> AllGamePerks;
 
+	bool isFirstStart = true;
 	//SINGLETON
 	private static SaveManager instance;
 	public static SaveManager Instance {
@@ -36,17 +37,24 @@ public class SaveManager : MonoBehaviour
 			Destroy(this.gameObject);
 			return;
 		}
+
+		if(IsSaveExists()){
+			isFirstStart = false;
+		}
+
 		InitSavepath();
 	}
 
 	private void Start()
 	{
 		InitIndexes();
+
 	}
 	void InitIndexes(){
 		int i = 0;
 		foreach(PlayerGun playerGun in playerStateObject.allPlayerGuns){
 			playerGun.gunObject.index = i;
+			playerGun.serializableGun.index = i;
 			i++;
 		}
 		i = 0;
@@ -201,6 +209,24 @@ public class SaveManager : MonoBehaviour
 		}
 	}
 
+	void SetGunObjectsToSave(){
+		List<SerializableGunObject> saveGuns = new List<SerializableGunObject>();
+		foreach(PlayerGun playerGun in playerStateObject.allPlayerGuns){
+			playerGun.serializableGun = new SerializableGunObject(playerGun.gunObject);
+			saveGuns.Add(playerGun.serializableGun);
+		}
+		saveObject.allGunObject = saveGuns.ToArray();
+	}
+
+	void LoadGunObjects(){
+		foreach(SerializableGunObject serializedGun in saveObject.allGunObject){
+			playerStateObject.allPlayerGuns[serializedGun.index].gunObject.damage = serializedGun.damage;
+			playerStateObject.allPlayerGuns[serializedGun.index].gunObject.maxAmmo = serializedGun.maxAmmo;
+			playerStateObject.allPlayerGuns[serializedGun.index].gunObject.startingAmmo = serializedGun.startingAmmo;
+			playerStateObject.allPlayerGuns[serializedGun.index].gunObject.fireRate = serializedGun.fireRate;
+			playerStateObject.allPlayerGuns[serializedGun.index].gunObject.index = serializedGun.index;
+		}
+	}
 
 	public void SetSaveObject()
 	{
@@ -228,9 +254,20 @@ public class SaveManager : MonoBehaviour
 		saveObject.selectedUltimate = playerStateObject.equipedPlayerUltimate;
 		saveObject.ulnlockedUltimateIndexes = playerStateObject.availablePlayerUltimates.ToArray();
 
+		saveObject.lastCompletedLevel = -1;
+		Debug.Log("Saving Level: Index: " + SelectedLevel.Instance.levels.Length.ToString());
+		for (int i = 0; i < SelectedLevel.Instance.levels.Length; i++){
+			Debug.Log("Saving Level: Index: "+i.ToString());
+			if(SelectedLevel.Instance.levels[i].completed == false){
+				Debug.Log("Level: " + i.ToString() + "is Incomplette!");
+				break;
+			}
+			saveObject.lastCompletedLevel = i;
+		}
+
+		SetGunObjectsToSave();
 
 		//saveObject.perks = new PerkUpgradeSave[0];
-
 	}
 
 	public  void SavePerks(List<UpgradeButtonObject> buttonObjects)
@@ -247,6 +284,7 @@ public class SaveManager : MonoBehaviour
 
 	public  void LoadPlayerState()
 	{
+		Debug.Log("LOADING PLAYER! ... ");
 		if (CheckSaveFile()) {
 			string Json = File.ReadAllText(filePath);
 			if (saveObject != null){
@@ -276,10 +314,21 @@ public class SaveManager : MonoBehaviour
 					AllGamePerks[perk.index].upgraded = perk.value;
 				}
 
+				if(saveObject.lastCompletedLevel > -1){
+					for (int i = 0; i < saveObject.lastCompletedLevel+1; i++){
+						SelectedLevel.Instance.levels[i].completed = true;
+						SelectedLevel.Instance.levels[i].available = true;
+						SelectedLevel.Instance.levels[i+1].available = true;
+					}
+				}else{
+					// SelectedLevel.Instance.levels[0].available = true;
+				}
+
+				LoadGunObjects();
+
 				/**
 				 * TODO:
 					* ULTIMATES
-					* LEEVELS
 					* GUN Objects!
 				*/
 

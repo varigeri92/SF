@@ -12,84 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6df13241a2244e9bcdf834ba7beb6e, type: 3}
   m_Name: SaveObject
   m_EditorClassIdentifier: 
-  equipedGunIndexes: 000000000100000002000000
-  unlockedGunIndexes: 0100000002000000
+  equipedGunIndexes: 
+  unlockedGunIndexes: 
   ulnlockedUltimateIndexes: 
-  lastCompletedLevel: 0
+  lastCompletedLevel: 1
   selectedUltimate: 0
-  pmaxHealth: 99
+  pmaxHealth: 30
   pspeed: 6
   pboostFillSpeed: 0.4
   pboostDecSpeed: 0.10000001
-  ppowerCores: 83
-  plevel: 33
+  ppowerCores: 65
+  plevel: 35
   allGunObject:
-  - {fileID: 11400000, guid: cb5fb1469e18841fb9766965f7802b4e, type: 2}
-  - {fileID: 11400000, guid: 6d41e4c8718ae4063832824311979810, type: 2}
-  - {fileID: 11400000, guid: cd596ad9e1f3d408cbcf9e85d2c1d348, type: 2}
-  - {fileID: 11400000, guid: 0bb9c0b947d374a4b936d1e756ccec1a, type: 2}
-  perks:
-  - index: 0
-    value: 1
-  - index: 1
-    value: 1
-  - index: 2
-    value: 1
-  - index: 3
-    value: 1
-  - index: 4
-    value: 0
-  - index: 5
-    value: 1
-  - index: 6
-    value: 1
-  - index: 7
-    value: 1
-  - index: 8
-    value: 0
-  - index: 9
-    value: 0
-  - index: 10
-    value: 0
-  - index: 11
-    value: 0
-  - index: 12
-    value: 0
-  - index: 13
-    value: 0
-  - index: 14
-    value: 0
-  - index: 15
-    value: 0
-  - index: 16
-    value: 0
-  - index: 17
-    value: 0
-  - index: 18
-    value: 1
-  - index: 19
-    value: 1
-  - index: 20
-    value: 1
-  - index: 21
-    value: 1
-  - index: 22
-    value: 1
-  - index: 23
-    value: 1
-  - index: 24
-    value: 1
-  - index: 25
-    value: 1
-  - index: 26
-    value: 1
-  - index: 27
-    value: 1
-  - index: 28
-    value: 1
-  - index: 29
-    value: 0
-  - index: 30
-    value: 0
-  - index: 31
-    value: 0
+  - startingAmmo: -999
+    maxAmmo: -999
+    fireRate: 6
+    damage: 1
+    index: 0
+  - startingAmmo: 200
+    maxAmmo: 350
+    fireRate: 6
+    damage: 2
+    index: 1
+  - startingAmmo: -949
+    maxAmmo: 250
+    fireRate: 5
+    damage: 2
+    index: 2
+  - startingAmmo: 5
+    maxAmmo: 15
+    fireRate: 1
+    damage: 5
+    index: 3
+  perks: []

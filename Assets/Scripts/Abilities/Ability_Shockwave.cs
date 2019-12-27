@@ -36,7 +36,11 @@ public class Ability_Shockwave : Ability
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		if(collision.gameObject.CompareTag("Enemy")){
-			collision.gameObject.GetComponent<Enemy>().TakeDmg(ability.damage);
+			if(collision.gameObject.GetComponent<Enemy>() != null){
+				collision.gameObject.GetComponent<Enemy>().TakeDmg(ability.damage);
+			}else{
+				Debug.Log(collision.gameObject.name + "Dont have an Enemy Component on it...");
+			}
 		}
 	}
 
