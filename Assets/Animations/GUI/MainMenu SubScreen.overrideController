@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SettingsScreen
+  m_Name: MainMenu SubScreen
   m_Controller: {fileID: 9100000, guid: fb5102a2f3b7e1141bedce21d3f0fd81, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 564cefd6125bb9b42aa4b39c7a8fd57f, type: 2}
