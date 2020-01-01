@@ -106,6 +106,7 @@ public class EquipmentUIManager : MonoBehaviour
 
 	public void SetGun(GameObject gun, GameObject icon, string slotName, GameObject _ammoToSpawn)
 	{
+		Debug.Log("SETGUN BOI!!");
 		if(gun == null){
 			return;
 		}
@@ -176,8 +177,6 @@ public class EquipmentUIManager : MonoBehaviour
 		playerObject.AmmoToSpawn = new List<GameObject>(ammos);
 
 		SaveManager.Instance.SetEquipedGunsToSave(guns);
-
-		UnityEngine.SceneManagement.SceneManager.LoadScene(2);
 	}
 
 }

@@ -58,7 +58,7 @@ public class GameSystemManager : MonoBehaviour
 	public void LoadLevelSelection()
 	{
 		timeManager.NormalizeTime();
-		SceneManager.LoadScene(2);
+		SceneManager.LoadScene(0);
 	}
 
     public void Close()

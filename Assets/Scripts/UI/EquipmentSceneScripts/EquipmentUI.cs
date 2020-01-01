@@ -37,11 +37,14 @@ public class EquipmentUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	// Start is called before the first frame update
 	void Start()
     {
-		canvas = GameObject.Find("Canvas").transform;
+		canvas = transform.parent;
 
 		mouseDragIcon = GameObject.Find("MouseDragIcon").GetComponent<MouseDragIcon>();
 
-		equipmentUIManager = canvas.GetComponent<EquipmentUIManager>();
+		equipmentUIManager = GameObject.Find("EquipmentScreen").GetComponent<EquipmentUIManager>();
+		if(equipmentUIManager == null){
+			throw new System.Exception("Equipment UI manager, is 'NULL' ");
+		}
 
 		ultimateSelector = canvas.GetComponentInChildren<UltimateSelector>();
 

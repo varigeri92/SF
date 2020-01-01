@@ -11,6 +11,10 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 	private HowerText hoverText;
 	private CanvasGroup hoverTextCanvasGroup;
 
+
+	[SerializeField]
+	Color IconColor;
+
 	[SerializeField]
 	Color availableColor;
 
@@ -35,7 +39,7 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 
 	private void Start()
 	{
-		workshopUI = GameObject.FindGameObjectWithTag("WorkshopUI").GetComponent<WorkshopUI>();
+		workshopUI = GameObject.FindGameObjectWithTag("Menu_Canvas").GetComponent<WorkshopUI>();
 
 
 		hoverText = GameObject.FindGameObjectWithTag("HoverText").GetComponent<HowerText>();
@@ -63,18 +67,22 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 					if ((buttonObject.playerObject.powerCores - buttonObject.cost) > -1) {
 						available = true;
 						baseButton.color = availableColor;
+						icon.color = IconColor;
 					} else {
 						available = false;
 						baseButton.color = notEnoughCoresColor;
+						icon.color = IconColor;
 					}
 				}
 			} else {
 				if ((buttonObject.playerObject.powerCores - buttonObject.cost) > -1) {
 					available = true;
 					baseButton.color = availableColor;
+					icon.color = IconColor;
 				} else {
 					available = false;
 					baseButton.color = notEnoughCoresColor;
+					icon.color = IconColor;
 				}
 			}
 		}

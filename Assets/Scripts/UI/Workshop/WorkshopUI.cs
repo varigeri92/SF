@@ -11,27 +11,20 @@ public class WorkshopUI : MonoBehaviour
 	public List<UpgradeButtonObject> buttonObjects;
 
 	public TMPro.TMP_Text cores;
-	public TMPro.TMP_Text cores_2;
 
 	public TMPro.TMP_Text level;
-	public TMPro.TMP_Text level_2;
 
-	public UnityEngine.UI.Text text;
 
     // Start is called before the first frame update
     void Start()
     {
 		SetText();
 		//PlayerProgress.Instance.SetPerks(ref buttonObjects);
-		text.text = "FILEPATH: " + SaveManager.Instance.GetFilePath();
     }
 
 	void SetText(){
 		level.text = playerObject.level.ToString();
-		level_2.text = playerObject.level.ToString();
-
 		cores.text = playerObject.powerCores.ToString();
-		cores_2.text = playerObject.powerCores.ToString();
 	}
 
     // Update is called once per frame

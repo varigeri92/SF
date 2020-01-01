@@ -305,6 +305,7 @@ public class SaveManager : MonoBehaviour
 						SetEquippedGun(index);
 				}
 
+				playerObject.availableGuns.Clear();
 				foreach (int index in saveObject.unlockedGunIndexes) {
 					if(index != 0)
 						SetUnlockedGun(index);

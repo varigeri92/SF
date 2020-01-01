@@ -9,8 +9,6 @@ public class HowerText : MonoBehaviour
 	TMP_Text description;
 
 	[SerializeField]
-	TMP_Text tittleShadow;
-	[SerializeField]
 	TMP_Text tittle;
 
     // Start is called before the first frame update
@@ -30,7 +28,6 @@ public class HowerText : MonoBehaviour
 	}
 
 	public void SetTittle(string _tittle){
-		tittleShadow.text = _tittle;
 		tittle.text = _tittle;
 	}
 }
