@@ -12,21 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2564e73f8fafa42f390d1c86e8d3195a, type: 3}
   m_Name: Normal_Player
   m_EditorClassIdentifier: 
-  maxHealth: 181
-  speed: 6
+  maxHealth: 30
+  speed: 4
   boostFillSpeed: 0.5
   boostDecSpeed: -0.099999994
-  powerCores: 3
-  level: 52
+  powerCores: 2
+  level: 1
   normalPlayer: 1
   inventoryGuns:
   - {fileID: 1927927025121406, guid: e22ab43c3218a4d418dcd882e0a18b67, type: 3}
-  - {fileID: 1897131634571996, guid: de7c98b5b00e347aa99245b0a301a164, type: 3}
   inventoryIcons:
   - {fileID: 1795802747685846, guid: 2d3e449ace80b4aab9bee4c54f706796, type: 3}
-  - {fileID: 1974288720584050, guid: 31021c9bfc6e7488c883360341a2e95c, type: 3}
-  availableGuns:
-  - {fileID: 334, guid: a871043da041d4bed8f6bdd5c3f79fbf, type: 3}
+  availableGuns: []
   AmmoToSpawn:
   - {fileID: 0}
   - {fileID: 1615196254142962, guid: 786e4e89b7be7470294772dd4e74de66, type: 3}
