@@ -27,9 +27,7 @@ public class InventoryGun : MonoBehaviour
 
     public void SetAmmo(int newAmmo)
     {
-		Debug.Log("Ammo set from " + _ammo + " to: " + newAmmo);
         _ammo = newAmmo;
-        Debug.Log(_ammo);
     }
 
     public int GetAmmo()

@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MasterScene.unity
     guid: 70347a60a96a44150a7c07f0e93021d2
   - enabled: 0
-    path: Assets/Scenes/MainMenuScene.unity
+    path: Assets/Scenes/_OLD/MainMenuScene.unity
     guid: 9d0d4c74d161a478d8f22c93bc7308a3
   - enabled: 0
     path: Assets/Scenes/Dev/Dev_Guns.unity
@@ -24,13 +24,13 @@ EditorBuildSettings:
     path: Assets/Scenes/_OLD/GAME.unity
     guid: 6e5b2c1631df942c787fe79ae6fb0bb5
   - enabled: 0
-    path: Assets/Scenes/LevelSelectionScene.unity
+    path: Assets/Scenes/_OLD/LevelSelectionScene.unity
     guid: e1543220d9e5e42339a4de969c33fe66
   - enabled: 0
-    path: Assets/Scenes/WorkshopScene.unity
+    path: Assets/Scenes/_OLD/WorkshopScene.unity
     guid: 3d15e70548aee4a36ab44def95ff7e6b
   - enabled: 0
-    path: Assets/Scenes/EquipmentScene.unity
+    path: Assets/Scenes/_OLD/EquipmentScene.unity
     guid: 1bb80b836fdf846549334db2223132b1
   - enabled: 0
     path: Assets/Scenes/Dev/Dev_MainMenu.unity

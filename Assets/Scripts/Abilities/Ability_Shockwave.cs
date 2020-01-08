@@ -6,7 +6,7 @@ public class Ability_Shockwave : Ability
 {
 
 	[SerializeField]
-	CircleCollider2D collider;
+	CircleCollider2D _collider;
 
 	[SerializeField]
 	float radius;
@@ -14,20 +14,26 @@ public class Ability_Shockwave : Ability
 	[SerializeField]
 	float raiseRate;
 
+    ShakeCamera shaker;
 
 	public string Sucess;
 
-	public override void FireAbility()
+    private void OnEnable()
+    {
+        shaker = Camera.main.GetComponent<ShakeCamera>();
+    }
+
+    public override void FireAbility()
 	{
 
 		Debug.Log(Sucess);
-
-		if (charges > 0) {
-			base.FireAbility();
+        if (charges > 0) {
+            shaker.Shake();
+            base.FireAbility();
 			charges--;
 			chargesText.text = charges.ToString();
 
-			Instantiate(ability.effect, transform);
+			Instantiate(ability.effect, transform.position, Quaternion.identity);
 			StartCoroutine(raiseCollider());
 		}
 
@@ -45,10 +51,10 @@ public class Ability_Shockwave : Ability
 	}
 
 	IEnumerator raiseCollider(){
-		while (collider.radius < radius){
-			collider.radius += raiseRate * Time.deltaTime;
+		while (_collider.radius < radius){
+			_collider.radius += raiseRate * Time.deltaTime;
 			yield return null;
 		}
-		collider.radius = 0.0001f;
+		_collider.radius = 0.0001f;
 	}
 }

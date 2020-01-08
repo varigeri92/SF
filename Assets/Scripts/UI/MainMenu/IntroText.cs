@@ -17,5 +17,6 @@ public class IntroText : UIPanel
     void ShowMenu()
     {
         menuAnimator.SetBool("show", true);
+        backEvent.Invoke();
     }
 }

@@ -43,15 +43,34 @@ public class EquipmentUIManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		selectedSlot = "none";
-		lastSelectedSlot = "none";
-
-		SetGun(_basicGun,_basicGunIcon,"One", null);
-		initialize = false;
-		LoadPlayerInventory();
-		LoadUnlockedItems();
+        InitEquipment();
     }
 
+    public void ClearUI()
+    {
+        int childs = grid.childCount;
+        for (int i=0; i<childs; i++ )
+        {
+            Destroy(grid.GetChild(i).gameObject);
+        }
+    }
+
+    public void InitEquipment()
+    {
+        selectedSlot = "none";
+        lastSelectedSlot = "none";
+
+        SetGun(_basicGun, _basicGunIcon, "One", null);
+        initialize = false;
+        LoadPlayerInventory();
+        LoadUnlockedItems();
+    }
+
+    public void OnWorksopOpened()
+    {
+        ClearUI();
+        InitEquipment();
+    } 
     // Update is called once per frame
     void Update()
     {

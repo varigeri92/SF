@@ -8,7 +8,7 @@ public class FollowPlayer : MonoBehaviour {
 	public Transform playerTransform;
 	float speed;
 	Player player;
-	new Camera camera;
+	Camera cam;
 	Vector3 prevpos;
 	Vector3 dDirection;
 	bool playerAlive = true;
@@ -22,20 +22,51 @@ public class FollowPlayer : MonoBehaviour {
 
 	bool allowDamp = false;
 
-	// Use this for initialization
-	void Start () {
+    [SerializeField]
+    float distance;
+    float _distance;
+    [SerializeField]
+    float distanceFactor;
+    float _distanceFactor;
+
+    // Use this for initialization
+    void Start () {
+        _distance = distance;
+        _distanceFactor = 1;
 		prevpos = transform.position;
+        Player.OnPlayerLoaded += InitCam;
+        Player.OnPlayerShooting += PlayerShooting;
+        Player.OnPlayerStopShooting +=PlayerStopShooting;
 	}
 
-	public void InitCam(){
-		
+    private void OnDestroy()
+    {
+        Player.OnPlayerLoaded -= InitCam;
+        Player.OnPlayerDeath -= OnPlayerDead;
+        Player.OnPlayerShooting -= PlayerShooting;
+        Player.OnPlayerStopShooting -= PlayerStopShooting;
+    }
+
+    void PlayerShooting() {
+        _distanceFactor = distanceFactor;
+    }
+
+    void PlayerStopShooting()
+    {
+        _distanceFactor = 1;
+    }
+
+    void OnPlayerDead()
+    {
+        playerAlive = false;
+    }
+
+    public void InitCam(){
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 		player = playerTransform.GetComponent<Player>();
 		speed = player.speed;
-		camera = GetComponent<Camera>();
-		Player.OnPlayerDeath += delegate {
-
-			playerAlive = false;
-		};
+		cam = GetComponentInChildren<Camera>();
+        Player.OnPlayerDeath += OnPlayerDead;
 
 		// direction = Vector2.zero;
 	}
@@ -50,41 +81,8 @@ public class FollowPlayer : MonoBehaviour {
 		if (!playerAlive)
 			return;
 
-
-		if (player.jetMode){
-			speed = playerTransform.GetComponent<Player>().speed * 2;
-		}
-		if(!player.jetMode){
-			speed = playerTransform.GetComponent<Player>().speed;
-		}
-
-		// CameraMovement();
-
-		SmothCameraMovement();
+        SmothCameraMovement();
     }
-
-
-
-	private void ShakeCamera()
-	{
-		// StartCoroutine(ShakeCam());
-	}
-
-	IEnumerator ShakeCam(){
-		for (int i = 0; i < 5; i++){
-			float rnd = Random.Range(9.5f, 9.8f);
-			float time = 0.01f;
-			float progr = 0;
-			while(progr < 1) {
-				progr += time;
-				camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, rnd, progr);
-				yield return null;
-			}
-			yield return null;
-		}
-		yield break;
-	}
-
 
 	private void MooveCamera(Vector3 dir){
 		prevpos = transform.position;
@@ -144,8 +142,8 @@ public class FollowPlayer : MonoBehaviour {
     }
 
 	void SmothCameraMovement(){
-		Vector3 calculatedPosition = Vector3.SmoothDamp(transform.position, playerTransform.position, ref velocity, dampSpeed);
-		calculatedPosition.z = -20f;
+		Vector3 calculatedPosition = Vector3.SmoothDamp(transform.position, playerTransform.position + playerTransform.up * distance * _distanceFactor, ref velocity, dampSpeed);
+		// calculatedPosition.z = -20f;
 		transform.position = calculatedPosition;
 	}
 }

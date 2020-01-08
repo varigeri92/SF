@@ -135,6 +135,7 @@ public class SaveManager : MonoBehaviour
 	public  void InitSavepath()
 	{
 		filePath = Application.persistentDataPath + "/Saveplayer.json";
+        Debug.Log(filePath);
 	}
 
 	public  bool IsSaveobjectExists()

@@ -46,7 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 668f07dac85c54532b021a618789f131, type: 2}
   charges: 0
-  collider: {fileID: 6673496471432658238}
+  chargesText: {fileID: 0}
+  _collider: {fileID: 6673496471432658238}
   radius: 100
   raiseRate: 100
   Sucess: IZI GG
