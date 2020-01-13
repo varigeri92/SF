@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   required: {fileID: 0}
   requireLevel: 14
-  upgraded: 0
+  upgraded: 1
   icon: {fileID: 21300000, guid: e8c10e00776b245b6acebde609cf2a9c, type: 3}
   cost: 9
   lvl: 0
@@ -23,10 +23,10 @@ MonoBehaviour:
   upgradeType: 3
   gunToUpgrade: {fileID: 0}
   playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
-  ultimateToUpgrade: {fileID: 0}
+  ultimateToUpgrade: {fileID: 11400000, guid: c9ad40419816541999642dd47ac0e56b, type: 2}
   ultimateUpgrade: 0
-  unlockableType: 0
+  unlockableType: 1
   upgradeProperty: 0
   upgradeValue: 1
-  ItemToUnlock: {fileID: 3223577173500042657, guid: c029ad4ee000a4f07acffd974f1e64ea,
+  ItemToUnlock: {fileID: 1931080140823832593, guid: 6c58ba5e731f15741978d94babd63885,
     type: 3}

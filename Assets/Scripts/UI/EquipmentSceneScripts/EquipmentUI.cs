@@ -46,7 +46,7 @@ public class EquipmentUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 			throw new System.Exception("Equipment UI manager, is 'NULL' ");
 		}
 
-		ultimateSelector = canvas.GetComponentInChildren<UltimateSelector>();
+        ultimateSelector = GameObject.FindGameObjectWithTag("UltimateSelector").GetComponent<UltimateSelector>();
 
 		canvasGroup = mouseDragIcon.GetComponent<CanvasGroup>();
     }

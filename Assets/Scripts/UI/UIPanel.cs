@@ -24,6 +24,7 @@ public class UIPanel : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel") && opened && inFocus)
         {
+            Debug.Log(gameObject.name);
             backEvent.Invoke();
         }
     }

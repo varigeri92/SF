@@ -16,5 +16,5 @@ MonoBehaviour:
   charges: 4
   duration: 0
   effect: {fileID: 6902086893590359385, guid: 6d38b1bc820013245b8ab68c9f281e3c, type: 3}
-  icon: {fileID: 4924151775312362546, guid: 0616fc3f907be46f38b60a8fdb164447, type: 3}
+  icon: {fileID: 1432437060315232891, guid: 77c021dafc98cc5438f5da3f7b764fc9, type: 3}
   index: 0

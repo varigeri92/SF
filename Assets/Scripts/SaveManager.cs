@@ -48,8 +48,9 @@ public class SaveManager : MonoBehaviour
 	private void Start()
 	{
 		InitIndexes();
-
 	}
+
+
 	void InitIndexes(){
 		int i = 0;
 		foreach(PlayerGun playerGun in playerStateObject.allPlayerGuns){

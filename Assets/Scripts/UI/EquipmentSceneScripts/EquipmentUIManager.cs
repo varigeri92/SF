@@ -26,7 +26,9 @@ public class EquipmentUIManager : MonoBehaviour
 
 	public GameObject piUIGo;
 
-	public Transform grid;
+	public Transform gunGrid;
+
+    public Transform ultimateGrid;
 
 	[SerializeField]
 	private GameObject _basicGun;
@@ -48,10 +50,16 @@ public class EquipmentUIManager : MonoBehaviour
 
     public void ClearUI()
     {
-        int childs = grid.childCount;
+        int childs = gunGrid.childCount;
         for (int i=0; i<childs; i++ )
         {
-            Destroy(grid.GetChild(i).gameObject);
+            Destroy(gunGrid.GetChild(i).gameObject);
+        }
+
+        childs = ultimateGrid.childCount;
+        for (int i = 0; i < childs; i++)
+        {
+            Destroy(ultimateGrid.GetChild(i).gameObject);
         }
     }
 
@@ -87,9 +95,14 @@ public class EquipmentUIManager : MonoBehaviour
 	private void LoadUnlockedItems()
 	{
 		foreach (var element in playerObject.availableGuns) {
-			Instantiate(element,grid);
+			Instantiate(element,gunGrid);
 		}
-	}
+
+        foreach (var element in playerObject.ultimates)
+        {
+            Instantiate(element, ultimateGrid);
+        }
+    }
 
 	public void BeginDrag(GameObject gun, GameObject icon, GameObject _ammoToSpawn, bool _isGun){
 		Debug.Log("Hello!");
