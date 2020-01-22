@@ -19,10 +19,19 @@ public class LevelSelect : MonoBehaviour
 	public TMPro.TMP_Text Text;
 	public Image backGroundPreview;
 
+    GameObject lastAvailableLevelGO;
+
+    public Button onDownButton;
+    public Button onUpButton;
+
+    List<Button> levelButtons = new List<Button>();
+    [SerializeField]
+    List<Button> sideButtons = new List<Button>();
     // Start is called before the first frame update
     void Start()
     {
 		bool isNextAvailable = true;
+        int iterator = 0;
 		foreach (LevelObject level in levels){
 			//levelPrefab.transform.Find("BG_Image").GetComponent<UnityEngine.UI.Image>().sprite = level.backgroundImage;
 			levelPrefab.GetComponent<LevelCard>().level = level;
@@ -43,13 +52,83 @@ public class LevelSelect : MonoBehaviour
 				isNextAvailable = true;
 			}
 
-			Instantiate(levelPrefab, Content.transform);
-		}
+            GameObject go = Instantiate(levelPrefab, Content.transform);
+            if (level.available)
+            {
+                lastAvailableLevelGO = go;
+                levelButtons.Add(go.GetComponent<Button>());
+            }
+
+        }
+
+        int buttonCount = levelButtons.Count; 
+        for (int i = 0; i < buttonCount; i++)
+        {
+            Navigation buttonNav = new Navigation();
+            buttonNav.mode = Navigation.Mode.Explicit;
+            buttonNav.selectOnUp = onUpButton;
+            buttonNav.selectOnDown = onDownButton;
+            if (i == 0)
+            {
+                buttonNav.selectOnLeft = levelButtons[i];
+            }
+            else
+            {
+                buttonNav.selectOnLeft = levelButtons[i-1];
+            }
+            if (i+1 != buttonCount)
+            {
+                buttonNav.selectOnRight = levelButtons[i + 1];
+            }
+            else
+            {
+                buttonNav.selectOnRight = levelButtons[0];
+            }
+
+            levelButtons[i].navigation = buttonNav;
+        }
+
+        SetSideButtons();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void SelectNextLevelButton()
+    {
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(lastAvailableLevelGO);
+    }
+
+    public void SetSideButtons()
+    {
+        for (int i = 0; i< sideButtons.Count; i++)
+        {
+            Navigation buttonNav = new Navigation();
+            buttonNav.mode = Navigation.Mode.Explicit;
+            if (i == 0)
+            {
+                buttonNav.selectOnUp = sideButtons[sideButtons.Count-1];
+            }
+            else
+            {
+                buttonNav.selectOnUp = sideButtons[i - 1];
+            }
+            if (i + 1 != sideButtons.Count)
+            {
+                buttonNav.selectOnDown = sideButtons[i + 1];
+            }
+            else
+            {
+                buttonNav.selectOnDown = sideButtons[0];
+            }
+
+            buttonNav.selectOnLeft = lastAvailableLevelGO.GetComponent<Button>();
+            buttonNav.selectOnRight = lastAvailableLevelGO.GetComponent<Button>();
+            sideButtons[i].navigation = buttonNav;
+        }
     }
 }

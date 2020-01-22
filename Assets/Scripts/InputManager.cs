@@ -5,6 +5,14 @@ using UnityEngine;
 public static class InputManager{
 
 
+    enum Gamepad
+    {
+        xone,
+        PS4,
+        Other,
+    }
+
+
     #region Events:
     //Call this event on hold to
     public delegate void ShootButtonPresed();
@@ -38,6 +46,7 @@ public static class InputManager{
 
     public static bool usingController = false;
 
+    static Gamepad ConnectedGamepad;
 
     public static void OnStart () {
         usingController = DetectController();
@@ -195,10 +204,22 @@ public static class InputManager{
             if (Input.GetJoystickNames().Length > 0 )
             {
                 Debug.Log("Following josticks are connected: ");
+                switch (Input.GetJoystickNames()[0])
+                {
+                    case "Xbox Bluetooth Gamepad":
+                        ConnectedGamepad = Gamepad.xone;
+                        Debug.Log("XboxController Connected");
+                        break;
+                    default:
+                        ConnectedGamepad = Gamepad.Other;
+                        Debug.Log("The controller you using is unknown! this can lead to Issues in the controll!");
+                        break;
+                }
+
 #if UNITY_EDITOR
                 foreach (string joystickName in Input.GetJoystickNames())
                 {
-                    Debug.Log(joystickName);
+                    Debug.Log("There is a Connected Jojstick:   " + joystickName);
                 }
 #endif
                 return true;
