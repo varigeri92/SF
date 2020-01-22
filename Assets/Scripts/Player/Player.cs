@@ -117,7 +117,6 @@ public class Player : MonoBehaviour
         InputManager.OnBoostButtonReleased += StopTurbo;
 
 		if(InputManager.usingController){
-			// piUI.useController = true;
 			Cursor.visible = false;
 		}
 
@@ -301,6 +300,7 @@ public class Player : MonoBehaviour
 
     void StopShoot()
     {
+        Debug.Log("PLAYES STOPS SHOOTING");
         foreach (Gun gun in activeGuns)
         {
             if (gun != null)

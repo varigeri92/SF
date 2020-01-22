@@ -26,7 +26,6 @@ public class PresistentOptionsManager : MonoBehaviour {
 		}else if(Instance != this){
 			Destroy(this.gameObject);
 		}
-        InputManager.OnStart();
 	}
 	// Use this for initialization
 	void Start () {

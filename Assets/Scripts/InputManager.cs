@@ -12,6 +12,14 @@ public static class InputManager{
         Other,
     }
 
+    enum ButtonState
+    {
+        Released,
+        Pressed,
+        Held,
+        none
+    }
+
 
     #region Events:
     //Call this event on hold to
@@ -45,76 +53,181 @@ public static class InputManager{
 
 
     public static bool usingController = false;
-
     static Gamepad ConnectedGamepad;
+
+    static Dictionary<string, bool> pressedButtons = new Dictionary<string, bool>();
 
     public static void OnStart () {
         usingController = DetectController();
-
 	}
 
+
+    static ButtonState AxesToButton(string axesName)
+    {
+        if (!pressedButtons.ContainsKey(axesName) )
+        {
+            pressedButtons.Add(axesName, false);
+        }
+
+        if (Input.GetAxisRaw(axesName) == 0 && pressedButtons[axesName])
+        {
+            Debug.Log(axesName + " Released!");
+            pressedButtons[axesName] = false;
+            return ButtonState.Released;
+        }
+        else if (Input.GetAxisRaw(axesName) > 0 && !pressedButtons[axesName])
+        {
+            Debug.Log(axesName + " Presed!");
+            pressedButtons[axesName] = true;
+            return ButtonState.Pressed;
+        }
+        else if (Input.GetAxisRaw(axesName) > 0 && pressedButtons[axesName])
+        {
+            Debug.Log(axesName + " Held down!");
+            return ButtonState.Held;
+        }
+        else return ButtonState.Released;
+    } 
 
     public static void OnUpdate () {
 
         if (usingController)
         {
-		    direction = new Vector2(Input.GetAxis("Right_Stick_X"), Input.GetAxis("Right_Stick_Y"));
+
+		    
 			movement = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+            
+            if (ConnectedGamepad == Gamepad.xone)
+            {
+                direction = new Vector2(Input.GetAxis("XO_RS_HOR"),  Input.GetAxis("XO_RS_VER"));
+                if (AxesToButton("XONE_RT") == ButtonState.Held)
+                {
+                    Debug.Log("FIRE PRESSED!!! BOI!!");
+                    if (OnShootButtonPresed != null)
+                    {
+                        OnShootButtonPresed();
+                    }
+                }
+                if (AxesToButton("XONE_RT") == ButtonState.Released)
+                {
+                    Debug.Log("FIRE RELEASED!!! BOI!!");
+                    if (OnShootButtonreleased != null)
+                    {
+                        OnShootButtonreleased();
+                    }
+                }
 
+                // BOOST:
+                if (AxesToButton("XONE_LT") == ButtonState.Held)
+                {
+                    Debug.Log("HELLO");
+                    if (OnBoostButtonPressed != null)
+                    {
+                        OnBoostButtonPressed();
+                    }
+                }
 
-			//FIRE:
-			if(Input.GetButton("Fire1")){
-				Debug.Log("FIRE PRESSED!!! BOI!!");
-				if (OnShootButtonPresed != null) {
-					OnShootButtonPresed();
-				}
-			}
-			if(Input.GetButtonUp("Fire1")){
-				Debug.Log("FIRE RELEASED!!! BOI!!");
-				if (OnShootButtonreleased != null) {
-					OnShootButtonreleased();
-				}
-			}
+                if (AxesToButton("XONE_LT") == ButtonState.Released)
+                {
+                    Debug.Log("JUMP RELEASE!");
+                    if (OnBoostButtonReleased != null)
+                    {
+                        OnBoostButtonReleased();
+                    }
+                }
 
-			// BOOST:
-			if (Input.GetButtonDown("Jump")) {
-				Debug.Log("HELLO");
-				if (OnBoostButtonPressed != null) {
-					OnBoostButtonPressed();
-				}
-			}
+                //INVENTORY:
+                if (Input.GetButtonDown("Inventory"))
+                {
 
-			if (Input.GetButtonUp("Jump")) {
-				Debug.Log("JUMP RELEASE!");
-				if (OnBoostButtonReleased != null) {
-					OnBoostButtonReleased();
-				}
-			}
+                    if (OnInventoryButtonPressed != null)
+                    {
+                        OnInventoryButtonPressed();
+                    }
+                }
+                if (Input.GetButtonUp("Inventory"))
+                {
+                    Debug.Log("INVENTORY RELEASED!!! BOI!!");
+                    if (OnInventoryButtonReleased != null)
+                    {
+                        OnInventoryButtonReleased();
+                    }
+                }
 
-			// INVENTORY:
-			if (Input.GetButtonDown("Inventory")) {
+                //ULTIMATE:
+
+                if (Input.GetButtonDown("Fire2"))
+                {
+                    if (OnUltimateButtonPressed != null)
+                    {
+                        OnUltimateButtonPressed();
+                    }
+                }
+
+            }
+            else
+            {
+                direction = new Vector2(Input.GetAxis("Right_Stick_X"), Input.GetAxis("Right_Stick_Y"));
+                //FIRE:
+                if (Input.GetButton("Fire1")){
+			        Debug.Log("FIRE PRESSED!!! BOI!!");
+			        if (OnShootButtonPresed != null) {
+				        OnShootButtonPresed();
+			        }
+		        }
+		        if(Input.GetButtonUp("Fire1")){
+			        Debug.Log("FIRE RELEASED!!! BOI!!");
+			        if (OnShootButtonreleased != null) {
+				        OnShootButtonreleased();
+			        }
+		        }
+       
+
+			    // BOOST:
+			    if (Input.GetButtonDown("Jump")) {
+				    Debug.Log("HELLO");
+				    if (OnBoostButtonPressed != null) {
+					    OnBoostButtonPressed();
+				    }
+			    }
+
+			    if (Input.GetButtonUp("Jump")) {
+				    Debug.Log("JUMP RELEASE!");
+				    if (OnBoostButtonReleased != null) {
+					    OnBoostButtonReleased();
+				    }
+			    }
+
+			    // INVENTORY:
+			    if (Input.GetButtonDown("Inventory")) {
 				
-				if (OnInventoryButtonPressed != null) {
-					OnInventoryButtonPressed();
-				}
-			}
-			if (Input.GetButtonUp("Inventory")) {
-				Debug.Log("INVENTORY RELEASED!!! BOI!!");
-				if (OnInventoryButtonReleased != null) {
-					OnInventoryButtonReleased();
-				}
-			}
+				    if (OnInventoryButtonPressed != null) {
+					    OnInventoryButtonPressed();
+				    }
+			    }
+			    if (Input.GetButtonUp("Inventory")) {
+				    Debug.Log("INVENTORY RELEASED!!! BOI!!");
+				    if (OnInventoryButtonReleased != null) {
+					    OnInventoryButtonReleased();
+				    }
+			    }
 
-			//ULTIMATE:
+			    //ULTIMATE:
 
-			if (Input.GetButtonDown("Fire2")) {
-				if (OnUltimateButtonPressed != null) {
-					OnUltimateButtonPressed();
-				}
-			}
+			    if (Input.GetButtonDown("Fire2")) {
+				    if (OnUltimateButtonPressed != null) {
+					    OnUltimateButtonPressed();
+				    }
+			    }
+
+            }
         }
-        else
+        else if(!usingController || ConnectedGamepad == Gamepad.Other)
         {
+            if (ConnectedGamepad == Gamepad.Other)
+            {
+                usingController = false;
+            }
             // horizontal = Input.GetAxis("Horizontal");
             // vertical = Input.GetAxis("Vertical");
             movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -213,7 +326,8 @@ public static class InputManager{
                     default:
                         ConnectedGamepad = Gamepad.Other;
                         Debug.Log("The controller you using is unknown! this can lead to Issues in the controll!");
-                        break;
+                        return false;
+                        // break;
                 }
 
 #if UNITY_EDITOR
