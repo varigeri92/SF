@@ -9,7 +9,10 @@ public class GameSystemManager : MonoBehaviour
     TimeManager timeManager;
     public GameObject pauseMenu;
     public bool isPaused { get; private set; }
-    
+
+    public GameObject ContinueButton;
+
+
     void Start()
     {
         isPaused = false;
@@ -20,7 +23,7 @@ public class GameSystemManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("XONE_MENU") || Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isPaused)
             {
@@ -39,9 +42,14 @@ public class GameSystemManager : MonoBehaviour
         isPaused = pause;
         pauseMenu.SetActive(pause);
         if (pause)
+        {
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(ContinueButton);
             timeManager.Pause();
+        }
         else
+        {
             timeManager.NormalizeTime();
+        }
     }
 
     public void ReloadGameScene()

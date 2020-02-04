@@ -197,22 +197,35 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 		}
 	}
 
+
+    public void PointerEnter()
+    {
+        hoverText.SetTittle(buttonObject.tittleText);
+        hoverText.SetDescription(buttonObject.descriptionText);
+        hoverTextCanvasGroup.alpha = 1;
+        if (available && !buttonObject.upgraded)
+        {
+            upgradedHighlight.SetActive(true);
+        }
+    }
+
+    public void Pointerexit()
+    {
+        if (available && !buttonObject.upgraded)
+        {
+            upgradedHighlight.SetActive(false);
+        }
+        hoverTextCanvasGroup.alpha = 0;
+    }
+
 	public void OnPointerEnter(PointerEventData eventData)
 	{
-		hoverText.SetTittle(buttonObject.tittleText);
-		hoverText.SetDescription(buttonObject.descriptionText);
-		hoverTextCanvasGroup.alpha = 1;
-		if(available && !buttonObject.upgraded){
-			upgradedHighlight.SetActive(true);
-		}
+        PointerEnter();
 	}
 	
 	public void OnPointerExit(PointerEventData eventData)
 	{
-		if (available && !buttonObject.upgraded) {
-			upgradedHighlight.SetActive(false);
-		}
-		hoverTextCanvasGroup.alpha = 0;
+        Pointerexit();
 	}
 
 	public void OnPointerDown(PointerEventData eventData)
