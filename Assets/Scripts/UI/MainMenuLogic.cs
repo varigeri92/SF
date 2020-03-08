@@ -15,71 +15,24 @@ public class MainMenuLogic : MonoBehaviour {
     public Slider musicSlider;
 
 
-	[SerializeField]
-	GameObject FirstButton;
-
-	[SerializeField]
-	GameObject ExitNo;
-
-	[SerializeField]
-	GameObject settings_1;
-
-
-    AudioSource _source;
-
-	CanvasGroup currentOpenedPanel;
 	public AudioMixer _mixer;
-	void Start () {
-		EventSystem.current.firstSelectedGameObject = FirstButton;
-		_source = GetComponentInChildren<AudioSource>();
-		currentOpenedPanel = transform.GetChild(0).GetComponent<CanvasGroup>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public AudioSource sfxSource;
+    public AudioSource musicSource;
 
-	public void StartGame(){
-		SceneManager.LoadScene(1);
-	}
-
-	public void StartSurvivorMode(){
-		SelectedLevel.Instance.SetSurvivorlevel();
-		StartGame();
-	}
-
-	public void ToLevels(){
-		SceneManager.LoadScene(2);
-	}
-
-	public void ExitGame(){
-		Application.Quit();
-	}
-
-	public void OpenExitPanel(CanvasGroup cg){
-		EventSystem.current.SetSelectedGameObject(ExitNo);
-		StartCoroutine(FadePanelsOut(currentOpenedPanel));
-		StartCoroutine(FadePanelsIn(cg));
-	}
-
-	public void CloseExitPanel(CanvasGroup cg)
-	{
-		EventSystem.current.SetSelectedGameObject(FirstButton);
-		StartCoroutine(FadePanelsOut(currentOpenedPanel));
-		StartCoroutine(FadePanelsIn(cg));
-	}
-    public void OpenControlls(CanvasGroup cg)
+    private void Start()
     {
-		EventSystem.current.SetSelectedGameObject(settings_1);
-        StartCoroutine(FadePanelsOut(currentOpenedPanel));
-        StartCoroutine(FadePanelsIn(cg));
-    }
-    public void CloseControlls(CanvasGroup cg)
-    {
-		EventSystem.current.SetSelectedGameObject(FirstButton);
-        StartCoroutine(FadePanelsOut(currentOpenedPanel));
-        StartCoroutine(FadePanelsIn(cg));
+        float volume  = 0f;
+        _mixer.GetFloat("masterVol", out volume);
+        masterSlider.value = volume;
+        SetmasterVolume(volume);
+
+        _mixer.GetFloat("musicVol", out volume);
+        musicSlider.value = volume;
+        SetMusicVolume(volume);
+
+        _mixer.GetFloat("sfxVol", out volume);
+        fxSlider.value = volume;
+        SetFXVolume(volume);
     }
 
     public void SetmasterVolume(float vol){
@@ -100,34 +53,5 @@ public class MainMenuLogic : MonoBehaviour {
 
 	public void RevertOtions(){
 		
-	}
-
-	IEnumerator FadePanelsIn(CanvasGroup cg){
-		cg.gameObject.SetActive(true);
-		currentOpenedPanel = cg;
-
-		while (cg.alpha < 1)
-		{
-			cg.alpha += fadeTime;
-			yield return null;
-		}
-		if(cg.alpha >= 1){
-			cg.alpha = 1;
-		}
-		yield break;
-	}
-
-	IEnumerator FadePanelsOut(CanvasGroup cg){
-		
-		while (cg.alpha > 0)
-		{
-			cg.alpha -= fadeTime;
-			yield return null;
-		}
-		if(cg.alpha <= 0){
-			cg.alpha = 0;
-			cg.gameObject.SetActive(false);
-		}
-		yield break;
 	}
 }

@@ -19,6 +19,8 @@ TagManager:
   - EnemySpawner
   - UltimatePanel
   - XPandLVL
+  - Menu_Canvas
+  - UltimateSelector
   layers:
   - Default
   - TransparentFX

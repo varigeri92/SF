@@ -67,7 +67,6 @@ public class LevelManager : MonoBehaviour
 		enemyCount = 0;
 		Instantiate(playerPrefab, new Vector3(0, -4.35f, 0), Quaternion.identity);
 		timestamp = Time.time;
-		Debug.Log(timestamp);
 	}
 
 	// Update is called once per frame

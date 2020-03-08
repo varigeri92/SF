@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   required: {fileID: 0}
   requireLevel: 8
-  upgraded: 0
+  upgraded: 1
   icon: {fileID: 21300000, guid: 3fd07953ab2be4bf59287244ae76ebd0, type: 3}
   cost: 9
   lvl: 1

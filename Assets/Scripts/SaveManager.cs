@@ -48,8 +48,9 @@ public class SaveManager : MonoBehaviour
 	private void Start()
 	{
 		InitIndexes();
-
 	}
+
+
 	void InitIndexes(){
 		int i = 0;
 		foreach(PlayerGun playerGun in playerStateObject.allPlayerGuns){
@@ -135,6 +136,7 @@ public class SaveManager : MonoBehaviour
 	public  void InitSavepath()
 	{
 		filePath = Application.persistentDataPath + "/Saveplayer.json";
+        Debug.Log(filePath);
 	}
 
 	public  bool IsSaveobjectExists()
@@ -305,6 +307,7 @@ public class SaveManager : MonoBehaviour
 						SetEquippedGun(index);
 				}
 
+				playerObject.availableGuns.Clear();
 				foreach (int index in saveObject.unlockedGunIndexes) {
 					if(index != 0)
 						SetUnlockedGun(index);

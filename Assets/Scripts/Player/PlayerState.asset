@@ -20,54 +20,51 @@ MonoBehaviour:
     gunCollectablePrefab: {fileID: 0}
     gunObject: {fileID: 11400000, guid: cb5fb1469e18841fb9766965f7802b4e, type: 2}
     serializableGun:
-      startingAmmo: 0
-      maxAmmo: 0
-      fireRate: 0
-      damage: 0
+      startingAmmo: -999
+      maxAmmo: -999
+      fireRate: 7
+      damage: 2
       index: 0
   - gunPrefab: {fileID: 1897131634571996, guid: de7c98b5b00e347aa99245b0a301a164,
       type: 3}
     gunIcon: {fileID: 1974288720584050, guid: 31021c9bfc6e7488c883360341a2e95c, type: 3}
-    gunGridElement: {fileID: 3490590457121529502, guid: a871043da041d4bed8f6bdd5c3f79fbf,
-      type: 3}
+    gunGridElement: {fileID: 334, guid: a871043da041d4bed8f6bdd5c3f79fbf, type: 3}
     gunCollectablePrefab: {fileID: 1615196254142962, guid: 786e4e89b7be7470294772dd4e74de66,
       type: 3}
     gunObject: {fileID: 11400000, guid: cd596ad9e1f3d408cbcf9e85d2c1d348, type: 2}
     serializableGun:
-      startingAmmo: 0
-      maxAmmo: 0
-      fireRate: 0
-      damage: 0
-      index: 0
+      startingAmmo: 250
+      maxAmmo: 400
+      fireRate: 7
+      damage: 4
+      index: 1
   - gunPrefab: {fileID: 1458455220, guid: 4629d1b0812f4a6449b40d59b8550638, type: 3}
     gunIcon: {fileID: 226233719831200884, guid: d8301fd8d162cb346bc0d01cf631d0c1,
       type: 3}
-    gunGridElement: {fileID: 6299240627127540184, guid: a34ae7d6be54146e19fb679962dc5922,
-      type: 3}
+    gunGridElement: {fileID: 350, guid: a34ae7d6be54146e19fb679962dc5922, type: 3}
     gunCollectablePrefab: {fileID: 1685238137071351133, guid: f0c1e7369a92ee749b850e5599a3cdbc,
       type: 3}
     gunObject: {fileID: 11400000, guid: 0bb9c0b947d374a4b936d1e756ccec1a, type: 2}
     serializableGun:
-      startingAmmo: 0
-      maxAmmo: 0
-      fireRate: 0
-      damage: 0
-      index: 0
+      startingAmmo: 100
+      maxAmmo: 250
+      fireRate: 5
+      damage: 2
+      index: 2
   - gunPrefab: {fileID: 3821602256460556279, guid: d8e449eac41d25f41b7d27a530b9d841,
       type: 3}
     gunIcon: {fileID: 9155244844814188057, guid: e6ed806f10012cd4ebad09a23774068c,
       type: 3}
-    gunGridElement: {fileID: 6299240627127540184, guid: 1986736c4f6e84eee8a1ed4b877a7d80,
-      type: 3}
+    gunGridElement: {fileID: 349, guid: 1986736c4f6e84eee8a1ed4b877a7d80, type: 3}
     gunCollectablePrefab: {fileID: 5855574713655412981, guid: 5f9978cde65da8843af30cf61699fdd2,
       type: 3}
     gunObject: {fileID: 11400000, guid: 6d41e4c8718ae4063832824311979810, type: 2}
     serializableGun:
-      startingAmmo: 0
-      maxAmmo: 0
-      fireRate: 0
-      damage: 0
-      index: 0
+      startingAmmo: 5
+      maxAmmo: 15
+      fireRate: 1
+      damage: 5
+      index: 3
   availablePlayerGuns: 
   equipedPlayerGuns: 
   allPlayerUltimates:

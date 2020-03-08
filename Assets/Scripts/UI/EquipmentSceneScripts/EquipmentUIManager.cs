@@ -26,7 +26,9 @@ public class EquipmentUIManager : MonoBehaviour
 
 	public GameObject piUIGo;
 
-	public Transform grid;
+	public Transform gunGrid;
+
+    public Transform ultimateGrid;
 
 	[SerializeField]
 	private GameObject _basicGun;
@@ -43,15 +45,40 @@ public class EquipmentUIManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		selectedSlot = "none";
-		lastSelectedSlot = "none";
-
-		SetGun(_basicGun,_basicGunIcon,"One", null);
-		initialize = false;
-		LoadPlayerInventory();
-		LoadUnlockedItems();
+        InitEquipment();
     }
 
+    public void ClearUI()
+    {
+        int childs = gunGrid.childCount;
+        for (int i=0; i<childs; i++ )
+        {
+            Destroy(gunGrid.GetChild(i).gameObject);
+        }
+
+        childs = ultimateGrid.childCount;
+        for (int i = 0; i < childs; i++)
+        {
+            Destroy(ultimateGrid.GetChild(i).gameObject);
+        }
+    }
+
+    public void InitEquipment()
+    {
+        selectedSlot = "none";
+        lastSelectedSlot = "none";
+
+        SetGun(_basicGun, _basicGunIcon, "One", null);
+        initialize = false;
+        LoadPlayerInventory();
+        LoadUnlockedItems();
+    }
+
+    public void OnWorksopOpened()
+    {
+        ClearUI();
+        InitEquipment();
+    } 
     // Update is called once per frame
     void Update()
     {
@@ -68,9 +95,14 @@ public class EquipmentUIManager : MonoBehaviour
 	private void LoadUnlockedItems()
 	{
 		foreach (var element in playerObject.availableGuns) {
-			Instantiate(element,grid);
+			Instantiate(element,gunGrid);
 		}
-	}
+
+        foreach (var element in playerObject.ultimates)
+        {
+            Instantiate(element, ultimateGrid);
+        }
+    }
 
 	public void BeginDrag(GameObject gun, GameObject icon, GameObject _ammoToSpawn, bool _isGun){
 		Debug.Log("Hello!");
@@ -106,6 +138,7 @@ public class EquipmentUIManager : MonoBehaviour
 
 	public void SetGun(GameObject gun, GameObject icon, string slotName, GameObject _ammoToSpawn)
 	{
+		Debug.Log("SETGUN BOI!!");
 		if(gun == null){
 			return;
 		}
@@ -176,8 +209,6 @@ public class EquipmentUIManager : MonoBehaviour
 		playerObject.AmmoToSpawn = new List<GameObject>(ammos);
 
 		SaveManager.Instance.SetEquipedGunsToSave(guns);
-
-		UnityEngine.SceneManagement.SceneManager.LoadScene(2);
 	}
 
 }

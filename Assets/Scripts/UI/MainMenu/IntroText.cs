@@ -5,17 +5,21 @@ public class IntroText : UIPanel
 {
     [SerializeField] private Animator menuAnimator;
 
+    
+
     // Update is called once per frame
     void Update()
     {
         if(Input.anyKey)
         {
-            Hide();
+                Hide();
+              
         }
     }
 
     void ShowMenu()
     {
-        menuAnimator.SetBool("show", true);
+        //menuAnimator.SetBool("show", true);
+        backEvent.Invoke();
     }
 }

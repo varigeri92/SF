@@ -23,9 +23,17 @@ public class Player : MonoBehaviour
 	public delegate void LevelUp(int level);
 	public static event LevelUp OnLevelUp;
 
-	// public SaveObject saveObject;
-	// public PlayerStateObject playerStateObject;
-	public PlayerObject playerObject;
+    public delegate void PlayerShooting();
+    public static event PlayerShooting OnPlayerShooting;
+
+
+    public delegate void PlayerStopShooting();
+    public static event PlayerStopShooting OnPlayerStopShooting;
+
+
+    // public SaveObject saveObject;
+    // public PlayerStateObject playerStateObject;
+    public PlayerObject playerObject;
 	public GameSystemManager gameSystemManager;
 
 	public List<SelectorBehaviour> selectorBahaviours = new List<SelectorBehaviour>();
@@ -109,7 +117,6 @@ public class Player : MonoBehaviour
         InputManager.OnBoostButtonReleased += StopTurbo;
 
 		if(InputManager.usingController){
-			// piUI.useController = true;
 			Cursor.visible = false;
 		}
 
@@ -253,7 +260,6 @@ public class Player : MonoBehaviour
 
 	public void TakeDmg(int dmg)
 	{
-		Debug.Log("Player Takes: " + dmg + " damage");
 		health -= dmg;
 		if (health <= 0) {
 			Die();
@@ -294,13 +300,17 @@ public class Player : MonoBehaviour
 
     void StopShoot()
     {
-        Debug.Log("Stop_ShootingEvent");
+        Debug.Log("PLAYES STOPS SHOOTING");
         foreach (Gun gun in activeGuns)
         {
             if (gun != null)
             {
 
                 gun.StopShooting();
+                if (OnPlayerStopShooting != null)
+                {
+                    OnPlayerStopShooting();
+                }
             }
             else
             {
@@ -311,13 +321,16 @@ public class Player : MonoBehaviour
 
     void ShootEvent()
     {
-        Debug.Log("ShootingEvent");
         foreach (Gun gun in activeGuns)
         {
             if (gun != null)
             {
 
                 gun.Shooting(true);
+                if (OnPlayerShooting != null)
+                {
+                    OnPlayerShooting();
+                }
                 if (gun.ammo != -999)
                 {
                     AmmoText.text = gun.ammo.ToString();

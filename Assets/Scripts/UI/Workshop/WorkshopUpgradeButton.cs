@@ -11,6 +11,10 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 	private HowerText hoverText;
 	private CanvasGroup hoverTextCanvasGroup;
 
+
+	[SerializeField]
+	Color IconColor;
+
 	[SerializeField]
 	Color availableColor;
 
@@ -35,7 +39,7 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 
 	private void Start()
 	{
-		workshopUI = GameObject.FindGameObjectWithTag("WorkshopUI").GetComponent<WorkshopUI>();
+		workshopUI = GameObject.FindGameObjectWithTag("Menu_Canvas").GetComponent<WorkshopUI>();
 
 
 		hoverText = GameObject.FindGameObjectWithTag("HoverText").GetComponent<HowerText>();
@@ -63,18 +67,22 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 					if ((buttonObject.playerObject.powerCores - buttonObject.cost) > -1) {
 						available = true;
 						baseButton.color = availableColor;
+						icon.color = IconColor;
 					} else {
 						available = false;
 						baseButton.color = notEnoughCoresColor;
+						icon.color = IconColor;
 					}
 				}
 			} else {
 				if ((buttonObject.playerObject.powerCores - buttonObject.cost) > -1) {
 					available = true;
 					baseButton.color = availableColor;
+					icon.color = IconColor;
 				} else {
 					available = false;
 					baseButton.color = notEnoughCoresColor;
+					icon.color = IconColor;
 				}
 			}
 		}
@@ -189,22 +197,35 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 		}
 	}
 
+
+    public void PointerEnter()
+    {
+        hoverText.SetTittle(buttonObject.tittleText);
+        hoverText.SetDescription(buttonObject.descriptionText);
+        hoverTextCanvasGroup.alpha = 1;
+        if (available && !buttonObject.upgraded)
+        {
+            upgradedHighlight.SetActive(true);
+        }
+    }
+
+    public void Pointerexit()
+    {
+        if (available && !buttonObject.upgraded)
+        {
+            upgradedHighlight.SetActive(false);
+        }
+        hoverTextCanvasGroup.alpha = 0;
+    }
+
 	public void OnPointerEnter(PointerEventData eventData)
 	{
-		hoverText.SetTittle(buttonObject.tittleText);
-		hoverText.SetDescription(buttonObject.descriptionText);
-		hoverTextCanvasGroup.alpha = 1;
-		if(available && !buttonObject.upgraded){
-			upgradedHighlight.SetActive(true);
-		}
+        PointerEnter();
 	}
 	
 	public void OnPointerExit(PointerEventData eventData)
 	{
-		if (available && !buttonObject.upgraded) {
-			upgradedHighlight.SetActive(false);
-		}
-		hoverTextCanvasGroup.alpha = 0;
+        Pointerexit();
 	}
 
 	public void OnPointerDown(PointerEventData eventData)
