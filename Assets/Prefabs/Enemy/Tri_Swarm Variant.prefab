@@ -89,12 +89,12 @@ PrefabInstance:
     - target: {fileID: 814902901598441491, guid: 805d1a3047cc1ce4c8ff88f90f8fa68c,
         type: 3}
       propertyPath: m_Name
-      value: Tri_Swarm
+      value: Tri_Swarm Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1495820721824255917, guid: 805d1a3047cc1ce4c8ff88f90f8fa68c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495820721824255917, guid: 805d1a3047cc1ce4c8ff88f90f8fa68c,
         type: 3}

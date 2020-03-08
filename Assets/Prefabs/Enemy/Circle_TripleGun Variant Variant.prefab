@@ -390,12 +390,12 @@ PrefabInstance:
     - target: {fileID: 6842609537648879969, guid: 7ddaf6ec525e94e4ca46699702f99107,
         type: 3}
       propertyPath: m_Name
-      value: Circle_TripleGun Variant
+      value: Circle_TripleGun Variant Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5855856800874598134, guid: 7ddaf6ec525e94e4ca46699702f99107,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5855856800874598134, guid: 7ddaf6ec525e94e4ca46699702f99107,
         type: 3}
@@ -452,6 +452,11 @@ PrefabInstance:
       propertyPath: gun
       value: 
       objectReference: {fileID: 4031086162524332577}
+    - target: {fileID: 9160316709789596440, guid: 7ddaf6ec525e94e4ca46699702f99107,
+        type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 1677964726579198982}
     - target: {fileID: 5082850194385554476, guid: 7ddaf6ec525e94e4ca46699702f99107,
         type: 3}
       propertyPath: m_Color.r
@@ -467,11 +472,6 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.99607843
       objectReference: {fileID: 0}
-    - target: {fileID: 9160316709789596440, guid: 7ddaf6ec525e94e4ca46699702f99107,
-        type: 3}
-      propertyPath: spawnPoint
-      value: 
-      objectReference: {fileID: 1677964726579198982}
     - target: {fileID: 6167306325246162536, guid: 7ddaf6ec525e94e4ca46699702f99107,
         type: 3}
       propertyPath: m_Color.r
