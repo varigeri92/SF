@@ -257,11 +257,9 @@ public class SaveManager : MonoBehaviour
 		saveObject.ulnlockedUltimateIndexes = playerStateObject.availablePlayerUltimates.ToArray();
 
 		saveObject.lastCompletedLevel = -1;
-		Debug.Log("Saving Level: Index: " + SelectedLevel.Instance.levels.Length.ToString());
+
 		for (int i = 0; i < SelectedLevel.Instance.levels.Length; i++){
-			Debug.Log("Saving Level: Index: "+i.ToString());
 			if(SelectedLevel.Instance.levels[i].completed == false){
-				Debug.Log("Level: " + i.ToString() + "is Incomplette!");
 				break;
 			}
 			saveObject.lastCompletedLevel = i;
@@ -274,14 +272,15 @@ public class SaveManager : MonoBehaviour
 
 	public  void SavePerks(List<UpgradeButtonObject> buttonObjects)
 	{
-
+        buttonObjects = AllGamePerks;
 		List<PerkUpgradeSave> perkList = new List<PerkUpgradeSave>();
 		for (int i = 0; i < buttonObjects.Count; i++) {
 			PerkUpgradeSave perk = new PerkUpgradeSave(i, buttonObjects[i].upgraded);
 			perkList.Add(perk);
-		}
+        }
 		saveObject.perks = perkList.ToArray();
-		SaveGamePlayerState();
+        saveObject2.perks = perkList.ToArray();
+        SaveGamePlayerState(false);
 	}
 
 	public  void LoadPlayerState()

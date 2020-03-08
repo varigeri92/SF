@@ -11,8 +11,12 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 	private HowerText hoverText;
 	private CanvasGroup hoverTextCanvasGroup;
 
+    [SerializeField]
+    Transform gunGrid;
+    [SerializeField]
+    Transform ultimateGrid;
 
-	[SerializeField]
+    [SerializeField]
 	Color IconColor;
 
 	[SerializeField]
@@ -40,9 +44,10 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 	private void Start()
 	{
 		workshopUI = GameObject.FindGameObjectWithTag("Menu_Canvas").GetComponent<WorkshopUI>();
+        gunGrid = GameObject.FindGameObjectWithTag("gunGrid").transform;
+        ultimateGrid = GameObject.FindGameObjectWithTag("ultimateGrid").transform;
 
-
-		hoverText = GameObject.FindGameObjectWithTag("HoverText").GetComponent<HowerText>();
+        hoverText = GameObject.FindGameObjectWithTag("HoverText").GetComponent<HowerText>();
 		hoverTextCanvasGroup = hoverText.GetComponent<CanvasGroup>();
 		WorkshopUI.OnUpgrade += InitButton;
 		InitButton();
@@ -180,11 +185,13 @@ public class WorkshopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPoint
 						case UnlockableType.Gun:
 							buttonObject.playerObject.availableGuns.Add(buttonObject.ItemToUnlock);
 							SaveManager.Instance.AddAvailableGun(buttonObject.gunToUpgrade.index);
+                            Instantiate(buttonObject.ItemToUnlock, gunGrid);
 							break;
 						case UnlockableType. Ultimate:
 							buttonObject.playerObject.ultimates.Add(buttonObject.ItemToUnlock);
 							SaveManager.Instance.AddAvailableUlt(buttonObject.ultimateToUpgrade.index);
-							break;
+                            Instantiate(buttonObject.ItemToUnlock, ultimateGrid);
+                            break;
 						default:
 							Debug.Log("This Unlockable Type is not implemented in this switch state!");
 							return;

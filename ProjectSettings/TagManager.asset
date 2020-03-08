@@ -21,6 +21,8 @@ TagManager:
   - XPandLVL
   - Menu_Canvas
   - UltimateSelector
+  - ultimateGrid
+  - gunGrid
   layers:
   - Default
   - TransparentFX

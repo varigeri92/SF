@@ -48,7 +48,7 @@ MonoBehaviour:
   charges: 0
   chargesText: {fileID: 0}
   _collider: {fileID: 6673496471432658238}
-  radius: 100
+  radius: 50
   raiseRate: 100
   Sucess: IZI GG
 --- !u!58 &6673496471432658238

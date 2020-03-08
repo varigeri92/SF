@@ -19,7 +19,7 @@ public class WorkshopUI : MonoBehaviour
     void Start()
     {
 		SetText();
-		//PlayerProgress.Instance.SetPerks(ref buttonObjects);
+		PlayerProgress.Instance.SetPerks(ref buttonObjects);
     }
 
 	void SetText(){
@@ -43,6 +43,7 @@ public class WorkshopUI : MonoBehaviour
 		}
 		SetText();
 		SaveManager.Instance.SavePerks(buttonObjects);
+        Debug.Log("Perks Saved!");
 	}
 
 	public void UpgradeDone(int sceneIndex){

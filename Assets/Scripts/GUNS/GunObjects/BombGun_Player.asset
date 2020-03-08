@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BombGun_Player
   m_EditorClassIdentifier: 
   startingAmmo: 5
-  maxAmmo: 15
+  maxAmmo: 5
   fireRate: 1
   damage: 5
+  index: 3

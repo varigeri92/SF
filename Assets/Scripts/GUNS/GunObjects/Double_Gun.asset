@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258f09697eb0a4ec3b9b95e09dceb834, type: 3}
   m_Name: Double_Gun
   m_EditorClassIdentifier: 
-  startingAmmo: 200
-  maxAmmo: 350
-  fireRate: 6
-  damage: 2
+  startingAmmo: 500
+  maxAmmo: 200
+  fireRate: 5
+  damage: 1
+  index: 1
