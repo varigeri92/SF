@@ -23,6 +23,9 @@ TagManager:
   - UltimateSelector
   - ultimateGrid
   - gunGrid
+  - MainMenuButtons
+  - IntroText
+  - LevelSelectionPanel
   layers:
   - Default
   - TransparentFX

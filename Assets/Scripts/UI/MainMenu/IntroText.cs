@@ -22,4 +22,14 @@ public class IntroText : UIPanel
         //menuAnimator.SetBool("show", true);
         backEvent.Invoke();
     }
+
+    public void DisableAnimation()
+    {
+        Animator animator = GetComponent<Animator>();
+        animator.enabled = false;
+        CanvasGroup cg = GetComponent<CanvasGroup>();
+        cg.alpha = 0;
+        cg.blocksRaycasts = false;
+        cg.interactable = false;
+    }
 }

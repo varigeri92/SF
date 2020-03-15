@@ -10,6 +10,17 @@ public class PresistentOptionsManager : MonoBehaviour {
 
 	private static PresistentOptionsManager instance;
 
+    private bool justStarted = true;
+
+    public IntroText introText;
+    public CanvasGroup introGroup;
+
+    public CanvasGroup buttonsGroup;
+    public UIPanel buttonsPanel;
+
+    public CanvasGroup levelSelectGroup;
+    public UIPanel levelSelectPanel;
+
 	public static PresistentOptionsManager Instance {
 		get {
 			return instance;
@@ -26,10 +37,10 @@ public class PresistentOptionsManager : MonoBehaviour {
 		}else if(Instance != this){
 			Destroy(this.gameObject);
 		}
+        justStarted = false;
 	}
 	// Use this for initialization
 	void Start () {
-		
 		DontDestroyOnLoad(this.gameObject);
 		Cursor.SetCursor(cursorImg, hotSpot, cursorMode);
 	}
@@ -38,4 +49,33 @@ public class PresistentOptionsManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if (level == 0)
+        {
+            AutoOpenLevelSelect();
+        }
+        else
+        {
+            Debug.Log("GAME _ Loaded BOI!");
+        }
+    }
+
+    void AutoOpenLevelSelect()
+    {
+        introGroup = GameObject.FindGameObjectWithTag("IntroText").GetComponent<CanvasGroup>();
+        introText = introGroup.GetComponent<IntroText>();
+        introText.DisableAnimation();
+
+        buttonsGroup = GameObject.FindGameObjectWithTag("MainMenuButtons").GetComponent<CanvasGroup>();
+        buttonsPanel = buttonsGroup.GetComponent<UIPanel>();
+        buttonsPanel.Hide();
+
+        levelSelectPanel = GameObject.FindGameObjectWithTag("LevelSelectionPanel").GetComponent<UIPanel>();
+        levelSelectPanel.Show();
+        levelSelectPanel.SetFocus(true);
+        // levelSelectGroup.alpha = 1;
+        // levelSelectGroup.blocksRaycasts = true;
+    }
 }

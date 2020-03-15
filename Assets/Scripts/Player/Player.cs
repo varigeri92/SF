@@ -250,10 +250,11 @@ public class Player : MonoBehaviour
 		if (turbo > 1) {
 			turbo = 1;
 			turboBar.fillAmount = turbo;
-		} else if (turbo < 0) {
+		} else if (turbo <= 0) {
 			turbo = 0;
 			turboBar.fillAmount = turbo;
 			allowTurbo = false;
+            StopTurbo();
 		}
 
 	}

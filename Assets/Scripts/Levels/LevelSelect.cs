@@ -58,6 +58,7 @@ public class LevelSelect : MonoBehaviour
                 lastAvailableLevelGO = go;
                 levelButtons.Add(go.GetComponent<Button>());
             }
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(lastAvailableLevelGO);
 
         }
 
@@ -92,15 +93,10 @@ public class LevelSelect : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SelectNextLevelButton()
     {
         UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(lastAvailableLevelGO);
+
     }
 
     public void SetSideButtons()
@@ -130,5 +126,10 @@ public class LevelSelect : MonoBehaviour
             buttonNav.selectOnRight = lastAvailableLevelGO.GetComponent<Button>();
             sideButtons[i].navigation = buttonNav;
         }
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        SelectNextLevelButton();
     }
 }

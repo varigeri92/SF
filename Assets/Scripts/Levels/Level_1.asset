@@ -17,9 +17,9 @@ MonoBehaviour:
   completed: 1
   backgroundImage: {fileID: 21300000, guid: d9b31ebd60af68c469212c1a9f513e74, type: 3}
   enemyes:
-  - {fileID: 1420262902442594, guid: 2a0f6c2b2f59b449593f257ae600dbfa, type: 3}
-  - {fileID: 1420262902442594, guid: 2a0f6c2b2f59b449593f257ae600dbfa, type: 3}
-  - {fileID: 1420262902442594, guid: 71e947cbf8a204705884b12cd5acb0de, type: 3}
+  - {fileID: 6842609537648879969, guid: 7ddaf6ec525e94e4ca46699702f99107, type: 3}
+  - {fileID: 6842609537648879969, guid: 7ddaf6ec525e94e4ca46699702f99107, type: 3}
+  - {fileID: 2999698918325268880, guid: 8bae02e6f0a08d8478014cd1dd40d7c0, type: 3}
   bosses:
   - {fileID: 2113269734623498212, guid: 51cea07ccaa9b0649849ccb28b753808, type: 3}
   obstacles:

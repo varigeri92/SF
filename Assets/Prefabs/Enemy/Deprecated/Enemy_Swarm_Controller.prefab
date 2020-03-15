@@ -51,7 +51,7 @@ MonoBehaviour:
   distance: 0
   enemyObject: {fileID: 11400000, guid: 5bb21ace44a8643068b83a2b918f2029, type: 2}
   gun: {fileID: 0}
-  swarmEnemy: {fileID: 814902901598441491, guid: 805d1a3047cc1ce4c8ff88f90f8fa68c,
+  swarmEnemy: {fileID: 1056004343190608971, guid: fde475f2503bce441b19c76171594fe1,
     type: 3}
   swarmSize: 10
   spawnRate: 0.2

@@ -17,12 +17,12 @@ MonoBehaviour:
   completed: 1
   backgroundImage: {fileID: 21300000, guid: 35313af049b4a2f42a0325330c51d74a, type: 3}
   enemyes:
-  - {fileID: 1420262902442594, guid: 2a0f6c2b2f59b449593f257ae600dbfa, type: 3}
-  - {fileID: 1420262902442594, guid: 2a0f6c2b2f59b449593f257ae600dbfa, type: 3}
-  - {fileID: 1420262902442594, guid: 71e947cbf8a204705884b12cd5acb0de, type: 3}
+  - {fileID: 6842609537648879969, guid: 7ddaf6ec525e94e4ca46699702f99107, type: 3}
+  - {fileID: 6842609537648879969, guid: 7ddaf6ec525e94e4ca46699702f99107, type: 3}
+  - {fileID: 5549488316022002413, guid: 5cbf25fccbb35b446831b30a495eee89, type: 3}
   - {fileID: 6749913131147917409, guid: 9e1ffdc30861b1c4dad86deaf37e62e2, type: 3}
   bosses:
-  - {fileID: 2113269734623498212, guid: 51cea07ccaa9b0649849ccb28b753808, type: 3}
+  - {fileID: 816522542931933305, guid: c73f11195fb54944e95d0766e8bfcfca, type: 3}
   obstacles:
   - {fileID: 1225506040109798, guid: 59a5d45e70f9745cca0fd7cca100dcfa, type: 3}
   - {fileID: 1477566266523767529, guid: 5de1b46cc31fe4bd08bcbfaa01efce94, type: 3}

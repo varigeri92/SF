@@ -31,12 +31,20 @@ public class UIPanel : MonoBehaviour
 
     public virtual void Show()
     {
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
         animator.SetBool("show", true);
         opened = true;
     }
 
     public virtual void Hide()
     {
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
         animator.SetBool("show", false);
         opened = false;
         SetFocus(false);
