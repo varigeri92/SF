@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameSystemManager : MonoBehaviour
 {
 
     TimeManager timeManager;
     public GameObject pauseMenu;
+    public GameObject continueButton;
     public bool isPaused { get; private set; }
 
     public GameObject ContinueButton;
@@ -28,10 +30,12 @@ public class GameSystemManager : MonoBehaviour
             if (!isPaused)
             {
                 PauseGame(true);
+                EventSystem.current.SetSelectedGameObject(continueButton);
             }
             else
             {
                 PauseGame(false);
+                EventSystem.current.SetSelectedGameObject(null);
             }
 
         }

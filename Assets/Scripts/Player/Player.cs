@@ -138,7 +138,8 @@ public class Player : MonoBehaviour
 
     void Start()
 	{
-		GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().OnPlayerLoaded(this);
+        PresistentOptionsManager.Instance.justStarted = false;
+        GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().OnPlayerLoaded(this);
 		SetBasicGun();
 		BasicEnemy.onEnemyDead += countEnemyes;
 		shieldText.text = health.ToString();

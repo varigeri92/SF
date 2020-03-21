@@ -58,7 +58,11 @@ public class LevelSelect : MonoBehaviour
                 lastAvailableLevelGO = go;
                 levelButtons.Add(go.GetComponent<Button>());
             }
-            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(lastAvailableLevelGO);
+            
+            if (!PresistentOptionsManager.Instance.justStarted)
+            {
+                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(lastAvailableLevelGO);
+            }
 
         }
 
@@ -130,6 +134,7 @@ public class LevelSelect : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
+
         SelectNextLevelButton();
     }
 }

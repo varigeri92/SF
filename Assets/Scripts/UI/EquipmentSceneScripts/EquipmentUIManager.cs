@@ -42,10 +42,31 @@ public class EquipmentUIManager : MonoBehaviour
 
 	bool isGun = true;
 
+    public Animator piAnimator;
+
 	// Start is called before the first frame update
 	void Start()
     {
+        InputManager.OnUltimateButtonPressed += SetPiJoyButtonTrue;
         InitEquipment();
+    }
+
+    private void OnDestroy()
+    {
+        InputManager.OnUltimateButtonPressed -= SetPiJoyButtonTrue;
+
+    }
+
+    void SetPiJoyButtonTrue()
+    {
+        Debug.Log("Event Trigger_True BOI");
+        piUI.joystickButton = true;
+    }
+
+    void SetPiJoyButtonFalse()
+    {
+        Debug.Log("Event Trigger_False BOI");
+        piUI.joystickButton = false;
     }
 
     public void ClearUI()
@@ -82,7 +103,10 @@ public class EquipmentUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Fire2"))
+        {
+            piUI.joystickButton = true;
+        }
     }
 	public void HoverEnter(){
 		isMouseoverSlot = true;
@@ -118,9 +142,8 @@ public class EquipmentUIManager : MonoBehaviour
 	}
 
 	public void SelectSlot(string slotName){
-		isMouseoverSlot = true;
 		SetGun(selectedGun, gunIcon, slotName, ammoToSpawn);
-
+        piAnimator.SetBool("Open", false);
 	}
 
 	public void DeselectSlot(){
@@ -211,4 +234,15 @@ public class EquipmentUIManager : MonoBehaviour
 		SaveManager.Instance.SetEquipedGunsToSave(guns);
 	}
 
+    public void SetSelectedGun(GameObject gun, GameObject _gunIcon, GameObject ammo)
+    {
+        selectedGun = gun;
+        gunIcon = _gunIcon;
+        ammoToSpawn = ammo;
+    }
+
+    public void SetUltimate()
+    {
+        // NO IDEA
+    }
 }

@@ -10,7 +10,7 @@ public class PresistentOptionsManager : MonoBehaviour {
 
 	private static PresistentOptionsManager instance;
 
-    private bool justStarted = true;
+    public bool justStarted = true;
 
     public IntroText introText;
     public CanvasGroup introGroup;
@@ -20,6 +20,10 @@ public class PresistentOptionsManager : MonoBehaviour {
 
     public CanvasGroup levelSelectGroup;
     public UIPanel levelSelectPanel;
+
+    public List<string> buttonName;
+    public List<Sprite> buttonSprites;
+
 
 	public static PresistentOptionsManager Instance {
 		get {
@@ -37,7 +41,6 @@ public class PresistentOptionsManager : MonoBehaviour {
 		}else if(Instance != this){
 			Destroy(this.gameObject);
 		}
-        justStarted = false;
 	}
 	// Use this for initialization
 	void Start () {
@@ -52,9 +55,13 @@ public class PresistentOptionsManager : MonoBehaviour {
 
     private void OnLevelWasLoaded(int level)
     {
+        if (justStarted)
+            return;
+
         if (level == 0)
         {
             AutoOpenLevelSelect();
+            Debug.Log("LEVEL SELECT OPENED!");
         }
         else
         {
@@ -78,4 +85,5 @@ public class PresistentOptionsManager : MonoBehaviour {
         // levelSelectGroup.alpha = 1;
         // levelSelectGroup.blocksRaycasts = true;
     }
+
 }

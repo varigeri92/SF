@@ -1,19 +1,42 @@
 ﻿using UnityEngine;
 
+
 [RequireComponent(typeof(Animator))]
 public class IntroText : UIPanel
 {
     [SerializeField] private Animator menuAnimator;
 
-    
+    [SerializeField] private GameObject[] texts;
+
+    private void Start()
+    {
+        InputManager.OnStart();
+
+        if (InputManager.usingController)
+        {
+            texts[0].SetActive(false);
+            switch (InputManager.GetGamePad())
+            {
+                case 0:
+                    texts[1].SetActive(true);
+                    break;
+                case 1:
+                    texts[2].SetActive(true);
+                    break;
+                case 2:
+                    Debug.LogWarning("Controller not supported");
+                    break;
+            }
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
     {
         if(Input.anyKey)
         {
-                Hide();
-              
+                Hide();  
         }
     }
 

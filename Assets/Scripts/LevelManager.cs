@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class LevelManager : MonoBehaviour
 {
@@ -24,7 +25,6 @@ public class LevelManager : MonoBehaviour
 	public UnityEngine.UI.Image turboBar;
 	public TMPro.TMP_Text shieldText;
 	public GameObject dieText;
-	// public InputManager inputManager;
 	public InventorySelector inventorySelector;
 	public GameObject radialInventory;
 

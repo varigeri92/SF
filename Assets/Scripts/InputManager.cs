@@ -2,24 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+enum Gamepad
+{
+    xone,   //0
+    PS4,    //1
+    Other,  //2
+}
+
+enum ButtonState
+{
+    Released,
+    Pressed,
+    Held,
+    none
+}
+
 public static class InputManager{
-
-
-    enum Gamepad
-    {
-        xone,
-        PS4,
-        Other,
-    }
-
-    enum ButtonState
-    {
-        Released,
-        Pressed,
-        Held,
-        none
-    }
-
 
     #region Events:
     //Call this event on hold to
@@ -93,16 +91,15 @@ public static class InputManager{
 
         if (usingController)
         {
+            Debug.Log("Using Controller");
 
-		    
-			movement = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+            movement = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
             
             if (ConnectedGamepad == Gamepad.xone)
             {
                 direction = new Vector2(Input.GetAxis("XO_RS_HOR"),  Input.GetAxis("XO_RS_VER"));
                 if (AxesToButton("XONE_RT") == ButtonState.Held)
                 {
-                    Debug.Log("FIRE PRESSED!!! BOI!!");
                     if (OnShootButtonPresed != null)
                     {
                         OnShootButtonPresed();
@@ -110,7 +107,6 @@ public static class InputManager{
                 }
                 if (AxesToButton("XONE_RT") == ButtonState.Released)
                 {
-                    Debug.Log("FIRE RELEASED!!! BOI!!");
                     if (OnShootButtonreleased != null)
                     {
                         OnShootButtonreleased();
@@ -120,7 +116,6 @@ public static class InputManager{
                 // BOOST:
                 if (AxesToButton("XONE_LT") == ButtonState.Held)
                 {
-                    Debug.Log("HELLO");
                     if (OnBoostButtonPressed != null)
                     {
                         OnBoostButtonPressed();
@@ -129,7 +124,6 @@ public static class InputManager{
 
                 if (AxesToButton("XONE_LT") == ButtonState.Released)
                 {
-                    Debug.Log("JUMP RELEASE!");
                     if (OnBoostButtonReleased != null)
                     {
                         OnBoostButtonReleased();
@@ -147,7 +141,6 @@ public static class InputManager{
                 }
                 if (Input.GetButtonUp("Inventory"))
                 {
-                    Debug.Log("INVENTORY RELEASED!!! BOI!!");
                     if (OnInventoryButtonReleased != null)
                     {
                         OnInventoryButtonReleased();
@@ -224,6 +217,7 @@ public static class InputManager{
         }
         else if(!usingController || ConnectedGamepad == Gamepad.Other)
         {
+            Debug.Log("DONT!!! Using Controller");
             if (ConnectedGamepad == Gamepad.Other)
             {
                 usingController = false;
@@ -348,5 +342,10 @@ public static class InputManager{
             Debug.Log(" There is no mouse! ");
             return true;
         }
+    }
+
+    public static int GetGamePad()
+    {
+        return ConnectedGamepad.GetHashCode();
     }
 }

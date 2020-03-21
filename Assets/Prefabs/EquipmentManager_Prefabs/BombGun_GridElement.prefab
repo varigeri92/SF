@@ -160,6 +160,7 @@ GameObject:
   - component: {fileID: 599}
   - component: {fileID: 758}
   - component: {fileID: 756}
+  - component: {fileID: 9017797239493302131}
   m_Layer: 5
   m_Name: BombGun_GridElement
   m_TagString: Untagged
@@ -209,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.7735235, b: 0.99607843, a: 0.2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -240,11 +241,53 @@ MonoBehaviour:
   isGun: 1
   isDragged: 0
   canvas: {fileID: 0}
-  mouseDragIcon: {fileID: 0}
   equipmentUIManager: {fileID: 0}
   ultimateSelector: {fileID: 0}
+  gunSelector: {fileID: 0}
   icon: {fileID: 9155244844814188057, guid: e6ed806f10012cd4ebad09a23774068c, type: 3}
   gun: {fileID: 3821602256460556279, guid: d8e449eac41d25f41b7d27a530b9d841, type: 3}
   ammoToSpawn: {fileID: 5855574713655412981, guid: 5f9978cde65da8843af30cf61699fdd2,
     type: 3}
   ultimatePrefab: {fileID: 0}
+--- !u!114 &9017797239493302131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 0, g: 0.7735235, b: 0.99607843, a: 1}
+    m_HighlightedColor: {r: 0.9811321, g: 0, b: 0.85426176, a: 1}
+    m_PressedColor: {r: 1, g: 0.77560526, b: 0, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 758}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null

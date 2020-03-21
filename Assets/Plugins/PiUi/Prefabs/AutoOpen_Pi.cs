@@ -13,6 +13,13 @@ public class AutoOpen_Pi : MonoBehaviour
 		GetComponent<PiUI>().OpenMenu(piPosition);
     }
 
+    private void OnEnable()
+    {
+        //piPosition = new Vector2(Screen.width * screenPercentage.x, Screen.height * screenPercentage.y);
+        //GetComponent<PiUI>().OpenMenu(piPosition);
+    }
+
+
     // Update is called once per frame
     void Update()
     {

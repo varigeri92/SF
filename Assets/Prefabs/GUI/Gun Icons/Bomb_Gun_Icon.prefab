@@ -124,3 +124,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ammo: 0
+  gunObject: {fileID: 11400000, guid: 6d41e4c8718ae4063832824311979810, type: 2}
