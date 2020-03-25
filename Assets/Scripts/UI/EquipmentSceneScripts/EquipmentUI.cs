@@ -6,48 +6,49 @@ using UnityEngine.EventSystems;
 public class EquipmentUI : MonoBehaviour
 {
 
-	public bool isGun = true;
-	[HideInInspector]
-	public bool isDragged = false;
-	[HideInInspector]
-	public Transform canvas;
-	[HideInInspector]
-	public EquipmentUIManager equipmentUIManager;
+    public bool isGun = true;
+    [HideInInspector]
+    public bool isDragged = false;
+    [HideInInspector]
+    public Transform canvas;
+    [HideInInspector]
+    public EquipmentUIManager equipmentUIManager;
 
-	public UltimateSelector ultimateSelector;
+    public UltimateSelector ultimateSelector;
     public UltimateSelector gunSelector;
 
 
     Animator animator;
 
+    public GameObject marker;
+
     public GameObject icon;
 
-	[Header("Asing by 'Guns' only:")]
-	public GameObject gun;
-	public GameObject ammoToSpawn;
+    [Header("Asing by 'Guns' only:")]
+    public GameObject gun;
+    public GameObject ammoToSpawn;
 
-	[Header("Asing by 'Ultimates' only:")]
-	public GameObject ultimatePrefab;
-
-
-	//public GameObject ultimateIcon;
+    [Header("Asing by 'Ultimates' only:")]
+    public GameObject ultimatePrefab;
 
 
-	// Start is called before the first frame update
-	void Start()
+
+
+    // Start is called before the first frame update
+    void Start()
     {
-		canvas = transform.parent;
+        canvas = transform.parent;
         if (isGun)
         {
             animator = transform.parent.parent.Find("PIBG").GetComponent<Animator>();
         }
 
-		equipmentUIManager = GameObject.Find("EquipmentScreen").GetComponent<EquipmentUIManager>();
-		if(equipmentUIManager == null){
-			throw new System.Exception("Equipment UI manager, is 'NULL' ");
-		}
+        equipmentUIManager = GameObject.Find("EquipmentScreen").GetComponent<EquipmentUIManager>();
+        if (equipmentUIManager == null) {
+            throw new System.Exception("Equipment UI manager, is 'NULL' ");
+        }
 
-        // ultimateSelector = GameObject.FindGameObjectWithTag("UltimateSelector").GetComponent<UltimateSelector>();
+        ultimateSelector = GameObject.FindGameObjectWithTag("UltimateSelector").GetComponent<UltimateSelector>();
         // gunSelector = GameObject.FindGameObjectWithTag("GunSelector").GetComponent<UltimateSelector>();
     }
 
@@ -57,6 +58,14 @@ public class EquipmentUI : MonoBehaviour
         equipmentUIManager.SetSelectedGun(gun, icon, ammoToSpawn);
     }
 
+    public void SetPalyerUltimate()
+    {
+        ultimateSelector.SetUltimate(ultimatePrefab);
+    }
 
+    public void SetMarker(bool state)
+    {
+        marker.SetActive(state);
+    }
 
 }

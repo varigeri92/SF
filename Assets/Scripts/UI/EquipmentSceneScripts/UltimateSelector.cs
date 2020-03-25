@@ -3,73 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UltimateSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UltimateSelector : MonoBehaviour
 {
 
-	GameObject icon;
-	GameObject abilityPrefab;
 	public PlayerObject playerObject;
 
-	GameObject selectedAbility;
-
-	[SerializeField]
-	bool isPointerOver;
 
 
-	private void Start()
+	public void SetUltimate(GameObject _abilityPrefab)
 	{
-		if (playerObject.ultimateIcon != null) {
-			Instantiate(playerObject.ultimateIcon, transform);
-			selectedAbility = playerObject.ultimate;
-		}
+		playerObject.ultimate = _abilityPrefab;
+		playerObject.ultimateIcon = _abilityPrefab.GetComponent<Ability>().ability.icon;
+
 	}
 
-	private void Update()
-	{
-		if(Input.GetMouseButtonUp(0)){
-			if(isPointerOver){
-				SetUltimate();
-			}
-		}
-	}
-
-	public void SetSelectionOnDragBegin(GameObject _icon, GameObject _abilityPrefab, bool isGun)
-	{
-		if (isGun)
-		{
-			icon = null;
-			abilityPrefab = null;
-		}
-		else
-		{
-			icon = _icon;
-			abilityPrefab = _abilityPrefab;
-		}
-	}
-
-
-	public void SetUltimate()
-	{
-
-
-		if (icon != null){
-			if (transform.childCount > 0) {
-				Destroy(transform.GetChild(0).gameObject);
-			}
-			Instantiate(icon, transform);
-			selectedAbility = abilityPrefab;
-			playerObject.ultimate = selectedAbility;
-			playerObject.ultimateIcon = selectedAbility.GetComponent<Ability>().ability.icon;
-		}
-	}
-
-	public void OnPointerEnter(PointerEventData eventData)
-	{
-		isPointerOver = true;
-	}
-
-	public void OnPointerExit(PointerEventData eventData)
-	{
-		isPointerOver = false;
-	}
 }

@@ -31,12 +31,16 @@ public class LevelSelect : MonoBehaviour
     void Start()
     {
 		bool isNextAvailable = true;
-        int iterator = 0;
+        int iterator = 1;
 		foreach (LevelObject level in levels){
-			//levelPrefab.transform.Find("BG_Image").GetComponent<UnityEngine.UI.Image>().sprite = level.backgroundImage;
-			levelPrefab.GetComponent<LevelCard>().level = level;
-			Image levelImage = levelPrefab.GetComponent<Image>();
+            //levelPrefab.transform.Find("BG_Image").GetComponent<UnityEngine.UI.Image>().sprite = level.backgroundImage;
+            LevelCard levelCard = levelPrefab.GetComponent<LevelCard>();
+            levelCard.level = level;
+            levelCard.SetText(iterator.ToString());
+            iterator++;
+            Image levelImage = levelPrefab.GetComponent<Image>();
 			levelImage.color = lockedColor;
+
 
 			if(isNextAvailable){
 				level.available = true;
@@ -100,6 +104,17 @@ public class LevelSelect : MonoBehaviour
     public void SelectNextLevelButton()
     {
         UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(lastAvailableLevelGO);
+        if (lastAvailableLevelGO == null)
+        {
+            int childs = Content.transform.childCount;
+            for (int i = 0; i< childs; i++)
+            {
+                if (Content.transform.GetChild(i).GetComponent<LevelCard>().level.available)
+                {
+                    UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(Content.transform.GetChild(i).gameObject);
+                }
+            }
+        }
 
     }
 
@@ -132,9 +147,4 @@ public class LevelSelect : MonoBehaviour
         }
     }
 
-    private void OnLevelWasLoaded(int level)
-    {
-
-        SelectNextLevelButton();
-    }
 }

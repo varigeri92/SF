@@ -8,6 +8,10 @@ public class IntroText : UIPanel
 
     [SerializeField] private GameObject[] texts;
 
+    [SerializeField] MainMenuManager menuManager;
+
+    bool isHidden = false; 
+
     private void Start()
     {
         InputManager.OnStart();
@@ -34,9 +38,13 @@ public class IntroText : UIPanel
     // Update is called once per frame
     void Update()
     {
-        if(Input.anyKey)
+        if(Input.anyKey && !isHidden)
         {
-                Hide();  
+            Hide();
+            menuManager.closePanels();
+            menuManager.OpenPanel(0);
+            isHidden = true;
+
         }
     }
 

@@ -60,7 +60,7 @@ public class PresistentOptionsManager : MonoBehaviour {
 
         if (level == 0)
         {
-            AutoOpenLevelSelect();
+            //AutoOpenLevelSelect();
             Debug.Log("LEVEL SELECT OPENED!");
         }
         else

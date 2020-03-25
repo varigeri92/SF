@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EquipmentUIManager : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class EquipmentUIManager : MonoBehaviour
 	bool isGun = true;
 
     public Animator piAnimator;
+    public bool selectFirstButton;
 
 	// Start is called before the first frame update
 	void Start()
@@ -118,8 +120,14 @@ public class EquipmentUIManager : MonoBehaviour
 
 	private void LoadUnlockedItems()
 	{
+        Debug.Log("Loading Unlocked Gun Items");
 		foreach (var element in playerObject.availableGuns) {
 			Instantiate(element,gunGrid);
+            EquipmentUI elementGui = element.GetComponent<EquipmentUI>();
+            if (playerObject.inventoryGuns.Contains(elementGui.gun))
+            {
+                elementGui.SetMarker(true);
+            }
 		}
 
         foreach (var element in playerObject.ultimates)
@@ -244,5 +252,133 @@ public class EquipmentUIManager : MonoBehaviour
     public void SetUltimate()
     {
         // NO IDEA
+    }
+
+    public void SelectGunButton()
+    {
+        int childs = gunGrid.childCount;
+        for (int i = 0; i<childs; i++)
+        {
+            if (gunGrid.GetChild(i).gameObject.activeSelf)
+            {
+                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(gunGrid.GetChild(i).gameObject);
+                if (selectFirstButton)
+                    return;
+            }
+        }
+    }
+
+    void SetButtonNavigation(Button current, Button previous, Button next)
+    {
+        Navigation nav = new Navigation();
+        nav.mode = Navigation.Mode.Explicit;
+        nav.selectOnUp = null;
+        nav.selectOnDown = null;
+        nav.selectOnLeft = previous;
+        nav.selectOnRight = next;
+
+        current.navigation = nav;
+    }
+
+    void SetButtonNavigation(Button current, Button previous, Button next, Button up, Button down)
+    {
+        Navigation nav = new Navigation();
+        nav.mode = Navigation.Mode.Explicit;
+        nav.selectOnUp = up;
+        nav.selectOnDown = down;
+        nav.selectOnLeft = previous;
+        nav.selectOnRight = next;
+
+        current.navigation = nav;
+    }
+
+
+    public void SetupNavigationGun()
+    {
+        int childs = gunGrid.childCount;
+        int columns = gunGrid.GetComponent<GridLayoutGroup>().constraintCount;
+        for (int i = 0; i < childs; i++)
+        {
+            if (gunGrid.GetChild(i).gameObject.activeSelf)
+            {
+                Button button = GetButtonComp(gunGrid.GetChild(i).gameObject);
+                if (button != null)
+                {
+                    if (i == 0)
+                    {
+                        if (childs < columns)
+                        {
+                            SetButtonNavigation(button,
+                                GetButtonComp(gunGrid.GetChild(childs - 1).gameObject),
+                                GetButtonComp(gunGrid.GetChild(i + 1).gameObject),
+                                null,
+                                SetUltimateButtonToSelect());
+                        }
+                        else
+                        {
+                            SetButtonNavigation(button,
+                                GetButtonComp(gunGrid.GetChild(childs - 1).gameObject),
+                                GetButtonComp(gunGrid.GetChild(i + 1).gameObject),
+                                null,
+                                GetButtonComp(gunGrid.GetChild(i + columns).gameObject));
+                        }
+                    }
+                    else if( i+1 == childs)
+                    {
+                        if (i >= columns)
+                        {
+                            SetButtonNavigation(button,
+                            GetButtonComp(gunGrid.GetChild(i - 1).gameObject),
+                            GetButtonComp(gunGrid.GetChild(0).gameObject),
+                            GetButtonComp(gunGrid.GetChild(i-columns).gameObject),
+                            SetUltimateButtonToSelect());
+                        }
+                        else
+                        {
+                            SetButtonNavigation(button,
+                            GetButtonComp(gunGrid.GetChild(i - 1).gameObject),
+                            GetButtonComp(gunGrid.GetChild(0).gameObject),
+                            null,
+                            SetUltimateButtonToSelect());
+                        }
+                        
+                    }
+                    else
+                    {
+                        SetButtonNavigation(button,
+                            GetButtonComp(gunGrid.GetChild(i - 1).gameObject),
+                            GetButtonComp(gunGrid.GetChild(i + 1).gameObject),
+                            null,
+                            SetUltimateButtonToSelect());
+                    }
+                }
+                
+            }
+        }
+    }
+
+    Button GetButtonComp(GameObject gameObject)
+    {
+        if (gameObject == null)
+        {
+            return null;
+        }
+        return gameObject.GetComponent<Button>();
+    }
+
+    private void SelectUltimateButton()
+    {
+
+    }
+    Button SetUltimateButtonToSelect()
+    {
+        if (ultimateGrid.childCount > 0)
+        {
+            return ultimateGrid.GetChild(0).GetComponent<Button>();
+        }
+        else
+        {
+            return null;
+        }
     }
 }

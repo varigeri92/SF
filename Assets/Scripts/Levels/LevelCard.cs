@@ -7,8 +7,14 @@ public class LevelCard : MonoBehaviour
 
 	public LevelObject level;
 	public int index;
+    public TMPro.TMP_Text text;
 
-	public void SelectLevel()
+    public void SetText(string s)
+    {
+        text.text = s;
+    }
+
+    public void SelectLevel()
 	{
 		if(level.available){
 			SelectedLevel.Instance.SetLevel(level);

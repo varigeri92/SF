@@ -14,20 +14,17 @@ public class UIPanel : MonoBehaviour
 
     public UnityEvent backEvent;
 
+    MainMenuManager menuManager;
+    public int panelID;
+
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();        
+        animator = GetComponent<Animator>();
+        menuManager = GameObject.FindGameObjectWithTag("Menu_Canvas").GetComponent<MainMenuManager>();
     }
 
-    private void Update()
-    {
-        if (Input.GetButtonDown("Cancel") && opened && inFocus)
-        {
-            Debug.Log(gameObject.name);
-            backEvent.Invoke();
-        }
-    }
+
 
     public virtual void Show()
     {
@@ -53,5 +50,11 @@ public class UIPanel : MonoBehaviour
     public void SetFocus(bool inFocus)
     {
         this.inFocus = inFocus;
+    }
+
+    public void PanelClosed()
+    {
+        GetComponent<CanvasGroup>().alpha = 0;
+        menuManager.ClosePanel(panelID);
     }
 }

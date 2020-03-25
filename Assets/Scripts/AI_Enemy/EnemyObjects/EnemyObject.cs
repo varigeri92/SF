@@ -26,7 +26,7 @@ public class EnemyObject : ScriptableObject{
 	public EnemyType type;
 
 	[Range(5,10)]
-	public float fireRate;
+	public float fireRate  = 5;
 
     public int xp;
 

@@ -19,7 +19,7 @@ MonoBehaviour:
   mooveSpeed: 5
   rotationSpeed: 100
   type: 0
-  fireRate: 0
+  fireRate: 7.64
   xp: 10
   chancetoSpawn: 0
   coresToSpawn: 0

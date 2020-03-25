@@ -59,6 +59,7 @@ public class ControllerButton_Listener : MonoBehaviour
         {
             if (Input.GetButtonDown(X_ControllerbuttonName))
             {
+                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
                 button.onClick.Invoke();
             }
         }
@@ -67,6 +68,7 @@ public class ControllerButton_Listener : MonoBehaviour
         {
             if (Input.GetButtonDown(PS_ControllerbuttonName))
             {
+                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
                 button.onClick.Invoke();
             }
         }
