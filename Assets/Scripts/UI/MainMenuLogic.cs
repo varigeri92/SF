@@ -8,16 +8,13 @@ using UnityEngine.Audio;
 
 public class MainMenuLogic : MonoBehaviour {
 
-	public bool controllerInput;
-	public float fadeTime;
     public Slider masterSlider;
     public Slider fxSlider;
     public Slider musicSlider;
 
 
 	public AudioMixer _mixer;
-    public AudioSource sfxSource;
-    public AudioSource musicSource;
+
 
     private void Start()
     {

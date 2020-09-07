@@ -22,8 +22,8 @@ MonoBehaviour:
     serializableGun:
       startingAmmo: -999
       maxAmmo: -999
-      fireRate: 7
-      damage: 2
+      fireRate: 8
+      damage: 6
       index: 0
   - gunPrefab: {fileID: 1897131634571996, guid: de7c98b5b00e347aa99245b0a301a164,
       type: 3}
@@ -33,10 +33,10 @@ MonoBehaviour:
       type: 3}
     gunObject: {fileID: 11400000, guid: cd596ad9e1f3d408cbcf9e85d2c1d348, type: 2}
     serializableGun:
-      startingAmmo: 250
+      startingAmmo: 300
       maxAmmo: 400
-      fireRate: 7
-      damage: 4
+      fireRate: 6
+      damage: 5
       index: 1
   - gunPrefab: {fileID: 1458455220, guid: 4629d1b0812f4a6449b40d59b8550638, type: 3}
     gunIcon: {fileID: 226233719831200884, guid: d8301fd8d162cb346bc0d01cf631d0c1,
@@ -46,8 +46,8 @@ MonoBehaviour:
       type: 3}
     gunObject: {fileID: 11400000, guid: 0bb9c0b947d374a4b936d1e756ccec1a, type: 2}
     serializableGun:
-      startingAmmo: 100
-      maxAmmo: 250
+      startingAmmo: 200
+      maxAmmo: 350
       fireRate: 5
       damage: 2
       index: 2
@@ -61,11 +61,11 @@ MonoBehaviour:
     gunObject: {fileID: 11400000, guid: 6d41e4c8718ae4063832824311979810, type: 2}
     serializableGun:
       startingAmmo: 5
-      maxAmmo: 15
+      maxAmmo: 5
       fireRate: 1
       damage: 5
       index: 3
-  availablePlayerGuns: 
+  availablePlayerGuns: 0100000002000000
   equipedPlayerGuns: 
   allPlayerUltimates:
   - ultPrefab: {fileID: 3223577173500042657, guid: c029ad4ee000a4f07acffd974f1e64ea,
@@ -76,7 +76,12 @@ MonoBehaviour:
       type: 3}
     ultCollectablePrefab: {fileID: 0}
     ultObject: {fileID: 11400000, guid: c9ad40419816541999642dd47ac0e56b, type: 2}
-  availablePlayerUltimates: 
+    serializableUlt:
+      index: 0
+      charges: 4
+      duration: 0
+      damage: 5
+  availablePlayerUltimates: 00000000
   equipedPlayerUltimate: 0
   perks: []
   levelProgress: []

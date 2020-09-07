@@ -17,7 +17,8 @@ public class LevelCard : MonoBehaviour
     public void SelectLevel()
 	{
 		if(level.available){
-			SelectedLevel.Instance.SetLevel(level);
+            PresistentOptionsManager.Instance.survival = false;
+            SelectedLevel.Instance.SetLevel(level);
 			UnityEngine.SceneManagement.SceneManager.LoadScene(1);
 		}
 	}

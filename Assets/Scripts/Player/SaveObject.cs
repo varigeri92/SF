@@ -7,7 +7,7 @@ public class SaveObject : ScriptableObject
 {
 	public int[] equipedGunIndexes;
 	public int[] unlockedGunIndexes;
-	public int[] ulnlockedUltimateIndexes;
+	public int[] unlockedUltimateIndexes;
 	public int lastCompletedLevel;
 
 	public int selectedUltimate;
@@ -20,6 +20,7 @@ public class SaveObject : ScriptableObject
 	public int plevel;
 
 	public SerializableGunObject[] allGunObject;
+    public SerializableUltimateObject[] allUltobjects;
 	public PerkUpgradeSave[] perks;
 
 }

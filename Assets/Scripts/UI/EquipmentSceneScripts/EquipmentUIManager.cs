@@ -50,12 +50,14 @@ public class EquipmentUIManager : MonoBehaviour
 	void Start()
     {
         InputManager.OnUltimateButtonPressed += SetPiJoyButtonTrue;
+        InputManager.OnUltimateButtonReleased += SetPiJoyButtonFalse;
         InitEquipment();
     }
 
     private void OnDestroy()
     {
         InputManager.OnUltimateButtonPressed -= SetPiJoyButtonTrue;
+        InputManager.OnUltimateButtonReleased -= SetPiJoyButtonFalse;
 
     }
 

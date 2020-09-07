@@ -11,6 +11,7 @@ public class PresistentOptionsManager : MonoBehaviour {
 	private static PresistentOptionsManager instance;
 
     public bool justStarted = true;
+    public bool survival = false;
 
     public IntroText introText;
     public CanvasGroup introGroup;
@@ -47,28 +48,9 @@ public class PresistentOptionsManager : MonoBehaviour {
 		DontDestroyOnLoad(this.gameObject);
 		Cursor.SetCursor(cursorImg, hotSpot, cursorMode);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-    private void OnLevelWasLoaded(int level)
-    {
-        if (justStarted)
-            return;
 
-        if (level == 0)
-        {
-            //AutoOpenLevelSelect();
-            Debug.Log("LEVEL SELECT OPENED!");
-        }
-        else
-        {
-            Debug.Log("GAME _ Loaded BOI!");
-        }
-    }
-
+    //DONT USE IT!!
     void AutoOpenLevelSelect()
     {
         introGroup = GameObject.FindGameObjectWithTag("IntroText").GetComponent<CanvasGroup>();

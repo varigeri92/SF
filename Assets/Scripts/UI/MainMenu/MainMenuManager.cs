@@ -19,7 +19,15 @@ public class MainMenuManager : MonoBehaviour
             closePanels();
             introText.SetActive(false);
             OpenPanel(0);
-            playButton.onClick.Invoke();
+
+            if (!PresistentOptionsManager.Instance.survival)
+            {
+                playButton.onClick.Invoke();
+            }
+            else
+            {
+                PlayOpenAnim(0);
+            }
         }
     }
 
@@ -43,9 +51,14 @@ public class MainMenuManager : MonoBehaviour
         panels[_panelID].SetActive(true);
     }
 
+    void PlayOpenAnim(int _panelID)
+    {
+       panels[_panelID].GetComponent<UIPanel>().Show();
+    }
+
     public void ClosePanel(int _panelID)
     {
-        // UIPanel panelScript = panels[_panelID].GetComponent<UIPanel>();
+       
 
 
         panels[_panelID].SetActive(false);

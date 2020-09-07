@@ -63,6 +63,23 @@ public class SerializableGunObject{
 }
 
 [System.Serializable]
+public class SerializableUltimateObject
+{
+    public int index;
+    public int charges;
+    public float duration;
+    public int damage;
+
+    public SerializableUltimateObject(Abilit_Object abilityObj)
+    {
+        index = abilityObj.index;
+        charges = abilityObj.charges;
+        duration = abilityObj.duration;
+        damage = abilityObj.damage;
+    }
+}
+
+[System.Serializable]
 public class PlayerUltimate
 {
 	public GameObject ultPrefab;
@@ -70,6 +87,8 @@ public class PlayerUltimate
 	public GameObject ultGridElement;
 	public GameObject ultCollectablePrefab;
 	public Abilit_Object ultObject;
+
+    public SerializableUltimateObject serializableUlt;
 
 }
 [System.Serializable]

@@ -118,6 +118,7 @@ public class SaveManager : MonoBehaviour
 		playerObject.availableGuns.Add(playerStateObject.allPlayerGuns[index].gunGridElement);
 	}
 
+
 	public void ResetEquipedGuns()
 	{
 		playerObject.inventoryGuns = new List<GameObject>();
@@ -220,7 +221,18 @@ public class SaveManager : MonoBehaviour
 		saveObject.allGunObject = saveGuns.ToArray();
 	}
 
-	void LoadGunObjects(){
+    void SetUltObjectsToSave()
+    {
+        List<SerializableUltimateObject> saveUlts = new List<SerializableUltimateObject>();
+        foreach (PlayerUltimate playerUlt in playerStateObject.allPlayerUltimates)
+        {
+            playerUlt.serializableUlt = new SerializableUltimateObject(playerUlt.ultObject);
+            saveUlts.Add(playerUlt.serializableUlt);
+        }
+        saveObject.allUltobjects = saveUlts.ToArray();
+    }
+
+    void LoadGunObjects(){
 		foreach(SerializableGunObject serializedGun in saveObject.allGunObject){
 			playerStateObject.allPlayerGuns[serializedGun.index].gunObject.damage = serializedGun.damage;
 			playerStateObject.allPlayerGuns[serializedGun.index].gunObject.maxAmmo = serializedGun.maxAmmo;
@@ -229,6 +241,17 @@ public class SaveManager : MonoBehaviour
 			playerStateObject.allPlayerGuns[serializedGun.index].gunObject.index = serializedGun.index;
 		}
 	}
+
+    void LoadUltObjects()
+    {
+        foreach(SerializableUltimateObject serializedUlt in saveObject.allUltobjects)
+        {
+            playerStateObject.allPlayerUltimates[serializedUlt.index].ultObject.damage = serializedUlt.damage;
+            playerStateObject.allPlayerUltimates[serializedUlt.index].ultObject.duration = serializedUlt.duration;
+            playerStateObject.allPlayerUltimates[serializedUlt.index].ultObject.charges = serializedUlt.charges;
+            playerStateObject.allPlayerUltimates[serializedUlt.index].ultObject.index = serializedUlt.index;
+        }
+    }
 
 	public void SetSaveObject()
 	{
@@ -254,7 +277,7 @@ public class SaveManager : MonoBehaviour
 		saveObject.equipedGunIndexes = playerStateObject.equipedPlayerGuns.ToArray();
 		saveObject.unlockedGunIndexes = playerStateObject.availablePlayerGuns.ToArray();
 		saveObject.selectedUltimate = playerStateObject.equipedPlayerUltimate;
-		saveObject.ulnlockedUltimateIndexes = playerStateObject.availablePlayerUltimates.ToArray();
+		saveObject.unlockedUltimateIndexes = playerStateObject.availablePlayerUltimates.ToArray();
 
 		saveObject.lastCompletedLevel = -1;
 
@@ -266,7 +289,7 @@ public class SaveManager : MonoBehaviour
 		}
 
 		SetGunObjectsToSave();
-
+        SetUltObjectsToSave();
 		//saveObject.perks = new PerkUpgradeSave[0];
 	}
 
@@ -279,9 +302,10 @@ public class SaveManager : MonoBehaviour
 			perkList.Add(perk);
         }
 		saveObject.perks = perkList.ToArray();
+        saveObject.unlockedUltimateIndexes = playerStateObject.availablePlayerUltimates.ToArray();
         saveObject2.perks = perkList.ToArray();
         SaveGamePlayerState(false);
-	}
+    }
 
 	public  void LoadPlayerState()
 	{
@@ -326,12 +350,16 @@ public class SaveManager : MonoBehaviour
 					// SelectedLevel.Instance.levels[0].available = true;
 				}
 
-				LoadGunObjects();
+                foreach(int ind in saveObject.unlockedUltimateIndexes)
+                {
+                    playerObject.ultimates.Add(playerStateObject.allPlayerUltimates[ind].ultPrefab);
+                }
 
+				LoadGunObjects();
+                LoadUltObjects();
 				/**
 				 * TODO:
 					* ULTIMATES
-					* GUN Objects!
 				*/
 
 

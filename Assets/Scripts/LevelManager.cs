@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 public class LevelManager : MonoBehaviour
 {
 
-	public delegate void PlayerDead();
-	public static event PlayerDead OnLevelCompleted;
+	public delegate void LvlCompleted();
+	public static event LvlCompleted OnLevelCompleted;
 
 
 	public EnemySpawner enemySpawner;
@@ -67,10 +67,19 @@ public class LevelManager : MonoBehaviour
 		enemyCount = 0;
 		Instantiate(playerPrefab, new Vector3(0, -4.35f, 0), Quaternion.identity);
 		timestamp = Time.time;
+
+
+        Player.OnPlayerDeath += LevelCompleted;
+
 	}
 
-	// Update is called once per frame
-	void Update()
+    private void OnDestroy()
+    {
+        Player.OnPlayerDeath -= LevelCompleted;
+    }
+
+    // Update is called once per frame
+    void Update()
 	{
 
 	}
@@ -128,7 +137,7 @@ public class LevelManager : MonoBehaviour
 	public void LevelCompleted()
 	{
 		Debug.Log("Level Completed GGWP");
-		if (OnLevelCompleted != null && !endlessLevel)
+		if (OnLevelCompleted != null)
 			OnLevelCompleted();
 		SelectedLevel.Instance.CompletteLevel();
 		PlayerProgress.Instance.levelCompleted();
@@ -140,6 +149,7 @@ public class LevelManager : MonoBehaviour
 		completedEnemyCount.text = enemyCount.ToString();
 		coresCollected.text = PlayerProgress.Instance.powerCoresThisLevel.ToString();
 	}
+
 
 	public void StartBossPhase()
 	{

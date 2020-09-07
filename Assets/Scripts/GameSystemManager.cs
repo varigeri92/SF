@@ -47,7 +47,7 @@ public class GameSystemManager : MonoBehaviour
         pauseMenu.SetActive(pause);
         if (pause)
         {
-            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(ContinueButton);
+            EventSystem.current.SetSelectedGameObject(ContinueButton);
             timeManager.Pause();
         }
         else

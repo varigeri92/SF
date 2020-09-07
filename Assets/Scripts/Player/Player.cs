@@ -178,17 +178,21 @@ public class Player : MonoBehaviour
 			return;
 #endif
 
-		dieText.SetActive(true);
+		// dieText.SetActive(true);
 		if (OnPlayerDeath != null) {
 			OnPlayerDeath();
 		}
 
 		Instantiate(playerExplosion, transform.position, Quaternion.identity);
-		gameOverPanel.SetActive(true);
-		TimeManager timeManager = GameObject.FindGameObjectWithTag("LOGIC").GetComponentInChildren<TimeManager>();
-		timeManager.SlowTime(0.05f);
-		timeManager.StartAutoSet();
-		Destroy(gameObject);
+
+        if (!SelectedLevel.Instance.isSurvivor)
+        {
+		    gameOverPanel.SetActive(true);
+		    TimeManager timeManager = GameObject.FindGameObjectWithTag("LOGIC").GetComponentInChildren<TimeManager>();
+    		timeManager.SlowTime(0.05f);
+    		timeManager.StartAutoSet();
+        }
+    		Destroy(gameObject);
 	}
 
 	void Update()

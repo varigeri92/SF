@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318a03997fd3d4bc090e0d8d67a840fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  immortal: 1
+  immortal: 0
   playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
   gameSystemManager: {fileID: 0}
   selectorBahaviours:
@@ -117,8 +117,6 @@ MonoBehaviour:
   - {fileID: 0}
   piUIManager: {fileID: 0}
   piUI: {fileID: 0}
-  saveObject: {fileID: 11400000, guid: ab15a5dedfda646c995f99937ed95386, type: 2}
-  playerStateObject: {fileID: 11400000, guid: cb44f0084201d49a68c9e4856c0b3040, type: 2}
   xpFillImage: {fileID: 0}
   xpToNextLevel: 30
   currentXp: 0

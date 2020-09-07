@@ -30,6 +30,9 @@ public static class InputManager{
     public delegate void UltimateButtonPressed();
     public static event UltimateButtonPressed OnUltimateButtonPressed;
 
+    public delegate void UltimateButtonReleased();
+    public static event UltimateButtonReleased OnUltimateButtonReleased;
+
     public delegate void BoostButtonPressed();
     public static event BoostButtonPressed OnBoostButtonPressed;
 
@@ -154,6 +157,13 @@ public static class InputManager{
                     if (OnUltimateButtonPressed != null)
                     {
                         OnUltimateButtonPressed();
+                    }
+                }
+                if (Input.GetButtonUp("Fire2"))
+                {
+                    if (OnUltimateButtonReleased != null)
+                    {
+                        OnUltimateButtonReleased();
                     }
                 }
 

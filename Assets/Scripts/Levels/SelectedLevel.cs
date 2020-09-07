@@ -10,7 +10,11 @@ public class SelectedLevel : MonoBehaviour
 		set { instance = value;}
 	}
 
-	private void Awake()
+
+    public bool isSurvivor;
+
+
+    private void Awake()
 	{
 		DontDestroyOnLoad(this);
 		if(instance == null){
@@ -31,7 +35,8 @@ public class SelectedLevel : MonoBehaviour
 
 	public void SetSurvivorlevel()
 	{
-		level = survivorLevel;
+        isSurvivor = true;
+        level = survivorLevel;
 	}
 
 	public void SetLevel(LevelObject _level){

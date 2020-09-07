@@ -47,8 +47,8 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: c9ad40419816541999642dd47ac0e56b, type: 2}
   charges: 0
   chargesText: {fileID: 0}
-  _collider: {fileID: 0}
-  radius: 50
+  _collider: {fileID: 6673496471432658238}
+  radius: 40
   raiseRate: 100
   Sucess: IZI GG
 --- !u!58 &6673496471432658238

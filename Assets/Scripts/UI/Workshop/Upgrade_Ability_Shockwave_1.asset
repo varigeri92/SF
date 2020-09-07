@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Upgrade_Ability_Shockwave_1
   m_EditorClassIdentifier: 
   required: {fileID: 11400000, guid: a21ac82552e394b8c8522466ca70b473, type: 2}
-  requireLevel: 14
+  requireLevel: 15
   upgraded: 0
   icon: {fileID: 21300000, guid: e8c10e00776b245b6acebde609cf2a9c, type: 3}
   cost: 9
@@ -21,11 +21,11 @@ MonoBehaviour:
   tittleText: 1 more Shockwave
   descriptionText: "Adds one more charge to your \nShockwave ability"
   upgradeType: 2
-  gunToUpgrade: {fileID: 11400000, guid: 0bb9c0b947d374a4b936d1e756ccec1a, type: 2}
+  gunToUpgrade: {fileID: 0}
   playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
-  ultimateToUpgrade: {fileID: 0}
+  ultimateToUpgrade: {fileID: 11400000, guid: c9ad40419816541999642dd47ac0e56b, type: 2}
   ultimateUpgrade: 0
-  unlockableType: 0
+  unlockableType: 1
   upgradeProperty: 0
   upgradeValue: 1
   ItemToUnlock: {fileID: 6299240627127540184, guid: a34ae7d6be54146e19fb679962dc5922,
