@@ -16,24 +16,28 @@ MonoBehaviour:
   speed: 4
   boostFillSpeed: 0.70000005
   boostDecSpeed: 0.20000003
-  powerCores: 100
+  powerCores: 101
   level: 1
   normalPlayer: 1
   inventoryGuns:
   - {fileID: 1927927025121406, guid: e22ab43c3218a4d418dcd882e0a18b67, type: 3}
+  - {fileID: 1458455220, guid: 4629d1b0812f4a6449b40d59b8550638, type: 3}
+  - {fileID: 1897131634571996, guid: de7c98b5b00e347aa99245b0a301a164, type: 3}
+  - {fileID: 3821602256460556279, guid: d8e449eac41d25f41b7d27a530b9d841, type: 3}
   inventoryIcons:
   - {fileID: 1795802747685846, guid: 2d3e449ace80b4aab9bee4c54f706796, type: 3}
+  - {fileID: 226233719831200884, guid: d8301fd8d162cb346bc0d01cf631d0c1, type: 3}
+  - {fileID: 1974288720584050, guid: 31021c9bfc6e7488c883360341a2e95c, type: 3}
+  - {fileID: 9155244844814188057, guid: e6ed806f10012cd4ebad09a23774068c, type: 3}
   availableGuns:
   - {fileID: 334, guid: a871043da041d4bed8f6bdd5c3f79fbf, type: 3}
   - {fileID: 350, guid: a34ae7d6be54146e19fb679962dc5922, type: 3}
   AmmoToSpawn:
   - {fileID: 0}
+  - {fileID: 1685238137071351133, guid: f0c1e7369a92ee749b850e5599a3cdbc, type: 3}
+  - {fileID: 1615196254142962, guid: 786e4e89b7be7470294772dd4e74de66, type: 3}
+  - {fileID: 5855574713655412981, guid: 5f9978cde65da8843af30cf61699fdd2, type: 3}
   ultimates:
-  - {fileID: 3223577173500042657, guid: c029ad4ee000a4f07acffd974f1e64ea, type: 3}
-  - {fileID: 3223577173500042657, guid: c029ad4ee000a4f07acffd974f1e64ea, type: 3}
-  - {fileID: 3223577173500042657, guid: c029ad4ee000a4f07acffd974f1e64ea, type: 3}
-  - {fileID: 3223577173500042657, guid: c029ad4ee000a4f07acffd974f1e64ea, type: 3}
-  - {fileID: 3223577173500042657, guid: c029ad4ee000a4f07acffd974f1e64ea, type: 3}
   - {fileID: 3223577173500042657, guid: c029ad4ee000a4f07acffd974f1e64ea, type: 3}
   - {fileID: 3223577173500042657, guid: c029ad4ee000a4f07acffd974f1e64ea, type: 3}
   ultimate: {fileID: 0}

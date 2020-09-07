@@ -173,13 +173,11 @@ public static class InputManager{
                 direction = new Vector2(Input.GetAxis("Right_Stick_X"), Input.GetAxis("Right_Stick_Y"));
                 //FIRE:
                 if (Input.GetButton("Fire1")){
-			        Debug.Log("FIRE PRESSED!!! BOI!!");
 			        if (OnShootButtonPresed != null) {
 				        OnShootButtonPresed();
 			        }
 		        }
 		        if(Input.GetButtonUp("Fire1")){
-			        Debug.Log("FIRE RELEASED!!! BOI!!");
 			        if (OnShootButtonreleased != null) {
 				        OnShootButtonreleased();
 			        }
@@ -188,14 +186,12 @@ public static class InputManager{
 
 			    // BOOST:
 			    if (Input.GetButtonDown("Jump")) {
-				    Debug.Log("HELLO");
 				    if (OnBoostButtonPressed != null) {
 					    OnBoostButtonPressed();
 				    }
 			    }
 
 			    if (Input.GetButtonUp("Jump")) {
-				    Debug.Log("JUMP RELEASE!");
 				    if (OnBoostButtonReleased != null) {
 					    OnBoostButtonReleased();
 				    }
@@ -209,7 +205,6 @@ public static class InputManager{
 				    }
 			    }
 			    if (Input.GetButtonUp("Inventory")) {
-				    Debug.Log("INVENTORY RELEASED!!! BOI!!");
 				    if (OnInventoryButtonReleased != null) {
 					    OnInventoryButtonReleased();
 				    }
@@ -227,13 +222,10 @@ public static class InputManager{
         }
         else if(!usingController || ConnectedGamepad == Gamepad.Other)
         {
-            Debug.Log("DONT!!! Using Controller");
             if (ConnectedGamepad == Gamepad.Other)
             {
                 usingController = false;
             }
-            // horizontal = Input.GetAxis("Horizontal");
-            // vertical = Input.GetAxis("Vertical");
             movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             mousePosition = Input.mousePosition;
 

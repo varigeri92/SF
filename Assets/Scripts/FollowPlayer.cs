@@ -61,9 +61,9 @@ public class FollowPlayer : MonoBehaviour {
         playerAlive = false;
     }
 
-    public void InitCam(){
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-		player = playerTransform.GetComponent<Player>();
+    public void InitCam(Player player){
+        this.player = player;
+        playerTransform = player.transform;
 		speed = player.speed;
 		cam = GetComponentInChildren<Camera>();
         Player.OnPlayerDeath += OnPlayerDead;
@@ -143,7 +143,6 @@ public class FollowPlayer : MonoBehaviour {
 
 	void SmothCameraMovement(){
 		Vector3 calculatedPosition = Vector3.SmoothDamp(transform.position, playerTransform.position + playerTransform.up * distance * _distanceFactor, ref velocity, dampSpeed);
-		// calculatedPosition.z = -20f;
 		transform.position = calculatedPosition;
 	}
 }

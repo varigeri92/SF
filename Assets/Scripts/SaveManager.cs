@@ -370,28 +370,6 @@ public class SaveManager : MonoBehaviour
 		}
 
 	}
-	/**summary
-	 * DONT USE THIS FUNCTION IS ONLY FOR DEBUGING THE BUILD!
-	 */
-	public  void LoadPlayerState(UnityEngine.UI.Text text)
-	{
-		text.text += "Checking file \n";
-		if (CheckSaveFile()) {
-			text.text += "File Existing! Reading... \n";
-			string Json = File.ReadAllText(filePath);
-			text.text += "File Read! \n";
-			if (saveObject != null) {
-				text.text += "Save object existing! \n";
-				JsonUtility.FromJsonOverwrite(Json, saveObject);
-				text.text += "Save object is overwriten! \n";
-			} else {
-				text.text += "saveObject is null \n";
-				throw new Exception("saveObject is null");
-			}
-		}else{
-			text.text += "save file not found \n";
-		}
-	}
 
 	public  bool IsSaveExists()
 	{

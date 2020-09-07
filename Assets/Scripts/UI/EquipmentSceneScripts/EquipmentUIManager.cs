@@ -124,6 +124,7 @@ public class EquipmentUIManager : MonoBehaviour
 	{
         Debug.Log("Loading Unlocked Gun Items");
 		foreach (var element in playerObject.availableGuns) {
+            Debug.Log(gunGrid);
 			Instantiate(element,gunGrid);
             EquipmentUI elementGui = element.GetComponent<EquipmentUI>();
             if (playerObject.inventoryGuns.Contains(elementGui.gun))

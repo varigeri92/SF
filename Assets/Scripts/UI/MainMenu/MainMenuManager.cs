@@ -58,10 +58,6 @@ public class MainMenuManager : MonoBehaviour
 
     public void ClosePanel(int _panelID)
     {
-       
-
-
         panels[_panelID].SetActive(false);
-
     }
 }

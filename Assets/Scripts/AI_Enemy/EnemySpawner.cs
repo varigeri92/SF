@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour {
     public bool dontSpawn;
     public int spawnOnly;
 
-	public List<GameObject> enemyes = new List<GameObject>();
+	public List<GameObject> enemies = new List<GameObject>();
 	public List<Transform> points = new List<Transform>();
 	public List<BasicEnemy> spawnedEnemyes = new List<BasicEnemy>();
 
@@ -39,11 +39,10 @@ public class EnemySpawner : MonoBehaviour {
 			points.Add(t);
 		}
 
-		enemyes = new List<GameObject>(SelectedLevel.Instance.GetEnemyList());
+		enemies = new List<GameObject>(SelectedLevel.Instance.GetEnemyList());
 
 		BasicEnemy.onEnemyDead += RemoveEnemyFromList;
         Player.OnPlayerDeath += PlayerDied;
-        Player.OnLevelUp += LevelUp;
 	}
     
     void PlayerDied()
@@ -54,7 +53,7 @@ public class EnemySpawner : MonoBehaviour {
     private void OnDestroy()
     {
         Player.OnPlayerDeath -= PlayerDied;
-        Player.OnLevelUp -= LevelUp;
+        BasicEnemy.onEnemyDead -= RemoveEnemyFromList;
     }
 
     void RemoveEnemyFromList(BasicEnemy enemy){
@@ -89,9 +88,9 @@ public class EnemySpawner : MonoBehaviour {
 		}
 
         int enemyToSpawn;
-        if (spawnOnly < 0 || spawnOnly >= enemyes.Count)
+        if (spawnOnly < 0 || spawnOnly >= enemies.Count)
         {
-            enemyToSpawn = (int)Random.Range(0, enemyes.Count);
+            enemyToSpawn = (int)Random.Range(0, enemies.Count);
         }
         else
         {
@@ -110,7 +109,7 @@ public class EnemySpawner : MonoBehaviour {
 		}
 		lastrandomindex = rand;
 		spawnedEnemies++;
-		GameObject go = Instantiate(enemyes[enemyToSpawn], points[rand].position, points[rand].transform.rotation);
+		GameObject go = Instantiate(enemies[enemyToSpawn], points[rand].position, points[rand].transform.rotation);
 		spawnedEnemyes.Add(go.GetComponent<BasicEnemy>());
 	}
 
@@ -129,8 +128,4 @@ public class EnemySpawner : MonoBehaviour {
 		spawnedEnemyes.Add(go.GetComponent<BasicEnemy>());
 	}
 
-    void LevelUp(int level)
-    {
-        playerLevel = level;
-    }
 }

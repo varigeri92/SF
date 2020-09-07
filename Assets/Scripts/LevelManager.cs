@@ -17,9 +17,7 @@ public class LevelManager : MonoBehaviour
 
 	public GameSystemManager gameSystemManager;
 	//-----------------------------//
-	[SerializeField]
-	UnityEngine.UI.Image xpFillImage;
-	public TMPro.TMP_Text enemyCounterText;
+
 	public TMPro.TMP_Text AmmoText;
 	public GameObject gameOverPanel;
 	public UnityEngine.UI.Image turboBar;
@@ -51,6 +49,7 @@ public class LevelManager : MonoBehaviour
 	float timestamp;
 
 	bool bossSpawned = false;
+
 	private void Awake()
 	{
 		background.sprite = SelectedLevel.Instance.GetLevel().backgroundImage;
@@ -65,17 +64,19 @@ public class LevelManager : MonoBehaviour
 	void Start()
 	{
 		enemyCount = 0;
-		Instantiate(playerPrefab, new Vector3(0, -4.35f, 0), Quaternion.identity);
 		timestamp = Time.time;
 
 
         Player.OnPlayerDeath += LevelCompleted;
+        Player.OnPlayerLoaded += PlayerLoaded;
 
+		Instantiate(playerPrefab, new Vector3(0, -4.35f, 0), Quaternion.identity);
 	}
 
     private void OnDestroy()
     {
         Player.OnPlayerDeath -= LevelCompleted;
+        Player.OnPlayerLoaded -= PlayerLoaded;
     }
 
     // Update is called once per frame
@@ -86,26 +87,19 @@ public class LevelManager : MonoBehaviour
 
 
 
-	public void OnPlayerLoaded(Player player)
+	public void PlayerLoaded(Player player)
 	{
+        Debug.Log("Player LOADED --> LevelMAnager");
 		bossSpawned = false;
-		Camera.main.GetComponent<FollowPlayer>().playerTransform = player.transform;
-		Camera.main.GetComponent<FollowPlayer>().InitCam();
 		player.gameSystemManager = gameSystemManager;
-		player.xpFillImage = xpFillImage;
-		player.enemyCounterText = enemyCounterText;
 		player.AmmoText = AmmoText;
 		player.gameOverPanel = gameOverPanel;
 		player.turboBar = turboBar;
 		player.shieldText = shieldText;
 		player.dieText = dieText;
-		// player.inputManager = inputManager;
 		player.inventorySelector = inventorySelector;
 		player.radialInventory = radialInventory;
 
-		enemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>();
-
-		// Destroy(this);
 	}
 
 	public void EnemyDestroyed()
@@ -142,7 +136,6 @@ public class LevelManager : MonoBehaviour
 		SelectedLevel.Instance.CompletteLevel();
 		PlayerProgress.Instance.levelCompleted();
 		float time = Time.time - timestamp;
-		Debug.Log(time);
 		int minutes = Mathf.FloorToInt(time/60);
 		int secounds = Mathf.FloorToInt(time - minutes * 60);
 		levelTime.text = minutes.ToString("00") + " : " + secounds.ToString("00");

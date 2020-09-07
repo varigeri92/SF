@@ -83,7 +83,6 @@ public class ProjectileBehaviour : MonoBehaviour {
         if (isBomb)
         {
 			if (!exploding) {
-				Debug.Log("Exposion cased by Timer");
 				StartCoroutine(Explode());
 			}
         }

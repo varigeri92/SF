@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventorySelector : MonoBehaviour {
+public class InventorySelector : MonoBehaviour
+{
 
 	public List<GameObject> items = new List<GameObject>();
 	public List<GameObject> icons = new List<GameObject>();
@@ -12,16 +13,13 @@ public class InventorySelector : MonoBehaviour {
 	// Use this for initialization
 	void Start()
 	{
-		//player =  GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 		Player.OnPlayerLoaded += OnPlayerLoaded;
 	}
 	
 	
 	// Update is called once per frame
 	void Update () {
-		if(player == null){
-			//player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-		}
+
 	}
 
 	public void SelectWeapon(int index){
@@ -37,8 +35,9 @@ public class InventorySelector : MonoBehaviour {
 		Player.OnPlayerLoaded -= OnPlayerLoaded;
 	}
 
-	void OnPlayerLoaded(){
-		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+	void OnPlayerLoaded(Player player){
+		this.player = player;
+        /*
 		items = new List<GameObject>(player.playerObject.inventoryGuns);
 		icons = new List<GameObject>(player.playerObject.inventoryIcons);
 
@@ -47,5 +46,7 @@ public class InventorySelector : MonoBehaviour {
 		}
 
 		player.LoadSavedInventory();
-	}
+	    */
+    }
+
 }

@@ -16,12 +16,8 @@ public class Player : MonoBehaviour
 	public delegate void PlayerDead();
 	public static event PlayerDead OnPlayerDeath;
 
-	public delegate void PlayerLoaded();
+	public delegate void PlayerLoaded(Player player);
 	public static event PlayerLoaded OnPlayerLoaded;
-
-
-	public delegate void LevelUp(int level);
-	public static event LevelUp OnLevelUp;
 
     public delegate void PlayerShooting();
     public static event PlayerShooting OnPlayerShooting;
@@ -42,16 +38,6 @@ public class Player : MonoBehaviour
 	public PiUIManager piUIManager;
 	public PiUI piUI;
 
-
-
-	[SerializeField]
-	public Image xpFillImage;
-
-	[SerializeField]
-	int xpToNextLevel = 30;
-	[SerializeField]
-	int currentXp = 0;
-
 	[SerializeField]
 	int playerLevel = 1;
 
@@ -63,7 +49,6 @@ public class Player : MonoBehaviour
 
 	InventoryGun ActiveInventoryGun;
 
-	public TMPro.TMP_Text enemyCounterText;
 	public TMPro.TMP_Text AmmoText;
 	public TMPro.TMP_Text ultimateChargesValue_Text;
 	int enemyCounter = 0;
@@ -91,7 +76,7 @@ public class Player : MonoBehaviour
 	float horizontal = 0f;
 	float vertical = 0f;
 
-	public bool jetMode;
+	public bool turboMode;
 
 	public float lookSpeed;
 
@@ -139,7 +124,7 @@ public class Player : MonoBehaviour
     void Start()
 	{
         PresistentOptionsManager.Instance.justStarted = false;
-        GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().OnPlayerLoaded(this);
+        // GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().OnPlayerLoaded(this);
 		SetBasicGun();
 		BasicEnemy.onEnemyDead += countEnemyes;
 		shieldText.text = health.ToString();
@@ -151,22 +136,25 @@ public class Player : MonoBehaviour
 		SetPlayerUltimate();
 
         speed = playerObject.speed;
-        _moveSpeed = playerObject.speed;
+        _moveSpeed = playerObject.speed;       
+    }
 
-		if (OnPlayerLoaded != null)
-			OnPlayerLoaded();
-	}
+    private void OnEnable()
+    {
+        if (OnPlayerLoaded != null)
+            OnPlayerLoaded(this);
+    }
 
-	void countEnemyes(BasicEnemy enemy)
+    void countEnemyes(BasicEnemy enemy)
 	{
 		enemyCounter++;
-		LevelingProgress(enemy.enemyObject.xp);
 	}
 
 	void UseAbility(){
 		if(ability == null){
 			ability = abilityAtachPoint.GetComponentInChildren<Ability>();
 		}
+        // CHECK !
 		ability.FireAbility();
 	}
 
@@ -178,16 +166,17 @@ public class Player : MonoBehaviour
 			return;
 #endif
 
-		// dieText.SetActive(true);
 		if (OnPlayerDeath != null) {
 			OnPlayerDeath();
 		}
 
+        // POOL!
 		Instantiate(playerExplosion, transform.position, Quaternion.identity);
 
         if (!SelectedLevel.Instance.isSurvivor)
         {
 		    gameOverPanel.SetActive(true);
+            // EVENT : 
 		    TimeManager timeManager = GameObject.FindGameObjectWithTag("LOGIC").GetComponentInChildren<TimeManager>();
     		timeManager.SlowTime(0.05f);
     		timeManager.StartAutoSet();
@@ -197,15 +186,18 @@ public class Player : MonoBehaviour
 
 	void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.Q)){
-			UseAbility();
-		}
+
 
 		if (gameSystemManager.isPaused) {
 			return;
 		}
-
         InputManager.OnUpdate();
+
+        // INPUTBA
+		if(Input.GetKeyDown(KeyCode.Q)){
+			UseAbility();
+		}
+
 
 		if (InputManager.usingController) {
 			LookRightStick();
@@ -215,7 +207,7 @@ public class Player : MonoBehaviour
 
 		Moove(InputManager.GetMovement());
 
-        if (!jetMode)
+        if (!turboMode)
         {
             CountTurbo(playerObject.boostFillSpeed);
         }
@@ -232,7 +224,7 @@ public class Player : MonoBehaviour
         if (allowTurbo)
         {
            _moveSpeed = speed * 2;
-            jetMode = true;
+            turboMode = true;
         }
     }
 
@@ -240,7 +232,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log("STOP TURBO!!");
         _moveSpeed = speed;
-        jetMode = false;
+        turboMode = false;
     }
 
 	void CountTurbo(float mult)
@@ -274,33 +266,6 @@ public class Player : MonoBehaviour
 			shieldText.text = health.ToString();
 		} else {
 			shieldText.text = "0";
-		}
-	}
-	void Shoot()
-	{
-		if (Input.GetAxis("Fire1") > 0.1) {
-			foreach (Gun gun in activeGuns) {
-				if (gun != null) {
-
-					gun.Shooting(true);
-					if (gun.ammo != -999) {
-						AmmoText.text = gun.ammo.ToString();
-					} else {
-						AmmoText.text = "INFINITE";
-					}
-				} else {
-					OnGunChanged();
-				}
-			}
-		} else {
-			foreach (Gun gun in activeGuns) {
-				if (gun != null) {
-
-					gun.StopShooting();
-				} else {
-					OnGunChanged();
-				}
-			}
 		}
 	}
 
@@ -374,7 +339,6 @@ public class Player : MonoBehaviour
 			_speed = _moveSpeed;
 		}
 		transform.position = Vector3.Lerp(transform.position, transform.position + direction * _speed, Time.deltaTime);
-		// transform.Translate(direction * _speed * Time.deltaTime);
 	}
 
 	void LookAtMouse()
@@ -386,11 +350,9 @@ public class Player : MonoBehaviour
 
 	void LookRightStick()
 	{
-		// float direction = inputManager.GetDirection().x * inputManager.GetDirection().y;
 		if (InputManager.GetDirection().x != 0f && InputManager.GetDirection().y != 0f) {
 
 			float angle = Mathf.Atan2(InputManager.GetDirection().x, InputManager.GetDirection().y) * Mathf.Rad2Deg;
-
 			transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 		}
 	}
@@ -419,7 +381,6 @@ public class Player : MonoBehaviour
 				string activeGunName = activeGun.gameObject.name.Replace("(Clone)", "");
 				if (gun.name == activeGunName) {
 					Debug.Log("Add ammo for active Gun: " + activeGunName);
-					// activeGun.ammo += gun.GetComponent<Gun>().ammo;
 					activeGun.AddAmmo(gun.GetComponent<Gun>().ammo);
 					AmmoText.text = activeGun.ammo.ToString();
 				} else {
@@ -486,7 +447,6 @@ public class Player : MonoBehaviour
             {
 
 				newGun.ammo = gunsPickedUp[go.name].GetAmmo();
-                // Debug.Log("New Gun Ammo: " + newGun.ammo);
                 AmmoText.text = newGun.ammo.ToString();
             }
             else {
@@ -497,35 +457,6 @@ public class Player : MonoBehaviour
         }
 	}
 
-    void LevelingProgress(int xp)
-    {
-		if(playerObject.normalPlayer){
-			return;
-		}
-
-        currentXp += xp;
-        if(currentXp >= xpToNextLevel)
-        {
-            playerLevel++;
-            if (OnLevelUp != null)
-            {
-                OnLevelUp(playerLevel);
-            }
-            enemyCounterText.text = playerLevel.ToString();
-            xpFillImage.fillAmount = 0f;
-            xpToNextLevel = Mathf.RoundToInt(xpToNextLevel * 1.5f);
-            currentXp = 0;
-        }
-        else
-        {
-            float progress = (float)currentXp / (float)xpToNextLevel;
-
-            if (xpFillImage == null)
-                xpFillImage = GameObject.FindGameObjectWithTag("XpFillImage").GetComponent<Image>();
-
-            xpFillImage.fillAmount = progress;
-        }
-    }
 
 	void SetPlayerUltimate(){
 		Transform t = GameObject.FindGameObjectWithTag("UltimatePanel").transform;
@@ -546,4 +477,9 @@ public class Player : MonoBehaviour
 		}
 	}
 
+
+    // ==== OLD === //
+    #region Decaprated Functions:
+
+    #endregion
 }

@@ -78,9 +78,9 @@ public class TimeManager : MonoBehaviour
         NormalizeTime();
     }
 
-	void Player_OnPlayerLoaded()
+	void Player_OnPlayerLoaded(Player player)
 	{
-		player = GameObject.FindGameObjectWithTag("Player").transform;
+		this.player = player.transform;
 		LevelManager.OnLevelCompleted += SlowTime;
 	}
 

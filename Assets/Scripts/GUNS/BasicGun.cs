@@ -34,6 +34,7 @@ public class BasicGun : Gun {
 	}
 
 	private void Shoot( bool isPlayer){
+        //POOL
 		GameObject go = Instantiate(projectile, spawnPoint.position, transform.rotation);
 		if(isPlayer){
 			go.layer = 12;

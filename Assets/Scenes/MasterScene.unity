@@ -13343,14 +13343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontSpawn: 0
   spawnOnly: -1
-  enemyes:
-  - {fileID: 1420262902442594, guid: 2a0f6c2b2f59b449593f257ae600dbfa, type: 3}
-  - {fileID: 1420262902442594, guid: 71e947cbf8a204705884b12cd5acb0de, type: 3}
-  - {fileID: 1524734211276918, guid: ef41055bb00e646a382bc989ea22b319, type: 3}
-  - {fileID: 1166284824384002, guid: c5a5cb27213f8423992c8fc9c0059334, type: 3}
-  - {fileID: 6749913131147917409, guid: 9e1ffdc30861b1c4dad86deaf37e62e2, type: 3}
-  - {fileID: 1420262902442594, guid: 2a0f6c2b2f59b449593f257ae600dbfa, type: 3}
-  - {fileID: 4663195851121695249, guid: 600747b7e5d6a2346a929d5cce4703a0, type: 3}
+  enemies: []
   points: []
   spawnedEnemyes: []
   maxEnemies: 10
@@ -17173,12 +17166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2d4ddc6b0b949379bfc2337871f29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawner: {fileID: 0}
+  enemySpawner: {fileID: 1505912015}
   playerPrefab: {fileID: 9101835574419472614, guid: 90e823065003ea3459a657fcdabe6717,
     type: 3}
   gameSystemManager: {fileID: 1994296826}
-  xpFillImage: {fileID: 1746415842}
-  enemyCounterText: {fileID: 70937356}
   AmmoText: {fileID: 822773884}
   gameOverPanel: {fileID: 692894461}
   turboBar: {fileID: 610541561}
