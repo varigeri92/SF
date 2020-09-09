@@ -28,4 +28,5 @@ MonoBehaviour:
   unlockableType: 0
   upgradeProperty: 3
   upgradeValue: 0
-  ItemToUnlock: {fileID: 334, guid: a871043da041d4bed8f6bdd5c3f79fbf, type: 3}
+  ItemToUnlock: {fileID: 1897131634571996, guid: de7c98b5b00e347aa99245b0a301a164,
+    type: 3}

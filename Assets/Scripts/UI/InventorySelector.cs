@@ -7,7 +7,6 @@ public class InventorySelector : MonoBehaviour
 
 	public List<GameObject> items = new List<GameObject>();
 	public List<GameObject> icons = new List<GameObject>();
-
 	
 	Player player;
 	// Use this for initialization
@@ -36,17 +35,24 @@ public class InventorySelector : MonoBehaviour
 	}
 
 	void OnPlayerLoaded(Player player){
-		this.player = player;
-        /*
+
+        this.player = player;
 		items = new List<GameObject>(player.playerObject.inventoryGuns);
 		icons = new List<GameObject>(player.playerObject.inventoryIcons);
 
+        /*
 		foreach(GameObject icon in icons){
-			icon.GetComponent<InventoryGun>().SetAmmo(icon.GetComponent<InventoryGun>().gunObject.startingAmmo);
+            InventoryGun iGun = icon.GetComponent<InventoryGun>();
+            iGun.SetStartingAmmo();          
 		}
+        */
+        foreach (GunData gunData in Global.Instance.playerGunData)
+        {
+            InventoryGun iGun = gunData.gunUIPrefab.GetComponent<InventoryGun>();
+            iGun.SetStartingAmmo();
+        }
 
 		player.LoadSavedInventory();
-	    */
     }
 
 }

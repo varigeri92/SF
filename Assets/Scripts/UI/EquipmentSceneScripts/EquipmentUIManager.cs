@@ -122,15 +122,15 @@ public class EquipmentUIManager : MonoBehaviour
 
 	private void LoadUnlockedItems()
 	{
-        Debug.Log("Loading Unlocked Gun Items");
 		foreach (var element in playerObject.availableGuns) {
-            Debug.Log(gunGrid);
 			Instantiate(element,gunGrid);
+            /*
             EquipmentUI elementGui = element.GetComponent<EquipmentUI>();
             if (playerObject.inventoryGuns.Contains(elementGui.gun))
             {
                 elementGui.SetMarker(true);
             }
+            */
 		}
 
         foreach (var element in playerObject.ultimates)
@@ -140,7 +140,6 @@ public class EquipmentUIManager : MonoBehaviour
     }
 
 	public void BeginDrag(GameObject gun, GameObject icon, GameObject _ammoToSpawn, bool _isGun){
-		Debug.Log("Hello!");
 		selectedGun = gun;
 		gunIcon = icon;
 		ammoToSpawn = _ammoToSpawn;
@@ -242,7 +241,7 @@ public class EquipmentUIManager : MonoBehaviour
 		playerObject.inventoryIcons = new List<GameObject>(icons);
 		playerObject.AmmoToSpawn = new List<GameObject>(ammos);
 
-		SaveManager.Instance.SetEquipedGunsToSave(guns);
+		// SaveManager.Instance.SetEquipedGunsToSave(guns);
 	}
 
     public void SetSelectedGun(GameObject gun, GameObject _gunIcon, GameObject ammo)
@@ -252,10 +251,6 @@ public class EquipmentUIManager : MonoBehaviour
         ammoToSpawn = ammo;
     }
 
-    public void SetUltimate()
-    {
-        // NO IDEA
-    }
 
     public void SelectGunButton()
     {

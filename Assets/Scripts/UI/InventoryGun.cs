@@ -29,6 +29,10 @@ public class InventoryGun : MonoBehaviour
     {
         _ammo = newAmmo;
     }
+    public void SetStartingAmmo()
+    {
+        _ammo = gunObject.startingAmmo;
+    }
 
     public int GetAmmo()
     {

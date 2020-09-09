@@ -89,8 +89,8 @@ public class PlayerUltimate
 	public Abilit_Object ultObject;
 
     public SerializableUltimateObject serializableUlt;
-
 }
+
 [System.Serializable]
 public class SaveLevel{
 	public int index;

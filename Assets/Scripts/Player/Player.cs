@@ -66,8 +66,8 @@ public class Player : MonoBehaviour
 	public GameObject dieText;
 	public float speed = 3f;
 	float _moveSpeed;
-	public List<Transform> attachPoints = new List<Transform>();
-	public List<Gun> activeGuns = new List<Gun>();
+    [SerializeField] Transform attachPoint;
+    public Gun activeGun;
 
 	public Transform abilityAtachPoint;
 	public Ability ability;
@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
 	{
         PresistentOptionsManager.Instance.justStarted = false;
         // GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().OnPlayerLoaded(this);
-		SetBasicGun();
+		// SetBasicGun();
 		BasicEnemy.onEnemyDead += countEnemyes;
 		shieldText.text = health.ToString();
 
@@ -140,6 +140,11 @@ public class Player : MonoBehaviour
     }
 
     private void OnEnable()
+    {
+
+    }
+
+    public void PlayerCreated()
     {
         if (OnPlayerLoaded != null)
             OnPlayerLoaded(this);
@@ -272,59 +277,61 @@ public class Player : MonoBehaviour
     void StopShoot()
     {
         Debug.Log("PLAYES STOPS SHOOTING");
-        foreach (Gun gun in activeGuns)
-        {
-            if (gun != null)
-            {
 
-                gun.StopShooting();
-                if (OnPlayerStopShooting != null)
-                {
-                    OnPlayerStopShooting();
-                }
-            }
-            else
+        if (activeGun != null)
+        {
+
+            activeGun.StopShooting();
+            if (OnPlayerStopShooting != null)
             {
-                OnGunChanged();
+                OnPlayerStopShooting();
             }
         }
+        else
+        {
+            OnGunChanged();
+        }
+        
     }
 
     void ShootEvent()
     {
-        foreach (Gun gun in activeGuns)
-        {
-            if (gun != null)
-            {
+        Debug.Log("SHOOTING");
 
-                gun.Shooting(true);
-                if (OnPlayerShooting != null)
-                {
-                    OnPlayerShooting();
-                }
-                if (gun.ammo != -999)
-                {
-                    AmmoText.text = gun.ammo.ToString();
-                }
-                else
-                {
-                    AmmoText.text = "INFINITE";
-                }
+        if (!activeGun)
+        {
+            OnGunChanged();
+        }
+
+        Debug.Log(activeGun);
+        if (activeGun != null)
+        {
+
+            activeGun.Shooting(true);
+            if (OnPlayerShooting != null)
+            {
+                OnPlayerShooting();
+            }
+            if (activeGun.ammo != -999)
+            {
+                AmmoText.text = activeGun.ammo.ToString();
             }
             else
             {
-                OnGunChanged();
+                AmmoText.text = "INFINITE";
             }
         }
+        else
+        {
+            OnGunChanged();
+        }
+        
     }
 
 	public void OnGunChanged()
 	{
-		activeGuns = new List<Gun>();
-		foreach (Transform t in attachPoints) {
-			if (t.GetComponentInChildren<Gun>() != null) {
-				activeGuns.Add(t.GetComponentInChildren<Gun>());
-			}
+		if (attachPoint.GetComponentInChildren<Gun>() != null) {
+			activeGun = attachPoint.GetComponentInChildren<Gun>();
 		}
 	}
 
@@ -373,35 +380,34 @@ public class Player : MonoBehaviour
 
 	public void PickupGun(GameObject gun, GameObject icon)
 	{
-		bool alreadyGot = false;
-		if (!alreadyGot) {
-			if (inventorySelector.items.Contains(gun)) {
 
-				Gun activeGun = attachPoints[0].GetChild(0).GetComponent<Gun>();
-				string activeGunName = activeGun.gameObject.name.Replace("(Clone)", "");
-				if (gun.name == activeGunName) {
-					Debug.Log("Add ammo for active Gun: " + activeGunName);
-					activeGun.AddAmmo(gun.GetComponent<Gun>().ammo);
-					AmmoText.text = activeGun.ammo.ToString();
-				} else {
-					Debug.Log("Ammo picked up for: " + gun.name);
-					gunsPickedUp[gun.name].AddAmmo(gun.GetComponent<Gun>().ammo);
-				}
+		if (inventorySelector.items.Contains(gun)) {
+
+			Gun activeGun = attachPoint.GetChild(0).GetComponent<Gun>();
+			string activeGunName = activeGun.gameObject.name.Replace("(Clone)", "");
+			if (gun.name == activeGunName) {
+				Debug.Log("Add ammo for active Gun: " + activeGunName);
+				activeGun.AddAmmo(gun.GetComponent<Gun>().ammo);
+				AmmoText.text = activeGun.ammo.ToString();
 			} else {
-				inventorySelector.items.Add(gun);
-				inventorySelector.icons.Add(icon);
-				GameObject inventoryIcon = 
-					Instantiate(icon, radialInventory.transform.Find(slices[inventorySelector.items.Count - 1]).GetChild(0));
-				if (inventoryIcon.GetComponent<InventoryGun>() != null) {
-					InventoryGun invGun = inventoryIcon.GetComponent<InventoryGun>();
-					invGun.SetAmmo(gun.GetComponent<Gun>().ammo);
-					gunsPickedUp.Add(gun.name, invGun);
+				Debug.Log("Ammo picked up for: " + gun.name);
+				gunsPickedUp[gun.name].AddAmmo(gun.GetComponent<Gun>().ammo);
+			}
+		} else {
+			inventorySelector.items.Add(gun);
+			inventorySelector.icons.Add(icon);
+			GameObject inventoryIcon = 
+				Instantiate(icon, radialInventory.transform.Find(slices[inventorySelector.items.Count - 1]).GetChild(0));
+			if (inventoryIcon.GetComponent<InventoryGun>() != null) {
+				InventoryGun invGun = inventoryIcon.GetComponent<InventoryGun>();
+				invGun.SetAmmo(gun.GetComponent<Gun>().ammo);
+				gunsPickedUp.Add(gun.name, invGun);
 
-				} else {
-					Debug.LogWarning("No 'InventoryGun' component found on: " + inventoryIcon.name);
-				}
+			} else {
+				Debug.LogWarning("No 'InventoryGun' component found on: " + inventoryIcon.name);
 			}
 		}
+		
 	}
 
 	public void LoadSavedInventory(){
@@ -414,20 +420,17 @@ public class Player : MonoBehaviour
 
 	void SetBasicGun()
 	{
-		activeGuns = new List<Gun>();
-		foreach (Transform t in attachPoints) {
-			if (t.GetComponentInChildren<Gun>() != null) {
-				Gun gun = t.GetComponentInChildren<Gun>();
-				activeGuns.Add(gun);
-				PickupGun(basicGun, gun.icon);
-			}
+		if (attachPoint.GetComponentInChildren<Gun>() != null) {
+			Gun gun = attachPoint.GetComponentInChildren<Gun>();
+            activeGun = gun;
+			PickupGun(basicGun, gun.icon);
 		}
 	}
 
 	public void ChangeGun(GameObject go)
 	{
 
-        Gun activeGun = attachPoints[0].GetChild(0).GetComponent<Gun>();
+        Gun activeGun = attachPoint.GetChild(0).GetComponent<Gun>();
         string activeGunName = activeGun.gameObject.name.Replace("(Clone)", "");
         if (go.name == activeGun.gameObject.name)
         {
@@ -442,7 +445,7 @@ public class Player : MonoBehaviour
             }
             Destroy(activeGun.gameObject);
 
-            Gun newGun = Instantiate(go, attachPoints[0]).GetComponent<Gun>();
+            Gun newGun = Instantiate(go, attachPoint).GetComponent<Gun>();
            if(newGun.ammo != -999)
             {
 

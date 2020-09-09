@@ -67,16 +67,17 @@ public class LevelManager : MonoBehaviour
 		timestamp = Time.time;
 
 
+		Player player = Instantiate(playerPrefab, new Vector3(0, -4.35f, 0), Quaternion.identity).GetComponent<Player>();
+        PlayerLoaded(player);
         Player.OnPlayerDeath += LevelCompleted;
-        Player.OnPlayerLoaded += PlayerLoaded;
 
-		Instantiate(playerPrefab, new Vector3(0, -4.35f, 0), Quaternion.identity);
+
 	}
 
     private void OnDestroy()
     {
         Player.OnPlayerDeath -= LevelCompleted;
-        Player.OnPlayerLoaded -= PlayerLoaded;
+
     }
 
     // Update is called once per frame
@@ -99,6 +100,7 @@ public class LevelManager : MonoBehaviour
 		player.dieText = dieText;
 		player.inventorySelector = inventorySelector;
 		player.radialInventory = radialInventory;
+        player.PlayerCreated();
 
 	}
 

@@ -31,7 +31,7 @@ public class UpgradeButtonObject : ScriptableObject
 	public UnlockableType unlockableType;
 
 	public UpgradeProperty upgradeProperty;
-	public float upgradeValue;
 
+	public float upgradeValue;
 	public GameObject ItemToUnlock;
 }

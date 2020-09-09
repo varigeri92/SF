@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6df13241a2244e9bcdf834ba7beb6e, type: 3}
   m_Name: SaveObject
   m_EditorClassIdentifier: 
-  equipedGunIndexes: 00000000
+  equipedGunIndexes: 00000000020000000100000003000000
   unlockedGunIndexes: 0100000002000000
   unlockedUltimateIndexes: 00000000
   lastCompletedLevel: -1
@@ -21,7 +21,7 @@ MonoBehaviour:
   pspeed: 4
   pboostFillSpeed: 0.70000005
   pboostDecSpeed: 0.20000003
-  ppowerCores: 100
+  ppowerCores: 9
   plevel: 1
   allGunObject:
   - startingAmmo: -999

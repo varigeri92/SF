@@ -92,6 +92,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 0}
+  index: 0
+  text: {fileID: 7059751073498752307}
+  button: {fileID: 8308461901056455355}
 --- !u!114 &8308461901056455355
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ public class Gun : MonoBehaviour
 	}
 
 	public void AddAmmo(int _ammo){
+        Debug.Log("Adding ammo to " + gunObject.name + " " + ammo.ToString());
 		int precalculatedAmmo = _ammo + ammo;
 		if(precalculatedAmmo >= gunObject.maxAmmo){
 			ammo = gunObject.maxAmmo;

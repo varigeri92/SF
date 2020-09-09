@@ -23,7 +23,7 @@ public class SaveManager : MonoBehaviour
 	bool isFirstStart = true;
 	//SINGLETON
 	private static SaveManager instance;
-	public static SaveManager Instance {
+	private static SaveManager Instance {
 		get { return instance; }
 		set { instance = value; }
 	}
@@ -47,7 +47,8 @@ public class SaveManager : MonoBehaviour
 
 	private void Start()
 	{
-		InitIndexes();
+        // InitIndexes();
+        
 	}
 
 
@@ -128,30 +129,21 @@ public class SaveManager : MonoBehaviour
 		playerObject.inventoryIcons.Add(playerStateObject.allPlayerGuns[0].gunIcon);
 	}
 
-
-
-	public void SetEquipedultimate(){
-		
-	}
-
 	public  void InitSavepath()
 	{
 		filePath = Application.persistentDataPath + "/Saveplayer.json";
         Debug.Log(filePath);
 	}
 
-	public  bool IsSaveobjectExists()
-	{
-		if (saveObject == null) {
-			return false;
-		}
-		return true;
+	public bool IsSaveobjectExists()
+	{	
+		return saveObject;
 	}
 
 	bool CheckSaveFile()
 	{
 
-		if (filePath == "") {
+		if (filePath == ""){
 			InitSavepath();
 		}
 
@@ -192,25 +184,6 @@ public class SaveManager : MonoBehaviour
 		}
 	}
 
-	/**summary
-	 * DONT USE THIS FUNCTION IS ONLY FOR DEBUGING THE BUILD!
-	 */
-	public  void SaveGamePlayerState(UnityEngine.UI.Text text)
-	{
-		text.text += "---- \n";
-		SetSaveObject();
-		text.text += "---- \n";
-		if (CheckSaveFile()) {
-			text.text += "File exists \n";
-			string Json = JsonUtility.ToJson(saveObject);
-			File.WriteAllText(filePath, Json);
-			text.text = "File exists -> Content Writen! \n";
-		} else {
-			text.text += "creating save file...  \n";
-			File.Create(filePath);
-			text.text += "File Created! \n";
-		}
-	}
 
 	void SetGunObjectsToSave(){
 		List<SerializableGunObject> saveGuns = new List<SerializableGunObject>();

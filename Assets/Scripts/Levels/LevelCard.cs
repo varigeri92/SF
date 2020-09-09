@@ -1,13 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class LevelCard : MonoBehaviour
 {
 
 	public LevelObject level;
 	public int index;
-    public TMPro.TMP_Text text;
+    [SerializeField] TMP_Text text;
+    Button button;
+
+
+    public void InitButton()
+    {
+        button = GetComponent<Button>();
+        if (level.available)
+        {
+            button.interactable = true;
+        }
+        else
+        {
+            button.interactable = false;
+        }
+    }
 
     public void SetText(string s)
     {

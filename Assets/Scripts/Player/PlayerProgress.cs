@@ -50,7 +50,7 @@ public class PlayerProgress : MonoBehaviour
 	}
 
 	public void SaveOrLoadGameState(){
-		
+		/*
 		if(SaveManager.Instance == null){
 			Debug.Log("SaveManager.Instance is null!!");
 		}
@@ -59,6 +59,7 @@ public class PlayerProgress : MonoBehaviour
 		} else {
 			SaveManager.Instance.SaveGamePlayerState();
 		}
+        */
 	}
 
 	public void PickUpPowerCore(){

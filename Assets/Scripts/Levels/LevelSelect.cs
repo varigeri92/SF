@@ -37,6 +37,8 @@ public class LevelSelect : MonoBehaviour
             LevelCard levelCard = levelPrefab.GetComponent<LevelCard>();
             levelCard.level = level;
             levelCard.SetText(iterator.ToString());
+            levelCard.InitButton();
+
             iterator++;
             Image levelImage = levelPrefab.GetComponent<Image>();
 			levelImage.color = lockedColor;
