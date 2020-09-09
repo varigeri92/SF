@@ -6,6 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Gun", menuName = "Gun")]
 public class GunObject : ScriptableObject
 {
+    public GameObject gunIcon;
+    public GameObject gameplayPrefab;
+    public GameObject equipmentGridPrefab;
+
 	public int startingAmmo;
 	public int maxAmmo; 
 	public float fireRate;

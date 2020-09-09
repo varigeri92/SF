@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258f09697eb0a4ec3b9b95e09dceb834, type: 3}
   m_Name: Basic_Gun
   m_EditorClassIdentifier: 
+  gunIcon: {fileID: 1795802747685846, guid: 2d3e449ace80b4aab9bee4c54f706796, type: 3}
+  gameplayPrefab: {fileID: 1927927025121406, guid: e22ab43c3218a4d418dcd882e0a18b67,
+    type: 3}
+  equipmentGridPrefab: {fileID: 0}
   startingAmmo: -999
   maxAmmo: -999
-  fireRate: 5
-  damage: 1
+  fireRate: 5.5
+  damage: 3
   index: 0

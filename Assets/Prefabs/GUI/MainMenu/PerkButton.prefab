@@ -565,15 +565,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929474dbb1b634eabbedf33af8a1b1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonObject: {fileID: 11400000, guid: 6b5baac84ebed4a20b3469f8f125e1a1, type: 2}
-  IconColor: {r: 1, g: 1, b: 1, a: 1}
-  availableColor: {r: 0, g: 0.7735235, b: 0.99607843, a: 0.2}
-  lockedColor: {r: 0.5188679, g: 0.4968405, b: 0.4968405, a: 1}
-  notEnoughCoresColor: {r: 0.99607843, g: 0, b: 0.34471077, a: 0.29803923}
-  upgradedHighlight: {fileID: 1037892287220658818}
-  cost: {fileID: 5528936146638228272}
-  level: {fileID: 8833865642466646339}
-  icon: {fileID: 4836092283430360364}
+  perkData:
+    IconColor: {r: 1, g: 1, b: 1, a: 1}
+    availableColor: {r: 0, g: 0.7735235, b: 0.99607843, a: 0.2}
+    lockedColor: {r: 0.5188679, g: 0.4968405, b: 0.4968405, a: 1}
+    notEnoughCoresColor: {r: 0.99607843, g: 0, b: 0.34471077, a: 0.29803923}
+    upgradedHighlight: {fileID: 1037892287220658818}
+    costText: {fileID: 5528936146638228272}
+    rankText: {fileID: 8833865642466646339}
+    icon: {fileID: 4836092283430360364}
+  perk: {fileID: 11400000, guid: 8201279769fac5446b6652d20f930c93, type: 2}
 --- !u!114 &9196491807421521770
 MonoBehaviour:
   m_ObjectHideFlags: 0

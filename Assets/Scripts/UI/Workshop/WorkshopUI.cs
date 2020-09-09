@@ -7,11 +7,9 @@ public class WorkshopUI : MonoBehaviour
 	public delegate void Upgrade();
 	public static event Upgrade OnUpgrade;
 
-	public PlayerObject playerObject;
 	public List<UpgradeButtonObject> buttonObjects;
 
 	public TMPro.TMP_Text cores;
-
 	public TMPro.TMP_Text level;
 
 
@@ -23,8 +21,8 @@ public class WorkshopUI : MonoBehaviour
     }
 
 	void SetText(){
-		level.text = playerObject.level.ToString();
-		cores.text = playerObject.powerCores.ToString();
+		level.text = Global.Instance.PlayerData.level.ToString();
+		cores.text = Global.Instance.PlayerData.powerCores.ToString();
 	}
 
     // Update is called once per frame
@@ -44,10 +42,4 @@ public class WorkshopUI : MonoBehaviour
 		SetText();
 		// SaveManager.Instance.SavePerks(buttonObjects);
 	}
-
-	public void UpgradeDone(int sceneIndex){
-		UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
-	}
-
-
 }

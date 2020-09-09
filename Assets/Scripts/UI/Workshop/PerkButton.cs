@@ -2,53 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
+using UnityEngine.UI;
+
+[System.Serializable]
+public class PerkDataStruct
+{
+    public Color IconColor;
+    public Color availableColor;
+    public Color lockedColor;
+    public Color notEnoughCoresColor;
+    public GameObject upgradedHighlight;
+    public TMP_Text costText;
+    public TMP_Text rankText;
+    public Image icon;
+}
 
 public class PerkButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
 
-	public UpgradeButtonObject buttonObject;
+    // EVENTS
+    public delegate void PointerEnterDelegate(string description, string tittle);
+    public static event PointerEnterDelegate OnPointerEntered;
 
-	private HowerText hoverText;
-	private CanvasGroup hoverTextCanvasGroup;
+    public delegate void PointerExitDelegate();
+    public static event PointerExitDelegate OnPointerExited;
 
-    [SerializeField]
+
+    // NEW:
+    // [SerializeField] UpgradeButtonObject perk;
+    [SerializeField] PerkDataStruct perkData;
+    [SerializeField] Perk perk;
+
+    bool available;
+
+    WorkshopUI workshopUI;
     Transform gunGrid;
-    [SerializeField]
     Transform ultimateGrid;
 
-    [SerializeField]
-	Color IconColor;
-
-	[SerializeField]
-	Color availableColor;
-
-	[SerializeField]
-	Color lockedColor;
-
-	[SerializeField]
-	Color notEnoughCoresColor;
-
-	[SerializeField]
-	GameObject upgradedHighlight;
-	[SerializeField]
-	TMPro.TMP_Text cost;
-	[SerializeField]
-	TMPro.TMP_Text level;
-	[SerializeField]
-	UnityEngine.UI.Image icon;
-
-	private bool available;
-
-	WorkshopUI workshopUI;
-
-	private void Start()
+    private void Start()
 	{
+        // Gathering references:
 		workshopUI = GameObject.FindGameObjectWithTag("Menu_Canvas").GetComponent<WorkshopUI>();
         gunGrid = GameObject.FindGameObjectWithTag("gunGrid").transform;
         ultimateGrid = GameObject.FindGameObjectWithTag("ultimateGrid").transform;
 
-        hoverText = GameObject.FindGameObjectWithTag("HoverText").GetComponent<HowerText>();
-		hoverTextCanvasGroup = hoverText.GetComponent<CanvasGroup>();
 		WorkshopUI.OnUpgrade += InitButton;
 		InitButton();
 	}
@@ -60,180 +58,165 @@ public class PerkButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
 	void InitButton(){
 
-		UnityEngine.UI.Image baseButton = GetComponent<UnityEngine.UI.Image>();
-		baseButton.color = lockedColor;
+		Image baseButton = GetComponent<Image>();
+		baseButton.color = perkData.lockedColor;
 
-		if (buttonObject.upgraded) {
-			upgradedHighlight.SetActive(true);
+		if (perk.upgraded) {
+            perkData.upgradedHighlight.SetActive(true);
 		}
-		if(buttonObject.requireLevel <= buttonObject.playerObject.level){
-			if (buttonObject.required != null) {
-				if (buttonObject.required.upgraded) {
-					if ((buttonObject.playerObject.powerCores - buttonObject.cost) > -1) {
+		if(perk.requireLevel <= Global.Instance.PlayerData.level){
+			if (perk.required != null) {
+				if (perk.required.upgraded) {
+					if ((Global.Instance.PlayerData.powerCores - perk.cost) > -1) {
 						available = true;
-						baseButton.color = availableColor;
-						icon.color = IconColor;
+						baseButton.color = perkData.availableColor;
+                        perkData.icon.color = perkData.IconColor;
 					} else {
 						available = false;
-						baseButton.color = notEnoughCoresColor;
-						icon.color = IconColor;
+						baseButton.color = perkData.notEnoughCoresColor;
+                        perkData.icon.color = perkData.IconColor;
 					}
 				}
 			} else {
-				if ((buttonObject.playerObject.powerCores - buttonObject.cost) > -1) {
+				if ((Global.Instance.PlayerData.powerCores - perk.cost) > -1) {
 					available = true;
-					baseButton.color = availableColor;
-					icon.color = IconColor;
+					baseButton.color = perkData.availableColor;
+                    perkData.icon.color = perkData.IconColor;
 				} else {
 					available = false;
-					baseButton.color = notEnoughCoresColor;
-					icon.color = IconColor;
+					baseButton.color = perkData.notEnoughCoresColor;
+                    perkData.icon.color = perkData.IconColor;
 				}
 			}
 		}
 
-		if(buttonObject.upgraded){
-			baseButton.color = availableColor;
+		if(perk.upgraded){
+			baseButton.color = perkData.availableColor;
 		}
 		string lvlString = "";
 
-		if(buttonObject.lvl >= 4){
-			lvlString = buttonObject.lvl + "+";
+		if(perk.rank >= 4){
+			lvlString = perk.rank + "+";
 		}else{
 			
-			for (int i = 0; i < buttonObject.lvl; i++) {
+			for (int i = 0; i < perk.rank; i++) {
 				lvlString += "+";
 			}
 		}
 
 
-		level.text = lvlString;
-		cost.text = buttonObject.cost.ToString();
+        perkData.rankText.text = lvlString;
+        perkData.costText.text = perk.cost.ToString();
 
-		icon.sprite = buttonObject.icon;
+        perkData.icon.sprite = perk.icon;
 	}
 
 
 	void OnUpgrade(){
-		upgradedHighlight.SetActive(true);
-		buttonObject.upgraded = true;
-		buttonObject.playerObject.powerCores -= buttonObject.cost;
-		buttonObject.playerObject.level++;
+        perkData.upgradedHighlight.SetActive(true);
+		perk.upgraded = true;
+        Global.Instance.PlayerData.powerCores -= perk.cost;
+        Global.Instance.PlayerData.level++;
 		workshopUI.Upgraded();
 	}
 
 
 
-
 	public void Upgrade(){
-		if(available && !buttonObject.upgraded){
-			switch(buttonObject.upgradeType){
+		if(available && !perk.upgraded){
+			switch(perk.upgradeType){
 				case UpgradeType.PlayerUpgrade :
-
-					switch (buttonObject.upgradeProperty) {
-						case UpgradeProperty.Health:
-							buttonObject.playerObject.maxHealth += (int)buttonObject.upgradeValue;
-							break;
-						case UpgradeProperty.Speed:
-							buttonObject.playerObject.speed += buttonObject.upgradeValue;
-							break;
-						case UpgradeProperty.BoostDuration:
-							buttonObject.playerObject.boostDecSpeed -= buttonObject.upgradeValue;
-							break;
-						case UpgradeProperty.BoostRefill:
-							buttonObject.playerObject.boostFillSpeed += buttonObject.upgradeValue;
-							break;
-						default:
-							break;
-					}
-					OnUpgrade();
+                    {
+                        PlayerPerk perk = this.perk as PlayerPerk;
+                        switch (perk.upgradeProperty)
+                        {
+                            case UpgradeProperty.Health:
+                                Global.Instance.PlayerData.maxHealth += (int)perk.upgradeValue;
+                                break;
+                            case UpgradeProperty.Speed:
+                                Global.Instance.PlayerData.speed += perk.upgradeValue;
+                                break;
+                            case UpgradeProperty.BoostDuration:
+                                Global.Instance.PlayerData.boostDecSpeed -= perk.upgradeValue;
+                                break;
+                            case UpgradeProperty.BoostRefill:
+                                Global.Instance.PlayerData.boostFillSpeed += perk.upgradeValue;
+                                break;
+                            default:
+                                break;
+                        }
+                        OnUpgrade();
+                    }
 					break;
 				case UpgradeType.GunUpgrade:
-
-					if (buttonObject.upgradeProperty == UpgradeProperty.Damage) {
-						buttonObject.gunToUpgrade.damage += (int)buttonObject.upgradeValue;
-					}else if(buttonObject.upgradeProperty == UpgradeProperty.FireRate){
-						buttonObject.gunToUpgrade.fireRate += buttonObject.upgradeValue;
-					}else if(buttonObject.upgradeProperty == UpgradeProperty.Ammo){
-						buttonObject.gunToUpgrade.maxAmmo += (int)buttonObject.upgradeValue;
-						buttonObject.gunToUpgrade.startingAmmo += (int)buttonObject.upgradeValue;
-					}
-					OnUpgrade();
-
+                    {
+                        GunPerk perk = this.perk as GunPerk;
+                        switch (perk.upgradeProperty)
+                        {
+                            case UpgradeProperty.Damage:
+                                perk.gunToUpgrade.damage += (int)perk.upgradeValue;
+                                break;
+                            case UpgradeProperty.FireRate:
+                                perk.gunToUpgrade.fireRate += perk.upgradeValue;
+                                break;
+                            case UpgradeProperty.Ammo:
+                                perk.gunToUpgrade.maxAmmo += (int)perk.upgradeValue;
+                                perk.gunToUpgrade.startingAmmo += (int)perk.upgradeValue;
+                                break;
+                            case UpgradeProperty.Unlock:
+                                // ??????
+                                Global.Instance.PlayerData.availableGuns.Add(perk.gunToUpgrade.equipmentGridPrefab);
+                                // SaveManager.Instance.AddAvailableGun(buttonObject.gunToUpgrade.index);
+                                Instantiate(perk.gunToUpgrade.equipmentGridPrefab, gunGrid);
+                                break;
+                            default:
+                                Debug.Log("Enumeration Missmach: Gun doeas not have a matchin propeety for " 
+                                    + perk.upgradeProperty.ToString());
+                                break;
+                        }
+                        OnUpgrade();
+                    }
 					break;
 				case UpgradeType.Ultimate:
-
-					switch (buttonObject.ultimateUpgrade) {
-						case UltimateUpgrade.Damage:
-							buttonObject.ultimateToUpgrade.damage += (int)buttonObject.upgradeValue;
-							break;
-						case UltimateUpgrade.Charges:
-							buttonObject.ultimateToUpgrade.charges += (int)buttonObject.upgradeValue;
-							break;
-						case UltimateUpgrade.Duration:
-							buttonObject.ultimateToUpgrade.duration += buttonObject.upgradeValue;
-							break;
-						default:
-							Debug.Log("This UltimateProperty-Type is not implemented in this switch state!");
-							return;
-					}
-					OnUpgrade();
+                    {
+                        UltimatePerk perk = this.perk as UltimatePerk;
+                        switch (perk.upgradeProperty) {
+						    case UltimateUpgrade.Damage:
+							    perk.ultimateToUpgrade.damage += (int)perk.upgradeValue;
+							    break;
+						    case UltimateUpgrade.Charges:
+							    perk.ultimateToUpgrade.charges += (int)perk.upgradeValue;
+							    break;
+						    case UltimateUpgrade.Duration:
+							    perk.ultimateToUpgrade.duration += perk.upgradeValue;
+							    break;
+                            case UltimateUpgrade.Unlock:
+                                Global.Instance.PlayerData.ultimates.Add(perk.ultimateToUpgrade.gameplayPrefab);
+                                // SaveManager.Instance.AddAvailableUlt(buttonObject.ultimateToUpgrade.index);
+                                Instantiate(perk.ultimateToUpgrade.icon, ultimateGrid);
+                                break;
+                            default:
+							    Debug.Log("This UltimateProperty-Type is not implemented in this switch state!");
+							    return;
+					    }
+					    OnUpgrade();
+                    }  
 					break;
-
-				case UpgradeType.ItemUnlock:
-					switch (buttonObject.unlockableType) {
-						case UnlockableType.Gun:
-							buttonObject.playerObject.availableGuns.Add(buttonObject.ItemToUnlock);
-							// SaveManager.Instance.AddAvailableGun(buttonObject.gunToUpgrade.index);
-                            Instantiate(buttonObject.ItemToUnlock, gunGrid);
-							break;
-						case UnlockableType. Ultimate:
-							buttonObject.playerObject.ultimates.Add(buttonObject.ItemToUnlock);
-							// SaveManager.Instance.AddAvailableUlt(buttonObject.ultimateToUpgrade.index);
-                            Instantiate(buttonObject.ItemToUnlock, ultimateGrid);
-                            break;
-						default:
-							Debug.Log("This Unlockable Type is not implemented in this switch state!");
-							return;
-
-					}
-					OnUpgrade();
-					break;
-					
 			}
 		}
 	}
 
-
-    public void PointerEnter()
-    {
-        hoverText.SetTittle(buttonObject.tittleText);
-        hoverText.SetDescription(buttonObject.descriptionText);
-        hoverTextCanvasGroup.alpha = 1;
-        if (available && !buttonObject.upgraded)
-        {
-            upgradedHighlight.SetActive(true);
-        }
-    }
-
-    public void Pointerexit()
-    {
-        if (available && !buttonObject.upgraded)
-        {
-            upgradedHighlight.SetActive(false);
-        }
-        hoverTextCanvasGroup.alpha = 0;
-    }
-
 	public void OnPointerEnter(PointerEventData eventData)
 	{
-        PointerEnter();
+        if (OnPointerEntered!=null)
+            OnPointerEntered(perk.tittleText, perk.descriptionText);
 	}
 	
 	public void OnPointerExit(PointerEventData eventData)
 	{
-        Pointerexit();
-	}
+        if (OnPointerExited != null)
+            OnPointerExited();
+    }
 
 	public void OnPointerDown(PointerEventData eventData)
 	{

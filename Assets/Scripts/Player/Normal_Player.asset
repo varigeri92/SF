@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2564e73f8fafa42f390d1c86e8d3195a, type: 3}
   m_Name: Normal_Player
   m_EditorClassIdentifier: 
-  maxHealth: 82
+  maxHealth: 58
   speed: 4
   boostFillSpeed: 0.8000001
   boostDecSpeed: 0.000000029802322
-  powerCores: 30
-  level: 18
+  powerCores: 1
+  level: 32
   normalPlayer: 1
   inventoryGuns:
   - {fileID: 1927927025121406, guid: e22ab43c3218a4d418dcd882e0a18b67, type: 3}

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258f09697eb0a4ec3b9b95e09dceb834, type: 3}
   m_Name: Laser_Gun
   m_EditorClassIdentifier: 
+  gunIcon: {fileID: 226233719831200884, guid: d8301fd8d162cb346bc0d01cf631d0c1, type: 3}
+  gameplayPrefab: {fileID: 1458455220, guid: 4629d1b0812f4a6449b40d59b8550638, type: 3}
+  equipmentGridPrefab: {fileID: 333, guid: a34ae7d6be54146e19fb679962dc5922, type: 3}
   startingAmmo: 100
   maxAmmo: 250
   fireRate: 5

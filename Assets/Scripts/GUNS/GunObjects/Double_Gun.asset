@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258f09697eb0a4ec3b9b95e09dceb834, type: 3}
   m_Name: Double_Gun
   m_EditorClassIdentifier: 
-  startingAmmo: 200
-  maxAmmo: 300
-  fireRate: 4
-  damage: 1
+  gunIcon: {fileID: 1974288720584050, guid: 31021c9bfc6e7488c883360341a2e95c, type: 3}
+  gameplayPrefab: {fileID: 1897131634571996, guid: de7c98b5b00e347aa99245b0a301a164,
+    type: 3}
+  equipmentGridPrefab: {fileID: 327, guid: a871043da041d4bed8f6bdd5c3f79fbf, type: 3}
+  startingAmmo: 250
+  maxAmmo: 350
+  fireRate: 5
+  damage: 3
   index: 1

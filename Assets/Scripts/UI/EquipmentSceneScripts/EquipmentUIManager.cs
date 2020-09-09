@@ -61,6 +61,8 @@ public class EquipmentUIManager : MonoBehaviour
 
     }
 
+
+
     void SetPiJoyButtonTrue()
     {
         Debug.Log("Event Trigger_True BOI");
@@ -110,6 +112,11 @@ public class EquipmentUIManager : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             piUI.joystickButton = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            piUI.CloseMenu();
+            piAnimator.SetBool("Open", false);
         }
     }
 	public void HoverEnter(){
