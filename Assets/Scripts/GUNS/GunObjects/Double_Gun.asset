@@ -16,6 +16,8 @@ MonoBehaviour:
   gameplayPrefab: {fileID: 1897131634571996, guid: de7c98b5b00e347aa99245b0a301a164,
     type: 3}
   equipmentGridPrefab: {fileID: 327, guid: a871043da041d4bed8f6bdd5c3f79fbf, type: 3}
+  gunCollectable: {fileID: 1615196254142962, guid: 786e4e89b7be7470294772dd4e74de66,
+    type: 3}
   startingAmmo: 250
   maxAmmo: 350
   fireRate: 5

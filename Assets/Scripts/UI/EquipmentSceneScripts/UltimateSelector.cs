@@ -10,10 +10,10 @@ public class UltimateSelector : MonoBehaviour
 
 
 
-	public void SetUltimate(GameObject _abilityPrefab)
+	public void SetUltimate(Abilit_Object abilityObject)
 	{
-		playerObject.ultimate = _abilityPrefab;
-		playerObject.ultimateIcon = _abilityPrefab.GetComponent<Ability>().ability.icon;
+        Global.Instance.PlayerData.ultimate =  abilityObject.gameplayPrefab;
+        Global.Instance.PlayerData.ultimateIcon = abilityObject.icon;
 
 	}
 

@@ -10,8 +10,6 @@ public class GunPerk : Perk
     public UpgradeProperty upgradeProperty;
     public float upgradeValue;
 
-    public GameObject gunToUnlock;
-
     private void OnEnable()
     {
         upgradeType = UpgradeType.GunUpgrade;

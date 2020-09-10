@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
 
     }
 
-    void onDestroy()
+    void OnDestroy()
     {
         BasicEnemy.onEnemyDead -= countEnemyes;
         InputManager.OnShootButtonPresed -= ShootEvent;
@@ -124,8 +124,6 @@ public class Player : MonoBehaviour
     void Start()
 	{
         PresistentOptionsManager.Instance.justStarted = false;
-        // GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().OnPlayerLoaded(this);
-		// SetBasicGun();
 		BasicEnemy.onEnemyDead += countEnemyes;
 		shieldText.text = health.ToString();
 
@@ -276,7 +274,6 @@ public class Player : MonoBehaviour
 
     void StopShoot()
     {
-        Debug.Log("PLAYES STOPS SHOOTING");
 
         if (activeGun != null)
         {
@@ -296,8 +293,6 @@ public class Player : MonoBehaviour
 
     void ShootEvent()
     {
-        Debug.Log("SHOOTING");
-
         if (!activeGun)
         {
             OnGunChanged();
@@ -381,7 +376,6 @@ public class Player : MonoBehaviour
 	public void PickupGun(GameObject gun, GameObject icon)
 	{
 
-		if (inventorySelector.items.Contains(gun)) {
 
 			Gun activeGun = attachPoint.GetChild(0).GetComponent<Gun>();
 			string activeGunName = activeGun.gameObject.name.Replace("(Clone)", "");
@@ -393,7 +387,13 @@ public class Player : MonoBehaviour
 				Debug.Log("Ammo picked up for: " + gun.name);
 				gunsPickedUp[gun.name].AddAmmo(gun.GetComponent<Gun>().ammo);
 			}
+
+            // This part should be reworked Or Removed:
+
+            /*
+		if (playerObject.equipedGuns.Contains(gun)) {
 		} else {
+
 			inventorySelector.items.Add(gun);
 			inventorySelector.icons.Add(icon);
 			GameObject inventoryIcon = 
@@ -407,15 +407,17 @@ public class Player : MonoBehaviour
 				Debug.LogWarning("No 'InventoryGun' component found on: " + inventoryIcon.name);
 			}
 		}
+            */
 		
 	}
 
 	public void LoadSavedInventory(){
-		int length = inventorySelector.items.Count;
-		for (int i = 1; i < length; i++) {
-			Instantiate(inventorySelector.icons[i], radialInventory.transform.GetChild(i).GetChild(0));
-			gunsPickedUp.Add(inventorySelector.items[i].name, inventorySelector.icons[i].GetComponent<InventoryGun>());
-		}
+		int length = Global.Instance.PlayerData.equipedGuns.Count;
+		for (int i = 0; i < length; i++) {
+            Instantiate(Global.Instance.PlayerData.equipedGuns[i].gunIcon, radialInventory.transform.GetChild(i).GetChild(0));
+            gunsPickedUp.Add(Global.Instance.PlayerData.equipedGuns[i].gameplayPrefab.name,
+                Global.Instance.PlayerData.equipedGuns[i].gunIcon.GetComponent<InventoryGun>());
+        }
 	}
 
 	void SetBasicGun()

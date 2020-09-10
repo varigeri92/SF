@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
+    /*
 	public string filePath = "";
 	public SaveObject saveObject;
 	public SaveObject saveObject2;
@@ -116,7 +117,7 @@ public class SaveManager : MonoBehaviour
 
 	public void SetUnlockedGun(int index)
 	{
-		playerObject.availableGuns.Add(playerStateObject.allPlayerGuns[index].gunGridElement);
+		//playerObject.availableGuns.Add(playerStateObject.allPlayerGuns[index].gunGridElement);
 	}
 
 
@@ -303,7 +304,7 @@ public class SaveManager : MonoBehaviour
 						SetEquippedGun(index);
 				}
 
-				playerObject.availableGuns.Clear();
+				// playerObject.availableGuns.Clear();
 				foreach (int index in saveObject.unlockedGunIndexes) {
 					if(index != 0)
 						SetUnlockedGun(index);
@@ -333,7 +334,6 @@ public class SaveManager : MonoBehaviour
 				/**
 				 * TODO:
 					* ULTIMATES
-				*/
 
 
 
@@ -359,5 +359,6 @@ public class SaveManager : MonoBehaviour
 		}
 		return filePath;
 	}
+				*/
 }
 

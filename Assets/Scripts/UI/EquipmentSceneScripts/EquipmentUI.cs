@@ -17,11 +17,9 @@ public class EquipmentUI : MonoBehaviour
     public UltimateSelector ultimateSelector;
     public UltimateSelector gunSelector;
 
-
     Animator animator;
 
     public GameObject marker;
-
     public GameObject icon;
 
     [Header("Asing by 'Guns' only:")]
@@ -29,7 +27,7 @@ public class EquipmentUI : MonoBehaviour
     public GameObject ammoToSpawn;
 
     [Header("Asing by 'Ultimates' only:")]
-    public GameObject ultimatePrefab;
+    public Abilit_Object ultimate;
 
 
 
@@ -60,7 +58,7 @@ public class EquipmentUI : MonoBehaviour
 
     public void SetPalyerUltimate()
     {
-        ultimateSelector.SetUltimate(ultimatePrefab);
+        ultimateSelector.SetUltimate(ultimate);
     }
 
     public void SetMarker(bool state)

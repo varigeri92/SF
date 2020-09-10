@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d9f68bbb14b104898ccccecfe50404, type: 3}
   m_Name: Player_Shield_2
   m_EditorClassIdentifier: 
-  upgraded: 1
+  upgraded: 0
   required: {fileID: 11400000, guid: 8201279769fac5446b6652d20f930c93, type: 2}
   requireLevel: 2
   icon: {fileID: 21300000, guid: 2f3cbd59a2fd04a44831f9369779725d, type: 3}

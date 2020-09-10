@@ -365,6 +365,12 @@ PrefabInstance:
       propertyPath: icon
       value: 
       objectReference: {fileID: 1931080140823832593}
+    - target: {fileID: 9080572036054191110, guid: c9a5a86f2bd48478ba9e49a58e640d3d,
+        type: 3}
+      propertyPath: ultimate
+      value: 
+      objectReference: {fileID: 11400000, guid: c9ad40419816541999642dd47ac0e56b,
+        type: 2}
     - target: {fileID: 74094731180374953, guid: c9a5a86f2bd48478ba9e49a58e640d3d,
         type: 3}
       propertyPath: m_AnchoredPosition.y

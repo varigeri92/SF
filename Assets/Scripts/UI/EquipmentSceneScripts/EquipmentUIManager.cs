@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class EquipmentUIManager : MonoBehaviour
 {
-	public PlayerObject playerObject;
 
 	public List<GameObject> guns = new List<GameObject>();
 	public List<GameObject> icons = new List<GameObject>();
@@ -58,7 +57,6 @@ public class EquipmentUIManager : MonoBehaviour
     {
         InputManager.OnUltimateButtonPressed -= SetPiJoyButtonTrue;
         InputManager.OnUltimateButtonReleased -= SetPiJoyButtonFalse;
-
     }
 
 
@@ -106,7 +104,7 @@ public class EquipmentUIManager : MonoBehaviour
         ClearUI();
         InitEquipment();
     } 
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetButtonDown("Fire2"))
@@ -129,8 +127,8 @@ public class EquipmentUIManager : MonoBehaviour
 
 	private void LoadUnlockedItems()
 	{
-		foreach (var element in playerObject.availableGuns) {
-			Instantiate(element,gunGrid);
+		foreach (GunObject element in Global.Instance.PlayerData.availableGuns) {
+			Instantiate(element.equipmentGridPrefab, gunGrid);
             /*
             EquipmentUI elementGui = element.GetComponent<EquipmentUI>();
             if (playerObject.inventoryGuns.Contains(elementGui.gun))
@@ -140,9 +138,9 @@ public class EquipmentUIManager : MonoBehaviour
             */
 		}
 
-        foreach (var element in playerObject.ultimates)
+        foreach (Abilit_Object element in Global.Instance.PlayerData.unlockedUltimates)
         {
-            Instantiate(element, ultimateGrid);
+            Instantiate(element.equipmentGridPrefab, ultimateGrid);
         }
     }
 
@@ -169,8 +167,10 @@ public class EquipmentUIManager : MonoBehaviour
 
 	public void LoadPlayerInventory()
 	{
-		for (int i = 1; i < playerObject.inventoryGuns.Count; i++){
-			SetGun(playerObject.inventoryGuns[i],playerObject.inventoryIcons[i],slots[i], playerObject.AmmoToSpawn[i]);
+		for (int i = 1; i < Global.Instance.PlayerData.equipedGuns.Count; i++){
+			SetGun(Global.Instance.PlayerData.equipedGuns[i].gameplayPrefab,
+                Global.Instance.PlayerData.equipedGuns[i].gunIcon, slots[i],
+                Global.Instance.PlayerData.equipedGuns[i].gunCollectable);
 		}
 
 	}
@@ -244,11 +244,7 @@ public class EquipmentUIManager : MonoBehaviour
 
 	public void SaveInventory()
 	{
-		playerObject.inventoryGuns = new List<GameObject>(guns);
-		playerObject.inventoryIcons = new List<GameObject>(icons);
-		playerObject.AmmoToSpawn = new List<GameObject>(ammos);
 
-		// SaveManager.Instance.SetEquipedGunsToSave(guns);
 	}
 
     public void SetSelectedGun(GameObject gun, GameObject _gunIcon, GameObject ammo)
@@ -313,11 +309,23 @@ public class EquipmentUIManager : MonoBehaviour
                     {
                         if (childs < columns)
                         {
-                            SetButtonNavigation(button,
+                            if(childs == 1)
+                            {
+                                SetButtonNavigation(button,
                                 GetButtonComp(gunGrid.GetChild(childs - 1).gameObject),
-                                GetButtonComp(gunGrid.GetChild(i + 1).gameObject),
+                                GetButtonComp(gunGrid.GetChild(i).gameObject),
                                 null,
                                 SetUltimateButtonToSelect());
+                            }
+                                else
+                            {
+                                SetButtonNavigation(button,
+                                    GetButtonComp(gunGrid.GetChild(childs - 1).gameObject),
+                                    GetButtonComp(gunGrid.GetChild(i + 1).gameObject),
+                                    null,
+                                    SetUltimateButtonToSelect());
+                            }
+
                         }
                         else
                         {

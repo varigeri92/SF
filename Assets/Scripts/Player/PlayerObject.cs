@@ -14,15 +14,12 @@ public class PlayerObject : ScriptableObject{
 
 	public bool normalPlayer = true;
 
-	public List<GameObject> inventoryGuns;
-	public List<GameObject> inventoryIcons;
+    public List<GunObject> equipedGuns = new List<GunObject>();
+	public List<GunObject> availableGuns;
 
-	public List<GameObject> availableGuns;
 
-	public List<GameObject> AmmoToSpawn;
-
-	public List<GameObject> ultimates;
-
+    public List<Abilit_Object> unlockedUltimates;
+	// public List<GameObject> ultimates;
 	public GameObject ultimate;
 	public GameObject ultimateIcon;
 

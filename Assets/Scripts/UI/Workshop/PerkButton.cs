@@ -164,8 +164,7 @@ public class PerkButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
                                 perk.gunToUpgrade.startingAmmo += (int)perk.upgradeValue;
                                 break;
                             case UpgradeProperty.Unlock:
-                                // ??????
-                                Global.Instance.PlayerData.availableGuns.Add(perk.gunToUpgrade.equipmentGridPrefab);
+                                Global.Instance.PlayerData.availableGuns.Add(perk.gunToUpgrade);
                                 // SaveManager.Instance.AddAvailableGun(buttonObject.gunToUpgrade.index);
                                 Instantiate(perk.gunToUpgrade.equipmentGridPrefab, gunGrid);
                                 break;
@@ -191,9 +190,9 @@ public class PerkButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 							    perk.ultimateToUpgrade.duration += perk.upgradeValue;
 							    break;
                             case UltimateUpgrade.Unlock:
-                                Global.Instance.PlayerData.ultimates.Add(perk.ultimateToUpgrade.gameplayPrefab);
+                                Global.Instance.PlayerData.unlockedUltimates.Add(perk.ultimateToUpgrade);
                                 // SaveManager.Instance.AddAvailableUlt(buttonObject.ultimateToUpgrade.index);
-                                Instantiate(perk.ultimateToUpgrade.icon, ultimateGrid);
+                                Instantiate(perk.ultimateToUpgrade.equipmentGridPrefab, ultimateGrid);
                                 break;
                             default:
 							    Debug.Log("This UltimateProperty-Type is not implemented in this switch state!");
@@ -209,7 +208,7 @@ public class PerkButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 	public void OnPointerEnter(PointerEventData eventData)
 	{
         if (OnPointerEntered!=null)
-            OnPointerEntered(perk.tittleText, perk.descriptionText);
+            OnPointerEntered(perk.name, perk.name);
 	}
 	
 	public void OnPointerExit(PointerEventData eventData)

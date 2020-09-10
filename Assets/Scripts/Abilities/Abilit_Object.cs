@@ -11,5 +11,6 @@ public class Abilit_Object : ScriptableObject
 	public GameObject effect;
 	public GameObject icon;
     public GameObject gameplayPrefab;
+    public GameObject equipmentGridPrefab;
 	public int index;
 }

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8d9f68bbb14b104898ccccecfe50404, type: 3}
-  m_Name: Player_Shield_1
+  m_Name: Player_Shield_4
   m_EditorClassIdentifier: 
   upgraded: 0
-  required: {fileID: 0}
-  requireLevel: 1
+  required: {fileID: 11400000, guid: 19b57841244286e4e8988a4987c68e80, type: 2}
+  requireLevel: 2
   icon: {fileID: 21300000, guid: 2f3cbd59a2fd04a44831f9369779725d, type: 3}
-  cost: 1
-  rank: 1
-  tittleText: Shield Upgrade
-  descriptionText: +5 shield power at start
+  cost: 2
+  rank: 2
+  tittleText: asda
+  descriptionText: afsadfgasdgas
   upgradeProperty: 2
   upgradeValue: 5

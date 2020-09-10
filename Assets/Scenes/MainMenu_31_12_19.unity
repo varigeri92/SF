@@ -7586,7 +7586,7 @@ PrefabInstance:
     - target: {fileID: 1624649496871843709, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1624649496871843709, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
@@ -7601,7 +7601,7 @@ PrefabInstance:
     - target: {fileID: 1624649496871843709, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1624649496871843709, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
@@ -9032,12 +9032,12 @@ PrefabInstance:
     - target: {fileID: 3530966317786692847, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000061035156
+      value: -0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 3530966317786692847, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0040805405
+      value: -0.000059994018
       objectReference: {fileID: 0}
     - target: {fileID: 3465509694495203909, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
@@ -12935,6 +12935,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d26af89203eec4489a2cedb4f711db97,
         type: 2}
+    - target: {fileID: 4134686073443141320, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
+        type: 2}
     - target: {fileID: 4594684795918254687, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: buttonObject
@@ -12953,11 +12959,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 88fe8cd23a8814924abab15f1899baf2,
         type: 2}
+    - target: {fileID: 2338801086369626455, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: df26d10416e754142b96c8f575983ac1,
+        type: 2}
     - target: {fileID: 3351005522993200946, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: buttonObject
       value: 
       objectReference: {fileID: 11400000, guid: f1c9ded0e1a5845fd838c6f3415e1733,
+        type: 2}
+    - target: {fileID: 3351005522993200946, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
         type: 2}
     - target: {fileID: 1722451712010648006, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
@@ -12965,11 +12983,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: daa28643bdc9f4ef19faa0540139928f,
         type: 2}
+    - target: {fileID: 1722451712010648006, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
+        type: 2}
     - target: {fileID: 1945332999520033445, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: buttonObject
       value: 
       objectReference: {fileID: 11400000, guid: 6a4f1a3ea4ef9474d87654d92d8480a7,
+        type: 2}
+    - target: {fileID: 1945332999520033445, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
         type: 2}
     - target: {fileID: 922878639365889756, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
@@ -12977,11 +13007,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 8a30184bfe70f4566927d9580fb002bd,
         type: 2}
+    - target: {fileID: 922878639365889756, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 6825ea26c858d924ea6482408f87a535,
+        type: 2}
     - target: {fileID: 871468564925834882, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: buttonObject
       value: 
       objectReference: {fileID: 11400000, guid: f509b11ff194942d0a32fdb8afa03190,
+        type: 2}
+    - target: {fileID: 871468564925834882, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
         type: 2}
     - target: {fileID: 8252905252216296791, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
@@ -12989,17 +13031,35 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 6a07f5193760142439e7791274d04c7d,
         type: 2}
+    - target: {fileID: 8252905252216296791, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
+        type: 2}
     - target: {fileID: 8495667725139952988, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: buttonObject
       value: 
       objectReference: {fileID: 11400000, guid: 967b21eea2aa24a26b228d8177262a36,
         type: 2}
+    - target: {fileID: 8495667725139952988, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
+        type: 2}
     - target: {fileID: 8520194126957305013, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: buttonObject
       value: 
       objectReference: {fileID: 11400000, guid: dd20042f7d7df4a418d864207e792d30,
+        type: 2}
+    - target: {fileID: 8520194126957305013, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
         type: 2}
     - target: {fileID: 988518435027181757, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
@@ -13012,11 +13072,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 752c6e7363abd42f0848aacbd329e144,
         type: 2}
+    - target: {fileID: 9145795342285490650, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
+        type: 2}
     - target: {fileID: 8010445884899785855, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: buttonObject
       value: 
       objectReference: {fileID: 11400000, guid: 6044f7855e4884590b69cca889743aaf,
+        type: 2}
+    - target: {fileID: 8010445884899785855, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
         type: 2}
     - target: {fileID: 5976067846589228843, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
@@ -13024,11 +13096,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9dd855c5078704fdb87e858ef0d833e4,
         type: 2}
+    - target: {fileID: 5976067846589228843, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: c9cbc2bdc6551a843aa61116d8c03eb8,
+        type: 2}
     - target: {fileID: 6069478814057607280, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: buttonObject
       value: 
       objectReference: {fileID: 11400000, guid: c6c6f28f995ea41a09cd4e3802b0b644,
+        type: 2}
+    - target: {fileID: 6069478814057607280, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
         type: 2}
     - target: {fileID: 6255025694227753856, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
@@ -13036,11 +13120,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ac2bc49f5ab174614ba7361be6d6727d,
         type: 2}
+    - target: {fileID: 6255025694227753856, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
+        type: 2}
     - target: {fileID: 6213186953792998757, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: buttonObject
       value: 
       objectReference: {fileID: 11400000, guid: 38e2bea841dd941d2874ef87425ba61a,
+        type: 2}
+    - target: {fileID: 6213186953792998757, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 1ec7621e7a3716641806d45e61d5f317,
         type: 2}
     - target: {fileID: 5210310468839631194, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
@@ -13080,11 +13176,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 822868c25e53a4920bc867e022ca91e9,
         type: 2}
+    - target: {fileID: 5380430845826322573, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
+        type: 2}
     - target: {fileID: 5678881894190352984, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: buttonObject
       value: 
       objectReference: {fileID: 11400000, guid: 1413a73c8a34f4890b53d53bdf32f0ea,
+        type: 2}
+    - target: {fileID: 5678881894190352984, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 19b57841244286e4e8988a4987c68e80,
         type: 2}
     - target: {fileID: 3427275746215140693, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
@@ -14457,6 +14565,12 @@ PrefabInstance:
       propertyPath: buttonObject
       value: 
       objectReference: {fileID: 11400000, guid: a21ac82552e394b8c8522466ca70b473,
+        type: 2}
+    - target: {fileID: 2431493123876087294, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
         type: 2}
     - target: {fileID: 2756643216784066032, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
@@ -16489,6 +16603,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 316449ead00db40ebb88e11db61a6812,
         type: 2}
+    - target: {fileID: 4593163269396654553, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
+        type: 2}
+    - target: {fileID: 3741135127094406228, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
+        type: 2}
+    - target: {fileID: 2410202582054993684, guid: 47785bf890a95774d8480acae9c4b136,
+        type: 3}
+      propertyPath: perk
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47785bf890a95774d8480acae9c4b136, type: 3}
 --- !u!1 &7285817060314460072 stripped
@@ -16509,39 +16641,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9978b10fcdeee4cab83c04434a8af911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonObjects:
-  - {fileID: 11400000, guid: 6b5baac84ebed4a20b3469f8f125e1a1, type: 2}
-  - {fileID: 11400000, guid: a131918d999384c09bb0a16bd3d29639, type: 2}
-  - {fileID: 11400000, guid: 1413a73c8a34f4890b53d53bdf32f0ea, type: 2}
-  - {fileID: 11400000, guid: 38e2bea841dd941d2874ef87425ba61a, type: 2}
-  - {fileID: 11400000, guid: 86edbecc6786d48a3800d887873ba04e, type: 2}
-  - {fileID: 11400000, guid: ac2bc49f5ab174614ba7361be6d6727d, type: 2}
-  - {fileID: 11400000, guid: f509b11ff194942d0a32fdb8afa03190, type: 2}
-  - {fileID: 11400000, guid: dd20042f7d7df4a418d864207e792d30, type: 2}
-  - {fileID: 11400000, guid: 8020a06a8e9204d76ae6c71396aca619, type: 2}
-  - {fileID: 11400000, guid: a21ac82552e394b8c8522466ca70b473, type: 2}
-  - {fileID: 11400000, guid: 316449ead00db40ebb88e11db61a6812, type: 2}
-  - {fileID: 11400000, guid: ff9d827a6efa049c798d5bd6bae6aa69, type: 2}
-  - {fileID: 11400000, guid: 885d1dd0c61e04ee5b84d3c2a08c55e4, type: 2}
-  - {fileID: 11400000, guid: 93b2d64277c7d47588e3b7d8a2e8330a, type: 2}
-  - {fileID: 11400000, guid: f990f9875b96c45fbafb5de91ae592ff, type: 2}
-  - {fileID: 11400000, guid: 2d42553c509a84d4aa5500c15940ad7e, type: 2}
-  - {fileID: 11400000, guid: 25b05b553eadd433faa8a599130103b2, type: 2}
-  - {fileID: 11400000, guid: fff71af184fbf462bb58b23d189deebf, type: 2}
-  - {fileID: 11400000, guid: 78a46944ffd5747e7a6d2b76b9f940c3, type: 2}
-  - {fileID: 11400000, guid: 9dd855c5078704fdb87e858ef0d833e4, type: 2}
-  - {fileID: 11400000, guid: daa28643bdc9f4ef19faa0540139928f, type: 2}
-  - {fileID: 11400000, guid: 822868c25e53a4920bc867e022ca91e9, type: 2}
-  - {fileID: 11400000, guid: 6a07f5193760142439e7791274d04c7d, type: 2}
-  - {fileID: 11400000, guid: 967b21eea2aa24a26b228d8177262a36, type: 2}
-  - {fileID: 11400000, guid: 8a30184bfe70f4566927d9580fb002bd, type: 2}
-  - {fileID: 11400000, guid: 88fe8cd23a8814924abab15f1899baf2, type: 2}
-  - {fileID: 11400000, guid: 6044f7855e4884590b69cca889743aaf, type: 2}
-  - {fileID: 11400000, guid: 6a4f1a3ea4ef9474d87654d92d8480a7, type: 2}
-  - {fileID: 11400000, guid: c6c6f28f995ea41a09cd4e3802b0b644, type: 2}
-  - {fileID: 11400000, guid: 752c6e7363abd42f0848aacbd329e144, type: 2}
-  - {fileID: 11400000, guid: f1c9ded0e1a5845fd838c6f3415e1733, type: 2}
-  - {fileID: 11400000, guid: d26af89203eec4489a2cedb4f711db97, type: 2}
   cores: {fileID: 18055593}
   level: {fileID: 2139978878}
 --- !u!1 &7285817060314460074 stripped

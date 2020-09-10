@@ -7,8 +7,6 @@ public class WorkshopUI : MonoBehaviour
 	public delegate void Upgrade();
 	public static event Upgrade OnUpgrade;
 
-	public List<UpgradeButtonObject> buttonObjects;
-
 	public TMPro.TMP_Text cores;
 	public TMPro.TMP_Text level;
 
@@ -17,7 +15,6 @@ public class WorkshopUI : MonoBehaviour
     void Start()
     {
 		SetText();
-		// PlayerProgress.Instance.SetPerks(ref buttonObjects);
     }
 
 	void SetText(){
@@ -40,6 +37,5 @@ public class WorkshopUI : MonoBehaviour
 			OnUpgrade();
 		}
 		SetText();
-		// SaveManager.Instance.SavePerks(buttonObjects);
 	}
 }

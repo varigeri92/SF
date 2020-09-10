@@ -4,51 +4,39 @@ using UnityEngine;
 
 public class InventorySelector : MonoBehaviour
 {
-
-	public List<GameObject> items = new List<GameObject>();
-	public List<GameObject> icons = new List<GameObject>();
-	
 	Player player;
-	// Use this for initialization
+
+
 	void Start()
 	{
 		Player.OnPlayerLoaded += OnPlayerLoaded;
 	}
-	
-	
-	// Update is called once per frame
-	void Update () {
+
+    void OnDestroy()
+    {
+        Player.OnPlayerLoaded -= OnPlayerLoaded;
+    }
+
+    void Update () {
 
 	}
 
 	public void SelectWeapon(int index){
-		if(index < items.Count){
-			player.ChangeGun(items[index]);
+		if(index < Global.Instance.PlayerData.equipedGuns.Count){
+			player.ChangeGun(Global.Instance.PlayerData.equipedGuns[index].gameplayPrefab);
 		}else{
 			Debug.Log("INDEX: " + index.ToString());
 		}
 	}
 
-	private void OnDestroy()
-	{
-		Player.OnPlayerLoaded -= OnPlayerLoaded;
-	}
+
 
 	void OnPlayerLoaded(Player player){
 
         this.player = player;
-		items = new List<GameObject>(player.playerObject.inventoryGuns);
-		icons = new List<GameObject>(player.playerObject.inventoryIcons);
-
-        /*
-		foreach(GameObject icon in icons){
-            InventoryGun iGun = icon.GetComponent<InventoryGun>();
-            iGun.SetStartingAmmo();          
-		}
-        */
-        foreach (GunData gunData in Global.Instance.playerGunData)
+        foreach (GunObject gunObject in Global.Instance.PlayerData.equipedGuns)
         {
-            InventoryGun iGun = gunData.gunUIPrefab.GetComponent<InventoryGun>();
+            InventoryGun iGun = gunObject.gunIcon.GetComponent<InventoryGun>();
             iGun.SetStartingAmmo();
         }
 

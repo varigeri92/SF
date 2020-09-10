@@ -9,8 +9,9 @@ public class GunObject : ScriptableObject
     public GameObject gunIcon;
     public GameObject gameplayPrefab;
     public GameObject equipmentGridPrefab;
+    public GameObject gunCollectable;
 
-	public int startingAmmo;
+    public int startingAmmo;
 	public int maxAmmo; 
 	public float fireRate;
 	public int damage;

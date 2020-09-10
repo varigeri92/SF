@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258f09697eb0a4ec3b9b95e09dceb834, type: 3}
   m_Name: BombGun_Player
   m_EditorClassIdentifier: 
+  gunIcon: {fileID: 9155244844814188057, guid: e6ed806f10012cd4ebad09a23774068c, type: 3}
+  gameplayPrefab: {fileID: 3821602256460556279, guid: d8e449eac41d25f41b7d27a530b9d841,
+    type: 3}
+  equipmentGridPrefab: {fileID: 349, guid: 1986736c4f6e84eee8a1ed4b877a7d80, type: 3}
+  gunCollectable: {fileID: 5855574713655412981, guid: 5f9978cde65da8843af30cf61699fdd2,
+    type: 3}
   startingAmmo: 5
   maxAmmo: 5
   fireRate: 1
