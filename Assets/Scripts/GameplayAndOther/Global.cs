@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Global : MonoBehaviour
 {
-    public List<GunData> allGunData = new List<GunData>();
-    public List<GunData> playerGunData = new List<GunData>();
 
     [SerializeField] PlayerObject playerData;
     public PlayerObject PlayerData { get { return playerData; } }
@@ -37,7 +35,7 @@ public class Global : MonoBehaviour
 
     private void Start()
     {
-        playerGunData = new List<GunData>(allGunData);
+
     }
 }
 

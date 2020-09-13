@@ -16,5 +16,11 @@ public class Perk : ScriptableObject
     public string tittleText;
     [Multiline]
     public string descriptionText;
+
+
+    public virtual void Reset()
+    {
+        upgraded = false;
+    }
 }
 

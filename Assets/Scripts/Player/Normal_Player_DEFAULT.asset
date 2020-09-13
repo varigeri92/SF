@@ -10,23 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2564e73f8fafa42f390d1c86e8d3195a, type: 3}
-  m_Name: Normal_Player
+  m_Name: Normal_Player_DEFAULT
   m_EditorClassIdentifier: 
-  maxHealth: 58
+  maxHealth: 50
   speed: 4
   boostFillSpeed: 0.8
   boostDecSpeed: 3
-  powerCores: 213
-  level: 34
+  powerCores: 0
+  level: 1
   normalPlayer: 1
   equipedGuns:
   - {fileID: 11400000, guid: cb5fb1469e18841fb9766965f7802b4e, type: 2}
-  - {fileID: 11400000, guid: cd596ad9e1f3d408cbcf9e85d2c1d348, type: 2}
-  availableGuns:
-  - {fileID: 11400000, guid: cd596ad9e1f3d408cbcf9e85d2c1d348, type: 2}
-  unlockedUltimates:
-  - {fileID: 11400000, guid: c9ad40419816541999642dd47ac0e56b, type: 2}
-  ultimate: {fileID: 3223577173500042657, guid: c029ad4ee000a4f07acffd974f1e64ea,
-    type: 3}
-  ultimateIcon: {fileID: 1432437060315232891, guid: 77c021dafc98cc5438f5da3f7b764fc9,
-    type: 3}
+  availableGuns: []
+  unlockedUltimates: []
+  ultimate: {fileID: 0}
+  ultimateIcon: {fileID: 0}
