@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class EquipmentUIManager : MonoBehaviour
 {
 
-	public List<GameObject> guns = new List<GameObject>();
-	public List<GameObject> icons = new List<GameObject>();
-	public List<GameObject> ammos = new List<GameObject>();
 
-	Dictionary<string, GameObject> inventoryGuns = new Dictionary<string,GameObject>();
+	// public List<GameObject> guns = new List<GameObject>();
+	// public List<GameObject> icons = new List<GameObject>();
+	// public List<GameObject> ammos = new List<GameObject>();
+
+	Dictionary<string, GunObject> inventoryGuns = new Dictionary<string, GunObject>();
 	Dictionary<string, GameObject> inventoryIcons = new Dictionary<string, GameObject>();
 
 	public List<string> slots;
@@ -20,9 +21,7 @@ public class EquipmentUIManager : MonoBehaviour
 	public PiUI piUI;
 	public PiPiece piece;
 
-	public GameObject selectedGun;
-	public GameObject gunIcon;
-	public GameObject ammoToSpawn;
+	public GunObject selectedGun;
 
 	public GameObject piUIGo;
 
@@ -31,10 +30,7 @@ public class EquipmentUIManager : MonoBehaviour
     public Transform ultimateGrid;
 
 	[SerializeField]
-	private GameObject _basicGun;
-
-	[SerializeField]
-	private GameObject _basicGunIcon;
+	private GunObject _basicGun;
 
 	private bool initialize = true;
 
@@ -93,7 +89,7 @@ public class EquipmentUIManager : MonoBehaviour
         selectedSlot = "none";
         lastSelectedSlot = "none";
 
-        SetGun(_basicGun, _basicGunIcon, "One", null);
+        SetGun(_basicGun, "One");
         initialize = false;
         LoadPlayerInventory();
         LoadUnlockedItems();
@@ -117,6 +113,7 @@ public class EquipmentUIManager : MonoBehaviour
             piAnimator.SetBool("Open", false);
         }
     }
+
 	public void HoverEnter(){
 		isMouseoverSlot = true;
 	}
@@ -144,20 +141,10 @@ public class EquipmentUIManager : MonoBehaviour
         }
     }
 
-	public void BeginDrag(GameObject gun, GameObject icon, GameObject _ammoToSpawn, bool _isGun){
-		selectedGun = gun;
-		gunIcon = icon;
-		ammoToSpawn = _ammoToSpawn;
-		isGun = _isGun;
-	}
-
-	public void CancelDrag(){
-		selectedGun = null;
-		gunIcon = null;
-	}
 
 	public void SelectSlot(string slotName){
-		SetGun(selectedGun, gunIcon, slotName, ammoToSpawn);
+        Debug.Log("SELECT SLOT");
+		SetGun(selectedGun, slotName );
         piAnimator.SetBool("Open", false);
 	}
 
@@ -168,90 +155,69 @@ public class EquipmentUIManager : MonoBehaviour
 	public void LoadPlayerInventory()
 	{
 		for (int i = 1; i < Global.Instance.PlayerData.equipedGuns.Count; i++){
-			SetGun(Global.Instance.PlayerData.equipedGuns[i].gameplayPrefab,
-                Global.Instance.PlayerData.equipedGuns[i].gunIcon, slots[i],
-                Global.Instance.PlayerData.equipedGuns[i].gunCollectable);
+			SetGun(Global.Instance.PlayerData.equipedGuns[i], slots[i] );
 		}
 
 	}
 
 
-	public void SetGun(GameObject gun, GameObject icon, string slotName, GameObject _ammoToSpawn)
+	public void SetGun(GunObject gunObject, string slotName)
 	{
 		Debug.Log("SETGUN BOI!!");
-		if(gun == null){
-			return;
-		}
+		if(!gunObject) return;
+		
 		if(!isGun){
-			return;
+            Debug.Log("Isgun False!");
 		}
+
 		if(slotName == "One" && !initialize){
 			Debug.Log("Cannot modify this slot!");
 			return;
 		}
 
-		if(guns.Contains(gun)){
-			Debug.Log(gun.name + "Already in the inventory!");
+		if(Global.Instance.PlayerData.equipedGuns.Contains(gunObject)){
+			Debug.Log(gunObject.name + "Already in the inventory!");
+            
+            // Remove from player inventory!
 
-			guns.Remove(gun);
-			icons.Remove(icon);
-			ammos.Remove(_ammoToSpawn);
 
 			string slot = "";
 
-			foreach(KeyValuePair<string,GameObject> entry in inventoryGuns){
-				if(entry.Value == gun){
+			foreach(KeyValuePair<string, GunObject> entry in inventoryGuns){
+				if(entry.Value == gunObject){
 					Debug.Log(entry.Key + " -----> " + entry.Value.name);
 					slot = entry.Key;
 					Destroy(piUIGo.transform.Find(slot).GetChild(0).GetChild(0).gameObject);
 					inventoryGuns.Remove(slot);
 					if (inventoryGuns.ContainsKey(slotName)){
 						Debug.Log("Slot: " + slotName + " already in use!");
-						int index = guns.IndexOf(inventoryGuns[slotName]);
-						guns.RemoveAt(index);
-						icons.RemoveAt(index);
-						ammos.RemoveAt(index);
+						// int index = guns.IndexOf(inventoryGuns[slotName]);
 						Destroy(piUIGo.transform.Find(slotName).GetChild(0).GetChild(0).gameObject);
 						inventoryGuns.Remove(slotName);
 					}
-					inventoryGuns.Add(slotName, gun);
-
-					guns.Add(gun);
-					icons.Add(icon);
-					ammos.Add(_ammoToSpawn);
+					inventoryGuns.Add(slotName, gunObject);
 					break;
 				}
 			}
 		}else{
-			guns.Add(gun);
-			icons.Add(icon);
-			ammos.Add(_ammoToSpawn);
 			if(inventoryGuns.ContainsKey(slotName)){
 				Debug.Log("Slot: " + slotName + " already in use!");
-				int index = guns.IndexOf(inventoryGuns[slotName]);
-				guns.RemoveAt(index);
-				icons.RemoveAt(index);
-				ammos.RemoveAt(index);
+				// int index = guns.IndexOf(inventoryGuns[slotName]);
+				
 				Destroy(piUIGo.transform.Find(slotName).GetChild(0).GetChild(0).gameObject);
 				inventoryGuns.Remove(slotName);
-				inventoryGuns.Add(slotName, gun);
+				inventoryGuns.Add(slotName, gunObject);
 			}else{
-				inventoryGuns.Add(slotName, gun);
+				inventoryGuns.Add(slotName, gunObject);
+                Global.Instance.PlayerData.equipedGuns.Add(gunObject);
 			}
 		}
-		GameObject inventoryIcon = Instantiate(icon, piUIGo.transform.Find(slotName).GetChild(0));
+        GameObject inventoryIcon = Instantiate(gunObject.gunIcon, piUIGo.transform.Find(slotName).GetChild(0));
 	}
 
-	public void SaveInventory()
-	{
-
-	}
-
-    public void SetSelectedGun(GameObject gun, GameObject _gunIcon, GameObject ammo)
+    public void SetSelectedGun(GunObject gunObject)
     {
-        selectedGun = gun;
-        gunIcon = _gunIcon;
-        ammoToSpawn = ammo;
+        selectedGun = gunObject;
     }
 
 

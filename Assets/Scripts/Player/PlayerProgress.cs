@@ -71,15 +71,5 @@ public class PlayerProgress : MonoBehaviour
 	public void levelCompleted(){
 		powerCoresCollected += powerCoresThisLevel;
 		playerObject.powerCores += powerCoresThisLevel;
-		saveObject.ppowerCores += powerCoresCollected;
-	}
-
-	public void SetPerks(ref List<UpgradeButtonObject> _perks){
-		if(saveObject == null){
-			Debug.Log("Save object is null at load");
-		}
-		for (int i = 0; i < saveObject.perks.Length; i++){
-			_perks[saveObject.perks[i].index].upgraded = saveObject.perks[i].value;
-		}
 	}
 }

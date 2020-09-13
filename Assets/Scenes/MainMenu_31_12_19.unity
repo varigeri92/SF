@@ -4438,6 +4438,27 @@ MonoBehaviour:
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2088732216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5841741876398226982, guid: 2cff0e2bfbfe24954a7b8162cff3bd25,
+    type: 3}
+  m_PrefabInstance: {fileID: 1301923803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2088732219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088732216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7829db07595ac9a4a9ed1cc40b65fc37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DontLoad: 1
+  DontSave: 1
+  saveObject: {fileID: 11400000, guid: ab15a5dedfda646c995f99937ed95386, type: 2}
 --- !u!1 &2110552845
 GameObject:
   m_ObjectHideFlags: 0
@@ -9019,7 +9040,7 @@ PrefabInstance:
     - target: {fileID: 3530966317786692847, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.00003370406
+      value: -0.0002941899
       objectReference: {fileID: 0}
     - target: {fileID: 3465509694495203909, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}

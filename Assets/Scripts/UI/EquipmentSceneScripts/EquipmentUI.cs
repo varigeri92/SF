@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
 
 public class EquipmentUI : MonoBehaviour
 {
 
     public bool isGun = true;
+
     [HideInInspector]
-    public bool isDragged = false;
+    protected Transform canvas;
     [HideInInspector]
-    public Transform canvas;
-    [HideInInspector]
-    public EquipmentUIManager equipmentUIManager;
+    protected EquipmentUIManager equipmentUIManager;
 
     public UltimateSelector ultimateSelector;
     public UltimateSelector gunSelector;
@@ -20,11 +21,8 @@ public class EquipmentUI : MonoBehaviour
     Animator animator;
 
     public GameObject marker;
-    public GameObject icon;
 
-    [Header("Asing by 'Guns' only:")]
-    public GameObject gun;
-    public GameObject ammoToSpawn;
+    protected Button button;
 
     [Header("Asing by 'Ultimates' only:")]
     public Abilit_Object ultimate;
@@ -35,25 +33,23 @@ public class EquipmentUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canvas = transform.parent;
-        if (isGun)
-        {
-            animator = transform.parent.parent.Find("PIBG").GetComponent<Animator>();
-        }
 
-        equipmentUIManager = GameObject.Find("EquipmentScreen").GetComponent<EquipmentUIManager>();
-        if (equipmentUIManager == null) {
-            throw new System.Exception("Equipment UI manager, is 'NULL' ");
-        }
-
-        ultimateSelector = GameObject.FindGameObjectWithTag("UltimateSelector").GetComponent<UltimateSelector>();
-        // gunSelector = GameObject.FindGameObjectWithTag("GunSelector").GetComponent<UltimateSelector>();
     }
 
-    public void OpenPiOnSelection()
+    protected void Init()
     {
-        animator.SetBool("Open", true);
-        equipmentUIManager.SetSelectedGun(gun, icon, ammoToSpawn);
+
+        button = GetComponent<Button>();
+        button.onClick.AddListener(() => OnButtonClick());
+
+        equipmentUIManager = GameObject.Find("EquipmentScreen").GetComponent<EquipmentUIManager>();
+
+        ultimateSelector = GameObject.FindGameObjectWithTag("UltimateSelector").GetComponent<UltimateSelector>();
+    }
+
+    public virtual void OnButtonClick()
+    {
+        Debug.Log("Katt");
     }
 
     public void SetPalyerUltimate()
