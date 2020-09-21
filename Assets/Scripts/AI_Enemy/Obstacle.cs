@@ -45,7 +45,6 @@ public class Obstacle : Enemy {
 
 	public override void TakeDmg(int dmg){
 		health = health - dmg;
-		Debug.Log("HEY BOI!!");
 		if(health <= 0){
 			Die();
 		}

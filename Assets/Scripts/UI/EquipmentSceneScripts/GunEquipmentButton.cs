@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GunEquipmentButton : EquipmentUI
+public class GunEquipmentButton : EquipmentButton
 {
 
-    [SerializeField] GunObject gunObject;
+    public GunObject gunObject;
     Animator animator;
 
 

@@ -44,7 +44,6 @@ public class BasicEnemy : Enemy {
     {
         if (playerAlive)
         {
-
             Vector2 direction = (Vector2)target.position - rb.position;
             direction.Normalize();
             float rotateamount = Vector3.Cross(direction, transform.up).z;

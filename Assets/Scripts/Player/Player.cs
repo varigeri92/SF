@@ -476,15 +476,9 @@ public class Player : MonoBehaviour
 			if(abilityAtachPoint.childCount > 0 ){
 				Destroy(abilityAtachPoint.GetChild(0).gameObject);
 			}
-			GameObject go = Instantiate(playerObject.ultimate, abilityAtachPoint);
+			GameObject go = Instantiate(playerObject.ultimate.gameplayPrefab, abilityAtachPoint);
 			ability = go.GetComponent<Ability>();
-			Instantiate(playerObject.ultimateIcon, ultimateContainer);
+			Instantiate(playerObject.ultimate.icon, ultimateContainer);
 		}
 	}
-
-
-    // ==== OLD === //
-    #region Decaprated Functions:
-
-    #endregion
 }

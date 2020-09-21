@@ -53,7 +53,7 @@ public class SaveSystemEditor : EditorWindow
         usedPlayerData.unlockedUltimates = new List<Abilit_Object>(defaultPlayerData.unlockedUltimates);
 
         usedPlayerData.ultimate = defaultPlayerData.ultimate;
-        usedPlayerData.ultimateIcon = defaultPlayerData.ultimateIcon;
+
 
         usedPlayerData.maxHealth    = defaultPlayerData.maxHealth;
         usedPlayerData.powerCores   = defaultPlayerData.powerCores;

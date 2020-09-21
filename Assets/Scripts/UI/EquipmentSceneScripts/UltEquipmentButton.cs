@@ -2,17 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UltEquipmentButton : MonoBehaviour
+public class UltEquipmentButton : EquipmentButton
 {
-    // Start is called before the first frame update
+    public Abilit_Object ultimate;
     void Start()
     {
+
         
+        Init();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void SetPalyerUltimate()
     {
-        
+        equipmentUIManager.SetUltimate(ultimate);
+    }
+
+
+    public override void OnButtonClick()
+    {
+        base.OnButtonClick();
+        SetPalyerUltimate();
     }
 }

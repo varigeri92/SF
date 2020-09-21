@@ -2329,7 +2329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55459ea38212346e0b5b0b085d3d62d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
 --- !u!1 &868536074 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1111927768668054822, guid: 47785bf890a95774d8480acae9c4b136,
@@ -2360,9 +2359,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8147313644254bde9461d43a2febf73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guns: []
-  icons: []
-  ammos: []
   slots:
   - One
   - Two
@@ -2373,17 +2369,15 @@ MonoBehaviour:
   piUI: {fileID: 986053520}
   piece: {fileID: 0}
   selectedGun: {fileID: 0}
-  gunIcon: {fileID: 0}
-  ammoToSpawn: {fileID: 0}
   piUIGo: {fileID: 986053517}
   gunGrid: {fileID: 255353218}
   ultimateGrid: {fileID: 281074850}
-  _basicGun: {fileID: 1927927025121406, guid: e22ab43c3218a4d418dcd882e0a18b67, type: 3}
-  _basicGunIcon: {fileID: 1795802747685846, guid: 2d3e449ace80b4aab9bee4c54f706796,
-    type: 3}
+  _basicGun: {fileID: 11400000, guid: cb5fb1469e18841fb9766965f7802b4e, type: 2}
   isMouseoverSlot: 0
   piAnimator: {fileID: 1597212001}
   selectFirstButton: 1
+  gunButtons: []
+  ultButtons: []
 --- !u!114 &868536080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2396,7 +2390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55459ea38212346e0b5b0b085d3d62d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
 --- !u!1 &895695492
 GameObject:
   m_ObjectHideFlags: 0
@@ -3080,7 +3073,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55459ea38212346e0b5b0b085d3d62d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 11400000, guid: 2f40d71c2cfc44eda9128f144c22bae5, type: 2}
 --- !u!1 &986053517 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1748283828179257298, guid: 47785bf890a95774d8480acae9c4b136,
@@ -9035,12 +9027,12 @@ PrefabInstance:
     - target: {fileID: 3530966317786692847, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000030517578
+      value: -0.00015258789
       objectReference: {fileID: 0}
     - target: {fileID: 3530966317786692847, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0002941899
+      value: -0.00021236316
       objectReference: {fileID: 0}
     - target: {fileID: 3465509694495203909, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
@@ -13127,7 +13119,7 @@ PrefabInstance:
         type: 3}
       propertyPath: perk
       value: 
-      objectReference: {fileID: 11400000, guid: 3ec0a616a3ad1364499bebf2615469eb,
+      objectReference: {fileID: 11400000, guid: 1c8b98fe89dcfa245b22d17308171cda,
         type: 2}
     - target: {fileID: 6213186953792998757, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
@@ -15218,7 +15210,7 @@ PrefabInstance:
     - target: {fileID: 7272819616220527535, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 3840
+      value: 3840.004
       objectReference: {fileID: 0}
     - target: {fileID: 8574550479903976875, guid: 47785bf890a95774d8480acae9c4b136,
         type: 3}

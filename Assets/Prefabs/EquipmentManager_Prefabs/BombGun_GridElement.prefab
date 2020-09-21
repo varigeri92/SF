@@ -257,10 +257,10 @@ GameObject:
   - component: {fileID: 625}
   - component: {fileID: 599}
   - component: {fileID: 758}
-  - component: {fileID: 756}
   - component: {fileID: 9017797239493302131}
   - component: {fileID: 3490383987804200996}
   - component: {fileID: 2164215897504209416}
+  - component: {fileID: 9004589239416131524}
   m_Layer: 5
   m_Name: BombGun_GridElement
   m_TagString: Untagged
@@ -327,30 +327,6 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd1942b89aa5741ea81edc98905192e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGun: 1
-  isDragged: 0
-  canvas: {fileID: 0}
-  equipmentUIManager: {fileID: 0}
-  ultimateSelector: {fileID: 0}
-  gunSelector: {fileID: 0}
-  marker: {fileID: 3828990737031396765}
-  icon: {fileID: 9155244844814188057, guid: e6ed806f10012cd4ebad09a23774068c, type: 3}
-  gun: {fileID: 3821602256460556279, guid: d8e449eac41d25f41b7d27a530b9d841, type: 3}
-  ammoToSpawn: {fileID: 5855574713655412981, guid: 5f9978cde65da8843af30cf61699fdd2,
-    type: 3}
-  ultimatePrefab: {fileID: 0}
 --- !u!114 &9017797239493302131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,7 +367,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 756}
+      - m_Target: {fileID: 0}
         m_MethodName: OpenPiOnSelection
         m_Mode: 1
         m_Arguments:
@@ -543,6 +519,23 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &9004589239416131524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a52fd7cb7d745e41b0ba28a47984f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGun: 1
+  ultimateSelector: {fileID: 0}
+  gunSelector: {fileID: 0}
+  marker: {fileID: 3828990737031396765}
+  gunObject: {fileID: 11400000, guid: 6d41e4c8718ae4063832824311979810, type: 2}
 --- !u!1 &3828990737031396765
 GameObject:
   m_ObjectHideFlags: 0

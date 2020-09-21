@@ -19,9 +19,7 @@ public class PlayerObject : ScriptableObject{
 
 
     public List<Abilit_Object> unlockedUltimates;
-	// public List<GameObject> ultimates;
-	public GameObject ultimate;
-	public GameObject ultimateIcon;
+    public Abilit_Object ultimate;
 
 
 }
